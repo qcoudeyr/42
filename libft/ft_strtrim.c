@@ -6,27 +6,24 @@
 /*   By: qcoudeyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:51:51 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/02/13 13:35:24 by qcoudeyr         ###   ########.fr       */
+/*   Updated: 2023/02/13 16:09:57 by qcoudeyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/* Fonction permettant de tester une string de i a n*/
+static int	ft_stricmp(int i, int n, char *s1, char *s2)
+{
+	
+}
+
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
 	int		i;
 
-	i = 0;
-	while (*s1++ == *set)
-	{
-		if (*(set + 1) != 0)
-			set++;
-	}
-	while (*s1++ != *set && *(s1 + 1) == *(set + 1))
-		i++;
-	str = malloc(sizeof(char) * (i + 1));
-	if (!str)
-		return (NULL);
+
 	return (str);
 }

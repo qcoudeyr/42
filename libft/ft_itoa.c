@@ -6,13 +6,12 @@
 /*   By: qcoudeyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:59:48 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/02/13 15:47:17 by qcoudeyr         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:54:33 by qcoudeyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
-
 
 static int	ft_intlen(long *n, long *pwr)
 {
