@@ -6,7 +6,7 @@
 /*   By: qcoudeyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:50:11 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/02/13 12:59:47 by qcoudeyr         ###   ########.fr       */
+/*   Updated: 2023/02/13 14:10:12 by qcoudeyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_atoi(const char *str)
 	}
 	else if (*(char *)str == '+')
 		str++;
-	while (*(unsigned char *)str < 58 && *(unsigned char	 *)str > 47)
+	while (*(unsigned char *)str < 58 && *(unsigned char *)str > 47)
 		value = (value * 10 + (*str++ - 48));
 	return (value * neg);
 }
