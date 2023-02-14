@@ -6,8 +6,23 @@
 /*   By: qcoudeyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:59:47 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/02/13 14:35:34 by qcoudeyr         ###   ########.fr       */
+/*   Updated: 2023/02/14 11:29:57 by qcoudeyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+char	**ft_split(char const *s, char c)
+{
+	int		i;
+	int		j;
+	char	**str;
+
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		
+	}
+	return (str);
+}

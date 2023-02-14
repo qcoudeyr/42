@@ -5,17 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: qcoudeyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 11:51:47 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/02/13 13:35:40 by qcoudeyr         ###   ########.fr       */
+/*   Created: 2023/02/14 09:38:47 by qcoudeyr          #+#    #+#             */
+/*   Updated: 2023/02/14 11:25:41 by qcoudeyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdlib.h>
-#include <unistd.h>
-
 #ifndef LIBFT_H
-#define	LIBFT_H
+# define LIBFT_H
+
+# include <stddef.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 int		ft_atoi(const char *str);
 int		ft_isalnum(int c);
