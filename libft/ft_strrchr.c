@@ -6,11 +6,12 @@
 /*   By: qcoudeyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:51:52 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/02/13 23:30:28 by qcoudeyr         ###   ########.fr       */
+/*   Updated: 2023/02/15 17:46:43 by qcoudeyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
 char	*ft_strrchr(const char *s, int c)
 {
@@ -23,7 +24,7 @@ char	*ft_strrchr(const char *s, int c)
 			src = (char *) s;
 		s++;
 	}
-	if (c == 0)
+	if ((char)c == 0)
 		src = (char *) s;
 	if (src != NULL && *src == (char)c)
 		return ((char *)src);

@@ -6,7 +6,7 @@
 /*   By: qcoudeyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 16:10:26 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/02/13 12:59:45 by qcoudeyr         ###   ########.fr       */
+/*   Updated: 2023/02/15 16:21:30 by qcoudeyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,7 @@ char	*ft_strnstr(const char *str, const char *tosearch, size_t len)
 	char	*ptr;	
 	size_t	i;
 
-	if (!str)
-		return (NULL);
-	else if (*tosearch == 0)
-		return ((char *)str);
-	else if (!tosearch)
+	if (*tosearch == 0 || !tosearch)
 		return ((char *)str);
 	i = 0;
 	while (str[i] && i < len)

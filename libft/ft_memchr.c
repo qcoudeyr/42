@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qcoudeyr <qcoudeyr@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: qcoudeyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:52:10 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/02/07 12:20:08 by qcoudeyr         ###   ########.fr       */
+/*   Updated: 2023/02/15 17:22:28 by qcoudeyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	p = (char *)s;
 	while (n-- > 0)
 	{
-		if (*p++ == c)
+		if (*p++ == (char)c)
 			return (--p);
 	}
 	return (NULL);
