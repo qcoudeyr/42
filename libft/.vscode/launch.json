@@ -42,10 +42,10 @@
     },
     {
       "name": "(gdb) Lancer",
-      "type": "gdb",
+      "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/a.out",
-      "args": [],
+      "args": ["-O0"],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "environment": [],

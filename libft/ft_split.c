@@ -6,7 +6,7 @@
 /*   By: qcoudeyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:59:47 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/02/16 11:03:13 by qcoudeyr         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:34:59 by qcoudeyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,17 @@ static int	ft_wordct(const char *s, char chr)
 	return (c);
 }
 
+static char	**ft_empty_tab(void)
+{
+	char	**tab;
+
+	tab = (char **)malloc(sizeof(char *));
+	if (!tab)
+		return (NULL);
+	tab[0] = NULL;
+	return (tab);
+}
+
 char	**ft_split(char const *str, char c)
 {
 	int		i;
@@ -52,18 +63,16 @@ char	**ft_split(char const *str, char c)
 	char	**tab;
 	char	*s;
 
-	s = ft_strtrim (str, &c);
+	if (c != 0 && str)
+		s = ft_strtrim (str, &c);
+	else
+		s = (char *)str;
+	if (!str || *s == '\0')
+		return (ft_empty_tab());
 	i = 0;
 	index = 0;
-	if (*s == '\0')
-	{
-		tab = malloc(sizeof(char *) * 1);
-		tab[0] = malloc(sizeof(char) * 1);
-		tab[0] = 0;
-		return (tab);
-	}
-	tab = (char **)malloc(sizeof(char *) * ft_wordct(s, c) + 1);
-	while (s[i] || (s[i] == c && s[i + 1] == 0))
+	tab = (char **)malloc(sizeof(char *) * (ft_wordct(s, c) + 1));
+	while (s[i] != 0 || (s[i] == c && s[i + 1] == 0))
 	{
 		while (s[i] == c && s[i] != 0)
 			i++;
