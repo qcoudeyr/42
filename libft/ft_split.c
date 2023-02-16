@@ -6,12 +6,11 @@
 /*   By: qcoudeyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:59:47 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/02/16 16:34:59 by qcoudeyr         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:47:34 by qcoudeyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static size_t	ft_wordlen(const char *s, char chr)
 {
