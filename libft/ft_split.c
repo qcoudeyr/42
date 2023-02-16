@@ -6,7 +6,7 @@
 /*   By: qcoudeyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:59:47 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/02/15 13:36:58 by qcoudeyr         ###   ########.fr       */
+/*   Updated: 2023/02/15 18:12:06 by qcoudeyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	**ft_split(char const *str, char c)
 	s = ft_strtrim (str, &c);
 	i = 0;
 	index = 0;
-	if (!*s)
+	if (*s == '\0')
 	{
 		tab = malloc(sizeof(char *) * 1);
 		tab[0] = malloc(sizeof(char) * 1);
@@ -63,7 +63,7 @@ char	**ft_split(char const *str, char c)
 		return (tab);
 	}
 	tab = (char **)malloc(sizeof(char *) * ft_wordct(s, c) + 1);
-	while (s[i] || (s[i] == c && s[i+1] == 0))
+	while (s[i] || (s[i] == c && s[i + 1] == 0))
 	{
 		while (s[i] == c && s[i] != 0)
 			i++;
