@@ -11,11 +11,14 @@ NAME = libft.a
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
+	ar r $(NAME) $(OBJS)
 	ranlib $(NAME)
 
 %.o: %.c libft.h
 	$(CC) $(CFLAGS) -c $< -o $@ 
+
+bonus: $(OBJSB)
+	ar r $(NAME) $(OBJSB)
 
 clean:
 	rm -f $(OBJS) $(OBJSB) 
@@ -24,8 +27,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-bonus: $(OBJSB)
-	ar r $(NAME) $(OBJSB)
 
 .PHONY: all clean fclean re bonus
