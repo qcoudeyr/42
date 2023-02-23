@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/qcoudeyr/Bureau/42/get_next_line",
-      "program": "/home/qcoudeyr/Bureau/42/get_next_line/build/Debug/outDebug",
+      "cwd": "/home/qcoudeyr/Bureau/42/get_next_line/",
+      "program": "/home/qcoudeyr/Bureau/42/get_next_line/debug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

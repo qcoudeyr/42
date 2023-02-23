@@ -19,7 +19,7 @@ char	*ft_strnstr(const char *str, const char *tosearch, size_t len)
 	char	*ptr;	
 	size_t	i;
 
-	if (*tosearch == 0 || !tosearch)
+	if (!tosearch || *tosearch == 0)
 		return ((char *)str);
 	i = 0;
 	while (str[i] && i < len)

@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:   <qcoudeyr@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 11:51:53 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/02/22 18:21:55 by                  ###   ########.fr       */
+/*   Created: 2023/02/23 12:39:17 by qcoudeyr          #+#    #+#             */
+/*   Updated: 2023/02/23 13:20:50 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int main(void /* int argc, char *argv */)
 {
-	int	c;
 
-	c = 0;
-	while (*s != 0)
-	{
-		c++;
-		s++;
-	}
-	return (c);
+	if (get_next_line(42) != NULL && get_next_line(424422) != NULL)
+		ft_putstr_fd("FAIL TO RETURN NULL ON BAD FD SET\n", 1);
+	else
+		ft_putstr_fd("SUCCES TO RETURN NULL ON BAD FD SET\n", 1);
+		
+		
+	
+	return (0);
 }
