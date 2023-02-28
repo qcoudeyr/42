@@ -9,7 +9,10 @@ $(NAME):
 	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 
 clean:
-	rm -f $(NAME)
+	rm -f $(NAME) 
+
+fclean:
+	rm -f $(NAME) debug
 
 re: clean all
 

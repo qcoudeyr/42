@@ -15,13 +15,13 @@ $(NAME): $(OBJS)
 	ranlib $(NAME)
 
 %.o: %.c libft.h
-	$(CC) $(CFLAGS) -c $< -o $@ 
+	$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: $(OBJSB)
 	ar r $(NAME) $(OBJSB)
 
 clean:
-	rm -f $(OBJS) $(OBJSB) 
+	rm -f $(OBJS) $(OBJSB)
 
 fclean: clean
 	rm -f $(NAME)

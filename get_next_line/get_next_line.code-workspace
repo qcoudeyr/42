@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../libft"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"unistd.h": "c"
+		}
+	}
+}

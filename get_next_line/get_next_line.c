@@ -6,7 +6,7 @@
 /*   By:   <qcoudeyr@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 19:08:11 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/02/23 12:41:09 by                  ###   ########.fr       */
+/*   Updated: 2023/02/27 12:24:24 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,30 @@ char	*get_next_line(int fd)
 	int			index;
 	char		*ptr;
 
-	index = 0;
+	index = 1;
 	if (fdline){}
 	else
+	{
 		fdline = malloc(sizeof(char *) * 1);
+		fdline[0] = malloc(sizeof(char) * 1024);
+		if (!fdline || !fdline[0])
+			return (NULL);
+	}
+	index = set_fd_line(fdline, fd);
+
 	if (read(fd, buf, BUFFER_SIZE) == -1)
 		return (NULL);
-	index = set_fd_line(fdline, fd);
+
 	ptr = ft_strnstr(buf, fdline[index], BUFFER_SIZE);
+
 	if (ptr != NULL) 
-		fdline[index] = get_linet(ptr);
+		fdline[index] = get_line(ptr);
 	else
-		fdline[index] = get_linet(buf);
+		fdline[index] = get_line(buf);
+
 	if (!fdline[index])
 		return (NULL);
+
 	return (fdline[index]);
 }
+malloc(unsigned long)

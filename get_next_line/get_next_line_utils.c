@@ -6,7 +6,7 @@
 /*   By:   <qcoudeyr@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 19:08:09 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/02/23 12:39:52 by                  ###   ########.fr       */
+/*   Updated: 2023/02/23 14:28:10 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ size_t	get_line_len(char *buf)
 	return (i);
 }
 
-char	*get_linet(char *buf)
+char	*get_line(char *buf)
 {
 	char	*str;
 	int		i;
@@ -69,18 +69,12 @@ int	set_fd_line(char **fdline, int fd)
 	int	index;
 
 	index = 0;
-	if (fdline[index])
-	{
-		while (fdline[index] && fdline[index][0] != fd)
-			index++;
-		if (fdline[index][0] == fd)	
-			return (index);
-	}
+	while (fdline[0][index+1] && fdline[0][index] != fd)
+		index++;
+	if (fdline[index][0] == fd)	
+		return (index);
 	else
-	{
-		fdline[index] = malloc(sizeof(char) * 2);
-		fdline[index][0] = fd;
-	}
+		fdline[0][index] = fd;
 	return (index);
 
 }
