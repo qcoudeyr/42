@@ -3,78 +3,90 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:   <qcoudeyr@student.42perpignan.fr>        +#+  +:+       +#+        */
+/*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 19:08:09 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/02/23 14:28:10 by                  ###   ########.fr       */
+/*   Updated: 2023/03/10 09:26:36 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-
-char	*ft_strnstr(const char *str, const char *tosearch, size_t len)
+size_t	ft_strlen(const char *s)
 {
-	int		n;
-	char	*ptr;	
+	int	c;
+
+	c = 0;
+	while (*s != 0)
+	{
+		c++;
+		s++;
+	}
+	return (c);
+}
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+	size_t	len_src;
 	size_t	i;
 
-	if (!tosearch || *tosearch == 0)
-		return ((char *)str);
+	len_src = ft_strlen(src);
+	if (dstsize == 0)
+		return (len_src);
 	i = 0;
-	while (str[i] && i < len)
+	while (src[i] && i < dstsize - 1)
 	{
-		n = 0;
-		ptr = (char *)&str[i];
-		while (str[i + n] == tosearch[n] && i + n < len)
-		{
-			if (tosearch[n +1] == 0)
-				return (ptr + n+1);
-			n++;
-		}
+		dst[i] = src[i];
 		i++;
 	}
+	dst[i] = '\0';
+	return (len_src);
+}
+
+char	*ft_strdup(const char *s)
+{
+	int		len;
+	char	*str;
+
+	len = ft_strlen(s);
+	str = malloc(len + 1);
+	if (str == NULL)
+		return (NULL);
+	ft_strlcpy(str, s, len +1);
+	return (str);
+}
+
+char	*ft_strrchr(const char *s, int c)
+{
+	char	*src;
+
+	src = NULL;
+	while (*s != 0)
+	{
+		if (*s == (char)c)
+			src = (char *) s;
+		s++;
+	}
+	if ((char)c == 0)
+		src = (char *) s;
+	if (src != NULL && *src == (char)c)
+		return ((char *)src);
 	return (NULL);
 }
 
-
-size_t	get_line_len(char *buf)
-{
-	size_t	i;
-
-	i = 0;
-	while (*buf != '\0' && *buf++ != '\n')
-		i++;
-	return (i);
-}
-
-char	*get_line(char *buf)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;
-	int		i;
+	int		len;
 
-	i = get_line_len(buf);
-	str = malloc(sizeof(char) * (i+2));
-	if (!str++)
+	len = ft_strlen(s1) + ft_strlen(s2);
+	str = malloc(sizeof(char) * (len + 1));
+	if (!str)
 		return (NULL);
-	while (*buf != '\0' && *buf != '\n')
-		*str++ = *buf++;
-	*str = *buf;
-	return (str - i);
-
-}
-
-int	set_fd_line(char **fdline, int fd)
-{
-	int	index;
-
-	index = 0;
-	while (fdline[0][index+1] && fdline[0][index] != fd)
-		index++;
-	if (fdline[index][0] == fd)	
-		return (index);
-	else
-		fdline[0][index] = fd;
-	return (index);
-
+	while (*s1)
+		*str++ = *(char *)s1++;
+	while (*s2)
+		*str++ = *(char *)s2++;
+	*str = 0;
+	return (str - len);
 }

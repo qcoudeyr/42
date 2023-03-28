@@ -1,21 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/17 19:08:11 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/03/15 19:39:03 by  qcoudeyr        ###   ########.fr       */
+/*   Created: 2023/02/07 11:52:03 by qcoudeyr          #+#    #+#             */
+/*   Updated: 2023/03/23 18:38:39 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../ft_printf.h"
 
-char	*get_next_line(int fd)
+int	ft_putnbr_fd(int n, int fd)
 {
-	static char			**tab;
-	struct gnlstruct	gnl;
+	long	nbm;
+	int		len;
 
-	return (gnl.line);
+	nbm = n;
+	len = 0;
+	if (n < 0)
+	{
+		ft_putchar_fd(45, fd);
+		nbm *= -1;
+		len++;
+	}
+	if (nbm < 10)
+	{
+		ft_putchar_fd(nbm + 48, fd);
+		len++;
+	}
+	else
+	{
+		len += ft_putnbr_fd(nbm / 10, fd);
+		len += ft_putnbr_fd(nbm % 10, fd);
+	}
+	return (len);
 }

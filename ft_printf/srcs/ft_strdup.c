@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/17 19:08:11 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/03/15 19:39:03 by  qcoudeyr        ###   ########.fr       */
+/*   Created: 2023/02/07 11:51:57 by qcoudeyr          #+#    #+#             */
+/*   Updated: 2023/03/01 10:31:16 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../ft_printf.h"
 
-char	*get_next_line(int fd)
+char	*ft_strdup(const char *s)
 {
-	static char			**tab;
-	struct gnlstruct	gnl;
+	int		len;
+	char	*str;
 
-	return (gnl.line);
+	len = ft_strlen(s);
+	str = malloc(len + 1);
+	if (str == NULL)
+		return (NULL);
+	ft_strlcpy(str, s, len +1);
+	return (str);
 }

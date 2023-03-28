@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:   <qcoudeyr@student.42perpignan.fr>        +#+  +:+       +#+        */
+/*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 12:39:17 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/02/23 14:31:44 by                  ###   ########.fr       */
+/*   Updated: 2023/03/08 11:01:50 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "libft.h"
+#include "../libft/libft.h"
 
 int main(void /* int argc, char *argv */)
 {
@@ -25,34 +25,26 @@ int main(void /* int argc, char *argv */)
 	fd2 = open("tests/test2", O_RDONLY);
 	fd3 = open("tests/test3", O_RDONLY);
 
-	if (get_next_line(42) != NULL && get_next_line(424422) != NULL)
-		ft_putstr_fd("FAIL TO RETURN NULL ON BAD FD SET\n", 1);
+	if (get_next_line(-42) != NULL && get_next_line(-424422) != NULL)
+		printf("FAIL TO RETURN NULL ON BAD FD SET\n");
 	else
-		ft_putstr_fd("SUCCES TO RETURN NULL ON BAD FD SET\n", 1);
+		printf("SUCCES TO RETURN NULL ON BAD FD SET\n");
 
 	i = 0;
-	while ((line = get_next_line(fd1)) != NULL)
+	while ((line = get_next_line(fd3)) != NULL)
 	{
-		printf("line [%02d]: %s", i++, line);
-		free(line);	
-	}
-	i = 0;
-	while (get_next_line(fd2) != NULL)
-	{
+		/* printf("fd1 line [%02d]: %s", i, line);
+		free(line);
 		line = get_next_line(fd2);
-		printf("line [%02d]: %s", i++, line);
-		free(line);	
+		printf("fd2 line [%02d]: %s \n", i, line);
+		free(line);
+		line = get_next_line(fd3); */
+		printf("fd3 line [%02d]: %s \n", i++, line);
+		free(line);
 	}
-	i = 0;
-	while (get_next_line(fd3) != NULL)
-	{
-		line = get_next_line(fd3);
-		printf("line [%02d]: %s", i++, line);
-		free(line);	
-	}
-	
-	
-	
+
+
+
 	close(fd1);
 	close(fd2);
 	close(fd3);

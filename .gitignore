@@ -33,3 +33,11 @@ libft/ft_atoi.o
 libft/libft.h.gch
 libft/a.out
 libft/fr.subject.pdf
+ft_printf/ft_printf.code-workspace
+ft_printf/.vscode/c_cpp_properties.json
+ft_printf/.vscode/launch.json
+ft_printf/.vscode/settings.json
+get_next_line/.vscode/c_cpp_properties.json
+get_next_line/.vscode/launch.json
+get_next_line/.vscode/settings.json
+get_next_line/tests/test3

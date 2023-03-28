@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:   <qcoudeyr@student.42perpignan.fr>        +#+  +:+       +#+        */
+/*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 19:06:54 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/02/23 14:28:29 by                  ###   ########.fr       */
+/*   Updated: 2023/03/09 10:39:23 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,21 @@
 #include <fcntl.h>
 #include <stddef.h>
 
-int 	set_fd_line(char **fdline, int fd);
-char	*ft_strnstr(const char *str, const char *tosearch, size_t len);
+struct gnlstruct
+{
+char	buf[BUFFER_SIZE];
+char	*line;
+int		index;
+int		vread;
+int		i;
+};
+
+char	*ft_strrchr(const char *s, int c);
 char	*get_next_line(int fd);
-char	*get_line(char *buf);
-size_t	get_line_len(char *buf);
+char	*ft_strdup(const char *s);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlen(const char *s);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif
 

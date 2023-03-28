@@ -1,38 +1,27 @@
-CC = clang
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-INCLUDE = ft_printf.h\
-		./srcs/ft_split.c \
-		./srcs/ft_strlen.c \
-		./srcs/ft_strlcpy.c \
-		./srcs/ft_strrchr.c \
-		./srcs/ft_strtrim.c \
-		./srcs/ft_putstr_fd.c
-
-SRCS =  ft_printf.c \
-
-OBJS = $(SRCS:.c=.o) $(INCLUDE:.c=.o)
+HEADERS = ft_printf.h
+SRCS =  ft_printf.c ./srcs/ft_memset.c ./srcs/ft_pttostr.c ./srcs/ft_putnbru.c ./srcs/ft_putnbr_base.c ./srcs/ft_strlen.c ./srcs/ft_strdup.c ./srcs/ft_strlcpy.c ./srcs/ft_strrchr.c  ./srcs/ft_putstr_fd.c ./srcs/ft_putnbr_fd.c ./srcs/ft_putchar_fd.c
+OBJS = $(SRCS:.c=.o)
 
 NAME = libftprintf.a
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar r $(NAME) $(OBJS) $(OBJS)
+	ar r $(NAME) $(OBJS) $(HEADERS)
 	ranlib $(NAME)
 
-%.o: %.c
+%.o: %.c libft.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS) debug
+	rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME) debug
+	rm -f $(NAME)
 
 re: fclean all
 
-debug:
-	$(CC) $(CFLAGS) $(SRCS) -I $(INCLUDE) -g -o debug
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re

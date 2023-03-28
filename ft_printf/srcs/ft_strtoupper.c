@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strtoupper.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/17 19:08:11 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/03/15 19:39:03 by  qcoudeyr        ###   ########.fr       */
+/*   Created: 2023/03/17 12:50:19 by  qcoudeyr         #+#    #+#             */
+/*   Updated: 2023/03/17 12:52:40 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../ft_printf.h"
 
-char	*get_next_line(int fd)
+char	*ft_strtoupper(const char *str)
 {
-	static char			**tab;
-	struct gnlstruct	gnl;
+	char	*strup;
+	int		len;
 
-	return (gnl.line);
+	len = ft_strlen(str);
+	strup = malloc(len + 1 * sizeof(char));
+	while (*str != 0)
+	{
+		if (*str >= 97 && *str <= 122)
+				*strup++ = *str -32;
+		else
+			*strup++ = *str;
+	str++;
+	}
+	*strup = 0;
+	return (strup - len);
 }

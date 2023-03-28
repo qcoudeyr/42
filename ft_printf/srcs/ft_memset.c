@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/17 19:08:11 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/03/15 19:39:03 by  qcoudeyr        ###   ########.fr       */
+/*   Created: 2023/02/07 11:52:06 by qcoudeyr          #+#    #+#             */
+/*   Updated: 2023/03/28 11:40:58 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../ft_printf.h"
 
-char	*get_next_line(int fd)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	static char			**tab;
-	struct gnlstruct	gnl;
+	char	*p;
+	size_t	i;
 
-	return (gnl.line);
+	i = 0;
+	p = (char *)s;
+	while (i < n)
+	{
+		*p = (char)c;
+		p++;
+		i++;
+	}
+	return (s);
 }
