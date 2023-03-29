@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:38:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/03/28 14:44:17 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/03/29 11:09:37 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	print_negnbrbase(int len, char *digits, int sign, long n)
 	i = 7;
 	while (len-- >= 0 && i >= 0 && n != 0)
 	{
-		if ((n % 16) == 0)
+		if ((n % 16) == 0 && sign == 1)
 			buffer[i] = digits[0];
 		else
 		{

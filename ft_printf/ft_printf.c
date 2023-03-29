@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:49:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/03/28 15:23:30 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/03/29 11:09:52 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,17 @@ int	ft_printf(const char *str, ...)
 		i++;
 	}
 	return (len);
+}
+
+int	main(void)
+{
+	int	len;
+
+	len = printf("%x ----- %X \n", -12222222, -12222222);
+	printf("%d\n", len);
+	len = ft_printf("%x ----- %X \n", -12222222, -12222222);
+	printf("%d\n", len);
+
+
+	return (0);
 }

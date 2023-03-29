@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:17:21 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/03/28 15:25:07 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/03/29 11:12:50 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	prt_negnb(int len, char *digits, int sign, long long unsigned int n)
 	i = len -1;
 	while (i >= 0 && n != 0)
 	{
-		if ((n % 16) == 0)
+		if ((n % 16) == 0 && sign == 1)
 			buffer[i] = digits[0];
 		else
 		{
