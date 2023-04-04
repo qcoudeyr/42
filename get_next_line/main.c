@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 12:39:17 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/03/08 11:01:50 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/03/30 15:52:07 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,23 @@ int main(void /* int argc, char *argv */)
 		printf("SUCCES TO RETURN NULL ON BAD FD SET\n");
 
 	i = 0;
-	while ((line = get_next_line(fd3)) != NULL)
+	for (int n = 0 ; n < 100 ; n++)
 	{
-		/* printf("fd1 line [%02d]: %s", i, line);
-		free(line);
-		line = get_next_line(fd2);
-		printf("fd2 line [%02d]: %s \n", i, line);
-		free(line);
-		line = get_next_line(fd3); */
-		printf("fd3 line [%02d]: %s \n", i++, line);
-		free(line);
+		while((line = get_next_line(fd1)) != NULL)
+		{
+			printf("fd1 line [%02d]: %s", i, line);
+			free(line);
+		}
+		while((line = get_next_line(fd2)) != NULL)
+		{
+			printf("fd2 line [%02d]: %s", i, line);
+			free(line);
+		}
+		while((line = get_next_line(fd3)) != NULL)
+		{
+			printf("fd3 line [%02d]: %s", i++, line);
+			free(line);
+		}
 	}
 
 
