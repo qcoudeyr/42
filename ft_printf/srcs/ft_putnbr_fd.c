@@ -6,16 +6,16 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:52:03 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/03/23 18:38:39 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/04/06 15:22:21 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	ft_putnbr_fd(int n, int fd)
+int	ft_putnbr_fd(long long n, int fd)
 {
-	long	nbm;
-	int		len;
+	long long	nbm;
+	int			len;
 
 	nbm = n;
 	len = 0;

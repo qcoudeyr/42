@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 19:08:11 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/03/31 11:22:42 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/04/04 11:42:24 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,33 +32,30 @@ char	*get_next_line(int fd)
 		tab = malloc(sizeof(char *) * 66000);
 	gnl.line = malloc(sizeof(char) * 1);
 	gnl.line[0] = 0;
-	if (tab[fd] == NULL)
-		tab[fd] = malloc(sizeof(char) * 1);
-	else if (ft_strrchr(tab[fd], '\n') != NULL)
+	if (tab[fd] != NULL && ft_strrchr(tab[fd], '\n') != NULL)
 	{
 		gnl.index = 0;
-		while (tab[fd][gnl.index] != '\n')
+		while (*(tab[fd] + gnl.index) != '\n')
 			gnl.index++;
 		gnl.line = malloc (sizeof(char) * (gnl.index + 1));
-		ft_strlcpy(gnl.line, tab[fd], gnl.index +1);
-		tab[fd][gnl.index + 1] = 0;
-		return (tab[fd]);
+		ft_strlcpy(gnl.line, tab[fd], gnl.index + 1);
+		tab[fd] = ft_strdup(tab[fd] + gnl.index + 1);
+		return (gnl.line);
 	}
+	else if (tab[fd] != NULL)
+		gnl.line = ft_strdup(tab[fd]);
+
 	while (1)
 	{
 		gnl.vread = read(fd, gnl.buf, BUFFER_SIZE);
 		if (gnl.vread == -1)
 			return (ft_free(tab, gnl.line, fd));
-		gnl.buf[gnl.vread] = 0;fd][
+		gnl.buf[gnl.vread] = 0;
 		gnl.line = ft_strjoin(gnl.line, gnl.buf);
 		if (ft_strrchr(gnl.buf, '\n') != NULL)
 			break ;
 		if (gnl.vread == 0)
-		{
-			gnl.line = NULL;
 			break ;
-		}
-
 	}
 	gnl.index = 0;
 	while (gnl.line[gnl.index] != '\n' && gnl.line[gnl.index] != 0)

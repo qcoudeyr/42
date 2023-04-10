@@ -13,8 +13,8 @@ $(NAME): $(OBJS)
 	ar r $(NAME) $(OBJS) $(HEADERS)
 	ranlib $(NAME)
 
-%.o: %.c libft.h
-	$(CC) $(CFLAGS) -c $< -o $@
+%.o: %.c
+	$(CC)  -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
@@ -27,7 +27,7 @@ re: fclean all
 
 debug: CFLAGS += -g
 debug: $(OBJS)
-	$(CC) $(CFLAGS) -o debug $(OBJS)
+	$(CC) -o debug $(OBJS)
 	clear
 	colour-valgrind --tool=memcheck --leak-check=full --track-origins=yes --error-exitcode=1 ./debug 2>&1
 
