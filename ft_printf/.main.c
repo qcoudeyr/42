@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtoupper.c                                    :+:      :+:    :+:   */
+/*   .main.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/17 12:50:19 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/03/17 12:52:40 by  qcoudeyr        ###   ########.fr       */
+/*   Created: 2023/04/10 18:13:54 by  qcoudeyr         #+#    #+#             */
+/*   Updated: 2023/04/11 13:47:42 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
+#include <limits.h>
+#include <stdio.h>
 
-char	*ft_strtoupper(const char *str)
+int	main(void)
 {
-	char	*strup;
-	int		len;
+	int	len;
 
-	len = ft_strlen(str);
-	strup = malloc(len + 1 * sizeof(char));
-	while (*str != 0)
-	{
-		if (*str >= 97 && *str <= 122)
-				*strup++ = *str -32;
-		else
-			*strup++ = *str;
-	str++;
-	}
-	*strup = 0;
-	return (strup - len);
+	printf("Test de ft_printf\n\n");
+
+	ft_printf("%x\t" ,-12222222);
+	printf("%x\t", -12222222);
+	return (0);
 }

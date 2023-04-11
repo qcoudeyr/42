@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:50:34 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/04/06 15:19:29 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/04/11 13:34:15 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int		ft_putstr_fd(char *s, int fd);
 int		ft_putchar_fd(char c, int fd);
 int		ft_putnbr_fd(long long n, int fd);
-char	*ft_strtoupper(const char *str);
-int		ft_pttostr(void *n);
+int		ft_pttostr(unsigned long long n);
 
 #endif

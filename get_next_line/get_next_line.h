@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 19:06:54 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/03/09 10:39:23 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/04/11 11:59:57 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@ int		i;
 
 char	*ft_strrchr(const char *s, int c);
 char	*get_next_line(int fd);
-char	*ft_strdup(const char *s);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-size_t	ft_strlen(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif

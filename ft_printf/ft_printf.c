@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:49:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/04/06 15:23:20 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/04/11 13:43:01 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ static int	ft_putargument(char value, va_list args)
 	if (value == 's')
 		return (ft_putstr_fd(va_arg(args, char *), 1));
 	if (value == 'p')
-		return (ft_pttostr(va_arg(args, void *)));
-	if (value == 'd')
-		return (ft_putnbr_fd(va_arg(args, int), 1));
-	if (value == 'i')
+		return (ft_pttostr(va_arg(args, unsigned long long)));
+	if (value == 'd' || value == 'i')
 		return (ft_putnbr_fd(va_arg(args, int), 1));
 	if (value == 'u')
 		return (ft_putnbru(va_arg(args, unsigned int)));
