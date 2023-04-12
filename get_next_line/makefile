@@ -28,7 +28,7 @@ debug: CFLAGS += -g
 debug: $(OBJS)
 	$(CC) $(CFLAGS) -o debug $(OBJS)
 	clear
-	colour-valgrind --tool=memcheck --leak-check=full --track-origins=yes --error-exitcode=1 ./debug 2>&1
+	colour-valgrind -s --tool=memcheck --leak-check=full --track-origins=yes --error-exitcode=1 ./debug 2>&1
 
 
 .PHONY: all clean fclean re bonus debug

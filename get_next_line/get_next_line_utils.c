@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 19:08:09 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/04/11 19:46:15 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/04/12 20:45:02 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ size_t	ft_strlen(const char *s)
 {
 	int	c;
 
-	if (s == NULL)
+	if (s == NULL || *s == 0)
 		return (0);
 	c = 0;
 	while (*s != 0)
@@ -32,24 +32,28 @@ char	*ft_strrchr(const char *s, int c)
 	char	*src;
 
 	src = NULL;
+	if (s == NULL || *s == 0)
+		return (NULL);
 	while (*s != 0)
 	{
 		if (*s == (char)c)
-			src = (char *) s;
+			return ((char *)s);
 		s++;
 	}
-	if ((char)c == 0)
-		src = (char *) s;
-	if (src != NULL && *src == (char)c)
-		return ((char *)src);
-	return (NULL);
+	return (src);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char const *s2)
 {
 	char	*str;
 	int		len;
 
+	if ((!s1 && !s2) || (*s1 == 0 && *s2 == 0))
+	{
+		str = malloc(sizeof(char) * 1);
+		str[0] = 0;
+		return (str);
+	}
 	len = ft_strlen(s1) + ft_strlen(s2);
 	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
@@ -59,6 +63,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (s2 && *s2)
 		*str++ = *(char *)s2++;
 	*str = 0;
+	free(s1);
+	s1 = NULL;
 	return (str - len);
 }
 
@@ -80,25 +86,23 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (len_src);
 }
 
-
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	char	*d;
+	char	*p;
 	char	*s;
+	size_t	i;
 
-	if (dest == NULL && src == NULL)
+	if (dest == NULL || src == NULL || (char *)src == 0 || (char *)dest == 0)
 		return (NULL);
-	d = (char *)dest;
+	i = 0;
 	s = (char *)src;
-	if (d > s)
+	p = (char *)dest;
+	while (i < n)
 	{
-		d += n - 1;
-		s += n - 1;
-		while (n-- > 0)
-			*d-- = *s--;
+		*p = *s;
+		p++;
+		s++;
+		i++;
 	}
-	else
-		while (n-- > 0)
-			*d++ = *s++;
 	return (dest);
 }
