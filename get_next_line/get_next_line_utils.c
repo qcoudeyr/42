@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 19:08:09 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/04/12 20:45:02 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/04/13 12:35:08 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,9 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	size_t	i;
 
 	if (dest == NULL || src == NULL || (char *)src == 0 || (char *)dest == 0)
+	{
 		return (NULL);
+	}
 	i = 0;
 	s = (char *)src;
 	p = (char *)dest;
