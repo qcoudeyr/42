@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 19:06:54 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/04/13 12:34:03 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/04/14 13:22:11 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ char	buf[BUFFER_SIZE];
 char	*line;
 int		vread;
 };
-
+/*
 char	*ft_strrchr(const char *s, int c);
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char const *s2);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlen(const char *s);
-
+ */
 #endif
 
 #ifndef BUFFER_SIZE

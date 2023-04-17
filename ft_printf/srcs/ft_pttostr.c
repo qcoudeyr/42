@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:17:21 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/04/11 13:39:08 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/04/14 12:52:57 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ static int	print_nbrbase(int len, char *digits, unsigned long long n)
 	char	*buffer;
 	int		i;
 
-	if (len > 8)
-		len = 16;
 	buffer = malloc (sizeof(char) * len +1);
 	buffer[len] = 0;
 	i = len - 1;

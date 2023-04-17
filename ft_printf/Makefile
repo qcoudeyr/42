@@ -14,7 +14,7 @@ $(NAME): $(OBJS)
 	ranlib $(NAME)
 
 %.o: %.c
-	$(CC)  -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
@@ -27,7 +27,7 @@ re: fclean all
 
 debug: CFLAGS += -g
 debug: $(OBJS)
-	$(CC) -o debug $(OBJS)
+	$(CC) $(CFLAGS) -o debug $(OBJS)
 	clear
 	colour-valgrind --tool=memcheck --leak-check=full --track-origins=yes --error-exitcode=1 ./debug 2>&1
 

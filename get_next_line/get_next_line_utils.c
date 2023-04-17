@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 19:08:09 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/04/13 12:35:08 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/04/14 11:34:20 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,27 +46,32 @@ char	*ft_strrchr(const char *s, int c)
 char	*ft_strjoin(char *s1, char const *s2)
 {
 	char	*str;
-	int		len;
+	int		len1;
+	int		len2;
+	char	*tmp;
 
-	if ((!s1 && !s2) || (*s1 == 0 && *s2 == 0))
-	{
-		str = malloc(sizeof(char) * 1);
-		str[0] = 0;
-		return (str);
-	}
-	len = ft_strlen(s1) + ft_strlen(s2);
-	str = malloc(sizeof(char) * (len + 1));
+	if (!s1 && !s2)
+		return (NULL);
+	if (!s1 && s2)
+		return ((char *)s2);
+	else if (s1 && !s2)
+		return (s1);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	str = malloc(sizeof(char) * (len1 + len2 + 1));
 	if (!str)
 		return (NULL);
-	while (s1 && *s1)
-		*str++ = *(char *)s1++;
-	while (s2 && *s2)
-		*str++ = *(char *)s2++;
-	*str = 0;
-	free(s1);
-	s1 = NULL;
-	return (str - len);
+	tmp = str;
+	while (*s1)
+		*str++ = *(s1++);
+	while (*s2)
+		*str++ = *(s2++);
+	*str = '\0';
+	free(tmp - len1);
+	tmp = NULL;
+	return (str - len1);
 }
+
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
