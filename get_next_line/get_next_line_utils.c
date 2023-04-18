@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 19:08:09 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/04/14 11:34:20 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/04/18 14:13:01 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,73 +43,31 @@ char	*ft_strrchr(const char *s, int c)
 	return (src);
 }
 
-char	*ft_strjoin(char *s1, char const *s2)
+char	*ft_strjoin(char *str1, const char *str2)
 {
+	size_t	i;
+	size_t	j;
 	char	*str;
-	int		len1;
-	int		len2;
-	char	*tmp;
 
-	if (!s1 && !s2)
-		return (NULL);
-	if (!s1 && s2)
-		return ((char *)s2);
-	else if (s1 && !s2)
-		return (s1);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	str = malloc(sizeof(char) * (len1 + len2 + 1));
-	if (!str)
-		return (NULL);
-	tmp = str;
-	while (*s1)
-		*str++ = *(s1++);
-	while (*s2)
-		*str++ = *(s2++);
-	*str = '\0';
-	free(tmp - len1);
-	tmp = NULL;
-	return (str - len1);
-}
-
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
-{
-	size_t	len_src;
-	size_t	i;
-
-	len_src = ft_strlen(src);
-	if (dstsize == 0)
-		return (len_src);
-	i = 0;
-	while (src[i] && i < dstsize - 1)
+	if (!str1)
 	{
-		dst[i] = src[i];
-		i++;
+		str1 = (char *)malloc(1 * sizeof(char));
+		str1[0] = '\0';
 	}
-	dst[i] = '\0';
-	return (len_src);
-}
-
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	char	*p;
-	char	*s;
-	size_t	i;
-
-	if (dest == NULL || src == NULL || (char *)src == 0 || (char *)dest == 0)
-	{
+	if (!str1 || !str2)
 		return (NULL);
-	}
-	i = 0;
-	s = (char *)src;
-	p = (char *)dest;
-	while (i < n)
-	{
-		*p = *s;
-		p++;
-		s++;
-		i++;
-	}
-	return (dest);
+	str = malloc(sizeof(char) * ((ft_strlen(str1) + ft_strlen(str2)) + 1));
+	if (str == NULL)
+		return (NULL);
+	i = -1;
+	j = 0;
+	if (str1)
+		while (str1[++i] != '\0')
+			str[i] = str1[i];
+	while (str2[j] != '\0')
+		str[i++] = str2[j++];
+	str[ft_strlen(str1) + ft_strlen(str2)] = '\0';
+	free(str1);
+	str1 = NULL;
+	return (str);
 }
