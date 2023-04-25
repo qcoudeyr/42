@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 HEADERS = ft_printf.h
-SRCS =  ft_printf.c ./srcs/ft_memset.c ./srcs/ft_pttostr.c ./srcs/ft_putnbru.c ./srcs/ft_putnbr_base.c ./srcs/ft_strlen.c ./srcs/ft_strdup.c ./srcs/ft_strlcpy.c ./srcs/ft_strrchr.c  ./srcs/ft_putstr_fd.c ./srcs/ft_putnbr_fd.c ./srcs/ft_putchar_fd.c
+SRCS =  ft_printf.c  ./srcs/ft_pttostr.c ./srcs/ft_putnbru.c ./srcs/ft_putnbr_base.c ./srcs/ft_strlen.c  ./srcs/ft_strrchr.c  ./srcs/ft_putstr_fd.c ./srcs/ft_putnbr_fd.c ./srcs/ft_putchar_fd.c
 OBJS = $(SRCS:.c=.o)
 
 NAME = libftprintf.a

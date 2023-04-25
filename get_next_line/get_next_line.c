@@ -6,11 +6,42 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 19:08:11 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/04/18 19:41:21 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/04/19 10:55:59 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+
+static char	*ft_strjoin_gnl(char *str1, const char *str2)
+{
+	size_t	i;
+	size_t	j;
+	char	*str;
+
+	if (!str1)
+	{
+		str1 = (char *)malloc(1 * sizeof(char));
+		str1[0] = '\0';
+	}
+	if (!str1 || !str2)
+		return (NULL);
+	str = malloc(sizeof(char) * ((ft_strlen(str1) + ft_strlen(str2)) + 1));
+	if (str == NULL)
+		return (NULL);
+	i = -1;
+	j = 0;
+	if (str1)
+		while (str1[++i] != '\0')
+			str[i] = str1[i];
+	while (str2[j] != '\0')
+		str[i++] = str2[j++];
+	str[ft_strlen(str1) + ft_strlen(str2)] = '\0';
+	free(str1);
+	str1 = NULL;
+	return (str);
+}
+
 
 static char	*get_new_tab(char *tab)
 {
@@ -71,10 +102,10 @@ char	*ft_read(int fd, char *str)
 	while (!ft_strrchr(str, '\n') && gnl.vread > 0)
 	{
 		gnl.vread = read (fd, gnl.buf, BUFFER_SIZE);
-		if (gnl.vread <= 0 && ft_strlen(str) < 1)
+		if ((gnl.vread == 0 && ft_strlen(str) < 1) || gnl.vread == -1)
 			break ;
 		gnl.buf[gnl.vread] = 0;
-		str = ft_strjoin(str, gnl.buf);
+		str = ft_strjoin_gnl(str, gnl.buf);
 		loop++;
 	}
 	free(gnl.buf);

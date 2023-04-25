@@ -9,7 +9,7 @@
       "stopAtEntry": false,
       "externalConsole": false,
       "cwd": "/home/qcoudeyr/Bureau/42/get_next_line",
-      "program": "/home/qcoudeyr/Bureau/42/get_next_line/debug",
+      "program": "/home/qcoudeyr/Bureau/42/get_next_line/fsoares/test5.out",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"unistd.h": "c",
+			"get_next_line.h": "c",
+			"stddef.h": "c",
+			"typeinfo": "c"
+		}
+	}
+}

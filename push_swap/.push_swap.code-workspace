@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"libft.h": "c",
+			"unistd.h": "c",
+			"push_swap.h": "c"
+		}
+	}
+}

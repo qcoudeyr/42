@@ -1,10 +1,57 @@
 CC = clang
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
-SRCS = ft_striteri.c ft_strmapi.c ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_strchr.c ft_strdup.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strncmp.c ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c ft_strnstr.c ft_itoa.c ft_split.c
-SRCSB = ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c $(SRCS)
+SRCS =	./Original_function/ft_strlcpy.c\
+		./Original_function/ft_lstsize.c\
+		./Original_function/ft_memset.c\
+		./Original_function/ft_isalnum.c\
+		./Original_function/ft_lstdelone.c\
+		./Original_function/ft_strnstr.c\
+		./Original_function/ft_putstr_fd.c\
+		./Original_function/ft_lstmap.c\
+		./Original_function/ft_strlen.c\
+		./Original_function/ft_lstadd_front.c\
+		./Original_function/ft_memmove.c\
+		./Original_function/ft_strmapi.c\
+		./Original_function/ft_substr.c\
+		./Original_function/ft_isascii.c\
+		./Original_function/ft_isprint.c\
+		./Original_function/ft_isalpha.c\
+		./Original_function/ft_putchar_fd.c\
+		./Original_function/ft_calloc.c\
+		./Original_function/ft_strchr.c\
+		./Original_function/ft_putnbr_fd.c\
+		./Original_function/ft_strncmp.c\
+		./Original_function/ft_tolower.c\
+		./Original_function/ft_lstclear.c\
+		./Original_function/ft_itoa.c\
+		./Original_function/ft_lstnew.c\
+		./Original_function/ft_strjoin.c\
+		./Original_function/ft_toupper.c\
+		./Original_function/ft_memcmp.c\
+		./Original_function/ft_striteri.c\
+		./Original_function/ft_lstiter.c\
+		./Original_function/ft_split.c\
+		./Original_function/ft_strtoupper.c\
+		./Original_function/ft_isdigit.c\
+		./Original_function/ft_lstadd_back.c\
+		./Original_function/ft_lstlast.c\
+		./Original_function/ft_strlcat.c\
+		./Original_function/ft_bzero.c\
+		./Original_function/ft_strrchr.c\
+		./Original_function/ft_atoi.c\
+		./Original_function/ft_memchr.c\
+		./Original_function/ft_putendl_fd.c\
+		./Original_function/ft_strtrim.c\
+		./Original_function/ft_strdup.c\
+		./Original_function/ft_memcpy.c\
+		./Added_function/ft_putnbru.c\
+		./Added_function/ft_putnbr_base.c\
+		./Added_function/ft_pttostr.c\
+		./Added_function/ft_printf.c\
+		./Added_function/get_next_line.c
+
 OBJS = $(SRCS:.c=.o)
-OBJSB = $(SRCSB:.c=.o)
 
 NAME = libft.a
 
@@ -17,15 +64,12 @@ $(NAME): $(OBJS)
 %.o: %.c libft.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-bonus: $(OBJSB)
-	ar r $(NAME) $(OBJSB)
-
 clean:
-	rm -f $(OBJS) $(OBJSB)
+	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re

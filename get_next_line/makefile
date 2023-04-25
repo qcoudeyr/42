@@ -1,5 +1,5 @@
 CC = clang
-CFLAGS = -Wall -Wextra -Werror -D BUFFER_SIZE=1000000
+CFLAGS = -g -D BUFFER_SIZE=10
 
 HEADERS = get_next_line.h
 SRCS = get_next_line.c get_next_line_utils.c main.c
@@ -28,10 +28,10 @@ debug: CFLAGS += -g
 debug: $(OBJS)
 	clear
 	$(CC) $(CFLAGS) -o debug $(OBJS)
+	colour-valgrind -s --tool=memcheck --leak-check=full --track-origins=yes --error-exitcode=1 ./debug 2>&1
+
 
 sanitize: $(OBJS)
 	$(CC) $(CFLAGS) -o debug $(OBJS) -g -fsanitize=address
-	colour-valgrind --tool=memcheck --leak-check=full --track-origins=yes --error-exitcode=1 ./debug 2>&1
-
 	./debug
 .PHONY: all clean fclean re bonus debug

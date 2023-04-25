@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:50:34 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/04/11 14:33:11 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/04/21 22:27:02 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,9 @@
 
 int		ft_printf(const char *str, ...);
 int		ft_putnbru(unsigned int n);
-void	*ft_memset(void *s, int c, size_t n);
 int		ft_putnbr_base(unsigned long long n, char *base);
 char	*ft_strrchr(const char *s, int c);
-char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *s);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int		ft_putstr_fd(char *s, int fd);
 int		ft_putchar_fd(char c, int fd);
 int		ft_putnbr_fd(long long n, int fd);
