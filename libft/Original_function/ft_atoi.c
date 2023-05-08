@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:50:11 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/04/21 22:53:12 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/04/26 18:41:09 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static int	ft_isspace(const char c)
 		return (0);
 }
 
-int	ft_atoi(const char *str)
+long int	ft_atoi(const char *str)
 {
-	int	value;
-	int	neg;
+	long long int	value;
+	int				neg;
 
 	value = 0;
 	neg = 1;

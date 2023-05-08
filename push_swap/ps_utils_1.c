@@ -6,32 +6,34 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 17:21:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/04/24 12:43:26 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/05/02 13:40:32 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_pile(int *pile_a, int *pile_b, char c)
+void	swap_pile(t_ps *t, char c)
 {
 	int	temp;
 
-	if (((!pile_a[0] || !pile_a[1]) && (c == 'a' || c == 's')) || ((!pile_b[0] \
-	|| !pile_b[1]) && (c == 'b' || c == 's')))
+	if (!t->pa || !t->pb)
+		return ;
+	if (((!t->pa[0] || !t->pa[1]) && (c == 'a' || c == 's')) || ((!t->pb[0] \
+	|| !t->pb[1]) && (c == 'b' || c == 's')))
 		return ;
 	if (c == 'a' || c == 's')
 	{
-		temp = pile_a[0];
-		pile_a[0] = pile_a[1];
-		pile_a[1] = temp;
+		temp = t->pa[0];
+		t->pa[0] = t->pa[1];
+		t->pa[1] = temp;
 	}
 	if (c == 'b' || c == 's')
 	{
-		temp = pile_b[0];
-		pile_b[0] = pile_b[1];
-		pile_b[1] = temp;
+		temp = t->pb[0];
+		t->pb[0] = t->pb[1];
+		t->pb[1] = temp;
 	}
-	printf("s%c\n", c);
+	ft_printf("s%c\n", c);
 	return ;
 }
 
@@ -56,7 +58,7 @@ static void	rotate(int *pile, int i, char c)
 	}
 	temp = pile[i];
 	pile[i--] = pile[0];
-	while (i > 0)
+	while (i >= 0)
 	{
 		temp2 = pile[i];
 		pile[i--] = temp;
@@ -64,28 +66,28 @@ static void	rotate(int *pile, int i, char c)
 	}
 }
 
-void	rotate_pile(int *pile_a, int *pile_b, char c, int len)
+void	rotate_pile(t_ps *t, char c)
 {
-	if (((!pile_a[0]) && (c == 'a' || c == 'r')) || (!pile_b[0] \
+	if (((!t->pa[0]) && (c == 'a' || c == 'r')) || (!t->pb[0] \
 	&& (c == 'b' || c == 'r')))
 		return ;
 	if (c == 'a' || c == 'r')
-		rotate(pile_a, (len - 1), 0);
+		rotate(t->pa, (t->len_a - 1), 0);
 	if (c == 'b' || c == 'r')
-		rotate(pile_b, (len - 1), 0);
-	printf("r%c\n", c);
+		rotate(t->pb, (t->len_b - 1), 0);
+	ft_printf("r%c\n", c);
 	return ;
 }
 
-void	rrotate_pile(int *pile_a, int *pile_b, char c, int len)
+void	rrotate_pile(t_ps *t, char c)
 {
-	if (((!pile_a[0]) && (c == 'a' || c == 'r')) || (!pile_b[0] \
+	if (((!t->pa[0]) && (c == 'a' || c == 'r')) || (!t->pb[0] \
 	&& (c == 'b' || c == 'r')))
 		return ;
 	if (c == 'a' || c == 'r')
-		rotate(pile_a, (len - 1), 'r');
+		rotate(t->pa, (t->len_a - 1), 'r');
 	if (c == 'b' || c == 'r')
-		rotate(pile_b, (len - 1), 'r');
-	printf("rr%c\n", c);
+		rotate(t->pb, (t->len_b - 1), 'r');
+	ft_printf("rr%c\n", c);
 	return ;
 }

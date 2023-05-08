@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:51:53 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/04/23 16:26:13 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/04/26 18:40:39 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *s)
 {
-	int	 i;
+	int	i;
 
 	if (s == NULL || *s == 0)
 		return (0);
