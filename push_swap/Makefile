@@ -3,7 +3,7 @@ CFLAGS = -Wall -Werror -Wextra -g
 LDFLAGS = -L./libft -lft
 
 HEADERS = push_swap.h libft.h
-SRCS = push_swap.c ps_utils_1.c ps_utils_2.c ps_sort.c
+SRCS = push_swap.c ps_utils_1.c ps_utils_2.c ps_sort.c ps_init.c ps_small_sort.c
 OBJS = $(SRCS:.c=.o)
 
 NAME = push_swap
@@ -16,22 +16,22 @@ $(NAME): $(OBJS)
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
+norme:
+	norminette $(SRCS) $(HEADERS)
 clean:
 	rm -f $(OBJS)
-	rm -f debug
 
 fclean: clean
 	rm -f $(NAME) $(OBJS)
 	rm -f debug
 
-re: fclean all
+re: fclean all debug
 
-debug: CFLAGS += -g
+DVAL = " 5 1 6 7 4"
 debug: $(OBJS)
 	clear
 	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o debug
-	colour-valgrind -s --tool=memcheck --leak-check=full --track-origins=yes --error-exitcode=1 ./debug "98 25 47 58 13 85 4 2 64" 2>&1
+	colour-valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1 ./debug $(DVAL) 2>&1
+	./debug $(DVAL) | ./Other/checker_linux $(DVAL)
 
-bonus:
-
-.PHONY: all clean fclean re bonus debug
+.PHONY: all clean fclean re debug
