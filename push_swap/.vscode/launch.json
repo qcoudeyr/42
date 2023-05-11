@@ -6,7 +6,7 @@
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
-      "args": ["81 26 68 76 2 49 98 86 62 3"],
+      "args": ["3820 2675 2130 521 76 3148 4777 2996 2498 326 1746 2043 4990 1309 856 1423 4843 1010 1927 2213"],
       "stopAtEntry": false,
       "externalConsole": false,
       "cwd": "/home/qcoudeyr/Bureau/42/push_swap",
