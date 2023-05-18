@@ -6,15 +6,14 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 19:54:46 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/05/11 12:01:56 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/05/15 14:30:11 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "./libft/libft.h"
-# include <unistd.h>
+# include "../libft/libft.h"
 # include <limits.h>
 
 typedef struct t_ps
@@ -37,6 +36,7 @@ typedef struct t_ps
 	int		p_b;
 	int		best[3];
 	int		sum;
+	int		print;
 }	t_ps;
 
 void	ft_init(int argc, char **argv, t_ps *t);
@@ -67,5 +67,6 @@ void	minmax(t_ps *t);
 
 void	ft_exit(t_ps *t, int v);
 void	free_temp(t_ps *t);
+int		ft_error(int argc, char **argv);
 
 #endif

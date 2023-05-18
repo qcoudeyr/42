@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:38:47 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/05/11 21:12:42 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/05/13 09:46:11 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ int			ft_putnbru(unsigned int n);
 int			ft_putnbr_base(unsigned long long n, char *base);
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
+#  define BUFFER_SIZE 42
+# endif
 
 struct	s_gnlstruct
 {
@@ -88,6 +89,5 @@ struct	s_gnlstruct
 };
 
 char		*get_next_line(int fd);
-# endif
 
 #endif

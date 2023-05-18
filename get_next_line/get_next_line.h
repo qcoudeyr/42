@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 19:06:54 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/04/21 23:11:21 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/05/11 12:06:03 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 
 struct	s_gnlstruct
 {
-	char	*buf;
+	char	*buf;	vread;
 	char	*line;
 	int		vread;
 };

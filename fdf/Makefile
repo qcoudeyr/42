@@ -1,19 +1,30 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-SRCS = fdf.c
-OBJ = $(SRCS:.c=.o)
+CFLAGS = -g
+
+LDFLAGS = -L./libft -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+HEADERS = fdf.h ./libft/libft.h
+SRCS = fdf.c draw.c
+OBJS = $(SRCS:.c=.o)
 NAME = fdf
 
-all :
-	$(NAME)
+all: $(NAME)
 
-%.o: %.c
-	$(CC) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+%.o: %.c $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-fclean:
-	rm -f $(OBJ) $(NAME)
+clean:
+	rm -f $(OBJS)
 
+fclean: clean
+	rm -f $(NAME) $(OBJS)
+	rm -f debug
 
+re: fclean all
+
+debug: re
+	clear
+	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o debug
+	colour-valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1 ./debug 42.fdf $(DVAL) 2>&1

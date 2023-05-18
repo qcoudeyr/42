@@ -6,11 +6,11 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 17:21:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/05/02 13:40:32 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/05/15 14:29:55 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../Ps_file/push_swap.h"
 
 void	swap_pile(t_ps *t, char c)
 {
@@ -33,7 +33,8 @@ void	swap_pile(t_ps *t, char c)
 		t->pb[0] = t->pb[1];
 		t->pb[1] = temp;
 	}
-	ft_printf("s%c\n", c);
+	if (t->print == 1)
+		ft_printf("s%c\n", c);
 	return ;
 }
 
@@ -75,7 +76,8 @@ void	rotate_pile(t_ps *t, char c)
 		rotate(t->pa, (t->len_a - 1), 0);
 	if (c == 'b' || c == 'r')
 		rotate(t->pb, (t->len_b - 1), 0);
-	ft_printf("r%c\n", c);
+	if (t->print == 1)
+		ft_printf("r%c\n", c);
 	return ;
 }
 
@@ -88,6 +90,7 @@ void	rrotate_pile(t_ps *t, char c)
 		rotate(t->pa, (t->len_a - 1), 'r');
 	if (c == 'b' || c == 'r')
 		rotate(t->pb, (t->len_b - 1), 'r');
-	ft_printf("rr%c\n", c);
+	if (t->print == 1)
+		ft_printf("rr%c\n", c);
 	return ;
 }

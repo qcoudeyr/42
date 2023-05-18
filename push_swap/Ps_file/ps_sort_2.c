@@ -6,11 +6,11 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:54:02 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/05/11 11:57:51 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/05/18 12:19:56 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../Ps_file/push_swap.h"
 
 void	compare_op(t_ps *t)
 {
@@ -108,7 +108,7 @@ void	finish_sort(t_ps *t)
 		minmax(t);
 		if (t->bmax > (t->len_b / 2))
 			rrotate_pile(t, 'b');
-		else if (t->bmax < (t->len_b / 2) && t->bmax != 0)
+		else if (t->bmax <= (t->len_b / 2) && t->bmax != 0)
 			rotate_pile(t, 'b');
 	}
 	while (t->len_b > 0)

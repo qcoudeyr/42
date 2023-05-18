@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:38:47 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/04/26 18:40:27 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/05/11 21:12:42 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void		ft_putendl_fd(char *s, int fd);
 int			ft_putnbr_fd(long long n, int fd);
 int			ft_putstr_fd(char *s, int fd);
 void		ft_striteri(char *s, void (*f)(unsigned int, char*));
+int			ft_strcmp(const char *s1, const char *s2);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strnstr(const char *str, const char *tosearch, size_t len);
 char		*ft_strdup(const char *s1);

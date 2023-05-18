@@ -6,11 +6,11 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:42:59 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/05/10 12:08:00 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/05/15 14:29:59 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../Ps_file/push_swap.h"
 
 static int	*push(int *pile, int len, int add)
 {
@@ -54,7 +54,8 @@ void	push_a(t_ps *t)
 	t->pb = ft_calloc(t->len_b +1, sizeof(int));
 	ft_memcpy(t->pb, t->temp, t->len_b * sizeof(int));
 	free(t->temp);
-	ft_printf("pa\n");
+	if (t->print == 1)
+		ft_printf("pa\n");
 }
 
 void	push_b(t_ps *t)
@@ -71,7 +72,8 @@ void	push_b(t_ps *t)
 	t->pa = ft_calloc(t->len_a +1, sizeof(int));
 	ft_memcpy(t->pa, t->temp, t->len_a * sizeof(int));
 	free(t->temp);
-	ft_printf("pb\n");
+	if (t->print == 1)
+		ft_printf("pb\n");
 }
 
 void	minmax(t_ps *t)

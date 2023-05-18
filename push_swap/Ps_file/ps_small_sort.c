@@ -6,11 +6,11 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:45:39 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/05/10 11:31:40 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/05/15 14:29:42 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../Ps_file/push_swap.h"
 
 void	sort_small(t_ps *t)
 {

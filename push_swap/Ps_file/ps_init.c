@@ -6,11 +6,11 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:10:37 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/05/10 05:52:59 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/05/16 11:54:33 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../Ps_file/push_swap.h"
 
 void	free_temp(t_ps *t)
 {
@@ -57,8 +57,8 @@ void	ft_init_1_args(char **argv, t_ps *t)
 	t->i = 0;
 	while (t->temp_split[t->i])
 	{
-		if (ft_atoi(t->temp_split[t->i]) >= INT_MAX || \
-		ft_atoi(t->temp_split[t->i]) <= INT_MIN)
+		if (ft_atoi(t->temp_split[t->i]) > INT_MAX || \
+		ft_atoi(t->temp_split[t->i]) < INT_MIN)
 		{
 			free_temp(t);
 			ft_exit (t, 1);
@@ -81,7 +81,8 @@ void	ft_init(int argc, char **argv, t_ps *t)
 	t->i = 1;
 	while (t->i < argc)
 	{
-		if (ft_atoi(argv[t->i]) >= INT_MAX)
+		if (ft_atoi(argv[argc - t->i]) > INT_MAX || \
+		ft_atoi(argv[argc - t->i]) < INT_MIN)
 			ft_exit (t, 1);
 		t->index[t->i - 1] = ft_atoi(argv[t->i]);
 		t->i++;

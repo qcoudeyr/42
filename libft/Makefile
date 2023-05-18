@@ -49,7 +49,8 @@ SRCS =	./Original_function/ft_strlcpy.c\
 		./Added_function/ft_putnbr_base.c\
 		./Added_function/ft_pttostr.c\
 		./Added_function/ft_printf.c\
-		./Added_function/get_next_line.c
+		./Added_function/get_next_line.c\
+		./Added_function/ft_strcmp.c
 
 OBJS = $(SRCS:.c=.o)
 

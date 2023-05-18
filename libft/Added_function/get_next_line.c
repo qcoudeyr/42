@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 19:08:11 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/04/19 10:55:59 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/05/12 10:10:23 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,9 +119,19 @@ char	*get_next_line(int fd)
 {
 	static char			*tab[1024];
 	struct s_gnlstruct	gnl;
+	int					i;
 
+	i = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
+	{
+		while (i < 1024)
+		{
+			if (tab[i])
+				free(tab[i]);
+			i++;
+		}
 		return (NULL);
+	}
 	tab[fd] = ft_read(fd, tab[fd]);
 	if (tab[fd] == NULL)
 		return (tab[fd]);
