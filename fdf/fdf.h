@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 16:34:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/05/17 10:30:27 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/05/18 15:02:27 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ typedef struct s_data
 	int		win_h;
 	int		win_w;
 	int		scale;
+	int		**map;
+	int		x_max;
+	int		y_max;
 }	t_data;
 
 typedef struct coord

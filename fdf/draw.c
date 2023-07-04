@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:19:14 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/05/17 10:56:33 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/05/18 15:04:24 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void plot(t_data *data, int x, int y, float c)
 	int	color;
 
 	color = c * 255;
-	my_mlx_pixel_put(data, x +(data->win_w / 2), y +(data->win_h / 2), color);
+	my_mlx_pixel_put(data, x +(data->win_w / 3), y +(data->win_h / 3), color);
 }
 
 int ipart(float x) {

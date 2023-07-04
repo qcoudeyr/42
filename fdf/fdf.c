@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 20:21:10 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/05/17 10:57:53 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/05/22 13:07:01 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,18 @@ void	displayPoints(t_coord *list)
 void	freeMemory(t_coord *list)
 {
 	t_coord	*current;
+	t_coord	*next;
 
 	current = list;
 	while (current != NULL)
 	{
-		t_coord* next = current->next;
+		next = current->next;
 		free(current);
 		current = next;
 	}
 }
 
-void	get_point(t_coord **list, char *str, int *y)
+void	get_point(t_coord **list, t_data *d, char *str, int *y)
 {
 	int	i;
 	int	x;
@@ -93,7 +94,7 @@ void	get_point(t_coord **list, char *str, int *y)
 		{
 			z = ft_atoi(str + i);
 			if (z > 0)
-				z = 1;
+				z = 0;
 			addPoint(list, x, *y, z);
 			x++;
 			while (ft_isdigit(str[i]) == 1)
@@ -101,9 +102,11 @@ void	get_point(t_coord **list, char *str, int *y)
 		}
 		i++;
 	}
+	if (x > d->x_max)
+		d->x_max = x;
 }
 
-void	read_map(t_coord **list, char **argv)
+void	read_map(t_coord **list, t_data *d, char **argv)
 {
 	int			fd;
 	char		*line;
@@ -114,11 +117,13 @@ void	read_map(t_coord **list, char **argv)
 	line = get_next_line(fd);
 	while (line)
 	{
-		get_point(list, line, &y);
+		get_point(list, d, line, &y);
 		free(line);
 		line = get_next_line(fd);
 		y++;
 	}
+	if (y > d->y_max)
+		d->y_max = y;
 	if (line)
 		free(line);
 	close(fd);
@@ -134,15 +139,15 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void	calcul_iso(int *x, int *y, int z)
 {
-	/* int	previous_x;
+	int	previous_x;
 	int	previous_y;
 
 	previous_x = *x;
 	previous_y = *y;
 	*x = (previous_x - previous_y) * cos(0.523599);
-	*y = -z + (previous_x + previous_y) * sin(0.523599); */
-	*x *= 10;
-	*y *= 10;
+	*y = -z + (previous_x + previous_y) * sin(0.523599);
+	*x *= 30;
+	*y *= 30;
 }
 
 int	create_trgb(int t, int r, int g, int b)
@@ -180,14 +185,15 @@ void	put_on_map(t_data *data, t_coord *coord)
 		min_y = -min_y;
 	while (point != NULL)
 	{
-		my_mlx_pixel_put(data, point->x + (data->win_w / 2), point->y + (data->win_h / 2), point->color);
+		my_mlx_pixel_put(data, point->x + (data->win_w / 3), point->y + (data->win_h / 3), point->color);
 		point = point->next;
 	}
 	point = coord;
 	nextp = coord->next;
 	while (nextp != NULL)
 	{
-		drawLine(data, point->x, point->y, nextp->x, nextp->y);
+		if (nextp->y == point->y)
+			drawLine(data, point->x, point->y, nextp->x, nextp->y);
 		point = point->next;
 		nextp = nextp->next;
 	}
@@ -200,22 +206,21 @@ int	main(int argc, char **argv)
 	t_data	img;
 	t_coord	*listcoord;
 
+	img.x_max = 0;
+	img.y_max = 0;
 	img.win_w = 1200;
 	img.win_h = 900;
 	listcoord = NULL;
 	if (argc != 2)
 		return (0);
 	else
-		read_map(&listcoord, argv);
+		read_map(&listcoord, &img, argv);
+	ft_printf("x=%d\n y=%d\n", img.x_max, img.y_max);
 	mlx.ptr = mlx_init();
 	mlx.win = mlx_new_window(mlx.ptr, 1200, 900, "Fdf");
 	img.img = mlx_new_image(mlx.ptr, img.win_w, img.win_h);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, \
 	&img.line_length, &img.endian);
-/*
-	Mettre ici les fonctions qui calculs la position des points et l'envoi
-	dans img.img
- */
 	put_on_map(&img, listcoord);
 	mlx_put_image_to_window(mlx.ptr, mlx.win, img.img, 0, 0);
 	mlx_key_hook(mlx.win, handle_key, &mlx);
