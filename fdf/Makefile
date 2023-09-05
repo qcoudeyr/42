@@ -3,7 +3,7 @@ CFLAGS = -g
 
 LDFLAGS = -L./libft -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 HEADERS = fdf.h ./libft/libft.h
-SRCS = fdf.c draw.c
+SRCS = fdf.c draw.c parsing.c
 OBJS = $(SRCS:.c=.o)
 NAME = fdf
 
@@ -21,6 +21,9 @@ clean:
 fclean: clean
 	rm -f $(NAME) $(OBJS)
 	rm -f debug
+
+norme:
+	norminette $(SRCS) $(HEADERS)
 
 re: fclean all
 

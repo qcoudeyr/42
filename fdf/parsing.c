@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 09:44:14 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/07/25 14:43:30 by  qcoudeyr        ###   ########.fr       */
+/*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
+/*   Updated: 2023/09/05 13:58:21 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "fdf.h"
 
-
-# include "libft/libft.h"
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-# include <fcntl.h>
-# include <errno.h>
-
-typedef struct s_pipex
+int	arg_checker(int argc, char **argv)
 {
-	char	**cmdlist;
-	char	*infile;
-	char	*outfile;
-	char	**larg;
-	char	*cmd;
-	int		narg;
-	int		pipefd[2];
-}	t_pp;
+	void	*ptr;
 
-#endif
+	if (argc != 2)
+		return (0);
+	ptr = ft_strnstr(argv[1], ".fdf", ft_strlen(argv[1]));
+	if (ptr == argv[1] || ptr == NULL)
+		return (0);
+	return (1);
+}

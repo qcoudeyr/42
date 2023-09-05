@@ -35,6 +35,6 @@ re: fclean all
 debug: $(OBJS)
 	clear
 	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o debug
-	colour-valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1 ./debug
+	colour-valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1 ./debug infile "ls -l" "wc -l" outfile
 
 .PHONY: all clean fclean re debug bonus
