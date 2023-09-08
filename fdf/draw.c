@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:19:14 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/08 13:53:58 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/08 13:54:04 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,19 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
+}
+
+void	line_put(t_data *data, int x, int y, int color)
+{
+	my_mlx_pixel_put(data, x, y, color);
+	my_mlx_pixel_put(data, x+1, y, color);
+	my_mlx_pixel_put(data, x+2, y, color);
+	my_mlx_pixel_put(data, x, y+1, color);
+	my_mlx_pixel_put(data, x+1, y+1, color);
+	my_mlx_pixel_put(data, x+2, y+1, color);
+	my_mlx_pixel_put(data, x, y+2, color);
+	my_mlx_pixel_put(data, x+1, y+2, color);
+	my_mlx_pixel_put(data, x+2, y+2, color);
 }
 
 void	line_put(t_data *data, int x, int y, int color)
