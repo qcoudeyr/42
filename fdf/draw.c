@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:19:14 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/08 13:55:32 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/08 13:55:35 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	put_dot(t_data *data, int x, int y, int color)
 	my_mlx_pixel_put(data, x+2, y+2, color);
 }
 
-void	line_put(t_data *data, t_map *first, t_map )
+void	line_put(t_data *data, t_map *first, t_map *second)
 {
 	put_dot(data, x, y, color);
 
