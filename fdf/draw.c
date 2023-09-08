@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:19:14 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/08 14:15:02 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/08 14:15:16 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void	line_put(t_mlx *lib, t_map *first, t_map *second)
 	int	y1;
 	int	y2;
 
+	
 	(first->y * lib->scaley)
-	(first->x * lib->scalex)
 	(second->y * lib->scaley)
 	(second->x * lib->scalex)
 	put_dot(&lib->data, (first->y * lib->scaley), (first->x * lib->scalex),tcolor(first->value,0,0));
