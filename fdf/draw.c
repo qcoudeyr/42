@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:19:14 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/08 13:51:29 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/08 13:51:38 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,6 @@ int	background(t_mlx *lib, t_data *data)
 	mlx_put_image_to_window(lib->mlx, lib->current_win, data->img, 0, 0);
 }
 
-void	addline(t_mlx *lib, t_data *data)
-{
-
-}
-
 void	addmap(t_mlx *lib, t_data *data)
 {
 	t_map	*line;
@@ -79,7 +74,7 @@ void	addmap(t_mlx *lib, t_data *data)
 	{
 		while(lib->map != NULL)
 		{
-			point_put(data, (lib->map->y * scaley),  (lib->map->x * scalex),tcolor((lib->map->value),0,0));
+			line_put(data, (lib->map->y * scaley),  (lib->map->x * scalex),tcolor((lib->map->value),0,0));
 			lib->map = lib->map->nx;
 		}
 		lib->map = line->ny;
