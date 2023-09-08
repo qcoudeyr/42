@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:19:14 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/08 13:57:36 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/08 13:57:45 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void	addmap(t_mlx *lib, t_data *data)
 	int	scaley;
 
 	scalex = (lib->sizey / lib->xlen);
-	ft_printf("sizey=%i | ylen=%i | scalex%i\n", lib->sizey ,lib->xlen, scalex);
 	scaley = (lib->sizex / lib->ylen);
 	line = lib->map->first;
 	while (lib->map != NULL)
