@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:19:14 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/08 14:02:00 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/08 14:02:15 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ void	addmap(t_mlx *lib)
 	{
 		while(lib->map != NULL)
 		{
-			line_put(lib,lib->map,lib->map->nx);
+			if (lib->map->nx != NULL)
+				line_put(lib,lib->map,lib->map->nx);
 			lib->map = lib->map->nx;
 		}
 		lib->map = line->ny;
