@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 20:21:10 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/07 15:08:07 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/08 13:59:35 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	keyhandle(int keycode, t_mlx *lib)
 		transition(lib, &lib->menu);
  	if (keycode == 99)
 	{
-		addmap(lib, &lib->data);
+		addmap(lib);
 		mlx_string_put(lib->mlx, lib->current_win, 500, 500, trgb(0,255,0,0), "Ceci est un test /");
 	}
 
