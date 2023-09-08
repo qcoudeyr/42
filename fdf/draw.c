@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:19:14 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/08 13:54:38 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/08 13:54:42 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	line_put(t_data *data, int x, int y, int color)
 {
 	put_dot(data, x, y, color);
 	
+}
 
 int	background(t_mlx *lib, t_data *data)
 {
