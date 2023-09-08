@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 16:34:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/07 15:01:54 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/08 13:58:16 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_mlx
 	t_data	menu;
 	t_key	key;
 	t_map	*map;
+	
 }				t_mlx;
 
 int		background(t_mlx *lib, t_data *data);
