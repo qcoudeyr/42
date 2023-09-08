@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 16:34:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/05 13:43:58 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/07 15:01:54 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,23 +38,39 @@ typedef struct	s_key
 	int		previous_1;
 	int		previous_2;
 }				t_key;
+
+typedef struct s_map
+{
+	int				x;
+	int				y;
+	int				value;
+	struct s_map	*nx;
+	struct s_map	*ny;
+	struct s_map	*py;
+	struct s_map	*px;
+	struct s_map	*first;
+}					t_map;
+
 typedef struct s_mlx
 {
 	void	*mlx;
 	void	*current_win;
 	int		sizex;
 	int		sizey;
+	int		xlen;
+	int		ylen;
 	t_data	data;
 	t_data	menu;
 	t_key	key;
+	t_map	*map;
 }				t_mlx;
 
-
-int		background(t_mlx lib, t_data *data);
-void	addpoint(t_mlx lib, t_data *data);
+int		background(t_mlx *lib, t_data *data);
+void	addmap(t_mlx *lib, t_data *data);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int		random_color(void);
-int	keyhandle(int keycode, t_mlx *lib);
-int	arg_checker(int argc, char **argv);
+int		random_color(int value);
+int		keyhandle(int keycode, t_mlx *lib);
+int		arg_checker(int argc, char **argv);
+void	read_map(char *filename, t_mlx *lib);
 
 #endif

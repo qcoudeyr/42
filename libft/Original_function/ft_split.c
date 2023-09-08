@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:59:47 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/05/09 10:55:03 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/06 18:06:16 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,7 @@ char	**ft_split(char const *str, char c)
 	char	**tab;
 	char	*s;
 
-	if (c != 0 && str)
-		s = ft_strtrim (str, &c);
-	else
-		s = (char *)str;
+	s = (char *)str;
 	if (!str || *s == '\0')
 		return (ft_empty_tab());
 	i = 0;

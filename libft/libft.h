@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:38:47 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/05/11 21:12:42 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/06 17:31:02 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char		*ft_strchr(const char *s, int c);
 char		*ft_strnstr(const char *str, const char *tosearch, size_t len);
 char		*ft_strdup(const char *s1);
 char		*ft_strrchr(const char *s, int c);
-char		*ft_strtrim(char const *s1, char const *set);
+char		*ft_strtrim(char const *s1, char const set);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_itoa(int n);
