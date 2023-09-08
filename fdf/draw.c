@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:19:14 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/08 13:55:43 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/08 13:55:47 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	put_dot(t_data *data, int x, int y, int color)
 
 void	line_put(t_data *data, t_map *first, t_map *second)
 {
-	put_dot(data, first->x, y, color);
+	put_dot(data, first->x, first->y, color);
 
 }
 
