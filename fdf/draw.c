@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:19:14 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/07 15:24:47 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/08 13:49:01 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	background(t_mlx *lib, t_data *data)
 	}
 	mlx_put_image_to_window(lib->mlx, lib->current_win, data->img, 0, 0);
 }
+
+
 
 void	addmap(t_mlx *lib, t_data *data)
 {
