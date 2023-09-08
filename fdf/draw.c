@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:19:14 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/08 13:57:45 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/08 13:58:12 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,7 @@ void	addmap(t_mlx *lib, t_data *data)
 {
 	t_map	*line;
 	int color = (255 << 16);
-	int	scalex;
-	int	scaley;
+
 
 	scalex = (lib->sizey / lib->xlen);
 	scaley = (lib->sizex / lib->ylen);
