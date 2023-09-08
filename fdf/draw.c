@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:19:14 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/08 13:53:37 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/08 13:53:41 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	line_put(t_data *data, int x, int y, int color)
 	my_mlx_pixel_put(data, x+2, y, color);
 	my_mlx_pixel_put(data, x, y+1, color);
 	my_mlx_pixel_put(data, x+1, y+1, color);
-	my_mlx_pixel_put(data, x+1, y+1, color);
+	my_mlx_pixel_put(data, x+2, y+1, color);
 	my_mlx_pixel_put(data, x, y+1, color);
 }
 
