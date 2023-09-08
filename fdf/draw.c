@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:19:14 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/08 13:57:07 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/08 13:57:36 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	line_put(t_data *data, t_map *first, t_map *second)
 {
 	put_dot(data, first->x, first->y, tcolor(first->value,0,0));
 	put_dot(data, second->x, second->y, tcolor(second->value,0,0));
-	
+
 
 }
 
@@ -81,7 +81,6 @@ void	addmap(t_mlx *lib, t_data *data)
 	scalex = (lib->sizey / lib->xlen);
 	ft_printf("sizey=%i | ylen=%i | scalex%i\n", lib->sizey ,lib->xlen, scalex);
 	scaley = (lib->sizex / lib->ylen);
-	ft_printf("sizex=%i | xlen=%i | scaley=%i\n", lib->sizex ,lib->ylen, scaley);
 	line = lib->map->first;
 	while (lib->map != NULL)
 	{
