@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 16:34:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/08 13:59:45 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/08 13:59:59 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ int		random_color(int value);
 int		keyhandle(int keycode, t_mlx *lib);
 int		arg_checker(int argc, char **argv);
 void	read_map(char *filename, t_mlx *lib);
+void	put_dot(t_data *data, int x, int y, int color);
 
 #endif
