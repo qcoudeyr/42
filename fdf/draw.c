@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:19:14 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/08 13:49:35 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/08 13:51:17 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void	point_put(t_data *data, int x, int y, int color)
+void	line_put(t_data *data, int x, int y, int color)
 {
 	my_mlx_pixel_put(data, x, y, color);
 	my_mlx_pixel_put(data, x+1, y, color);
@@ -60,7 +60,7 @@ int	background(t_mlx *lib, t_data *data)
 
 void	addline(t_mlx *lib, t_data *data)
 {
-	
+
 }
 
 void	addmap(t_mlx *lib, t_data *data)
