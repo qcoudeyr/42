@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:19:14 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/08 13:49:34 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/08 13:49:35 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ int	background(t_mlx *lib, t_data *data)
 }
 
 void	addline(t_mlx *lib, t_data *data)
-
+{
+	
+}
 
 void	addmap(t_mlx *lib, t_data *data)
 {
