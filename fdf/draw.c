@@ -6,54 +6,77 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:19:14 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/08 14:18:59 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/11 12:57:49 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-
-int	random_color(int value)
+void	iso(int *x, int *y, int *z, t_mlx *lib)
 {
-	int	red = 255 - value;
-	int	green = 255 - value;
-	int	blue = 255 - value;
+	int	previous_x;
+	int	previous_y;
+	int	previous_z;
 
-	int color = (red << 16) | (green << 8) | blue;
-
-	return color;
-}
-
-
-int	tcolor(int red, int green, int blue)
-{
-	if (red > 0)
-		red = 255;
-	return ((red << 16) | (green << 8) | blue);
-}
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	previous_x = *x;
+	previous_y = *y;
+	previous_z = *z;
+	*x = (previous_x - previous_y) * cos(lib->vcos);
+	*y = -previous_z + (previous_x + previous_y) * sin(lib->vsin);
 }
 
 void	put_dot(t_data *data, int x, int y, int color)
 {
 	my_mlx_pixel_put(data, x, y, color);
-	my_mlx_pixel_put(data, x+1, y, color);
-	my_mlx_pixel_put(data, x+2, y, color);
-	my_mlx_pixel_put(data, x, y+1, color);
-	my_mlx_pixel_put(data, x+1, y+1, color);
-	my_mlx_pixel_put(data, x+2, y+1, color);
-	my_mlx_pixel_put(data, x, y+2, color);
-	my_mlx_pixel_put(data, x+1, y+2, color);
-	my_mlx_pixel_put(data, x+2, y+2, color);
+	my_mlx_pixel_put(data, x +1, y, color);
+	my_mlx_pixel_put(data, x +2, y, color);
+	my_mlx_pixel_put(data, x, y +1, color);
+	my_mlx_pixel_put(data, x +1, y +1, color);
+	my_mlx_pixel_put(data, x +2, y +1, color);
+	my_mlx_pixel_put(data, x, y +2, color);
+	my_mlx_pixel_put(data, x +1, y +2, color);
+	my_mlx_pixel_put(data, x +2, y +2, color);
 }
 
-void	line_put(t_mlx *lib, t_map *first, t_map *second)
+void	line_draw(t_mlx *lib, t_map *second, int x0, int y0, int x1, int y1)
+{
+	int		dx;
+	int		dy;
+	float	x_increment;
+	float	y_increment;
+	float	steps;
+	float	x;
+	float	y;
+	int		i;
+
+	i = 0;
+	dx = x1 - x0;
+	dy = y1 - y0;
+
+	steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
+
+	x_increment = (float)dx / steps;
+	y_increment = (float)dy / steps;
+	x = x0;
+	y = y0;
+	while (i <= steps)
+	{
+		if (x >= 0 && y >= 0 && x <= lib->sizey && y <= lib->sizex)
+		{
+			my_mlx_pixel_put(lib->data, (int)y, (int)x, \
+			tcolor(second->value * 20, 0, 0));
+			my_mlx_pixel_put(lib->data, (int)y, (int)x + 1, \
+			tcolor(second->value * 20, 0, 0));
+			my_mlx_pixel_put(lib->data, (int)y, (int)x + 2, \
+			tcolor(second->value * 20, 0, 0));
+		}
+		x += x_increment;
+		y += y_increment;
+		i++;
+	}
+}
+
+void	line_put(t_mlx *lib, t_map *first, t_map *second, t_data *data)
 {
 	int	x0;
 	int	y0;
@@ -64,41 +87,17 @@ void	line_put(t_mlx *lib, t_map *first, t_map *second)
 	y0 = (first->y * lib->scaley);
 	x1 = (second->x * lib->scalex);
 	y1 = (second->y * lib->scaley);
-	put_dot(&lib->data, y0, x0,tcolor(first->value,0,0));
-	put_dot(&lib->data, y1, x1, tcolor(second->value,0,0));
-
-
-}
-
-int	background(t_mlx *lib, t_data *data)
-{
-	for(int x = 0;x < 1280;x++)
+	iso(&y0, &x0, &first->value, lib);
+	iso(&y1, &x1, &second->value, lib);
+	x0 += lib->offsetx;
+	y0 += lib->offsety;
+	x1 += lib->offsetx;
+	y1 += lib->offsety;
+	if (x0 >= 0 && y0 >= 0 && x1 >= 0 && y1 >= 0 && x0 <= lib->sizey \
+	&& y0 <= lib->sizex && x1 <= lib->sizey && y1 <= lib->sizex)
 	{
-		for(int y = 0; y < 800; y++)
-			my_mlx_pixel_put(data, x, y, random_color(0));
+		put_dot(data, y0, x0, tcolor(first->value * 20, 0, 0));
+		put_dot(data, y1, x1, tcolor(second->value * 20, 0, 0));
 	}
-	mlx_put_image_to_window(lib->mlx, lib->current_win, data->img, 0, 0);
-}
-
-void	addmap(t_mlx *lib)
-{
-	t_map	*line;
-	int color = (255 << 16);
-
-
-	lib->scalex = (lib->sizey / lib->xlen);
-	lib->scaley = (lib->sizex / lib->ylen);
-	line = lib->map->first;
-	while (lib->map != NULL)
-	{
-		while(lib->map != NULL)
-		{
-			if (lib->map->nx != NULL)
-				line_put(lib,lib->map,lib->map->nx);
-			lib->map = lib->map->nx;
-		}
-		lib->map = line->ny;
-		line = line->ny;
-	}
-	mlx_put_image_to_window(lib->mlx, lib->current_win, lib->data.img, 0, 0);
+	line_draw(lib, second, x0, y0, x1, y1);
 }

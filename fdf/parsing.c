@@ -6,11 +6,20 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/07 15:05:49 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/10 15:18:04 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+t_map	*origin_map(t_map *map)
+{
+	if (map->px == NULL)
+		return (map);
+	while(map->px != NULL)
+		map = map->px;
+	return (map);
+}
 
 int	arg_checker(int argc, char **argv)
 {
@@ -23,6 +32,7 @@ int	arg_checker(int argc, char **argv)
 		return (0);
 	return (1);
 }
+
 
 t_map *create_map_element(int x, int y, int value, t_map *p_y, t_map *p_x)
 {
@@ -72,20 +82,9 @@ int	parse(char *str, t_mlx *lib, int x, t_map *p_x)
 	}
 	if (lib->ylen == 0)
 		lib->ylen = y;
-	else if (lib->ylen != y)
-		exit(1);
 	lib->map = first;
 	free(temp);
 	return (1);
-}
-
-void	printmap(t_map *map)
-{
-	while(map != NULL)
-	{
-		ft_printf("%i", map->value);
-		map = map->ny;
-	}
 }
 
 void	read_map(char *filename, t_mlx *lib)
@@ -96,7 +95,11 @@ void	read_map(char *filename, t_mlx *lib)
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		return (perror("Failed to open the file"));
+	{
+		perror("Failed to open the file");
+		ft_freemap(lib);
+		exit (0);
+	}
 	x = 0;
 	p_x = NULL;
 	while (parse(get_next_line(fd), lib,x, p_x) != 0)
@@ -105,8 +108,9 @@ void	read_map(char *filename, t_mlx *lib)
 		x++;
 	}
 	lib->xlen = x;
-	lib->map = lib->map->first;
-	while (lib->map->px != NULL)
-		lib->map = lib->map->px;
+	lib->map = origin_map(lib->map->first);
+	lib->map_origin = origin_map(lib->map->first);
+	lib->scalex = (lib->sizey / lib->xlen)/2;
+	lib->scaley = (lib->sizex / lib->ylen)/2;
 }
 

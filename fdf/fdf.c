@@ -6,112 +6,74 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 20:21:10 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/08 13:59:35 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/11 12:41:18 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	trgb(int t, int r, int g, int b)
+void	lib_init(t_mlx *lib)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
+	lib->data = malloc(sizeof(t_data));
+	lib->tampon = malloc(sizeof(t_data));
+	lib->sizex = 1920;
+	lib->sizey = 1080;
+	lib->xlen = 0;
+	lib->ylen = 0;
+	lib->scalex = 0;
+	lib->scaley = 0;
+	lib->offsetx = 150;
+	lib->offsety = 500;
+	lib->vsin = 0.523599;
+	lib->vcos = 0.523599;
+	lib->multheight = 1;
+	lib->x_angle = 0;
+	lib->y_angle = 0;
+	lib->z_angle = 0;
+	lib->map_origin = NULL;
+	lib->map = NULL;
+	lib->mlx = NULL;
 }
 
-
-void	closewin(t_mlx *lib)
+void	init_windows(t_mlx *lib)
 {
-	mlx_destroy_image(lib->mlx, lib->data.img);
-	mlx_destroy_image(lib->mlx, lib->menu.img);
-	mlx_clear_window(lib->mlx, lib->current_win);
-	mlx_destroy_window(lib->mlx, lib->current_win);
-	mlx_loop_end(&lib);
-	exit(1);
+	lib->data->img = mlx_new_image(lib->mlx, lib->sizex, lib->sizey);
+	lib->data->addr = mlx_get_data_addr(lib->data->img, \
+&lib->data->bits_per_pixel, &lib->data->line_length, &lib->data->endian);
+	lib->tampon->img = mlx_new_image(lib->mlx, lib->sizex, lib->sizey);
+	lib->tampon->addr = mlx_get_data_addr(lib->tampon->img, \
+&lib->tampon->bits_per_pixel, &lib->tampon->line_length, &lib->tampon->endian);
+	lib->current_win = mlx_new_window(lib->mlx, lib->sizex, \
+lib->sizey, "Qcoudeyr - FDF - Menu");
+	background(lib, lib->data);
+	background(lib, lib->tampon);
 }
 
-
-/* void	read_map(int fd)
+void	ft_freelib(t_mlx *lib)
 {
-	char	*map;
-	char	*temp;
-
-	map = ft_calloc(1, sizeof(char));
-	while ( )
-} */
-
-void	transition(t_mlx *lib, t_data *data)
-{
-	mlx_clear_window(lib->mlx, lib->current_win);
-	mlx_put_image_to_window(lib->mlx,lib->current_win, data->img, 0, 0);
-}
-
-
-int	keyhandle(int keycode, t_mlx *lib)
-{
-	ft_printf("%i\n", keycode);
-	if (keycode == 65307)
-		closewin(lib);
-	if (keycode == 100)
-		transition(lib, &lib->data);
-	if (keycode == 115)
-		transition(lib, &lib->menu);
- 	if (keycode == 99)
-	{
-		addmap(lib);
-		mlx_string_put(lib->mlx, lib->current_win, 500, 500, trgb(0,255,0,0), "Ceci est un test /");
-	}
-
-
-	return 0;
-}
-
-void ft_freemap(t_mlx *lib)
-{
-	t_map *current = lib->map;
-
-	while (current != NULL)
-	{
-		t_map *next_x = current->nx;
-		t_map *next_y = current->ny;
-		free(current);
-		current = next_x;
-		while (next_y != NULL)
-		{
-			t_map *temp = next_y;
-			next_y = next_y->ny;
-			free(temp);
-		}
-	}
-
-	lib->map = NULL; // Set lib->map to NULL to indicate that the map is now empty
+	ft_freemap(lib);
+	free(lib->mlx);
+	free(lib->data);
+	free(lib->tampon);
+	free(lib);
 }
 
 int	main(int argc, char **argv)
 {
-	//variable declaration
 	t_mlx	*lib;
 
 	lib = malloc(sizeof(t_mlx));
 	if (arg_checker(argc, argv) == 0)
-		return (ft_printf("Error, Usage : './fdf <filename>.fdf'\n"));
-	read_map(argv[1], lib);
-	lib->sizex = 1280;
-	lib->sizey = 800;
-	lib->ylen == 0;
+		return (ft_printf("Error, Usage: './fdf <filename>.fdf'\n"));
+	lib_init(lib);
 	lib->mlx = mlx_init();
-	lib->key.count_1 = 0;
-	lib->current_win = mlx_new_window(lib->mlx, lib->sizex, lib->sizey, "Qcoudeyr - FDF - Menu");
-	lib->menu.img = mlx_new_image(lib->mlx, lib->sizex, lib->sizey);
-	lib->menu.addr = mlx_get_data_addr(lib->menu.img, &lib->menu.bits_per_pixel, &lib->menu.line_length, &lib->menu.endian);
- 	lib->data.img = mlx_new_image(lib->mlx, lib->sizex, lib->sizey);
-	lib->data.addr = mlx_get_data_addr(lib->data.img, &lib->data.bits_per_pixel, &lib->data.line_length, &lib->data.endian);
-	background(lib, &lib->data);
-	background(lib, &lib->menu);
-	mlx_hook(lib->current_win, 2, 1L<<0, keyhandle, lib);
+	init_windows(lib);
+	read_map(argv[1], lib);
+	addmap(lib, lib->data);
+	mlx_mouse_hook(lib->current_win, mouse_scroll, lib);
+	mlx_hook(lib->current_win, 2, 1L << 0, keyhandle, lib);
 	mlx_loop(lib->mlx);
-	ft_freemap(lib);
-	free(lib);
+	mlx_destroy_display(lib->mlx);
+	ft_freelib(lib);
 	return (0);
 }
-
-/* 	mlx_get_screen_size(lib->mlx, &lib->sizex, &lib->sizey);
-	ft_printf("x = %i | y = %i\n", lib->sizex, lib->sizey); */
