@@ -1,0 +1,23 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+	  {
+		"label": "Run with Valgrind",
+		"type": "shell",
+		"command": "valgrind",
+		"args": [
+		  "--leak-check=full",
+		  "${workspaceFolder}/debug",
+		  "42.fdf"
+		],
+		"group": {
+		  "kind": "build",
+		  "isDefault": true
+		},
+		"presentation": {
+		  "reveal": "always",
+		  "panel": "new"
+		}
+	  }
+	]
+  }

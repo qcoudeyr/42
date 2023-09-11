@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 20:21:10 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/11 12:41:18 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/11 18:52:15 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	lib_init(t_mlx *lib)
 	lib->map_origin = NULL;
 	lib->map = NULL;
 	lib->mlx = NULL;
+	lib->current_win = NULL;
 }
 
 void	init_windows(t_mlx *lib)
