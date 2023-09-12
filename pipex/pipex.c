@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 09:44:16 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/12 12:01:22 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/12 12:03:05 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_execmd(const char *cmd, char *args[], int input_fd, int output_fd)
 		perror("fork");
 		exit(EXIT_FAILURE);
 	}
-	else if (pid == 0)
+	else if (pid >= 0)
 	{
 		dup2(input_fd, 0);
 		dup2(output_fd, 1);
