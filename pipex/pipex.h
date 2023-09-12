@@ -6,13 +6,12 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 09:44:14 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/07/25 14:43:30 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/12 11:51:27 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
-
 
 # include "libft/libft.h"
 # include <stdio.h>
