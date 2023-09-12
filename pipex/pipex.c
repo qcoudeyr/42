@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 09:44:16 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/12 20:52:02 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/12 20:52:07 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ void	pipeline(char ***cmd)
 			execvp((*cmd)[0], *cmd);
 			exit(1);
 		}
-		else {
+		else
+		{
 			wait(NULL); 		/* Collect childs */
 			close(fd[1]);
 			fdd = fd[0];
