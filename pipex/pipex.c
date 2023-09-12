@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 09:44:16 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/07/25 13:34:07 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/12 11:52:57 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,10 @@ void	ft_execmd(const char *cmd, char *args[], int input_fd, int output_fd)
 		dup2(output_fd, 1);
 		close(input_fd);
 		close(output_fd);
-
 		execve(cmd, args, NULL);
 		perror("execve");
 	}
 }
-
 
 void	ft_readarg(int argc, char **argv, t_pp *t)
 {
@@ -63,7 +61,7 @@ void	ft_readarg(int argc, char **argv, t_pp *t)
 	{
 		ft_printf("Usage: <infile> <cmd1> <cmd2> <outfile>\n");
 		exit(EXIT_FAILURE);
-		
+
 	}
 	if (access(argv[1], R_OK) < 0)
 	{
