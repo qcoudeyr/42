@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 09:44:16 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/12 20:52:43 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/12 20:52:53 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	ft_execmd(const char *cmd, char *args[], int input_fd, int output_fd)
 		perror("execve");
 	}
 }
+
 void	pipeline(char ***cmd)
 {
 	int fd[2];
