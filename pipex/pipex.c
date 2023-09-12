@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 09:44:16 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/12 11:53:07 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/12 11:59:39 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_formatcmd(t_pp *t, int ncmd)
 		i++;
 	}
 	while (i >= 0)
+	{
 		free(temp[i]);
 	free(temp);
 }
