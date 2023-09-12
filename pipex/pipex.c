@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 09:44:16 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/12 20:52:53 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/12 20:53:20 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,8 +130,9 @@ int	main(int argc, char **argv)
 	}
 	ft_readarg(argc, argv, &t);
 	ft_formatcmd(&t, 0);
-	ft_execmd(t.cmd, t.larg, open(t.infile, O_RDONLY), t.pipefd[1]);
-	ft_execmd(t.cmd, t.larg, t.pipefd[0], STDOUT_FILENO);
+	
+/* 	ft_execmd(t.cmd, t.larg, open(t.infile, O_RDONLY), t.pipefd[1]);
+	ft_execmd(t.cmd, t.larg, t.pipefd[0], STDOUT_FILENO); */
 	close(t.pipefd[0]);
 	close(t.pipefd[1]);
 	wait(&status);
