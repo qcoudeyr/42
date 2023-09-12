@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 09:44:16 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/12 11:52:57 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/12 11:53:00 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	ft_formatcmd(t_pp *t, int ncmd)
 	while (i >= 0)
 		free(temp[i]);
 	free(temp);
-
 }
 
 void	ft_execmd(const char *cmd, char *args[], int input_fd, int output_fd)
