@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 09:44:16 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/12 20:52:07 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/12 20:52:14 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,11 @@ void	pipeline(char ***cmd)
 			perror("fork");
 			exit(1);
 		}
-		else if (pid == 0) {
+		else if (pid == 0)
+		{
 			dup2(fdd, 0);
-			if (*(cmd + 1) != NULL) {
+			if (*(cmd + 1) != NULL)
+			{
 				dup2(fd[1], 1);
 			}
 			close(fd[0]);
