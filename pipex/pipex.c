@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 09:44:16 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/12 20:52:35 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/12 20:52:43 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ void	pipeline(char ***cmd)
 {
 	int fd[2];
 	pid_t pid;
-	int fdd = 0;				/* Backup */
+	int fdd = 0;
 
 	while (*cmd != NULL) {
-		pipe(fd);				/* Sharing bidiflow */
+		pipe(fd);
 		if ((pid = fork()) == -1
 		{
 			perror("fork");
