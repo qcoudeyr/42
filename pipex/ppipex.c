@@ -7,7 +7,7 @@
  * loop over commands by sharing
  * pipes.
  */
-static void pipeline(char ***cmd)
+void	pipeline(char ***cmd)
 {
 	int fd[2];
 	pid_t pid;
