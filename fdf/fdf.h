@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 16:34:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/11 12:57:48 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/12 09:38:06 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,19 @@ typedef struct s_data
 	int		line_length;
 	int		endian;
 }				t_data;
+
+typedef struct s_line
+{
+	int		x0;
+	int		y0;
+	int		x1;
+	int		y1;
+	int		dx;
+	int		dy;
+	float	steps;
+	float	x_increment;
+	float	y_increment;
+}				t_line;
 
 typedef struct s_map
 {

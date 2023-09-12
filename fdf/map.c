@@ -6,11 +6,23 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 12:21:36 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/11 12:43:12 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/12 09:27:37 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int	arg_checker(int argc, char **argv)
+{
+	void	*ptr;
+
+	if (argc != 2)
+		return (0);
+	ptr = ft_strnstr(argv[1], ".fdf", ft_strlen(argv[1]));
+	if (ptr == argv[1] || ptr == NULL)
+		return (0);
+	return (1);
+}
 
 int	background(t_mlx *lib, t_data *data)
 {

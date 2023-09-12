@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 20:21:10 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/11 18:52:15 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/12 10:18:01 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,13 @@ int	main(int argc, char **argv)
 {
 	t_mlx	*lib;
 
-	lib = malloc(sizeof(t_mlx));
 	if (arg_checker(argc, argv) == 0)
 		return (ft_printf("Error, Usage: './fdf <filename>.fdf'\n"));
+	lib = malloc(sizeof(t_mlx));
 	lib_init(lib);
 	lib->mlx = mlx_init();
-	init_windows(lib);
 	read_map(argv[1], lib);
+	init_windows(lib);
 	addmap(lib, lib->data);
 	mlx_mouse_hook(lib->current_win, mouse_scroll, lib);
 	mlx_hook(lib->current_win, 2, 1L << 0, keyhandle, lib);
