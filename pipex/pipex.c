@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 09:44:16 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/12 12:03:05 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/12 20:52:02 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,35 @@ void	ft_execmd(const char *cmd, char *args[], int input_fd, int output_fd)
 		close(output_fd);
 		execve(cmd, args, NULL);
 		perror("execve");
+	}
+}
+void	pipeline(char ***cmd)
+{
+	int fd[2];
+	pid_t pid;
+	int fdd = 0;				/* Backup */
+
+	while (*cmd != NULL) {
+		pipe(fd);				/* Sharing bidiflow */
+		if ((pid = fork()) == -1) {
+			perror("fork");
+			exit(1);
+		}
+		else if (pid == 0) {
+			dup2(fdd, 0);
+			if (*(cmd + 1) != NULL) {
+				dup2(fd[1], 1);
+			}
+			close(fd[0]);
+			execvp((*cmd)[0], *cmd);
+			exit(1);
+		}
+		else {
+			wait(NULL); 		/* Collect childs */
+			close(fd[1]);
+			fdd = fd[0];
+			cmd++;
+		}
 	}
 }
 
