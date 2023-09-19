@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 20:21:10 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/12 10:18:01 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/18 16:33:44 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,11 @@ void	ft_freelib(t_mlx *lib)
 {
 	ft_freemap(lib);
 	free(lib->mlx);
+	lib->mlx = NULL;
 	free(lib->data);
+	lib->data = NULL;
 	free(lib->tampon);
+	lib->tampon = NULL;
 	free(lib);
 }
 
@@ -67,13 +70,15 @@ int	main(int argc, char **argv)
 		return (ft_printf("Error, Usage: './fdf <filename>.fdf'\n"));
 	lib = malloc(sizeof(t_mlx));
 	lib_init(lib);
-	lib->mlx = mlx_init();
 	read_map(argv[1], lib);
+	lib->mlx = mlx_init();
 	init_windows(lib);
 	addmap(lib, lib->data);
 	mlx_mouse_hook(lib->current_win, mouse_scroll, lib);
 	mlx_hook(lib->current_win, 2, 1L << 0, keyhandle, lib);
+	mlx_hook(lib->current_win, 17, 0, closewin, lib);
 	mlx_loop(lib->mlx);
+	mlx_destroy_window(lib->mlx, lib->current_win);
 	mlx_destroy_display(lib->mlx);
 	ft_freelib(lib);
 	return (0);

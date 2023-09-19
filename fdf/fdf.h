@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 16:34:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/12 09:38:06 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/18 15:58:26 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_mlx
 
 }				t_mlx;
 
+void	ft_freelib(t_mlx *lib);
 int		background(t_mlx *lib, t_data *data);
 int		print_logo(t_mlx *lib, t_data *data);
 int		keyhandle(int keycode, t_mlx *lib);

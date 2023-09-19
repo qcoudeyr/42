@@ -1,13 +1,13 @@
 {
 	"configurations": [
-		
+
 		{
 			"name": "(gdb) Lancer",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/debug",
+			"program": "${workspaceFolder}/fdf",
 			"args": [
-				"42.fdf"
+				"test.fdf"
 			],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",

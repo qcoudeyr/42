@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/12 09:28:07 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/18 16:30:12 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ t_map	*origin_map(t_map *map)
 		return (map);
 	while (map->px != NULL)
 		map = map->px;
+	if (map->py == NULL)
+		return (map);
+	while (map->py != NULL)
+		map = map->py;
 	return (map);
 }
 
@@ -95,6 +99,7 @@ void	read_map(char *filename, t_mlx *lib)
 	{
 		perror("Failed to open the file");
 		ft_freemap(lib);
+		ft_freelib(lib);
 		exit (0);
 	}
 	x = 0;

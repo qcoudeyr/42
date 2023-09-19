@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:25:08 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/11 12:40:52 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/18 16:33:30 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	closewin(t_mlx *lib)
 {
 	mlx_clear_window(lib->mlx, lib->current_win);
-	mlx_destroy_window(lib->mlx, lib->current_win);
 	mlx_destroy_image(lib->mlx, lib->data->img);
 	mlx_destroy_image(lib->mlx, lib->tampon->img);
 	mlx_loop_end(lib->mlx);
@@ -88,7 +87,10 @@ void	ft_freemap(t_mlx *lib)
 	t_map	*next_y;
 	t_map	*temp;
 
-	current = lib->map_origin;
+	if (lib->map_origin != NULL)
+		current = origin_map(lib->map_origin);
+	else
+		current = lib->map_origin;
 	while (current != NULL)
 	{
 		next_x = current->nx;
