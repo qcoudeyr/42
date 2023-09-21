@@ -6,87 +6,53 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 09:44:16 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/12 20:53:29 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/21 20:51:30 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_formatcmd(t_pp *t, int ncmd)
+void	pathfinder(t_pp *t)
 {
-	char	**temp;
-	int		i;
+	int	i;
+	int	arg;
 
-	temp = ft_split(t->cmdlist[ncmd], ' ');
-	t->cmd = ft_strdup(temp[0]);
-	if (temp[1] == NULL)
-		return ;
-	i = 1;
-	t->larg = malloc(sizeof(char **));
-	while (temp[i])
+	arg = 0;
+	while (arg < t->narg)
 	{
-		t->larg[i - 1] = ft_strdup(temp[i]);
-		i++;
-	}
-	while (i >= 0)
-	{
-		free(temp[i]);
-		i--;
-	}
-	free(temp);
-}
-
-void	ft_execmd(const char *cmd, char *args[], int input_fd, int output_fd)
-{
-	pid_t	pid;
-
-	pid = fork();
-	if (pid < 0)
-	{
-		perror("fork");
-		exit(EXIT_FAILURE);
-	}
-	else if (pid >= 0)
-	{
-		dup2(input_fd, 0);
-		dup2(output_fd, 1);
-		close(input_fd);
-		close(output_fd);
-		execve(cmd, args, NULL);
-		perror("execve");
-	}
-}
-
-void	pipeline(char ***cmd)
-{
-	int fd[2];
-	pid_t pid;
-	int fdd = 0;
-
-	while (*cmd != NULL) {
-		pipe(fd);
-		if ((pid = fork()) == -1
+		i = 0;
+		t->fpath = ft_strjoin(t->path[i], t->cmdlist[arg][0]);
+		while(access(t->fpath, X_OK) < 0)
 		{
-			perror("fork");
-			exit(1);
+			i++;
+			free(t->fpath);
+			t->fpath = ft_strjoin(t->path[i], t->cmdlist[arg][0]);
 		}
-		else if (pid == 0)
-		{
-			dup2(fdd, 0);
-			if (*(cmd + 1) != NULL)
-				dup2(fd[1], 1);
-			close(fd[0]);
-			execvp((*cmd)[0], *cmd);
-			exit(1);
-		}
+		if (access(t->fpath, X_OK) == 0)
+			t->cmdlist[arg][0] = t->fpath;
 		else
 		{
-			wait(NULL); 		/* Collect childs */
-			close(fd[1]);
-			fdd = fd[0];
-			cmd++;
+			perror("Command not found !");
+			free(t->fpath);
+			exit(EXIT_FAILURE);
 		}
+		arg++;
 	}
+}
+
+void	cmdformat(t_pp *t)
+{
+	int i;
+
+	i = 0;
+	t->cmdlist = ft_calloc((t->narg +1), sizeof(char **));
+	while (i < t->narg)
+	{
+		t->cmdlist[i] = ft_split(t->cmd[i], ' ');
+		i++;
+	}
+	t->cmdlist[i] = NULL;
+
 }
 
 void	ft_readarg(int argc, char **argv, t_pp *t)
@@ -107,40 +73,105 @@ void	ft_readarg(int argc, char **argv, t_pp *t)
 			perror("access");
 		exit(EXIT_FAILURE);
 	}
-	t->cmdlist = malloc(sizeof(char **) * 2);
+	t->cmd = ft_calloc(sizeof(char **), (argc - 1));
 	t->infile = ft_strdup(argv[1]);
 	t->outfile = ft_strdup(argv[argc - 1]);
 	t->narg = 0;
 	while ((t->narg +2) <= (argc -2))
 	{
-		t->cmdlist[t->narg] = ft_strdup(argv[t->narg +2]);
+		t->cmd[t->narg] = ft_strdup(argv[t->narg +2]);
 		t->narg++;
+	}
+	t->cmd[t->narg] = NULL;
+	cmdformat(t);
+	pathfinder(t);
+}
+
+void	parsing(t_pp *t)
+{
+	int		i;
+	char	*temp;
+
+	i = 0;
+	t->path = ft_calloc(1, sizeof(char **));
+	while (ft_strnstr(t->env[i], "PATH=", 6) == 0)
+		i++;
+	t->env[i] += 5;
+	t->path = ft_split(t->env[i], ':');
+	i = 0;
+	while(t->path[i])
+	{
+		temp = ft_strdup(t->path[i]);
+		free(t->path[i]);
+		t->path[i] = ft_strjoin(temp, "/");
+		free(temp);
+		i++;
 	}
 }
 
-int	main(int argc, char **argv)
+void	pipeline(t_pp *t)
 {
-	t_pp	t;
-	int		status;
+	int fd[2];
+	pid_t pid;
+	int fdd = 0;
 
-	if (pipe(t.pipefd) < 0)
+	while (*t->cmdlist != NULL)
 	{
-		perror("pipe");
-		exit(EXIT_FAILURE);
+		pipe(fd);
+		if ((pid = fork()) == -1)
+		{
+			perror("fork");
+			exit(1);
+		}
+		else if (pid == 0)
+		{
+			dup2(fdd, 0);
+			if (*(t->cmdlist + 1) != NULL)
+				dup2(fd[1], 1);
+			close(fd[0]);
+			execve((*t->cmdlist)[0], *t->cmdlist, t->env);
+			exit(1);
+		}
+		else
+		{
+			wait(NULL);
+			close(fd[1]);
+			fdd = fd[0];
+			t->cmdlist++;
+		}
 	}
-	ft_readarg(argc, argv, &t);
-	ft_formatcmd(&t, 0);
-	pipeline()
-/* 	ft_execmd(t.cmd, t.larg, open(t.infile, O_RDONLY), t.pipefd[1]);
-	ft_execmd(t.cmd, t.larg, t.pipefd[0], STDOUT_FILENO); */
-	close(t.pipefd[0]);
-	close(t.pipefd[1]);
-	wait(&status);
-	wait(&status);
-	for (int i = 0; i != t.narg; i++)
-		free(t.cmdlist[i]);
-	free(t.cmdlist);
-	free(t.infile);
-	free(t.outfile);
+}
+
+int	main(int argc, char **argv, char **env)
+{
+	t_pp	*t;
+	void	*ptr;
+
+	t = ft_calloc(1, sizeof(t_pp));
+	t->env= env;
+
+	parsing(t);
+	ft_readarg(argc, argv, t);
+	pipe(t->pipefd);
+	ptr = t->cmdlist;
+	pipeline(t);
+	t->cmdlist = ptr;
+	for (int i = 0; i <= t->narg + 1; i++)
+		free(t->cmd[i]);
+	for(int i = 0; t->path[i] != NULL; i++)
+		free(t->path[i]);
+	for(int i = 0; i < (t->narg +1); i++)
+	{
+			if (t->cmdlist[i] != NULL)
+			{
+				for(int y = 0; t->cmdlist[i][y] != NULL ; y++)
+				free(t->cmdlist[i][y]);
+			}
+		free(t->cmdlist[i]);
+	}
+	free(t->infile);
+	free(t->outfile);
+	free(t->path);
+	free(t);
 	return (0);
 }

@@ -8,10 +8,10 @@ OBJS = $(SRCS:.c=.o)
 
 NAME = pipex
 
-BSRCS =
+BSRCS = pipex.c
 BOBJS = $(BSRCS:.c=.o)
 
-BNAME =
+BNAME = pipex
 
 all: $(NAME)
 
@@ -35,6 +35,17 @@ re: fclean all
 debug: $(OBJS)
 	clear
 	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o debug
+
 	colour-valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1 ./debug infile "ls -l" "wc -l" outfile
+
+
+launch: $(OBJS)
+	clear
+	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o pipex
+	clear
+	./pipex infile "ls -l" "wc -l" outfile
+
+bonus: $(BNAME)
+
 
 .PHONY: all clean fclean re debug bonus

@@ -30,4 +30,4 @@ re: fclean all
 debug: re
 	clear
 	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o debug
-	colour-valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1 ./debug 42.fdf
+	colour-valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1 ./debug test_map/IGN_France_250_ASC_L93_OCEAN0_M.fdf

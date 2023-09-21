@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 09:44:14 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/19 12:31:24 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/21 14:19:57 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,18 @@
 
 typedef struct s_pipex
 {
-	char	**cmdlist;
+	int		input_fd;
+	int		output_fd;
+	char	***cmdlist;
 	char	*infile;
 	char	*outfile;
 	char	**larg;
-	char	*cmd;
+	char	**cmd;
 	int		narg;
+	char	*fpath;
 	int		pipefd[2];
+	char	**env;
+	char	**path;
 }	t_pp;
 
 #endif

@@ -6,7 +6,7 @@
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
-      "args": ["infile", "wc -c", "ls -l", "outfile"],
+      "args": ["infile", "ls -l", "wc -c", "outfile"],
       "stopAtEntry": false,
       "externalConsole": false,
       "cwd": "/home/qcoudeyr/Bureau/42/pipex",
