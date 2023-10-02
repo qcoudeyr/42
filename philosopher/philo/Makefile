@@ -32,8 +32,8 @@ debug: $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o debug
 
 	colour-valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1 \
-	./debug 
-	colour-valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1 \
+	./debug
+	colour-valgrind -s --tool=hel --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1 \
 	./debug
 #./debug "input" "grep Hello" "awk '{count++} END {print count}'" "output"
 
