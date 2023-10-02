@@ -1,6 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -lpthread
 
+
 HEADERS = philo.h
 SRCS = philo.c
 OBJS = $(SRCS:.c=.o)
