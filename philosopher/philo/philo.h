@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/02 10:27:56 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/02 10:28:55 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,10 @@
 # include <pthread.h>
 # include <sys/wait.h>
 # include <semaphore.h>
-
+#include <stdio.h>      // Pour printf
+#include <stdlib.h>     // Pour malloc, free
+#include <string.h>     // Pour memset
+#include <unistd.h>     // Pour write, usleep
+#include <sys/time.h>   // Pour gettimeofday
+#include <pthread.h>
 #endif
