@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/02 11:05:08 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/02 11:05:14 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@
 # include <sys/time.h>
 # include <pthread.h>
 
-typedef 
+typedef struct 
 
 #endif
