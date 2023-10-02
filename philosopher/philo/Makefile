@@ -1,6 +1,5 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -lpthread
-LDFLAGS = -L./libft -lft
 
 HEADERS = pipex.h
 SRCS = pipex.c parsing.c utils.c
