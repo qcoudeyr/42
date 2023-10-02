@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/02 11:18:01 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/02 11:18:11 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_init(t_var *var)
 	var->n_philo = 0;
 }
 
-void	ft_readarg(int argc, char **argc, t_var *var)
+void	ft_readarg(int argv, char **argc, t_var *var)
 {
 
 }
