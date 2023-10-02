@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/02 11:06:24 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/02 11:06:32 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <sys/time.h>
 # include <pthread.h>
 
-typedef struct t_philo
+typedef struct t_philolosopher
 {
 
 }	t_p;
