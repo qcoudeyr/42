@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/02 11:22:57 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/02 11:23:00 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 {
 	t_var	*var;
 
+	var = malloc(sizeof(t_var) * 1);
 	ft_init(var);
 	ft_readarg(argc, argv, var);
 	printf("\n%i\n",var->n_philo);
