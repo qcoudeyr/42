@@ -29,6 +29,13 @@ fclean: clean
 re: fclean all
 
 debug: $(OBJS)
+bonus: $(BOBJS)
+	$(CC) $(CFLAGS) $(BOBJS) $(LDFLAGS) -o $(BNAME)
+
+%.o: %.c $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+
 	clear
 	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o debug
 
