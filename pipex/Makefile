@@ -3,15 +3,15 @@ CFLAGS = -Wall -Werror -Wextra -g
 LDFLAGS = -L./libft -lft
 
 HEADERS = pipex.h
-SRCS = pipex.c
+SRCS = pipex.c parsing.c utils.c
 OBJS = $(SRCS:.c=.o)
 
 NAME = pipex
 
-BSRCS = pipex.c
+BSRCS = bonus.c parsing.c utils.c
 BOBJS = $(BSRCS:.c=.o)
 
-BNAME = pipex
+BNAME = bonus
 
 all: $(NAME)
 
@@ -36,16 +36,16 @@ debug: $(OBJS)
 	clear
 	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o debug
 
-	colour-valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1 ./debug infile "ls -l" "wc -l" outfile
+	colour-valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1 \
+	./debug "pipex.c" "echo" "wc -l" "output"
 
+#./debug "input" "grep Hello" "awk '{count++} END {print count}'" "output"
 
-launch: $(OBJS)
-	clear
-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o pipex
-	clear
-	./pipex infile "ls -l" "wc -l" outfile
+bonus: $(BOBJS)
+	$(CC) $(CFLAGS) $(BOBJS) $(LDFLAGS) -o $(BNAME)
 
-bonus: $(BNAME)
+%.o: %.c $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 
 .PHONY: all clean fclean re debug bonus

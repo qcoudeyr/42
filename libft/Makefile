@@ -50,7 +50,9 @@ SRCS =	./Original_function/ft_strlcpy.c\
 		./Added_function/ft_pttostr.c\
 		./Added_function/ft_printf.c\
 		./Added_function/get_next_line.c\
-		./Added_function/ft_strcmp.c
+		./Added_function/ft_strcmp.c\
+		./Added_function/ft_splitq.c\
+		./Added_function/ft_wordcount.c
 
 OBJS = $(SRCS:.c=.o)
 

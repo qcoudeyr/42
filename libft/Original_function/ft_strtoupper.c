@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 12:50:19 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/04/21 22:56:41 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/28 08:51:29 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ char	*ft_strtoupper(const char *str)
 	while (*str != 0)
 	{
 		if (*str >= 97 && *str <= 122)
-				*strup++ = *str -32;
+			*strup++ = *str -32;
 		else
 			*strup++ = *str;
-	str++;
+		str++;
 	}
 	*strup = 0;
 	return (strup - len);

@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 09:44:16 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/28 14:10:36 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/28 12:36:51 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,7 @@ void	ft_execve(t_pp *t, int i)
 	dup2(t->pipefd[1], 1);
 	if (t->cmdlist[i +1] == NULL)
 		dup2(t->file_fd[1], 1);
-	if (execve(t->cmdlist[i][0], t->cmdlist[i], t->env) == -1)
-	{
-		ft_perror(t, "execve");
-		exit(EXIT_FAILURE);
-	}
+	execve(t->cmdlist[i][0], t->cmdlist[i], t->env);
 	exit(EXIT_FAILURE);
 }
 
@@ -55,16 +51,13 @@ int	main(int argc, char **argv, char **env)
 	t_pp	*t;
 	void	*ptr;
 
-	if (*env == NULL)
-	{
-		ft_printf(COLOR_RED"No env detected !\n");
-		exit(EXIT_FAILURE);
-	}
 	t = ft_calloc(1, sizeof(t_pp));
 	t->env = env;
 	parsing(t);
 	ft_readarg(argc, argv, t);
 	t->file_fd[0] = open(t->infile, O_RDONLY);
+	t->file_fd[1] = open(t->outfile, O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR | \
+	S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
 	if (t->file_fd[0] == -1 || t->file_fd[1] == -1)
 		ft_perror(t, "open");
 	ptr = t->cmdlist;

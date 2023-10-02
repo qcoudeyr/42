@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:38:47 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/05/11 21:12:42 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/09/28 11:07:54 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int			ft_isalnum(int c);
 int			ft_isalpha(int c);
 int			ft_isascii(int c);
 int			ft_isdigit(int c);
+int			ft_wordct(const char *s, char chr);
 int			ft_isprint(int c);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			ft_tolower(int c);
@@ -48,16 +49,18 @@ int			ft_putnbr_fd(long long n, int fd);
 int			ft_putstr_fd(char *s, int fd);
 void		ft_striteri(char *s, void (*f)(unsigned int, char*));
 int			ft_strcmp(const char *s1, const char *s2);
+char		**ft_splitq(char const *str);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strnstr(const char *str, const char *tosearch, size_t len);
 char		*ft_strdup(const char *s1);
 char		*ft_strrchr(const char *s, int c);
-char		*ft_strtrim(char const *s1, char const *set);
+char		*ft_strtrim(char const *s1, char const set);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_itoa(int n);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char		**ft_split(char const *s, char c);
+char		**ft_splitq(char const *str);
 size_t		ft_strlcat(char *dst, const char *src, size_t size);
 size_t		ft_strlcpy(char *dst, const char *src, size_t size);
 size_t		ft_strlen(const char *s);

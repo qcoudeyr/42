@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_wordcount.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 11:51:51 by qcoudeyr          #+#    #+#             */
-/*   Updated: 2023/09/27 20:05:12 by  qcoudeyr        ###   ########.fr       */
+/*   Created: 2023/09/28 08:50:39 by  qcoudeyr         #+#    #+#             */
+/*   Updated: 2023/09/28 08:51:00 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-char	*ft_strtrim(char const *s1, char const set)
+int	ft_wordct(const char *s, char chr)
 {
-	char	*str;
-	int		i;
-	int		j;
+	int	c;
+	int	index;
 
-	i = 0;
-	j = ft_strlen(s1);
-	while (ft_strrchr(&set, s1[i]) != NULL && i <= j)
-		i++;
-	while (ft_strrchr(&set, s1[j -1]) != NULL && i <= j)
-		j--;
-	str = malloc(sizeof (char) * (j - i) + 2);
-	if (!str)
-		return (malloc(0));
-	ft_strlcpy(str, &s1[i], (j - i + 2));
-	return (str);
+	c = 0;
+	index = 0;
+	while (s[index] != 0)
+	{
+		while (s[index] == chr && s[index] != 0)
+			index++;
+		if (s[index] != chr && s[index] != 0)
+			c++;
+		while (s[index] != chr && s[index] != 0)
+			index++;
+	}
+	return (c);
 }
