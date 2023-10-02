@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/02 11:28:47 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/02 11:28:57 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_readarg(int argc, char **argv, t_var *var)
 {
 	if (argc < 4 || argc > 7)
 		printf("Usage = ./philo n_philo t_2_die t_2_eat\
-time_to_sleep [number_of_times_each_philosopher_must_eat]");
+t_2_sleep [number_of_times_each_philosopher_must_eat]");
 	var->n_philo = argv[1];
 	var->tt[0] = atoi(argv[1]);
 }
