@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/02 10:27:39 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/02 10:27:41 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include <stdio.h>
 # include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
+# include <string.h>
+# include <unistd.h>
 #include <sys/types.h>
 #include <signal.h>
 #include <sys/time.h>   // Pour gettimeofday
