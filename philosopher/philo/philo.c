@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/02 11:39:07 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/02 11:39:13 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int argc, char **argv)
 	ft_init(var);
 	ft_readarg(argc, argv, var);
 	for(int i = 0; i < 5; i++)
-		printf("var->tt[]")
+		printf(",var->tt[i])
 	free(var);
 	return (0);
 }
