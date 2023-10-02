@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -lpthread
 
 HEADERS = philo.h
-SRCS = pipex.c parsing.c utils.c
+SRCS = philo.c
 OBJS = $(SRCS:.c=.o)
 
 NAME = pipex
