@@ -36,13 +36,5 @@ debug: $(OBJS)
 	./debug
 	colour-valgrind -s --tool=helgrind \
 	./debug
-#./debug "input" "grep Hello" "awk '{count++} END {print count}'" "output"
-
-bonus: $(BOBJS)
-	$(CC) $(CFLAGS) $(BOBJS) $(LDFLAGS) -o $(BNAME)
-
-%.o: %.c $(HEADERS)
-	$(CC) $(CFLAGS) -c $< -o $@
-
 
 .PHONY: all clean fclean re debug bonus
