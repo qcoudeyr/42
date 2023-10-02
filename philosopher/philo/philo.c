@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/02 11:35:40 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/02 11:35:55 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	ft_readarg(int argc, char **argv, t_var *var)
 	if (argc < 4 || argc > 7)
 		printf(COLOR_RED"\nUsage = ./philo n_philo t_2_die t_2_eat\
 t_2_sleep [n_times_each_philo_must_eat]\n");
-	var->n_philo = argv[1];
-	var->tt[0] = ft_atoi(argv[1]);
+	var->n_philo = ft_atoi(argv[1]);
+	var->tt[0] = ft_atoi(argv[2]);
 }
 
 int	main(int argc, char **argv)
