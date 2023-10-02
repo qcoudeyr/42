@@ -33,7 +33,8 @@ debug: $(OBJS)
 
 	colour-valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1 \
 	./debug "pipex.c" "echo" "wc -l" "output"
-
+	colour-valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1 \
+	./debug "pipex.c" "echo" "wc -l" "output"
 #./debug "input" "grep Hello" "awk '{count++} END {print count}'" "output"
 
 bonus: $(BOBJS)
