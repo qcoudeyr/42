@@ -5,10 +5,7 @@ HEADERS = philo.h
 SRCS = philo.c
 OBJS = $(SRCS:.c=.o)
 
-NAME = pipex
-
-BSRCS = bonus.c parsing.c utils.c
-BOBJS = $(BSRCS:.c=.o)
+NAME = philo
 
 BNAME = bonus
 
