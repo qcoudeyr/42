@@ -7,8 +7,6 @@ OBJS = $(SRCS:.c=.o)
 
 NAME = philo
 
-BNAME = bonus
-
 all: $(NAME)
 
 $(NAME): $(OBJS)
