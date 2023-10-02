@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/02 11:18:50 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/02 11:18:52 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_init(t_var *var)
 
 void	ft_readarg(int argv, char **argc, t_var *var)
 {
-	printf("")
+	printf("s")
 }
 
 int	main(int argc, char **argv)
