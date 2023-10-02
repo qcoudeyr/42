@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/02 11:21:44 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/02 11:21:48 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_readarg(int argc, char **argv, t_var *var)
 {
 	var->n_philo = argc;
 	printf("argv =%i", argc);
-	var->tt[0] = atoi(argv[1];
+	var->tt[0] = atoi(argv[1]);
 }
 
 int	main(int argc, char **argv)
