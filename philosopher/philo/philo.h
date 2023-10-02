@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/02 11:32:32 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/02 11:32:42 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,5 @@ long int	ft_atoi(const char *str);
 # define BLINK     "\033[5m"
 # define REVERSE   "\033[7m"
 # define HIDDEN    "\033[8m"
+
 #endif
