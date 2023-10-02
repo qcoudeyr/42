@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/02 11:27:32 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/02 11:27:46 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_init(t_var *var)
 void	ft_readarg(int argc, char **argv, t_var *var)
 {
 	if (argc < 4 || argc > 7)
-		printf("Usage = ./philo")
+		printf("Usage = ./philo ")
 	var->n_philo = argv[1];
 	var->tt[0] = atoi(argv[1]);
 }
