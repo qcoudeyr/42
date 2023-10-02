@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -lpthread
-
+THREAD
 
 HEADERS = philo.h
 SRCS = philo.c
