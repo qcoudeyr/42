@@ -3,7 +3,7 @@ CFLAGS = -Wall -Werror -Wextra -lpthread
 THREADFLAG = -fsanitize=thread
 
 HEADERS = philo.h
-SRCS = philo.c
+SRCS = philo.c utils.c
 OBJS = $(SRCS:.c=.o)
 
 NAME = philo
