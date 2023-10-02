@@ -17,6 +17,7 @@ $(NAME): $(OBJS)
 
 norme:
 	norminette $(SRCS) $(HEADERS)
+
 clean:
 	rm -f $(OBJS) $(BOBJS)
 
