@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -lpthread
+CFLAGS = -Wall -Werror -Wextra -lpthread -g
 THREADFLAG = -fsanitize=thread
 
 HEADERS = philo.h
@@ -11,7 +11,7 @@ NAME = philo
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(THREADFLAG) $(OBJS) $(LDFLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(THREADFLAG) $(OBJS) -o $(NAME)
 
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) $(THREADFLAG) -c $< -o $@
@@ -27,14 +27,5 @@ fclean: clean
 	rm -f debug
 
 re: fclean all
-
-debug: $(OBJS)
-	clear
-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o debug
-
-	colour-valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1 \
-	./debug
-	colour-valgrind -s --tool=helgrind \
-	./debug
 
 .PHONY: all clean fclean re debug bonus

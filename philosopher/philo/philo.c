@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/02 13:33:18 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/02 14:24:48 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ t_2_sleep [n_times_each_philo_must_eat]\n");
 	if (argc == 6)
 		var->tt[3] = ft_atoi(argv[5]);
 }
-
+/*
 void	init_philo(t_var *var, )
 {
-	
-}
+
+} */
 
 int	main(int argc, char **argv)
 {
