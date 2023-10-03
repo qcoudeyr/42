@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/02 13:17:39 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/03 09:31:05 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,19 @@
 # include <sys/time.h>
 # include <pthread.h>
 
+# define DEAD 1
+# define ALIVE 0
+# define EAT 1
+# define THINK 2
+# define SLEEP 3
+
 typedef struct s_philosopher
 {
+	pthread_t	thread;
+	int			philo_n;
+	int			state;
+	int			c_move;
+	int			n_move;
 	
 }	t_philo;
 

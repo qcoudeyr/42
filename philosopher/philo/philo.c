@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/02 14:24:48 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/03 09:38:16 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,32 @@ t_2_sleep [n_times_each_philo_must_eat]\n");
 	var->tt[2] = ft_atoi(argv[4]);
 	if (argc == 6)
 		var->tt[3] = ft_atoi(argv[5]);
+	if (var->n_philo < 1 || var->tt[0] < 1 || var->tt[1] < 1 || \
+	var->tt[2] < 1 || var->tt[3] < 1)
+	{
+		printf(COLOR_RED"Args invalid !\nPlease enter number >= 1");
+		ft_free(var);
+		exit(EXIT_FAILURE);
+	}
 }
-/*
-void	init_philo(t_var *var, )
-{
 
-} */
+void	init_philo(t_var *var, t_philo *philo)
+{
+	int	i;
+
+	i = 0;
+	while(i != var->n_philo)
+	{
+		i++;
+	}
+
+}
+
+void	ft_free(t_var *var)
+{
+	free(var);
+	var = NULL;
+}
 
 int	main(int argc, char **argv)
 {
