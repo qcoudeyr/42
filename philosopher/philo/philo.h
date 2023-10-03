@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/03 09:31:05 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/03 09:58:13 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@
 
 typedef struct s_philosopher
 {
-	pthread_t	thread;
+	pthread_t	tid;
 	int			philo_n;
 	int			state;
-	int			c_move;
-	int			n_move;
-	
+	int			fork;
+	void		*n_philo;
+	void		*p_philo;
 }	t_philo;
 
 typedef struct s_var

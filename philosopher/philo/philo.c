@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/03 09:38:16 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/03 10:01:31 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ void	init_philo(t_var *var, t_philo *philo)
 	int	i;
 
 	i = 0;
-	while(i != var->n_philo)
+	while(i < var->n_philo)
 	{
 		i++;
+		
 	}
 
 }
