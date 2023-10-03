@@ -6,15 +6,22 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/03 10:30:51 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/03 13:48:07 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_init(t_var *var)
+void	ft_init(t_var *var, t_philo *philo)
 {
 	var->n_philo = 0;
+	philo->tid = NULL;
+	philo->philo_n = 0;
+	philo->state = ALIVE;
+	philo->fork = 1;
+	philo->n_philo = NULL;
+	philo->p_philo = NULL;
+
 }
 
 void	ft_readarg(int argc, char **argv, t_var *var)
@@ -61,11 +68,11 @@ int	main(int argc, char **argv)
 	t_var	*var;
 	t_philo	*philo;
 
-	var = malloc(sizeof(t_var) * 1);
-	ft_init(var);
+	var = malloc(sizeof(t_var));
+	philo = malloc(sizeof(t_philo));
+	ft_init(var, philo);
 	ft_readarg(argc, argv, var);
-	philo = malloc(sizeof(t_philo) * var->n_philo);
-	
+
 	free(var);
 	return (0);
 }
