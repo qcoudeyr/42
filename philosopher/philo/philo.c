@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/07 13:28:55 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/07 13:56:08 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,9 @@ void	init_philo(t_var *var)
 		if (i == var->n_philo)
 			var->p->n_philo = var->f_philo;
 		p_philo = var->p;
+		pthread_create(var->p->tid, NULL, ft_start_routine, var);
 	}
+	var->wait = 0;
 }
 
 void	ft_free(t_var *var)
@@ -97,6 +99,7 @@ int	main(int argc, char **argv)
 	var = malloc(sizeof(t_var));
 	var->n_philo = 0;
 	var->p = NULL;
+	var->wait = 1;
 	ft_readarg(argc, argv, var);
 	init_philo(var);
 	ft_free(var);

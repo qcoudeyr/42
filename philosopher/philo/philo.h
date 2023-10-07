@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/07 13:01:02 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/07 13:54:59 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_philo
 
 typedef struct s_var
 {
+	int		wait;
 	int		n_philo;
 	int		tt[4];
 	t_philo	*f_philo;
@@ -45,7 +46,7 @@ long int	ft_atoi(const char *str);
 void		ft_free(t_var *var);
 void		init_philo(t_var *var);
 void		ft_readarg(int argc, char **argv, t_var *var);
-
+void		ft_start_routine();
 
 // Text colors
 # define COLOR_BLACK   "\033[30m"

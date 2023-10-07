@@ -6,10 +6,13 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/02 13:02:49 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/07 13:54:46 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_start_routine()
+void	ft_start_routine(t_var *var)
+{
+	
+}
