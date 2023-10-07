@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/07 12:31:17 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/07 12:36:38 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,15 @@ void	init_philo(t_var *var)
 
 void	ft_free(t_var *var)
 {
+	void	*temp;
+
+	while (var->p->n_philo != NULL)
+	{
+		temp = var->p->n_philo;
+		free(var->p);
+		var->p = NULL;
+		var->p = temp;
+	}
 	free(var);
 	var = NULL;
 }
