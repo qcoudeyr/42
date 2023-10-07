@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/07 12:25:31 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/07 13:01:02 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_var
 {
 	int		n_philo;
 	int		tt[4];
+	t_philo	*f_philo;
 	t_philo	*p;
 }	t_var;
 

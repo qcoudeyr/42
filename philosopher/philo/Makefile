@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -lpthread -g
+CFLAGS = -Wall -Werror -Wextra -lpthread
 THREADFLAG = -fsanitize=thread
 
 HEADERS = philo.h
@@ -19,6 +19,15 @@ $(NAME): $(OBJS)
 norme:
 	norminette $(SRCS) $(HEADERS)
 
+debug: CFLAGS += -g
+debug: THREADFLAG :=
+debug: fclean debug_build
+
+debug_build: $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o debug
+	clear
+#	colour-valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1 \
+	./debug 4 10 10 10
 clean:
 	rm -f $(OBJS) $(BOBJS)
 
