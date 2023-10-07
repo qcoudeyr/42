@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/03 09:58:13 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/07 12:25:31 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,29 @@
 
 # define DEAD 1
 # define ALIVE 0
-# define EAT 1
-# define THINK 2
-# define SLEEP 3
 
-typedef struct s_philosopher
+typedef struct s_philo
 {
-	pthread_t	tid;
-	int			philo_n;
-	int			state;
-	int			fork;
-	void		*n_philo;
-	void		*p_philo;
+	pthread_t		tid;
+	int				num;
+	int				state;
+	int				fork;
+	struct s_philo	*n_philo;
+	struct s_philo	*p_philo;
 }	t_philo;
 
 typedef struct s_var
 {
 	int		n_philo;
 	int		tt[4];
+	t_philo	*p;
 }	t_var;
 
 long int	ft_atoi(const char *str);
+void		ft_free(t_var *var);
+void		init_philo(t_var *var);
+void		ft_readarg(int argc, char **argv, t_var *var);
+
 
 // Text colors
 # define COLOR_BLACK   "\033[30m"
