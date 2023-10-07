@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/07 13:20:14 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/07 13:28:55 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,19 +68,23 @@ void	ft_free(t_var *var)
 {
 	t_philo	*temp;
 	t_philo	*philo;
+	int		i;
 
+	i = 0;
 	temp = NULL;
 	philo = var->f_philo;
-	while (philo != NULL)
+	while (i < var->n_philo)
 	{
 		if (philo->n_philo)
 			temp = philo->n_philo;
 		else
 			temp = NULL;
+		philo->num = 0;
 		philo->n_philo = NULL;
 		philo->p_philo = NULL;
 		free(philo);
 		philo = temp;
+		i++;
 	}
 	free(var);
 	var = NULL;
