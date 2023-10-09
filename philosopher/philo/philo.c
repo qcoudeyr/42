@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/09 09:05:39 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/09 10:26:11 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,17 @@ t_2_sleep [n_times_each_philo_must_eat]\n");
 	}
 }
 
+void	init_time(t_var *var)
+{
+	struct timeval	start;
+
+	gettimeofday(&start, NULL);
+
+	pthread_mutex_lock(&var->time_lock);
+	var->time = start.tv_sec;
+	pthread_mutex_unlock(&var->time_lock);
+}
+
 void	init_philo(t_var *var)
 {
 	int		i;
@@ -60,6 +71,10 @@ void	init_philo(t_var *var)
 		pthread_mutex_init(&var->p->fork_lock, NULL);
 		var->p->num = i;
 		var->p->wait_lock = &var->lock;
+		var->p->time_lock = &var->time_lock;
+		pthread_mutex_lock(&var->lock);
+		var->p->itime = &var->time;
+		pthread_mutex_unlock(&var->lock);
 		pthread_mutex_lock(&var->lock);
 		var->p->wait = &var->wait;
 		pthread_mutex_unlock(&var->lock);
@@ -75,6 +90,7 @@ void	init_philo(t_var *var)
 	}
 	pthread_mutex_lock(&var->lock);
 	var->wait = 0;
+	init_time(var);
 	pthread_mutex_unlock(&var->lock);
 }
 
@@ -103,6 +119,7 @@ void	ft_free(t_var *var)
 		i++;
 	}
 	pthread_mutex_destroy(&var->lock);
+	pthread_mutex_destroy(&var->time_lock);
 	free(var);
 	var = NULL;
 }
@@ -116,6 +133,7 @@ int	main(int argc, char **argv)
 	var->p = NULL;
 	var->wait = 1;
 	pthread_mutex_init(&var->lock, NULL);
+	pthread_mutex_init(&var->time_lock, NULL);
 	ft_readarg(argc, argv, var);
 	init_philo(var);
 	ft_free(var);

@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/09 09:04:48 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/09 10:32:23 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ typedef struct s_philo
 	int				num;
 	int				state;
 	int				fork;
-	suseconds_t		itime;
-	struct timeval	time;
+	long			*itime;
 	struct s_philo	*n_philo;
 	struct s_philo	*p_philo;
 	pthread_mutex_t	*wait_lock;
+	pthread_mutex_t	*time_lock;
 	pthread_mutex_t	fork_lock;
 }	t_philo;
 
@@ -45,9 +45,11 @@ typedef struct s_var
 	int				wait;
 	int				n_philo;
 	int				tt[4];
+	long			time;
 	t_philo			*f_philo;
 	t_philo			*p;
 	pthread_mutex_t	lock;
+	pthread_mutex_t	time_lock;
 }	t_var;
 
 long int	ft_atoi(const char *str);
