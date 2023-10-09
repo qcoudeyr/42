@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/09 11:07:56 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/09 11:26:10 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,18 @@
 typedef struct s_philo
 {
 	pthread_t		tid;
+// Variable utilise
 	int				*wait;
 	int				tt[4];
 	int				num;
 	int				state;
+	int				last_eat;
 	int				fork;
 	long			*itime;
+// Pointeur sur les prochains philos
 	struct s_philo	*n_philo;
 	struct s_philo	*p_philo;
+// Mutex Lock
 	pthread_mutex_t	*wait_lock;
 	pthread_mutex_t	*time_lock;
 	pthread_mutex_t	fork_lock;

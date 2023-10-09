@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/09 11:16:41 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/09 11:26:30 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	init_philo(t_var *var)
 		var->p->tt[1] = var->tt[1];
 		var->p->tt[2] = var->tt[2];
 		var->p->tt[3] = var->tt[3];
+		var->p->last_eat = 0;
 		pthread_mutex_init(&var->p->fork_lock, NULL);
 		var->p->num = i;
 		var->p->wait_lock = &var->lock;
