@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/09 09:03:12 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/09 10:04:44 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,3 +30,17 @@ void	*ft_start_routine(t_philo *p)
 	}
 	return(NULL);
 }
+void	ft_eat(t_philo *p)
+{
+	pthread_mutex_lock(&p->fork_lock);
+	printf("%i ms: %i has taken a fork", itime, p->)
+	pthread_mutex_lock(&p->n_philo->fork);
+
+	pthread_mutex_lock(&p->fork_lock);
+	pthread_mutex_lock(&p->n_philo->fork);
+
+}
+
+
+
+
