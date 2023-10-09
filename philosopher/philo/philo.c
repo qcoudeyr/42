@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/07 13:56:08 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/09 08:37:56 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,11 @@ void	init_philo(t_var *var)
 		var->p = malloc(sizeof(t_philo));
 		if (i == 1)
 			var->f_philo = var->p;
+		var->p->n_philo = NULL;
 		var->p->num = i;
+		pthread_mutex_lock(&var->lock);
+		var->p->wait = &var->wait;
+		pthread_mutex_unlock(&var->lock);
 		var->p->state = ALIVE;
 		var->p->p_philo = p_philo;
 		if (var->p->p_philo != NULL)
@@ -61,9 +65,11 @@ void	init_philo(t_var *var)
 		if (i == var->n_philo)
 			var->p->n_philo = var->f_philo;
 		p_philo = var->p;
-		pthread_create(var->p->tid, NULL, ft_start_routine, var);
+		pthread_create(&var->p->tid, NULL, ft_start_routine, var->p);
 	}
+	pthread_mutex_lock(&var->lock);
 	var->wait = 0;
+	pthread_mutex_unlock(&var->lock);
 }
 
 void	ft_free(t_var *var)
@@ -81,6 +87,7 @@ void	ft_free(t_var *var)
 			temp = philo->n_philo;
 		else
 			temp = NULL;
+		pthread_join(philo->tid, NULL);
 		philo->num = 0;
 		philo->n_philo = NULL;
 		philo->p_philo = NULL;
@@ -88,6 +95,7 @@ void	ft_free(t_var *var)
 		philo = temp;
 		i++;
 	}
+	pthread_mutex_destroy(&var->lock);
 	free(var);
 	var = NULL;
 }
@@ -100,6 +108,7 @@ int	main(int argc, char **argv)
 	var->n_philo = 0;
 	var->p = NULL;
 	var->wait = 1;
+	pthread_mutex_init(&var->lock, NULL);
 	ft_readarg(argc, argv, var);
 	init_philo(var);
 	ft_free(var);

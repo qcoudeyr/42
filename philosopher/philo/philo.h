@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/07 13:54:59 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/09 08:37:35 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,30 +23,35 @@
 # define DEAD 1
 # define ALIVE 0
 
+
 typedef struct s_philo
 {
 	pthread_t		tid;
+	int				*wait;
 	int				num;
 	int				state;
 	int				fork;
+	suseconds_t		itime;
+	struct timeval	time;
 	struct s_philo	*n_philo;
 	struct s_philo	*p_philo;
 }	t_philo;
 
 typedef struct s_var
 {
-	int		wait;
-	int		n_philo;
-	int		tt[4];
-	t_philo	*f_philo;
-	t_philo	*p;
+	int				wait;
+	int				n_philo;
+	int				tt[4];
+	t_philo			*f_philo;
+	t_philo			*p;
+	pthread_mutex_t	lock;
 }	t_var;
 
 long int	ft_atoi(const char *str);
 void		ft_free(t_var *var);
 void		init_philo(t_var *var);
 void		ft_readarg(int argc, char **argv, t_var *var);
-void		ft_start_routine();
+void		*ft_start_routine();
 
 // Text colors
 # define COLOR_BLACK   "\033[30m"
