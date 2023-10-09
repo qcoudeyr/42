@@ -6,11 +6,24 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/09 10:35:38 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/09 11:16:10 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+
+long int	ft_time(t_philo *p)
+{
+	struct timeval	end;
+	long int		elapsed_ms;
+
+	gettimeofday(&end, NULL);
+	pthread_mutex_lock(p->time_lock);
+	elapsed_ms = (end.tv_usec - *p->itime) / 1000;
+	pthread_mutex_unlock(p->time_lock);
+	return (elapsed_ms);
+}
 
 void	*ft_start_routine(t_philo *p)
 {
@@ -20,29 +33,17 @@ void	*ft_start_routine(t_philo *p)
 	printf("%i joined the table\n", p->num);
 	while (wait == 1)
 	{
-		usleep(10000 * p->num);
+		usleep(10000);
 		pthread_mutex_lock(p->wait_lock);
 		if (*p->wait == 0)
 			wait = 0;
 		pthread_mutex_unlock(p->wait_lock);
 	}
-	pthread_mutex_lock(p->time_lock);
-	printf("%i philo itime = %li\n", p->num, *p->itime);
-	pthread_mutex_unlock(p->time_lock);
+	if (p->num == 2 || p->num == 4)
+		usleep(10000);
+	printf("%i philo elapsed time = %li ms\n", p->num, ft_time(p));
 
 	return(NULL);
-}
-
-long	ft_time(t_philo *p)
-{
-	struct timeval	end;
-	long			elapsed_usec;
-
-	gettimeofday(&end, NULL);
-	pthread_mutex_lock(p->time_lock);
-	elapsed_usec = (end.tv_sec - *p->itime) * 1000000 + (end.tv_usec - *p->itime);
-	pthread_mutex_unlock(p->time_lock);
-	return (elapsed_usec);
 }
 
 void	ft_eat(t_philo *p)
