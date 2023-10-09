@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/09 08:37:35 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/09 09:04:48 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_philo
 {
 	pthread_t		tid;
 	int				*wait;
+	int				tt[4];
 	int				num;
 	int				state;
 	int				fork;
@@ -35,6 +36,8 @@ typedef struct s_philo
 	struct timeval	time;
 	struct s_philo	*n_philo;
 	struct s_philo	*p_philo;
+	pthread_mutex_t	*wait_lock;
+	pthread_mutex_t	fork_lock;
 }	t_philo;
 
 typedef struct s_var

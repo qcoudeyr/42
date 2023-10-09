@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/09 08:37:56 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/09 09:05:39 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,13 @@ void	init_philo(t_var *var)
 		if (i == 1)
 			var->f_philo = var->p;
 		var->p->n_philo = NULL;
+		var->p->tt[0] = var->tt[0];
+		var->p->tt[1] = var->tt[1];
+		var->p->tt[2] = var->tt[2];
+		var->p->tt[3] = var->tt[3];
+		pthread_mutex_init(&var->p->fork_lock, NULL);
 		var->p->num = i;
+		var->p->wait_lock = &var->lock;
 		pthread_mutex_lock(&var->lock);
 		var->p->wait = &var->wait;
 		pthread_mutex_unlock(&var->lock);
@@ -87,6 +93,7 @@ void	ft_free(t_var *var)
 			temp = philo->n_philo;
 		else
 			temp = NULL;
+		pthread_mutex_destroy(&philo->fork_lock);
 		pthread_join(philo->tid, NULL);
 		philo->num = 0;
 		philo->n_philo = NULL;
