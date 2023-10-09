@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/09 11:26:10 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/09 13:20:51 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,17 @@
 
 typedef struct s_philo
 {
+// ID du philosophe
 	pthread_t		tid;
 // Variable utilise
 	int				*wait;
 	int				tt[4];
 	int				num;
 	int				state;
-	int				last_eat;
 	int				fork;
-	long			*itime;
-// Pointeur sur les prochains philos
+	long			last_eat;
+	long			tof;
+	long			*start_time;
 	struct s_philo	*n_philo;
 	struct s_philo	*p_philo;
 // Mutex Lock
@@ -49,7 +50,7 @@ typedef struct s_var
 	int				wait;
 	int				n_philo;
 	int				tt[4];
-	long			time;
+	long			start_time;
 	t_philo			*f_philo;
 	t_philo			*p;
 	pthread_mutex_t	lock;
@@ -61,6 +62,12 @@ void		ft_free(t_var *var);
 void		init_philo(t_var *var);
 void		ft_readarg(int argc, char **argv, t_var *var);
 void		*ft_start_routine();
+void		ft_eat(t_philo *p);
+void		ft_sleep(t_philo *p);
+void		ft_thinks(t_philo *p);
+void		ft_dead(t_philo *p);
+long int	ft_time(t_philo *p);
+
 
 // Text colors
 # define COLOR_BLACK   "\033[30m"

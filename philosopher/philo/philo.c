@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/09 11:26:30 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/09 13:28:11 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,15 @@ t_2_sleep [n_times_each_philo_must_eat]\n");
 		exit(EXIT_FAILURE);
 	}
 }
-
-void	init_time(t_var *var)
+void	init_time(pthread_mutex_t	time_lock, long *time)
 {
 	struct timeval	start;
 
 	gettimeofday(&start, NULL);
 
-	pthread_mutex_lock(&var->time_lock);
-	var->time = start.tv_usec;
-	pthread_mutex_unlock(&var->time_lock);
+	pthread_mutex_lock(&time_lock);
+	*time = start.tv_usec;
+	pthread_mutex_unlock(&time_lock);
 }
 
 void	init_philo(t_var *var)
@@ -68,13 +67,14 @@ void	init_philo(t_var *var)
 		var->p->tt[1] = var->tt[1];
 		var->p->tt[2] = var->tt[2];
 		var->p->tt[3] = var->tt[3];
+		var->p->tof = 0;
 		var->p->last_eat = 0;
 		pthread_mutex_init(&var->p->fork_lock, NULL);
 		var->p->num = i;
 		var->p->wait_lock = &var->lock;
 		var->p->time_lock = &var->time_lock;
 		pthread_mutex_lock(&var->lock);
-		var->p->itime = &var->time;
+		var->p->start_time = &var->start_time;
 		pthread_mutex_unlock(&var->lock);
 		pthread_mutex_lock(&var->lock);
 		var->p->wait = &var->wait;
@@ -91,8 +91,8 @@ void	init_philo(t_var *var)
 	}
 	pthread_mutex_lock(&var->lock);
 	var->wait = 0;
+	init_time(var->time_lock, &var->start_time);
 	pthread_mutex_unlock(&var->lock);
-	init_time(var);
 }
 
 void	ft_free(t_var *var)
@@ -133,6 +133,7 @@ int	main(int argc, char **argv)
 	var->n_philo = 0;
 	var->p = NULL;
 	var->wait = 1;
+	var->start_time = 0;
 	pthread_mutex_init(&var->lock, NULL);
 	pthread_mutex_init(&var->time_lock, NULL);
 	ft_readarg(argc, argv, var);
