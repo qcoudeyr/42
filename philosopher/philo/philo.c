@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/09 13:28:11 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/09 16:01:49 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,12 @@ void	init_philo(t_var *var)
 		var->p->tt[3] = var->tt[3];
 		var->p->tof = 0;
 		var->p->last_eat = 0;
+		var->p->is_dead = &var->dead;
 		pthread_mutex_init(&var->p->fork_lock, NULL);
 		var->p->num = i;
 		var->p->wait_lock = &var->lock;
 		var->p->time_lock = &var->time_lock;
+		var->p->dead_lock = &var->dead_lock;
 		pthread_mutex_lock(&var->lock);
 		var->p->start_time = &var->start_time;
 		pthread_mutex_unlock(&var->lock);
@@ -93,6 +95,14 @@ void	init_philo(t_var *var)
 	var->wait = 0;
 	init_time(var->time_lock, &var->start_time);
 	pthread_mutex_unlock(&var->lock);
+	pthread_mutex_lock(&var->dead_lock);
+	while (var->dead != 1)
+	{
+		pthread_mutex_unlock(&var->dead_lock);
+		usleep(1000000);
+		pthread_mutex_lock(&var->dead_lock);
+	}
+	pthread_mutex_unlock(&var->dead_lock);
 }
 
 void	ft_free(t_var *var)
@@ -121,6 +131,7 @@ void	ft_free(t_var *var)
 	}
 	pthread_mutex_destroy(&var->lock);
 	pthread_mutex_destroy(&var->time_lock);
+	pthread_mutex_destroy(&var->dead_lock);
 	free(var);
 	var = NULL;
 }
@@ -134,8 +145,10 @@ int	main(int argc, char **argv)
 	var->p = NULL;
 	var->wait = 1;
 	var->start_time = 0;
+	var->dead = 0;
 	pthread_mutex_init(&var->lock, NULL);
 	pthread_mutex_init(&var->time_lock, NULL);
+	pthread_mutex_init(&var->dead_lock, NULL);
 	ft_readarg(argc, argv, var);
 	init_philo(var);
 	ft_free(var);

@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/09 13:20:51 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/09 16:01:24 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_philo
 	pthread_t		tid;
 // Variable utilise
 	int				*wait;
+	int				*is_dead;
 	int				tt[4];
 	int				num;
 	int				state;
@@ -40,6 +41,7 @@ typedef struct s_philo
 	struct s_philo	*n_philo;
 	struct s_philo	*p_philo;
 // Mutex Lock
+	pthread_mutex_t	*dead_lock;
 	pthread_mutex_t	*wait_lock;
 	pthread_mutex_t	*time_lock;
 	pthread_mutex_t	fork_lock;
@@ -49,12 +51,14 @@ typedef struct s_var
 {
 	int				wait;
 	int				n_philo;
+	int				dead;
 	int				tt[4];
 	long			start_time;
 	t_philo			*f_philo;
 	t_philo			*p;
 	pthread_mutex_t	lock;
 	pthread_mutex_t	time_lock;
+	pthread_mutex_t	dead_lock;
 }	t_var;
 
 long int	ft_atoi(const char *str);
