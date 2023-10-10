@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/09 16:01:24 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/09 17:36:30 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void		ft_free(t_var *var);
 void		init_philo(t_var *var);
 void		ft_readarg(int argc, char **argv, t_var *var);
 void		*ft_start_routine();
-void		ft_eat(t_philo *p);
+void		*ft_eat(t_philo *p);
 void		ft_sleep(t_philo *p);
 void		ft_thinks(t_philo *p);
 void		ft_dead(t_philo *p);

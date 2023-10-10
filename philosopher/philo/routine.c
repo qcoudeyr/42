@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/09 16:07:10 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/09 17:41:56 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	*ft_start_routine(t_philo *p)
 			wait = 0;
 		pthread_mutex_unlock(p->wait_lock);
 	}
-
+	if (p->num % 2 == 0)
+		usleep(100);
 	while (p->state == ALIVE)
 	{
 		ft_eat(p);
@@ -55,34 +56,32 @@ void	*ft_start_routine(t_philo *p)
 	return(NULL);
 }
 
-void	ft_eat(t_philo *p)
+void	*ft_eat(t_philo *p)
 {
 	struct timeval	time;
 
 	gettimeofday(&time, NULL);
 	pthread_mutex_lock(&p->fork_lock);
 	pthread_mutex_lock(&p->n_philo->fork_lock);
-	printf("%li ms: %i has taken a fork", ft_time(p), p->num);
-	printf("%li ms: %i has taken a fork", ft_time(p), p->num);
+	printf("%li ms: %i has taken a fork\n", ft_time(p), p->num);
+	printf("%li ms: %i has taken a fork\n", ft_time(p), p->num);
 	usleep(p->tt[1] * 1000);
-	p->last_eat = time.tv_usec;
-	pthread_mutex_unlock(&p->fork_lock);
 	pthread_mutex_unlock(&p->n_philo->fork_lock);
+	pthread_mutex_unlock(&p->fork_lock);
 
+	p->last_eat = time.tv_usec;
+	return(NULL);
 }
 
 void	ft_sleep(t_philo *p)
 {
-	printf("%li ms: %i is sleeping", ft_time(p), p->num);
+	printf("%li ms: %i is sleeping\n", ft_time(p), p->num);
 	usleep(p->tt[2] * 1000);
-	p->last_eat += p->tt[2];
-	pthread_mutex_lock(&p->fork_lock);
-	pthread_mutex_lock(&p->n_philo->fork_lock);
 }
 
 void	ft_thinks(t_philo *p)
 {
-	printf("%li ms: %i is thinking", ft_time(p), p->num);
+	printf("%li ms: %i is thinking\n", ft_time(p), p->num);
 }
 
 void	ft_dead(t_philo *p)
@@ -99,7 +98,8 @@ void	ft_dead(t_philo *p)
 		*p->is_dead = 1;
 		pthread_mutex_unlock(p->dead_lock);
 		pthread_mutex_lock(p->time_lock);
-		printf("%lims %i died", ((end.tv_usec - *p->start_time) / 1000), p->num);
+		printf("%li ms: %i died\n", ((end.tv_usec - *p->start_time) / 1000), p->num);
 		pthread_mutex_unlock(p->time_lock);
+		exit(0);
 	}
 }
