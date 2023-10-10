@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/10 10:08:34 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/10 10:10:25 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	*ft_eat(t_philo *p)
 {
 	struct timeval	time;
 
-	gettimeofday(&time, NULL);
 	pthread_mutex_lock(&p->fork_lock);
 	pthread_mutex_lock(&p->n_philo->fork_lock);
 	printf(COLOR_YELLOW"%li ms: %i has taken a fork\n", ft_time(p), p->num);
@@ -69,7 +68,7 @@ void	*ft_eat(t_philo *p)
 	usleep(p->tt[1] * 1000);
 	pthread_mutex_unlock(&p->n_philo->fork_lock);
 	pthread_mutex_unlock(&p->fork_lock);
-
+	gettimeofday(&time, NULL);
 	p->last_eat = ((time.tv_sec % 100) * 1000) + (time.tv_usec / 1000);
 	return(NULL);
 }
