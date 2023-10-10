@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/10 10:15:56 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/10 11:15:33 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ void	init_philo(t_var *var)
 	}
 	pthread_mutex_lock(&var->lock);
 	var->wait = 0;
-	init_time(var->time_lock, &var->start_time);
 	pthread_mutex_unlock(&var->lock);
 	pthread_mutex_lock(&var->dead_lock);
 	while (var->dead != 1)
