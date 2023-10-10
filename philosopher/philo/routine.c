@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/10 08:45:53 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/10 09:21:34 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	*ft_start_routine(t_philo *p)
 		pthread_mutex_unlock(p->wait_lock);
 	}
 	if (p->num % 2 == 0)
-		usleep(100);
+		ft_sleep(p);
 	while (p->state == ALIVE)
 	{
 		ft_eat(p);
@@ -62,8 +62,9 @@ void	*ft_eat(t_philo *p)
 	gettimeofday(&time, NULL);
 	pthread_mutex_lock(&p->fork_lock);
 	pthread_mutex_lock(&p->n_philo->fork_lock);
-	printf("%li ms: %i has taken a fork\n", ft_time(p), p->num);
-	printf("%li ms: %i has taken a fork\n", ft_time(p), p->num);
+	printf(COLOR_YELLOW"%li ms: %i has taken a fork\n", ft_time(p), p->num);
+	printf(COLOR_YELLOW"%li ms: %i has taken a fork\n", ft_time(p), p->num);
+	printf(COLOR_GREEN"%li ms: %i has is eating\n", ft_time(p), p->num);
 	usleep(p->tt[1] * 1000);
 	pthread_mutex_unlock(&p->n_philo->fork_lock);
 	pthread_mutex_unlock(&p->fork_lock);
@@ -74,7 +75,7 @@ void	*ft_eat(t_philo *p)
 
 void	ft_sleep(t_philo *p)
 {
-	printf("%li ms: %i is sleeping\n", ft_time(p), p->num);
+	printf(COLOR_BLUE"%li ms: %i is sleeping\n", ft_time(p), p->num);
 	usleep(p->tt[2] * 1000);
 }
 
