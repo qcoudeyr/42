@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/10 10:15:49 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/10 10:24:25 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	*ft_start_routine(t_philo *p)
 			wait = 0;
 		pthread_mutex_unlock(p->wait_lock);
 	}
-	if (p->num % 2 == 0)
+	if (p->num % 2 == 1)
 		ft_sleep(p);
 	while (p->state == ALIVE)
 	{
@@ -65,7 +65,9 @@ void	*ft_eat(t_philo *p)
 	printf(COLOR_YELLOW"%li ms: %i has taken a fork\n", ft_time(p), p->num);
 	printf(COLOR_YELLOW"%li ms: %i has taken a fork\n", ft_time(p), p->num);
 	printf(COLOR_GREEN"%li ms: %i is eating\n", ft_time(p), p->num);
+	gettimeofday(&time, NULL);
 	usleep(p->tt[1] * 1000);
+	ft_dead(p);
 	pthread_mutex_unlock(&p->n_philo->fork_lock);
 	pthread_mutex_unlock(&p->fork_lock);
 	gettimeofday(&time, NULL);
