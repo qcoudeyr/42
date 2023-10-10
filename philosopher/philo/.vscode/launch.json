@@ -5,7 +5,7 @@
       "name": "Philo launch",
       "type": "cppdbg",
       "request": "launch",
-      "args": ["4","100","10","100"],
+      "args": ["4","100","10","10"],
       "stopAtEntry": false,
       "externalConsole": false,
       "cwd": "/home/qcoudeyr/Desktop/42/philosopher/philo",

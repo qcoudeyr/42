@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/09 16:01:49 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/10 09:38:30 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	init_time(pthread_mutex_t	time_lock, long *time)
 	gettimeofday(&start, NULL);
 
 	pthread_mutex_lock(&time_lock);
-	*time = start.tv_usec;
+	*time = start.tv_sec;
 	pthread_mutex_unlock(&time_lock);
 }
 

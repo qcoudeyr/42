@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/10 09:21:34 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/10 09:40:13 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ long int	ft_time(t_philo *p)
 
 	gettimeofday(&end, NULL);
 	pthread_mutex_lock(p->time_lock);
-	elapsed_ms = (end.tv_usec - *p->start_time) / 1000;
+	elapsed_ms = (end.tv_sec - *p->start_time) / 1000;
 	pthread_mutex_unlock(p->time_lock);
 	return (elapsed_ms);
 }
@@ -69,7 +69,7 @@ void	*ft_eat(t_philo *p)
 	pthread_mutex_unlock(&p->n_philo->fork_lock);
 	pthread_mutex_unlock(&p->fork_lock);
 
-	p->last_eat = time.tv_usec;
+	p->last_eat = time.tv_sec;
 	return(NULL);
 }
 
@@ -90,7 +90,7 @@ void	ft_dead(t_philo *p)
 	long int		elapsed_ms;
 
 	gettimeofday(&end, NULL);
-	elapsed_ms = (end.tv_usec - p->last_eat) / 1000;
+	elapsed_ms = (end.tv_sec - p->last_eat);
 	if (elapsed_ms >= p->tt[0])
 	{
 		p->state = DEAD;
@@ -98,7 +98,7 @@ void	ft_dead(t_philo *p)
 		*p->is_dead = 1;
 		pthread_mutex_unlock(p->dead_lock);
 		pthread_mutex_lock(p->time_lock);
-		printf(COLOR_RED"%li ms: %i died\n", ((end.tv_usec - *p->start_time) / 1000), p->num);
+		printf(COLOR_RED"%li ms: %i died\n", ((end.tv_sec - *p->start_time)), p->num);
 		pthread_mutex_unlock(p->time_lock);
 		exit(0);
 	}
