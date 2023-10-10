@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/09 17:41:56 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/10 08:45:53 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	*ft_start_routine(t_philo *p)
 	int				wait;
 
 	wait = 1;
-	printf("%i joined the table\n", p->num);
 	while (wait == 1)
 	{
 		usleep(10000);
@@ -98,7 +97,7 @@ void	ft_dead(t_philo *p)
 		*p->is_dead = 1;
 		pthread_mutex_unlock(p->dead_lock);
 		pthread_mutex_lock(p->time_lock);
-		printf("%li ms: %i died\n", ((end.tv_usec - *p->start_time) / 1000), p->num);
+		printf(COLOR_RED"%li ms: %i died\n", ((end.tv_usec - *p->start_time) / 1000), p->num);
 		pthread_mutex_unlock(p->time_lock);
 		exit(0);
 	}
