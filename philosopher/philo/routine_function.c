@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/12 14:33:02 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/12 17:26:35 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,34 @@ void	ft_eat_end(t_philo *p)
 	exit(1);
 }
 
+void	mutex_unlock_order(t_philo *p)
+{
+	if (p->num < p->n_philo->num)
+	{
+		pthread_mutex_unlock(&p->fork_lock);
+		pthread_mutex_unlock(&p->n_philo->fork_lock);
+	}
+	else
+	{
+		pthread_mutex_unlock(&p->n_philo->fork_lock);
+		pthread_mutex_unlock(&p->fork_lock);
+	}
+}
+
+void	mutex_lock_order(t_philo *p)
+{
+	if (p->num < p->n_philo->num)
+	{
+		pthread_mutex_lock(&p->fork_lock);
+		pthread_mutex_lock(&p->n_philo->fork_lock);
+	}
+	else
+	{
+		pthread_mutex_lock(&p->n_philo->fork_lock);
+		pthread_mutex_lock(&p->fork_lock);
+	}
+}
+
 void	*ft_eat(t_philo *p)
 {
 	struct timeval	time;
@@ -34,8 +62,7 @@ void	*ft_eat(t_philo *p)
 
 	dead_check(p);
 	ft_eat_dead(p);
-	pthread_mutex_lock(&p->fork_lock);
-	pthread_mutex_lock(&p->n_philo->fork_lock);
+	mutex_lock_order(p);
 	ft_dead(p);
 	gettimeofday(&time, NULL);
 	delay = ft_time(p);
@@ -47,8 +74,7 @@ void	*ft_eat(t_philo *p)
 	pthread_mutex_unlock(p->eat_lock);
 	printf(COLOR_GREEN"%li ms: %i is eating\n", delay, num);
 	ft_usleep(p, p->tt[1] * 1000);
-	pthread_mutex_unlock(&p->n_philo->fork_lock);
-	pthread_mutex_unlock(&p->fork_lock);
+	mutex_unlock_order(p);
 	p->n_eat++;
 	if (p->n_eat == p->tt[3] && p->tt[3] != 0)
 		ft_eat_end(p);
