@@ -3,7 +3,7 @@ CFLAGS = -Wall -Werror -Wextra -lpthread
 THREADFLAG = -fsanitize=thread
 
 HEADERS = philo.h
-SRCS = philo.c utils.c routine.c
+SRCS = philo.c utils.c routine.c routine_function.c init.c
 OBJS = $(SRCS:.c=.o)
 
 NAME = philo
@@ -28,7 +28,7 @@ debug_build: $(OBJS)
 	clear
 #	colour-valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1
 	colour-valgrind -s --tool=drd \
-	./debug 4 50 30 10
+	./debug 4 50 35 15
 clean:
 	rm -f $(OBJS) $(BOBJS)
 

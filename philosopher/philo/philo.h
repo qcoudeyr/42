@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/09 17:36:30 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/12 07:24:38 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,9 @@
 # define DEAD 1
 # define ALIVE 0
 
-
 typedef struct s_philo
 {
-// ID du philosophe
 	pthread_t		tid;
-// Variable utilise
 	int				*wait;
 	int				*is_dead;
 	int				tt[4];
@@ -40,7 +37,6 @@ typedef struct s_philo
 	long			*start_time;
 	struct s_philo	*n_philo;
 	struct s_philo	*p_philo;
-// Mutex Lock
 	pthread_mutex_t	*dead_lock;
 	pthread_mutex_t	*wait_lock;
 	pthread_mutex_t	*time_lock;
@@ -65,13 +61,17 @@ long int	ft_atoi(const char *str);
 void		ft_free(t_var *var);
 void		init_philo(t_var *var);
 void		ft_readarg(int argc, char **argv, t_var *var);
-void		*ft_start_routine();
+void		*ft_start_routine(void *t);
 void		*ft_eat(t_philo *p);
 void		ft_sleep(t_philo *p);
 void		ft_thinks(t_philo *p);
 void		ft_dead(t_philo *p);
 long int	ft_time(t_philo *p);
-
+void		ft_usleep(t_philo *p, long sleep);
+void		mutex_free(t_var *var);
+void		wait_dead(t_var *var);
+void		var_philo_init(t_var *var, int i, void *p_philo);
+void		init_time(pthread_mutex_t	time_lock, long *time);
 
 // Text colors
 # define COLOR_BLACK   "\033[30m"
