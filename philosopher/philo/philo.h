@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/12 09:33:02 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/12 11:38:57 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,9 @@ void		ft_usleep(t_philo *p, long sleep);
 void		mutex_free(t_var *var);
 void		wait_dead(t_var *var);
 void		var_philo_init(t_var *var, int i, void *p_philo);
-void		init_time(pthread_mutex_t	time_lock, long *time);
+void		time_init(t_philo *p);
+void		ft_eat_dead(t_philo *p);
+void		dead_check(t_philo *p);
 
 // Text colors
 # define COLOR_BLACK   "\033[30m"

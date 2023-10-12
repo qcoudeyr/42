@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/12 10:16:44 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/12 11:39:12 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,11 @@ void	ft_usleep(t_philo *p, long sleep)
 	struct timeval	time;
 	long			total;
 
-	pthread_mutex_lock(p->dead_lock);
-	if (*p->is_dead == 1)
-	{
-		pthread_mutex_unlock(p->dead_lock);
-		exit(0);
-	}
-	pthread_mutex_unlock(p->dead_lock);
+	dead_check(p);
 	gettimeofday(&time, NULL);
-	total = ((((time.tv_sec % 1000) * 1000) + (time.tv_usec / 1000)) + (sleep / 1000));
-	printf("\t%i = %lims | last_eat = %li || total = %li\n", p->num, (total - p->last_eat), p->last_eat, total);
+	total = ((((time.tv_sec % 1000) * 1000) + (time.tv_usec / 1000)) \
+	+ (sleep / 1000));
+	pthread_mutex_lock(p->eat_lock);
 	if ((total - p->last_eat) >= p->tt[0])
 	{
 		p->state = DEAD;
@@ -36,9 +31,11 @@ void	ft_usleep(t_philo *p, long sleep)
 		pthread_mutex_lock(p->time_lock);
 		printf(COLOR_RED"%li ms: %i died\n", ((p->last_eat + p->tt[0]) \
 		- *p->start_time), p->num);
+		pthread_mutex_unlock(p->eat_lock);
 		pthread_mutex_unlock(p->time_lock);
 		exit(0);
 	}
+	pthread_mutex_unlock(p->eat_lock);
 	usleep(sleep);
 }
 
@@ -47,13 +44,7 @@ long int	ft_time(t_philo *p)
 	struct timeval	end;
 	long int		elapsed_ms;
 
-	pthread_mutex_lock(p->dead_lock);
-	if (*p->is_dead == 1)
-	{
-		pthread_mutex_unlock(p->dead_lock);
-		exit(0);
-	}
-	pthread_mutex_unlock(p->dead_lock);
+	dead_check(p);
 	gettimeofday(&end, NULL);
 	pthread_mutex_lock(p->time_lock);
 	if (*p->start_time == 0)
@@ -69,9 +60,9 @@ void	init_eat(t_philo *p)
 	struct timeval	end;
 
 	gettimeofday(&end, NULL);
-	pthread_mutex_lock(p->time_lock);
+	pthread_mutex_lock(p->eat_lock);
 	p->last_eat = ((end.tv_sec % 1000) * 1000) + (end.tv_usec / 1000);
-	pthread_mutex_unlock(p->time_lock);
+	pthread_mutex_unlock(p->eat_lock);
 }
 
 void	start_wait(t_philo *p, int wait)
@@ -92,6 +83,7 @@ void	*ft_start_routine(void *t)
 
 	p = t;
 	start_wait(p, 1);
+	time_init(p);
 	init_eat(p);
 	if (p->num % 2 == 0)
 		ft_sleep(p);
@@ -101,7 +93,6 @@ void	*ft_start_routine(void *t)
 		ft_eat(p);
 		ft_dead(p);
 		ft_sleep(p);
-		ft_dead(p);
 		ft_thinks(p);
 		ft_dead(p);
 	}

@@ -7,7 +7,8 @@
 	"settings": {
 		"files.associations": {
 			"pthread.h": "c",
-			"atomic": "c"
+			"atomic": "c",
+			"random": "c"
 		}
 	}
 }
