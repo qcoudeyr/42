@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/12 07:24:38 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/12 09:33:02 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct s_philo
 	int				*wait;
 	int				*is_dead;
 	int				tt[4];
+	int				n_eat;
+	int				*n_eat_f;
 	int				num;
 	int				state;
 	int				fork;
@@ -37,6 +39,7 @@ typedef struct s_philo
 	long			*start_time;
 	struct s_philo	*n_philo;
 	struct s_philo	*p_philo;
+	pthread_mutex_t	*eat_lock;
 	pthread_mutex_t	*dead_lock;
 	pthread_mutex_t	*wait_lock;
 	pthread_mutex_t	*time_lock;
@@ -48,11 +51,13 @@ typedef struct s_var
 	int				wait;
 	int				n_philo;
 	int				dead;
+	int				n_eat_f;
 	int				tt[4];
 	long			start_time;
 	t_philo			*f_philo;
 	t_philo			*p;
 	pthread_mutex_t	lock;
+	pthread_mutex_t	eat_lock;
 	pthread_mutex_t	time_lock;
 	pthread_mutex_t	dead_lock;
 }	t_var;

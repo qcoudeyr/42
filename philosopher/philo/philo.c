@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/12 07:19:46 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/12 09:30:29 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,11 @@ void	wait_dead(t_var *var)
 	while (var->dead != 1)
 	{
 		pthread_mutex_unlock(&var->dead_lock);
-		usleep(1000000);
+		pthread_mutex_lock(&var->eat_lock);
+		if (var->n_eat_f == var->n_philo)
+			var->n_eat_f = -1;
+		pthread_mutex_unlock(&var->eat_lock);
+		usleep(100000);
 		pthread_mutex_lock(&var->dead_lock);
 	}
 	pthread_mutex_unlock(&var->dead_lock);
@@ -52,6 +56,7 @@ void	wait_dead(t_var *var)
 void	mutex_free(t_var *var)
 {
 	pthread_mutex_destroy(&var->lock);
+	pthread_mutex_destroy(&var->eat_lock);
 	pthread_mutex_destroy(&var->time_lock);
 	pthread_mutex_destroy(&var->dead_lock);
 }
@@ -94,8 +99,10 @@ int	main(int argc, char **argv)
 	var->p = NULL;
 	var->wait = 1;
 	var->start_time = 0;
+	var->n_eat_f = 0;
 	var->dead = 0;
 	pthread_mutex_init(&var->lock, NULL);
+	pthread_mutex_init(&var->eat_lock, NULL);
 	pthread_mutex_init(&var->time_lock, NULL);
 	pthread_mutex_init(&var->dead_lock, NULL);
 	ft_readarg(argc, argv, var);

@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:18:56 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/12 07:19:35 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/12 09:25:10 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	var_philo_init(t_var *var, int i, void *p_philo)
 	var->p->tt[3] = var->tt[3];
 	var->p->tof = 0;
 	var->p->last_eat = 0;
+	var->p->n_eat = 0;
 	var->p->is_dead = &var->dead;
 	pthread_mutex_init(&var->p->fork_lock, NULL);
 	var->p->num = i;
@@ -65,7 +66,11 @@ void	init_philo(t_var *var)
 		if (i == 1)
 			var->f_philo = var->p;
 		var_philo_init(var, i, p_philo);
-		if (i == var->n_philo)
+		var->p->eat_lock = &var->eat_lock;
+		pthread_mutex_lock(&var->eat_lock);
+		var->p->n_eat_f = &var->n_eat_f;
+		pthread_mutex_unlock(&var->eat_lock);
+		if (i == var->n_philo && var->p != var->f_philo)
 			var->p->n_philo = var->f_philo;
 		p_philo = var->p;
 		pthread_create(&var->p->tid, NULL, ft_start_routine, var->p);

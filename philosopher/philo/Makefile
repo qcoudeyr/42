@@ -11,10 +11,10 @@ NAME = philo
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(THREADFLAG) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.c $(HEADERS)
-	$(CC) $(CFLAGS) $(THREADFLAG) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 norme:
 	norminette $(SRCS) $(HEADERS)
@@ -28,7 +28,7 @@ debug_build: $(OBJS)
 	clear
 #	colour-valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1
 	colour-valgrind -s --tool=drd \
-	./debug 4 50 35 15
+	./debug 5 800 200 200
 clean:
 	rm -f $(OBJS) $(BOBJS)
 

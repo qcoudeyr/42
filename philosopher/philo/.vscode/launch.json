@@ -6,10 +6,10 @@
       "type": "cppdbg",
       "request": "launch",
       "args": [
-        "4",
-        "100",
-        "10",
-        "10"
+        "1",
+        "800",
+        "200",
+        "200"
       ],
       "stopAtEntry": false,
       "externalConsole": false,

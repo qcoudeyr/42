@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/12 07:17:45 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/12 09:37:54 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,20 @@ void	*ft_eat(t_philo *p)
 	ft_usleep(p, p->tt[1] * 1000);
 	pthread_mutex_unlock(&p->n_philo->fork_lock);
 	pthread_mutex_unlock(&p->fork_lock);
+	p->n_eat++;
+	if (p->n_eat == p->tt[3] && p->tt[3] != 0)
+	{
+		printf(COLOR_RED"%li ms: %i has eaten %i time\n", ft_time(p), p->num, p->n_eat);
+		pthread_mutex_lock(p->eat_lock);
+		*p->n_eat_f += 1;
+		while (*p->n_eat_f != -1)
+		{
+			pthread_mutex_unlock(p->eat_lock);
+			usleep(1000000);
+			pthread_mutex_lock(p->eat_lock);
+		}
+		exit(1);
+	}
 	return (NULL);
 }
 
@@ -37,8 +51,10 @@ void	ft_sleep(t_philo *p)
 {
 	pthread_mutex_lock(p->dead_lock);
 	if (*p->is_dead == 1)
+	{
+		pthread_mutex_unlock(p->dead_lock);
 		exit(0);
-	pthread_mutex_unlock(p->dead_lock);
+	}
 	printf(COLOR_BLUE"%li ms: %i is sleeping\n", ft_time(p), p->num);
 	ft_usleep(p, p->tt[2] * 1000);
 }
@@ -47,7 +63,10 @@ void	ft_thinks(t_philo *p)
 {
 	pthread_mutex_lock(p->dead_lock);
 	if (*p->is_dead == 1)
+	{
+		pthread_mutex_unlock(p->dead_lock);
 		exit(0);
+	}
 	pthread_mutex_unlock(p->dead_lock);
 	printf(COLOR_BLACK"%li ms: %i is thinking\n", ft_time(p), p->num);
 }
@@ -60,7 +79,7 @@ void	ft_dead(t_philo *p)
 	gettimeofday(&end, NULL);
 	elapsed_ms = ((((end.tv_sec % 1000) * 1000) + (end.tv_usec / 1000)) \
 	- p->last_eat);
-	if (elapsed_ms >= p->tt[0])
+	if (elapsed_ms >= p->tt[0] || (p->n_philo == NULL && p->num == 1))
 	{
 		p->state = DEAD;
 		pthread_mutex_lock(p->dead_lock);
