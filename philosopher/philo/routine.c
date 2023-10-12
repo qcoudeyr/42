@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/12 06:19:48 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/12 06:38:32 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,12 +107,11 @@ void	*ft_eat(t_philo *p)
 	if (*p->is_dead == 1)
 		exit(0);
 	pthread_mutex_unlock(p->dead_lock);
-	usleep(p->num * 100);
-	pthread_mutex_lock(&p->fork_lock);
-	pthread_mutex_lock(&p->n_philo->fork_lock);
 	printf(COLOR_YELLOW"%li ms: %i has taken a fork\n", ft_time(p), p->num);
 	printf(COLOR_YELLOW"%li ms: %i has taken a fork\n", ft_time(p), p->num);
 	printf(COLOR_GREEN"%li ms: %i is eating\n", ft_time(p), p->num);
+	pthread_mutex_lock(&p->fork_lock);
+	pthread_mutex_lock(&p->n_philo->fork_lock);
 	gettimeofday(&time, NULL);
 	p->last_eat = ((time.tv_sec % 1000) * 1000) + (time.tv_usec / 1000);
 	ft_usleep(p, p->tt[1] * 1000);
