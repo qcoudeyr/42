@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/10 12:01:51 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/12 06:19:48 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void	*ft_eat(t_philo *p)
 	if (*p->is_dead == 1)
 		exit(0);
 	pthread_mutex_unlock(p->dead_lock);
+	usleep(p->num * 100);
 	pthread_mutex_lock(&p->fork_lock);
 	pthread_mutex_lock(&p->n_philo->fork_lock);
 	printf(COLOR_YELLOW"%li ms: %i has taken a fork\n", ft_time(p), p->num);
