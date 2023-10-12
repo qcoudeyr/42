@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/12 09:41:55 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/12 10:01:28 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	*ft_start_routine(void *t)
 	p = t;
 	start_wait(p, 1);
 	init_eat(p);
-	if (p->num % 2 == 1)
+	if (p->num % 2 == 0)
 		ft_sleep(p);
 	while (p->state == ALIVE)
 	{
