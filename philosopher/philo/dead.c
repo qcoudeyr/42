@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 11:04:44 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/12 11:54:27 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/12 17:41:20 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_eat_dead(t_philo *p)
 	pthread_mutex_unlock(p->eat_lock);
 }
 
-void	ft_dead(t_philo *p)
+void	ft_dead(t_philo *p, int routine_n)
 {
 	struct timeval	end;
 	long int		elapsed_ms;
@@ -66,6 +66,8 @@ void	ft_dead(t_philo *p)
 		printf(COLOR_RED"%li ms: %i died\n", ((((end.tv_sec % 1000) * 1000) \
 	+ (end.tv_usec / 1000)) - *p->start_time), p->num);
 		pthread_mutex_unlock(p->time_lock);
+		if (routine_n == 1)
+			mutex_unlock_order(p);
 		exit(0);
 	}
 }

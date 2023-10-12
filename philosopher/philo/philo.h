@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/12 11:38:57 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/12 17:50:51 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,14 @@ void		ft_free(t_var *var);
 void		init_philo(t_var *var);
 void		ft_readarg(int argc, char **argv, t_var *var);
 void		*ft_start_routine(void *t);
-void		*ft_eat(t_philo *p);
+void		ft_eat(t_philo *p);
 void		ft_sleep(t_philo *p);
 void		ft_thinks(t_philo *p);
-void		ft_dead(t_philo *p);
+void		ft_dead(t_philo *p, int routine_n);
 long int	ft_time(t_philo *p);
-void		ft_usleep(t_philo *p, long sleep);
+void		ft_usleep(t_philo *p, long sleep, int routine_n);
 void		mutex_free(t_var *var);
+void		mutex_unlock_order(t_philo *p);
 void		wait_dead(t_var *var);
 void		var_philo_init(t_var *var, int i, void *p_philo);
 void		time_init(t_philo *p);

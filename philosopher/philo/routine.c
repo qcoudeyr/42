@@ -6,13 +6,13 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/12 11:48:29 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/12 17:47:22 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_usleep(t_philo *p, long sleep)
+void	ft_usleep(t_philo *p, long sleep, int routine_n)
 {
 	struct timeval	time;
 	long			total;
@@ -33,10 +33,14 @@ void	ft_usleep(t_philo *p, long sleep)
 		- *p->start_time), p->num);
 		pthread_mutex_unlock(p->eat_lock);
 		pthread_mutex_unlock(p->time_lock);
-		exit(0);
+		if (routine_n == 1)
+			mutex_unlock_order(p);
+		return;
 	}
 	pthread_mutex_unlock(p->eat_lock);
 	usleep(sleep);
+	if (routine_n == 1)
+		mutex_unlock_order(p);
 }
 
 long int	ft_time(t_philo *p)
@@ -89,12 +93,12 @@ void	*ft_start_routine(void *t)
 		ft_sleep(p);
 	while (p->state == ALIVE)
 	{
-		ft_dead(p);
+		ft_dead(p, 0);
 		ft_eat(p);
-		ft_dead(p);
+		ft_dead(p, 0);
 		ft_sleep(p);
 		ft_thinks(p);
-		ft_dead(p);
+		ft_dead(p, 0);
 	}
 	return (NULL);
 }

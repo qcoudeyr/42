@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/12 14:32:31 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/12 17:53:07 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	wait_dead(t_var *var)
 		if (var->n_eat_f == var->n_philo)
 			var->n_eat_f = -1;
 		pthread_mutex_unlock(&var->eat_lock);
-		usleep(100000);
+		usleep(1000);
 		pthread_mutex_lock(&var->dead_lock);
 	}
 	pthread_mutex_unlock(&var->dead_lock);
