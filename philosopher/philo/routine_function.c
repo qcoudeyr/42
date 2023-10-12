@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/12 10:09:06 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/12 10:20:00 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,7 @@ void	ft_dead(t_philo *p)
 	long int		elapsed_ms;
 
 	gettimeofday(&end, NULL);
-	elapsed_ms = ((((end.tv_sec % 1000) * 1000) + (end.tv_usec / 1000)) \
-	- p->last_eat);
+	elapsed_ms = ((((end.tv_sec % 1000) * 1000) + (end.tv_usec / 1000)) - p->last_eat);
 	if (elapsed_ms >= p->tt[0] || (p->n_philo == NULL && p->num == 1))
 	{
 		p->state = DEAD;
