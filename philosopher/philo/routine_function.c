@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/12 11:54:37 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/12 14:33:02 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	*ft_eat(t_philo *p)
 	ft_eat_dead(p);
 	pthread_mutex_lock(&p->fork_lock);
 	pthread_mutex_lock(&p->n_philo->fork_lock);
+	ft_dead(p);
 	gettimeofday(&time, NULL);
 	delay = ft_time(p);
 	num = p->num;
