@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/12 17:47:22 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/12 18:03:05 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_usleep(t_philo *p, long sleep, int routine_n)
 		pthread_mutex_unlock(p->time_lock);
 		if (routine_n == 1)
 			mutex_unlock_order(p);
-		return;
+		exit(1);
 	}
 	pthread_mutex_unlock(p->eat_lock);
 	usleep(sleep);

@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/12 17:57:03 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/12 18:00:43 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,14 @@ void	mutex_lock_order(t_philo *p)
 {
 	if (p->num < p->n_philo->num)
 	{
-		pthread_mutex_lock(&p->fork_lock);
 		pthread_mutex_lock(&p->n_philo->fork_lock);
+		pthread_mutex_lock(&p->fork_lock);
+
 	}
 	else
 	{
-		pthread_mutex_lock(&p->n_philo->fork_lock);
 		pthread_mutex_lock(&p->fork_lock);
+		pthread_mutex_lock(&p->n_philo->fork_lock);
 	}
 }
 
