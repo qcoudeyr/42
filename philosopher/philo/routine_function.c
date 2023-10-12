@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/12 11:42:21 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/12 11:54:37 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ void	*ft_eat(t_philo *p)
 	ft_eat_dead(p);
 	pthread_mutex_lock(&p->fork_lock);
 	pthread_mutex_lock(&p->n_philo->fork_lock);
+	gettimeofday(&time, NULL);
 	delay = ft_time(p);
 	num = p->num;
 	printf(COLOR_YELLOW"%li ms: %i has taken a fork\n%li ms: \
 %i has taken a fork\n", delay, num, delay, num);
-	gettimeofday(&time, NULL);
 	pthread_mutex_lock(p->eat_lock);
 	p->last_eat = ((time.tv_sec % 1000) * 1000) + (time.tv_usec / 1000);
 	pthread_mutex_unlock(p->eat_lock);
-	printf(COLOR_GREEN"%li ms: %i is eating\n", ft_time(p), p->num);
+	printf(COLOR_GREEN"%li ms: %i is eating\n", delay, num);
 	ft_usleep(p, p->tt[1] * 1000);
 	pthread_mutex_unlock(&p->n_philo->fork_lock);
 	pthread_mutex_unlock(&p->fork_lock);
@@ -56,13 +56,23 @@ void	*ft_eat(t_philo *p)
 
 void	ft_sleep(t_philo *p)
 {
+	long int	delay;
+	int			num;
+
 	dead_check(p);
-	printf(COLOR_BLUE"%li ms: %i is sleeping\n", ft_time(p), p->num);
+	delay = ft_time(p);
+	num = p->num;
+	printf(COLOR_BLUE"%li ms: %i is sleeping\n", delay, num);
 	ft_usleep(p, p->tt[2] * 1000);
 }
 
 void	ft_thinks(t_philo *p)
 {
+	long int	delay;
+	int			num;
+
 	dead_check(p);
-	printf(COLOR_BLACK"%li ms: %i is thinking\n", ft_time(p), p->num);
+	delay = ft_time(p);
+	num = p->num;
+	printf(COLOR_BLACK"%li ms: %i is thinking\n", delay, num);
 }
