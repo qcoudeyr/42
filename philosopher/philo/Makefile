@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -lpthread
+CFLAGS = -Wall -Werror -Wextra -pthread
 THREADFLAG = -fsanitize=thread
 
 HEADERS = philo.h
@@ -27,8 +27,8 @@ debug_build: $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o debug
 	clear
 #	colour-valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1
-	colour-valgrind -s --tool=drd \
-	./debug 5 800 200 200
+	colour-valgrind -s --tool=helgrind \
+	./debug 5 800 200 200 5
 clean:
 	rm -f $(OBJS) $(BOBJS)
 
