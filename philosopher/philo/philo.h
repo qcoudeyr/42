@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/13 17:31:31 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/13 20:35:15 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_philo
 {
 	pthread_t		tid;
 	int				*wait;
+	int				tt_ph;
 	int				*is_dead;
 	int				tt[4];
 	int				n_eat;
@@ -93,6 +94,8 @@ int			dead_check(t_philo *p, int routine_n);
 void		print_time(t_var *var, char *str);
 void		m_printf(char *str, long delay, int num, t_philo *p);
 int			ft_end(t_philo *p);
+void		fork_handle(t_philo *p);
+
 
 // Text colors
 # define COLOR_BLACK   "\033[30m"
