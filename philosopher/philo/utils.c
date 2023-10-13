@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:30:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/13 17:09:09 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/13 17:20:23 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@ int	ft_end(t_philo *p)
 {
 	pthread_mutex_lock(p->end_lock);
 	*p->n_end_f += 1;
-	while (*p->n_end_f < 1)
+	while (*p->n_end_f > 0)
 	{
 		pthread_mutex_unlock(p->end_lock);
 		usleep(10000);
 		pthread_mutex_lock(p->end_lock);
 	}
 	pthread_mutex_unlock(p->end_lock);
+	mutex_unlock_order(p);
 	return (-1);
 }
 

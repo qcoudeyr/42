@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:18:56 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/13 12:13:58 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/13 17:15:51 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	var_mutex_init(t_var *var)
 	var->p->time_lock = &var->time_lock;
 	var->p->dead_lock = &var->dead_lock;
 	pthread_mutex_lock(&var->end_lock);
-		var->p->n_end_f = &var->n_end_f;
+	var->p->n_end_f = &var->n_end_f;
 	pthread_mutex_unlock(&var->end_lock);
 	pthread_mutex_lock(&var->lock);
 	var->p->start_time = &var->start_time;
