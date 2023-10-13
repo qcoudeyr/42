@@ -6,19 +6,17 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/13 08:20:42 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/13 09:07:14 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_usleep(t_philo *p, long tts, int routine_n)
+void	ft_usleep(t_philo *p, long sleep, int routine_n)
 {
 	struct timeval	time;
 	long			total;
-	long			sleep;
 
-	sleep = tts;
 	dead_check(p, routine_n);
 	gettimeofday(&time, NULL);
 	total = ((((time.tv_sec % 1000) * 1000) + (time.tv_usec / 1000)) \
@@ -38,13 +36,13 @@ void	ft_usleep(t_philo *p, long tts, int routine_n)
 		if (routine_n == 1)
 			mutex_unlock_order(p);
 		usleep(sleep);
-		printf("\tphilo %i:%i|%i\n", p->num, p->f_lock, p->nf_lock);
-		exit(1);
+		return (-1);
 	}
 	pthread_mutex_unlock(p->eat_lock);
 	usleep(sleep);
 	if (routine_n == 1)
 		mutex_unlock_order(p);
+	return (0);
 }
 
 long int	ft_time(t_philo *p,  int routine_n)
@@ -102,12 +100,15 @@ void	*ft_start_routine(void *t)
 		}
 	while (p->state == ALIVE)
 	{
-		ft_dead(p, 0);
+		if (ft_dead(p, 0) == -1)
+			break;
 		ft_eat(p);
-		ft_dead(p, 0);
+		if (ft_dead(p, 0) == -1)
+			break;
 		ft_sleep(p);
 		ft_thinks(p);
-		ft_dead(p, 0);
+		if (ft_dead(p, 0) == -1)
+			break;
 	}
 	return (NULL);
 }
