@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:18:56 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/13 08:49:22 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/13 12:13:58 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,13 @@ void	var_mutex_init(t_var *var)
 {
 	pthread_mutex_init(&var->p->fork_lock, NULL);
 	var->p->wait_lock = &var->lock;
+	var->p->end_lock = &var->end_lock;
+	var->p->print_lock = &var->print_lock;
 	var->p->time_lock = &var->time_lock;
 	var->p->dead_lock = &var->dead_lock;
+	pthread_mutex_lock(&var->end_lock);
+		var->p->n_end_f = &var->n_end_f;
+	pthread_mutex_unlock(&var->end_lock);
 	pthread_mutex_lock(&var->lock);
 	var->p->start_time = &var->start_time;
 	pthread_mutex_unlock(&var->lock);
@@ -87,5 +92,4 @@ void	init_philo(t_var *var)
 	var->wait = 0;
 	pthread_mutex_unlock(&var->lock);
 	wait_dead(var);
-	print_time(var, "init_philo");
 }

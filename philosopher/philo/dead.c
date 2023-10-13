@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 11:04:44 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/13 08:55:02 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/13 12:46:20 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int	dead_check(t_philo *p, int routine_n)
 		pthread_mutex_unlock(p->dead_lock);
 		if (routine_n == 1)
 			mutex_unlock_order(p);
-		usleep(100000);
-		printf("\tphilo %i:%i|%i\n", p->num, p->f_lock, p->nf_lock);
 		return(-1);
 	}
 	pthread_mutex_unlock(p->dead_lock);
@@ -35,19 +33,20 @@ int	ft_eat_dead(t_philo *p)
 	pthread_mutex_lock(p->eat_lock);
 	if (((p->tt[1] + p->n_philo->last_eat) > p->last_eat + p->tt[0]))
 	{
-		usleep(1000);
+		usleep(((p->tt[1] + p->n_philo->last_eat) - (p->last_eat + p->tt[0])) * 1000);
 		p->state = DEAD;
 		pthread_mutex_lock(p->dead_lock);
-		*p->is_dead = 1;
+		if (*p->is_dead == 0)
+			*p->is_dead = 1;
+		else
+			return (pthread_mutex_unlock(p->dead_lock) - 1);
 		pthread_mutex_unlock(p->dead_lock);
 		pthread_mutex_lock(p->time_lock);
 		gettimeofday(&end, NULL);
-		printf(COLOR_RED"%li ms: %i died\n", ((p->last_eat + p->tt[0]) \
-		- *p->start_time), p->num);
+		m_printf(COLOR_RED"%li ms: %i died 2\n", ((p->last_eat + p->tt[0]) \
+		- *p->start_time), p->num, p);
 		pthread_mutex_unlock(p->eat_lock);
 		pthread_mutex_unlock(p->time_lock);
-		usleep(100000);
-		printf("\tphilo %i:%i|%i\n", p->num, p->f_lock, p->nf_lock);
 		return (-1);
 	}
 	pthread_mutex_unlock(p->eat_lock);
@@ -68,16 +67,17 @@ int	ft_dead(t_philo *p, int routine_n)
 	{
 		p->state = DEAD;
 		pthread_mutex_lock(p->dead_lock);
-		*p->is_dead = 1;
+		if (*p->is_dead == 0)
+			*p->is_dead = 1;
+		else
+			return (pthread_mutex_unlock(p->dead_lock) - 1);
 		pthread_mutex_unlock(p->dead_lock);
 		pthread_mutex_lock(p->time_lock);
-		printf(COLOR_RED"%li ms: %i died\n", ((((end.tv_sec % 1000) * 1000) \
-	+ (end.tv_usec / 1000)) - *p->start_time), p->num);
+		m_printf(COLOR_RED"%li ms: %i died 1\n", ((((end.tv_sec % 1000) * 1000) \
+	+ (end.tv_usec / 1000)) - *p->start_time), p->num, p);
 		pthread_mutex_unlock(p->time_lock);
 		if (routine_n == 1)
 			mutex_unlock_order(p);
-		usleep(100000);
-		printf("\tphilo %i:%i|%i\n", p->num, p->f_lock, p->nf_lock);
 		return (-1);
 	}
 	return (0);

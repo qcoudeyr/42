@@ -6,11 +6,32 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:30:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/02 11:32:16 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/13 12:30:21 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	ft_end(t_philo *p)
+{
+	pthread_mutex_lock(p->end_lock);
+	*p->n_end_f += 1;
+	while (*p->n_end_f < 1)
+	{
+		pthread_mutex_unlock(p->end_lock);
+		usleep(1000000);
+		pthread_mutex_lock(p->end_lock);
+	}
+	pthread_mutex_unlock(p->end_lock);
+	return (-1);
+}
+
+void	m_printf(char *str, long delay, int num, t_philo *p)
+{
+	pthread_mutex_lock(p->print_lock);
+	printf(str, delay, num);
+	pthread_mutex_unlock(p->print_lock);
+}
 
 static int	ft_isspace(const char c)
 {

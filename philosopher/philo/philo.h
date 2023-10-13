@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/13 09:06:55 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/13 12:14:30 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_philo
 	int				tt[4];
 	int				n_eat;
 	int				*n_eat_f;
+	int				*n_end_f;
 	int				num;
 	int				state;
 	int				fork;
@@ -45,6 +46,8 @@ typedef struct s_philo
 	pthread_mutex_t	*dead_lock;
 	pthread_mutex_t	*wait_lock;
 	pthread_mutex_t	*time_lock;
+	pthread_mutex_t	*print_lock;
+	pthread_mutex_t	*end_lock;
 	pthread_mutex_t	fork_lock;
 }	t_philo;
 
@@ -54,12 +57,15 @@ typedef struct s_var
 	int				n_philo;
 	int				dead;
 	int				n_eat_f;
+	int				n_end_f;
 	int				tt[4];
 	long			start_time;
 	t_philo			*f_philo;
 	t_philo			*p;
 	pthread_mutex_t	lock;
 	pthread_mutex_t	eat_lock;
+	pthread_mutex_t	end_lock;
+	pthread_mutex_t	print_lock;
 	pthread_mutex_t	time_lock;
 	pthread_mutex_t	dead_lock;
 }	t_var;
@@ -69,20 +75,24 @@ void		ft_free(t_var *var);
 void		init_philo(t_var *var);
 void		ft_readarg(int argc, char **argv, t_var *var);
 void		*ft_start_routine(void *t);
-void		ft_eat(t_philo *p);
-void		ft_sleep(t_philo *p);
-void		ft_thinks(t_philo *p);
+int			ft_eat(t_philo *p);
+int			ft_sleep(t_philo *p);
+int			ft_thinks(t_philo *p);
 int			ft_dead(t_philo *p, int routine_n);
-long int	ft_time(t_philo *p,  int routine_n);
-void		ft_usleep(t_philo *p, long sleep, int routine_n);
+long int	ft_time(t_philo *p);
+int			ft_usleep(t_philo *p, long sleep, int routine_n);
 void		mutex_free(t_var *var);
+void		mutex_lock_order(t_philo *p);
 void		mutex_unlock_order(t_philo *p);
 void		wait_dead(t_var *var);
 void		var_philo_init(t_var *var, int i, void *p_philo);
 void		time_init(t_philo *p);
 int			ft_eat_dead(t_philo *p);
+int			ft_eat_end(t_philo *p);
 int			dead_check(t_philo *p, int routine_n);
 void		print_time(t_var *var, char *str);
+void		m_printf(char *str, long delay, int num, t_philo *p);
+int			ft_end(t_philo *p);
 
 // Text colors
 # define COLOR_BLACK   "\033[30m"
