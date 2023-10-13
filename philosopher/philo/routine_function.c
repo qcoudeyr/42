@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/13 16:30:03 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/13 17:07:21 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	ft_eat_end(t_philo *p)
 {
 	pthread_mutex_lock(p->eat_lock);
 	*p->n_eat_f += 1;
-	while (*p->n_eat_f != -1)
+	while (*p->n_eat_f < 1)
 	{
 		pthread_mutex_unlock(p->eat_lock);
-		usleep(1000000);
+		usleep(10000);
 		pthread_mutex_lock(p->eat_lock);
 	}
 	pthread_mutex_unlock(p->eat_lock);
@@ -32,26 +32,20 @@ void	mutex_unlock_order(t_philo *p)
 	pthread_mutex_lock(p->eat_lock);
 	if (p->num < p->n_philo->num)
 	{
-		if (p->n_philo->f_lock == 1)
+		if (p->n_philo->f_lock == 1 && p->f_lock == 1)
 		{
 			p->n_philo->f_lock = 0;
 			pthread_mutex_unlock(&p->n_philo->fork_lock);
-		}
-		if (p->f_lock == 1)
-		{
 			p->f_lock = 0;
 			pthread_mutex_unlock(&p->fork_lock);
 		}
 	}
 	else
 	{
-		if (p->f_lock == 1)
+		if (p->f_lock == 1 && p->n_philo->f_lock == 1)
 		{
 			p->f_lock = 0;
 			pthread_mutex_unlock(&p->fork_lock);
-		}
-		if (p->n_philo->f_lock == 1)
-		{
 			p->n_philo->f_lock = 0;
 			pthread_mutex_unlock(&p->n_philo->fork_lock);
 		}
@@ -105,6 +99,8 @@ int	ft_eat(t_philo *p)
 	m_printf(COLOR_GREEN"%li ms: %i is eating\n", delay, num, p);
 
 	num = ft_usleep(p, p->tt[1] * 1000, 1);
+
+	mutex_unlock_order(p);
 
 	p->n_eat++;
 	if (p->n_eat == p->tt[3] && p->tt[3] != 0)
