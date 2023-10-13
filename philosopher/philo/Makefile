@@ -21,7 +21,7 @@ norme:
 
 debug: CFLAGS += -g
 debug: THREADFLAG :=
-debug: fclean debug_build
+debug: fclean re debug_build
 
 debug_build: $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o debug

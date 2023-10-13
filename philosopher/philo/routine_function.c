@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/13 12:03:30 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/13 15:07:41 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,32 +28,35 @@ int	ft_eat_end(t_philo *p)
 
 void	mutex_unlock_order(t_philo *p)
 {
+	pthread_mutex_lock(p->eat_lock);
 	if (p->num < p->n_philo->num)
 	{
+
 		if (p->nf_lock == 1)
 		{
-			pthread_mutex_unlock(&p->n_philo->fork_lock);
 			p->nf_lock = 0;
+			pthread_mutex_unlock(&p->n_philo->fork_lock);
 		}
 		if (p->f_lock == 1)
 		{
-			pthread_mutex_unlock(&p->fork_lock);
 			p->f_lock = 0;
+			pthread_mutex_unlock(&p->fork_lock);
 		}
 	}
 	else
 	{
 		if (p->f_lock == 1)
 		{
-			pthread_mutex_unlock(&p->fork_lock);
 			p->f_lock = 0;
+			pthread_mutex_unlock(&p->fork_lock);
 		}
 		if (p->nf_lock == 1)
 		{
-			pthread_mutex_unlock(&p->n_philo->fork_lock);
 			p->nf_lock = 0;
+			pthread_mutex_unlock(&p->n_philo->fork_lock);
 		}
 	}
+	pthread_mutex_unlock(p->eat_lock);
 }
 
 void	mutex_lock_order(t_philo *p)
