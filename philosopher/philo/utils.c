@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:30:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/13 17:20:23 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/13 17:35:02 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_end(t_philo *p)
 	}
 	pthread_mutex_unlock(p->end_lock);
 	mutex_unlock_order(p);
-	return (-1);
+	return (0);
 }
 
 void	m_printf(char *str, long delay, int num, t_philo *p)

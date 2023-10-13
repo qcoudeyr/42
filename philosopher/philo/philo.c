@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/13 17:22:04 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/13 17:36:12 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,9 @@ void	wait_dead(t_var *var)
 	pthread_mutex_lock(&var->dead_lock);
 	pthread_mutex_lock(&var->end_lock);
 	pthread_mutex_lock(&var->eat_lock);
-	while (var->dead != 1 && (var->n_end_f > 0) && (var->n_eat_f > 0))
+	while (var->dead != 1 && ((var->n_end_f > 0) || (var->n_eat_f > 0)))
 	{
 		pthread_mutex_unlock(&var->eat_lock);
-		if (var->n_end_f == var->n_philo)
-			var->n_end_f = -1000;
 		pthread_mutex_unlock(&var->dead_lock);
 		pthread_mutex_unlock(&var->end_lock);
 		pthread_mutex_lock(&var->eat_lock);
@@ -58,6 +56,8 @@ void	wait_dead(t_var *var)
 		pthread_mutex_lock(&var->dead_lock);
 		pthread_mutex_lock(&var->end_lock);
 		pthread_mutex_lock(&var->eat_lock);
+		if (var->n_end_f == var->n_philo)
+			var->n_end_f = -1000;
 	}
 	pthread_mutex_unlock(&var->dead_lock);
 	pthread_mutex_unlock(&var->end_lock);
