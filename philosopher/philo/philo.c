@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/13 15:26:38 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/13 16:27:18 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ void	free_philo(t_var *var)
 			temp = philo->n_philo;
 		else
 			temp = NULL;
-		pthread_mutex_destroy(&philo->fork_lock);
 		pthread_join(philo->tid, NULL);
+		pthread_mutex_destroy(&philo->fork_lock);
 		philo->n_philo = NULL;
 		philo->p_philo = NULL;
 		free(philo);
@@ -125,7 +125,7 @@ int	main(int argc, char **argv)
 	pthread_mutex_init(&var->print_lock, NULL);
 	ft_readarg(argc, argv, var);
 	init_philo(var);
-	usleep(1000000);
+	usleep(10000000);
 	ft_free(var);
 	return (0);
 }

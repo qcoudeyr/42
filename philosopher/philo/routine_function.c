@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/13 15:25:37 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/13 16:30:03 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	ft_eat_end(t_philo *p)
 
 void	mutex_unlock_order(t_philo *p)
 {
+
 	pthread_mutex_lock(p->eat_lock);
 	if (p->num < p->n_philo->num)
 	{
@@ -84,19 +85,27 @@ int	ft_eat(t_philo *p)
 
 	if (dead_check(p, 1) == -1 || ft_eat_dead(p) == -1)
 		return (-1);
+
 	mutex_lock_order(p);
+
 	if (ft_dead(p, 1) == -1)
 		return (-1);
+
 	gettimeofday(&time, NULL);
 	delay = ft_time(p);
 	num = p->num;
+
 	m_printf(COLOR_YELLOW"%li ms: %i has taken a fork\n", delay, num, p);
 	m_printf(COLOR_YELLOW"%li ms: %i has taken a fork\n", delay, num, p);
+
 	pthread_mutex_lock(p->eat_lock);
 	p->last_eat = ((time.tv_sec % 1000) * 1000) + (time.tv_usec / 1000);
 	pthread_mutex_unlock(p->eat_lock);
+
 	m_printf(COLOR_GREEN"%li ms: %i is eating\n", delay, num, p);
+
 	num = ft_usleep(p, p->tt[1] * 1000, 1);
+
 	p->n_eat++;
 	if (p->n_eat == p->tt[3] && p->tt[3] != 0)
 		return (ft_eat_end(p));
