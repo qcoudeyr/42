@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 11:04:44 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/13 12:46:20 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/13 12:52:27 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,15 @@ int	dead_check(t_philo *p, int routine_n)
 int	ft_eat_dead(t_philo *p)
 {
 	struct timeval	end;
+	long			time;
 
 	pthread_mutex_lock(p->eat_lock);
+
 	if (((p->tt[1] + p->n_philo->last_eat) > p->last_eat + p->tt[0]))
 	{
-		usleep(((p->tt[1] + p->n_philo->last_eat) - (p->last_eat + p->tt[0])) * 1000);
+		time = (p->tt[1] + p->n_philo->last_eat) - (p->last_eat + p->tt[0]);
+		pthread_mutex_unlock(p->eat_lock);
+		usleep(time * 1000);
 		p->state = DEAD;
 		pthread_mutex_lock(p->dead_lock);
 		if (*p->is_dead == 0)
@@ -43,6 +47,7 @@ int	ft_eat_dead(t_philo *p)
 		pthread_mutex_unlock(p->dead_lock);
 		pthread_mutex_lock(p->time_lock);
 		gettimeofday(&end, NULL);
+		pthread_mutex_lock(p->eat_lock);
 		m_printf(COLOR_RED"%li ms: %i died 2\n", ((p->last_eat + p->tt[0]) \
 		- *p->start_time), p->num, p);
 		pthread_mutex_unlock(p->eat_lock);
