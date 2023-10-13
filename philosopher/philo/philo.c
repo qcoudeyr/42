@@ -6,11 +6,24 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/12 17:53:07 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/13 08:32:24 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	print_time(t_var *var, char *str)
+{
+	struct timeval	end;
+	long int		elapsed_ms;
+
+	gettimeofday(&end, NULL);
+	pthread_mutex_lock(&var->time_lock);
+	elapsed_ms = (((end.tv_sec % 1000) * 1000) + (end.tv_usec / 1000)) - \
+	var->start_time;
+	pthread_mutex_unlock(&var->time_lock);
+	printf("%s \t Time = %li\n", str, elapsed_ms);
+}
 
 void	ft_readarg(int argc, char **argv, t_var *var)
 {
@@ -47,7 +60,8 @@ void	wait_dead(t_var *var)
 		if (var->n_eat_f == var->n_philo)
 			var->n_eat_f = -1;
 		pthread_mutex_unlock(&var->eat_lock);
-		usleep(1000);
+		usleep(100000);
+		print_time(var, "wait_dead ");
 		pthread_mutex_lock(&var->dead_lock);
 	}
 	pthread_mutex_unlock(&var->dead_lock);
@@ -69,6 +83,7 @@ void	ft_free(t_var *var)
 
 	i = 0;
 	temp = NULL;
+	print_time(var, "ft_free ");
 	philo = var->f_philo;
 	while (i < var->n_philo)
 	{
@@ -76,11 +91,11 @@ void	ft_free(t_var *var)
 			temp = philo->n_philo;
 		else
 			temp = NULL;
-		pthread_mutex_destroy(&philo->fork_lock);
 		pthread_join(philo->tid, NULL);
 		philo->num = 0;
 		philo->n_philo = NULL;
 		philo->p_philo = NULL;
+		pthread_mutex_destroy(&philo->fork_lock);
 		free(philo);
 		philo = temp;
 		i++;
@@ -107,6 +122,8 @@ int	main(int argc, char **argv)
 	pthread_mutex_init(&var->dead_lock, NULL);
 	ft_readarg(argc, argv, var);
 	init_philo(var);
+	usleep(1000000);
+	print_time(var, "after_sleep main");
 	ft_free(var);
 	return (0);
 }

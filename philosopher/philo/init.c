@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:18:56 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/12 11:38:54 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/13 08:30:18 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	var_philo_init(t_var *var, int i, void *p_philo)
 	var->p->tt[2] = var->tt[2];
 	var->p->tt[3] = var->tt[3];
 	var->p->tof = 0;
+	var->p->f_lock = 0;
+	var->p->nf_lock = 0;
 	var->p->last_eat = 0;
 	var->p->n_eat = 0;
 	var->p->is_dead = &var->dead;
@@ -85,4 +87,5 @@ void	init_philo(t_var *var)
 	var->wait = 0;
 	pthread_mutex_unlock(&var->lock);
 	wait_dead(var);
+	print_time(var, "init_philo");
 }

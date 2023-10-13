@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/12 18:00:43 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/13 08:19:11 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_eat_end(t_philo *p)
 		pthread_mutex_lock(p->eat_lock);
 	}
 	pthread_mutex_unlock(p->eat_lock);
+	printf("\tphilo %i:%i|%i\n", p->num, p->f_lock, p->nf_lock);
 	exit(1);
 }
 
@@ -30,13 +31,29 @@ void	mutex_unlock_order(t_philo *p)
 {
 	if (p->num < p->n_philo->num)
 	{
-		pthread_mutex_unlock(&p->n_philo->fork_lock);
-		pthread_mutex_unlock(&p->fork_lock);
+		if (p->nf_lock == 1)
+		{
+			pthread_mutex_unlock(&p->n_philo->fork_lock);
+			p->nf_lock = 0;
+		}
+		if (p->f_lock == 1)
+		{
+			pthread_mutex_unlock(&p->fork_lock);
+			p->f_lock = 0;
+		}
 	}
 	else
 	{
-		pthread_mutex_unlock(&p->fork_lock);
-		pthread_mutex_unlock(&p->n_philo->fork_lock);
+		if (p->f_lock == 1)
+		{
+			pthread_mutex_unlock(&p->fork_lock);
+			p->f_lock = 0;
+		}
+		if (p->nf_lock == 1)
+		{
+			pthread_mutex_unlock(&p->n_philo->fork_lock);
+			p->nf_lock = 0;
+		}
 	}
 }
 
@@ -45,13 +62,16 @@ void	mutex_lock_order(t_philo *p)
 	if (p->num < p->n_philo->num)
 	{
 		pthread_mutex_lock(&p->n_philo->fork_lock);
+		p->nf_lock = 1;
 		pthread_mutex_lock(&p->fork_lock);
-
+		p->f_lock = 1;
 	}
 	else
 	{
 		pthread_mutex_lock(&p->fork_lock);
+		p->f_lock = 1;
 		pthread_mutex_lock(&p->n_philo->fork_lock);
+		p->nf_lock = 1;
 	}
 }
 
@@ -61,12 +81,12 @@ void	ft_eat(t_philo *p)
 	long int		delay;
 	int				num;
 
-	dead_check(p);
+	dead_check(p, 1);
 	ft_eat_dead(p);
 	mutex_lock_order(p);
 	ft_dead(p, 1);
 	gettimeofday(&time, NULL);
-	delay = ft_time(p);
+	delay = ft_time(p, 1);
 	num = p->num;
 	printf(COLOR_YELLOW"%li ms: %i has taken a fork\n%li ms: \
 %i has taken a fork\n", delay, num, delay, num);
@@ -85,8 +105,8 @@ void	ft_sleep(t_philo *p)
 	long int	delay;
 	int			num;
 
-	dead_check(p);
-	delay = ft_time(p);
+	dead_check(p, 0);
+	delay = ft_time(p, 0);
 	num = p->num;
 	printf(COLOR_BLUE"%li ms: %i is sleeping\n", delay, num);
 	ft_usleep(p, p->tt[2] * 1000, 0);
@@ -97,8 +117,8 @@ void	ft_thinks(t_philo *p)
 	long int	delay;
 	int			num;
 
-	dead_check(p);
-	delay = ft_time(p);
+	dead_check(p, 0);
+	delay = ft_time(p, 0);
 	num = p->num;
 	printf(COLOR_BLACK"%li ms: %i is thinking\n", delay, num);
 }

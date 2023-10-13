@@ -6,18 +6,22 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 11:04:44 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/12 17:41:20 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/12 18:47:52 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	dead_check(t_philo *p)
+void	dead_check(t_philo *p, int routine_n)
 {
 	pthread_mutex_lock(p->dead_lock);
 	if (*p->is_dead == 1)
 	{
 		pthread_mutex_unlock(p->dead_lock);
+		if (routine_n == 1)
+			mutex_unlock_order(p);
+		usleep(100000);
+		printf("\tphilo %i:%i|%i\n", p->num, p->f_lock, p->nf_lock);
 		exit(0);
 	}
 	pthread_mutex_unlock(p->dead_lock);
@@ -41,6 +45,8 @@ void	ft_eat_dead(t_philo *p)
 		- *p->start_time), p->num);
 		pthread_mutex_unlock(p->eat_lock);
 		pthread_mutex_unlock(p->time_lock);
+		usleep(100000);
+		printf("\tphilo %i:%i|%i\n", p->num, p->f_lock, p->nf_lock);
 		exit(0);
 	}
 	pthread_mutex_unlock(p->eat_lock);
@@ -68,6 +74,8 @@ void	ft_dead(t_philo *p, int routine_n)
 		pthread_mutex_unlock(p->time_lock);
 		if (routine_n == 1)
 			mutex_unlock_order(p);
+		usleep(100000);
+		printf("\tphilo %i:%i|%i\n", p->num, p->f_lock, p->nf_lock);
 		exit(0);
 	}
 }
