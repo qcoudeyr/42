@@ -6,13 +6,13 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 11:04:44 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/13 08:42:16 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/13 08:55:02 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	dead_check(t_philo *p, int routine_n)
+int	dead_check(t_philo *p, int routine_n)
 {
 	pthread_mutex_lock(p->dead_lock);
 	if (*p->is_dead == 1)
@@ -22,12 +22,13 @@ void	dead_check(t_philo *p, int routine_n)
 			mutex_unlock_order(p);
 		usleep(100000);
 		printf("\tphilo %i:%i|%i\n", p->num, p->f_lock, p->nf_lock);
-		exit(0);
+		return(-1);
 	}
 	pthread_mutex_unlock(p->dead_lock);
+	return (0);
 }
 
-void	ft_eat_dead(t_philo *p)
+int	ft_eat_dead(t_philo *p)
 {
 	struct timeval	end;
 
@@ -45,14 +46,15 @@ void	ft_eat_dead(t_philo *p)
 		- *p->start_time), p->num);
 		pthread_mutex_unlock(p->eat_lock);
 		pthread_mutex_unlock(p->time_lock);
-		usleep(10000000);
+		usleep(100000);
 		printf("\tphilo %i:%i|%i\n", p->num, p->f_lock, p->nf_lock);
-		exit(0);
+		return (-1);
 	}
 	pthread_mutex_unlock(p->eat_lock);
+	return (0);
 }
 
-void	ft_dead(t_philo *p, int routine_n)
+int	ft_dead(t_philo *p, int routine_n)
 {
 	struct timeval	end;
 	long int		elapsed_ms;
@@ -76,6 +78,7 @@ void	ft_dead(t_philo *p, int routine_n)
 			mutex_unlock_order(p);
 		usleep(100000);
 		printf("\tphilo %i:%i|%i\n", p->num, p->f_lock, p->nf_lock);
-		exit(0);
+		return (-1);
 	}
+	return (0);
 }
