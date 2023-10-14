@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/14 08:59:59 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/14 09:42:13 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ t_2_sleep [n_times_each_philo_must_eat]\n");
 		ft_free(var);
 		exit(EXIT_FAILURE);
 	}
-	var->n_philo = ft_atoi(argv[1]);
+	var->nb_philo = ft_atoi(argv[1]);
 	var->tt[0] = ft_atoi(argv[2]);
 	var->tt[1] = ft_atoi(argv[3]);
 	var->tt[2] = ft_atoi(argv[4]);
 	var->tt[3] = 0;
 	if (argc == 6)
 		var->tt[3] = ft_atoi(argv[5]);
-	if (var->n_philo < 1 || var->tt[0] < 60 || var->tt[1] < 60 || \
+	if (var->nb_philo < 1 || var->tt[0] < 60 || var->tt[1] < 60 || \
 	var->tt[2] < 60 || (var->tt[3] < 1 && argc == 6))
 	{
 		printf(COLOR_RED"Args invalid !\nPlease enter number of philo >= 1 \
@@ -40,53 +40,21 @@ or a time2die, time2eat, time2sleep >= 60 ms\n");
 
 void	wait_dead(t_var *var)
 {
-	pthread_mutex_lock(&var->dead_lock);
 	pthread_mutex_lock(&var->end_lock);
-	pthread_mutex_lock(&var->eat_lock);
-	while (var->dead != 1 && ((var->n_end_f == var->n_philo)\
-	|| (var->n_eat_f == var->n_philo)))
+	while (var->end != var->nb_philo)
 	{
-		pthread_mutex_unlock(&var->eat_lock);
-		pthread_mutex_unlock(&var->dead_lock);
 		pthread_mutex_unlock(&var->end_lock);
-		usleep(1000);
-		pthread_mutex_lock(&var->dead_lock);
+		usleep(100000);
 		pthread_mutex_lock(&var->end_lock);
-		pthread_mutex_lock(&var->eat_lock);
 	}
-	pthread_mutex_unlock(&var->dead_lock);
 	pthread_mutex_unlock(&var->end_lock);
-	pthread_mutex_unlock(&var->eat_lock);
 }
 
 void	mutex_free(t_var *var)
 {
-	pthread_mutex_destroy(&var->lock);
-	pthread_mutex_destroy(&var->eat_lock);
 	pthread_mutex_destroy(&var->end_lock);
 	pthread_mutex_destroy(&var->time_lock);
-	pthread_mutex_destroy(&var->dead_lock);
 	pthread_mutex_destroy(&var->print_lock);
-}
-
-
-void	fork_handle(t_philo *p)
-{
-	int		verif;
-
-	verif = p->num;
-	p = p->n_philo;
-	while (verif != p->num)
-	{
-		pthread_mutex_lock(p->wait_lock);
-		if (p->f_lock == 1 && p->n_philo->f_lock == 1)
-		{
-			pthread_mutex_unlock(p->wait_lock);
-			mutex_unlock_order(p);
-		}
-		pthread_mutex_unlock(p->wait_lock);
-		p = p->n_philo;
-	}
 }
 
 void	free_philo(t_var *var)
@@ -98,7 +66,7 @@ void	free_philo(t_var *var)
 	i = 0;
 	temp = NULL;
 	philo = var->f_philo;
-	while (i < var->n_philo)
+	while (i < var->nb_philo)
 	{
 		if (philo->n_philo)
 			temp = philo->n_philo;
@@ -116,7 +84,6 @@ void	free_philo(t_var *var)
 
 void	ft_free(t_var *var)
 {
-	usleep(10000);
 	if (var->p != NULL)
 		free_philo(var);
 	mutex_free(var);
@@ -129,18 +96,12 @@ int	main(int argc, char **argv)
 	t_var	*var;
 
 	var = malloc(sizeof(t_var));
-	var->n_philo = 0;
+	var->nb_philo = 0;
 	var->p = NULL;
-	var->wait = 1;
 	var->start_time = 0;
-	var->n_eat_f = 0;
-	var->n_end_f = 0;
-	var->dead = 0;
-	pthread_mutex_init(&var->lock, NULL);
-	pthread_mutex_init(&var->eat_lock, NULL);
+	var->end = 0;
 	pthread_mutex_init(&var->end_lock, NULL);
 	pthread_mutex_init(&var->time_lock, NULL);
-	pthread_mutex_init(&var->dead_lock, NULL);
 	pthread_mutex_init(&var->print_lock, NULL);
 	ft_readarg(argc, argv, var);
 	init_philo(var);

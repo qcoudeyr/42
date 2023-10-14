@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:30:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/13 20:36:08 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/14 10:12:13 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 int	ft_end(t_philo *p)
 {
 	pthread_mutex_lock(p->end_lock);
-	*p->n_end_f += 1;
-	while (*p->n_end_f != p->tt_ph)
+	while (*p->end != p->nb_ph)
 	{
 		pthread_mutex_unlock(p->end_lock);
-		usleep(10);
+		usleep(1000);
 		pthread_mutex_lock(p->end_lock);
 	}
 	pthread_mutex_unlock(p->end_lock);
@@ -28,6 +27,10 @@ int	ft_end(t_philo *p)
 
 void	m_printf(char *str, long delay, int num, t_philo *p)
 {
+	pthread_mutex_lock(p->end_lock);
+	if (*p->end > 0)
+		return (pthread_mutex_unlock(p->end_lock));
+	pthread_mutex_unlock(p->end_lock);
 	pthread_mutex_lock(p->print_lock);
 	printf(str, delay, num);
 	pthread_mutex_unlock(p->print_lock);

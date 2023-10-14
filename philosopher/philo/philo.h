@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/13 20:35:15 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/14 09:38:23 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,32 +20,19 @@
 # include <sys/time.h>
 # include <pthread.h>
 
-# define DEAD 1
-# define ALIVE 0
-
 typedef struct s_philo
 {
 	pthread_t		tid;
-	int				*wait;
-	int				tt_ph;
-	int				*is_dead;
+	int				nb_ph;
 	int				tt[4];
-	int				n_eat;
-	int				*n_eat_f;
-	int				*n_end_f;
+	int				nb_eat;
 	int				num;
-	int				state;
 	int				fork;
-	int				f_lock;
-	int				nf_lock;
+	int				*end;
 	long			last_eat;
-	long			tof;
 	long			*start_time;
 	struct s_philo	*n_philo;
 	struct s_philo	*p_philo;
-	pthread_mutex_t	*eat_lock;
-	pthread_mutex_t	*dead_lock;
-	pthread_mutex_t	*wait_lock;
 	pthread_mutex_t	*time_lock;
 	pthread_mutex_t	*print_lock;
 	pthread_mutex_t	*end_lock;
@@ -54,21 +41,15 @@ typedef struct s_philo
 
 typedef struct s_var
 {
-	int				wait;
-	int				n_philo;
-	int				dead;
-	int				n_eat_f;
-	int				n_end_f;
+	int				nb_philo;
 	int				tt[4];
 	long			start_time;
+	int				end;
 	t_philo			*f_philo;
 	t_philo			*p;
-	pthread_mutex_t	lock;
-	pthread_mutex_t	eat_lock;
 	pthread_mutex_t	end_lock;
 	pthread_mutex_t	print_lock;
 	pthread_mutex_t	time_lock;
-	pthread_mutex_t	dead_lock;
 }	t_var;
 
 long int	ft_atoi(const char *str);
