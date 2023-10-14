@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/14 09:42:13 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/14 10:53:36 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,22 @@ void	mutex_free(t_var *var)
 	pthread_mutex_destroy(&var->time_lock);
 	pthread_mutex_destroy(&var->print_lock);
 }
+void	join_philo(t_var *var)
+{
+	t_philo	*philo;
+	t_philo	*temp;
+	int		i;
+
+	i = 0;
+	philo = var->f_philo;
+	while (i < var->nb_philo)
+	{
+		i++;
+		temp = philo->n_philo;
+		pthread_join(philo->tid, NULL);
+		philo = temp;
+	}
+}
 
 void	free_philo(t_var *var)
 {
@@ -72,7 +88,6 @@ void	free_philo(t_var *var)
 			temp = philo->n_philo;
 		else
 			temp = NULL;
-		pthread_join(philo->tid, NULL);
 		pthread_mutex_destroy(&philo->fork_lock);
 		philo->n_philo = NULL;
 		philo->p_philo = NULL;
@@ -85,7 +100,10 @@ void	free_philo(t_var *var)
 void	ft_free(t_var *var)
 {
 	if (var->p != NULL)
+	{
+		join_philo(var);
 		free_philo(var);
+	}
 	mutex_free(var);
 	free(var);
 	var = NULL;

@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/14 10:14:53 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/14 11:10:47 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,36 +39,48 @@ void	wait_all_philo(t_philo *p)
 
 void	impair_routine(t_philo *p)
 {
+	int	lock;
+
+	lock = 1;
 	pthread_mutex_lock(p->end_lock);
 	while (*p->end == 0)
 	{
 		pthread_mutex_unlock(p->end_lock);
-		if (ft_dead(p, 0) == -1 || ft_eat(p) == -1)
+		lock = 0;
+		if (ft_dead(p) == -1 || ft_eat(p) == -1)
 			break;
-		if (ft_dead(p, 0) == -1 || ft_sleep(p) == -1)
+		if (ft_dead(p) == -1 || ft_sleep(p) == -1)
 			break;
-		if (ft_dead(p, 0) == -1 || ft_thinks(p) == -1)
+		if (ft_dead(p) == -1 || ft_thinks(p) == -1)
 			break;
 		pthread_mutex_lock(p->end_lock);
+		lock = 1;
 	}
-	pthread_mutex_unlock(p->end_lock);
+	if (lock ==  1)
+		pthread_mutex_unlock(p->end_lock);
 }
 
 void	pair_routine(t_philo *p)
 {
+	int	lock;
+
+	lock = 1;
 	pthread_mutex_lock(p->end_lock);
-	while (*p->end == 0 && *p->end > p->tt[3])
+	while (*p->end == 0)
 	{
 		pthread_mutex_unlock(p->end_lock);
-		if (ft_dead(p, 0) == -1 || ft_sleep(p) == -1)
+		lock = 0;
+		if (ft_dead(p) == -1 || ft_sleep(p) == -1)
 			break;
-		if (ft_dead(p, 0) == -1 || ft_thinks(p) == -1)
+		if (ft_dead(p) == -1 || ft_thinks(p) == -1)
 			break;
-		if (ft_dead(p, 0) == -1 || ft_eat(p) == -1)
+		if (ft_dead(p) == -1 || ft_eat(p) == -1)
 			break;
 		pthread_mutex_lock(p->end_lock);
+		lock = 1;
 	}
-	pthread_mutex_unlock(p->end_lock);
+	if (lock ==  1)
+		pthread_mutex_unlock(p->end_lock);
 }
 
 void	*ft_start_routine(void *t)

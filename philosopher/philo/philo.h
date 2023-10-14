@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/14 09:38:23 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/14 10:54:58 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,22 +60,17 @@ void		*ft_start_routine(void *t);
 int			ft_eat(t_philo *p);
 int			ft_sleep(t_philo *p);
 int			ft_thinks(t_philo *p);
-int			ft_dead(t_philo *p, int routine_n);
+int			ft_dead(t_philo *p);
 long int	ft_time(t_philo *p);
-int			ft_usleep(t_philo *p, long sleep, int routine_n);
+int			ft_usleep(t_philo *p, long sleep);
 void		mutex_free(t_var *var);
-void		mutex_lock_order(t_philo *p);
-void		mutex_unlock_order(t_philo *p);
 void		wait_dead(t_var *var);
 void		var_philo_init(t_var *var, int i, void *p_philo);
 void		time_init(t_philo *p);
 int			ft_eat_dead(t_philo *p);
-int			ft_eat_end(t_philo *p);
-int			dead_check(t_philo *p, int routine_n);
-void		print_time(t_var *var, char *str);
-void		m_printf(char *str, long delay, int num, t_philo *p);
+int			dead_check(t_philo *p);
+void		m_printf(char *str, long delay, t_philo *p);
 int			ft_end(t_philo *p);
-void		fork_handle(t_philo *p);
 
 
 // Text colors
