@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 11:04:44 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/14 14:18:08 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/14 14:40:01 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	ft_dead(t_philo *p)
 	dead_check(p);
 	gettimeofday(&end, NULL);
 	pthread_mutex_lock(p->time_lock);
-	elapsed_ms = ((((end.tv_sec % 1000) * 1000) + (end.tv_usec / 1000));
+	elapsed_ms = (((end.tv_sec % 1000) * 1000) + (end.tv_usec / 1000));
 	pthread_mutex_unlock(p->time_lock);
 	if (elapsed_ms - p->last_eat >= p->tt[0] || (p->n_philo == 0 && p->num == 1))
 	{
