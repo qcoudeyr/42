@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/14 09:08:59 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/14 09:16:20 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,10 @@ int	ft_usleep(t_philo *p, long sleep, int routine_n)
 	gettimeofday(&time, NULL);
 	total = ((((time.tv_sec % 1000) * 1000) + (time.tv_usec / 1000)) \
 	+ (sleep / 1000));
-	pthread_mutex_lock(p->eat_lock);
 	if ((total - p->last_eat) >= p->tt[0])
 	{
-		usleep(10000);
 		return (-1);
 	}
-	pthread_mutex_unlock(p->eat_lock);
 	usleep(sleep);
 	return (0);
 }
@@ -40,8 +37,6 @@ long int	ft_time(t_philo *p)
 
 	gettimeofday(&end, NULL);
 	pthread_mutex_lock(p->time_lock);
-	if (*p->start_time == 0)
-		*p->start_time = ((end.tv_sec % 1000) * 1000) + (end.tv_usec / 1000);
 	elapsed_ms = (((end.tv_sec % 1000) * 1000) + (end.tv_usec / 1000)) - \
 	*p->start_time;
 	pthread_mutex_unlock(p->time_lock);
@@ -64,7 +59,6 @@ void	*ft_start_routine(void *t)
 
 
 	p = t;
-	start_wait(p, 1);
 	time_init(p);
 	init_eat(p);
 	while (p->state == ALIVE)
@@ -77,9 +71,5 @@ void	*ft_start_routine(void *t)
 			break;
 	}
 	ft_end(p);
-	pthread_mutex_lock(p->wait_lock);
-	if (p->f_lock == 1)
-		pthread_mutex_unlock(&p->fork_lock);
-	pthread_mutex_unlock(p->wait_lock);
 	return (NULL);
 }
