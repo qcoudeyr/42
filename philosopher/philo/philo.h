@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/14 10:54:58 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/14 13:31:06 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_philo
 	int				tt[4];
 	int				nb_eat;
 	int				num;
+	int				alive;
 	int				fork;
 	int				*end;
 	long			last_eat;

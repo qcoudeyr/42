@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:18:56 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/14 11:09:01 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/14 13:31:23 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	time_init(t_philo *p)
 	pthread_mutex_lock(p->time_lock);
 	if (*p->start_time == 0)
 		*p->start_time = ((end.tv_sec % 1000) * 1000) + (end.tv_usec / 1000);
+	p->last_eat = ((end.tv_sec % 1000) * 1000) + (end.tv_usec / 1000);
 	pthread_mutex_unlock(p->time_lock);
 }
 
@@ -41,6 +42,7 @@ void	var_philo_init(t_var *var, int i, void *p_philo)
 	var->p->tt[1] = var->tt[1];
 	var->p->tt[2] = var->tt[2];
 	var->p->tt[3] = var->tt[3];
+	var->p->alive = 1;
 	var->p->nb_ph = var->nb_philo;
 	var->p->last_eat = 0;
 	var->p->nb_eat = 0;

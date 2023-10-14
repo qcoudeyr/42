@@ -1,0 +1,2400 @@
+[34m0 ms: 32 is sleeping
+[34m0 ms: 34 is sleeping
+[34m1 ms: 36 is sleeping
+[34m1 ms: 38 is sleeping
+[33m1 ms: 31 has taken a fork
+[33m1 ms: 31 has taken a fork
+[32m1 ms: 31 is eating
+[34m1 ms: 40 is sleeping
+[33m1 ms: 33 has taken a fork
+[33m1 ms: 33 has taken a fork
+[32m1 ms: 33 is eating
+[34m2 ms: 42 is sleeping
+[33m2 ms: 35 has taken a fork
+[33m2 ms: 35 has taken a fork
+[32m2 ms: 35 is eating
+[34m2 ms: 44 is sleeping
+[33m2 ms: 37 has taken a fork
+[33m2 ms: 37 has taken a fork
+[32m2 ms: 37 is eating
+[34m2 ms: 46 is sleeping
+[33m2 ms: 39 has taken a fork
+[33m2 ms: 39 has taken a fork
+[32m2 ms: 39 is eating
+[34m2 ms: 48 is sleeping
+[33m2 ms: 41 has taken a fork
+[33m2 ms: 41 has taken a fork
+[32m2 ms: 41 is eating
+[34m3 ms: 50 is sleeping
+[33m3 ms: 43 has taken a fork
+[33m3 ms: 43 has taken a fork
+[32m3 ms: 43 is eating
+[34m3 ms: 52 is sleeping
+[33m3 ms: 45 has taken a fork
+[33m3 ms: 45 has taken a fork
+[32m3 ms: 45 is eating
+[33m3 ms: 47 has taken a fork
+[33m3 ms: 47 has taken a fork
+[32m3 ms: 47 is eating
+[34m3 ms: 54 is sleeping
+[33m4 ms: 49 has taken a fork
+[33m4 ms: 49 has taken a fork
+[32m4 ms: 49 is eating
+[34m4 ms: 56 is sleeping
+[33m4 ms: 51 has taken a fork
+[33m4 ms: 51 has taken a fork
+[32m4 ms: 51 is eating
+[34m4 ms: 58 is sleeping
+[33m4 ms: 53 has taken a fork
+[33m4 ms: 53 has taken a fork
+[32m4 ms: 53 is eating
+[34m4 ms: 60 is sleeping
+[33m5 ms: 55 has taken a fork
+[33m5 ms: 55 has taken a fork
+[32m5 ms: 55 is eating
+[34m5 ms: 62 is sleeping
+[33m5 ms: 57 has taken a fork
+[33m5 ms: 57 has taken a fork
+[32m5 ms: 57 is eating
+[34m5 ms: 64 is sleeping
+[33m5 ms: 59 has taken a fork
+[33m5 ms: 59 has taken a fork
+[32m5 ms: 59 is eating
+[34m5 ms: 66 is sleeping
+[33m6 ms: 61 has taken a fork
+[33m6 ms: 61 has taken a fork
+[32m6 ms: 61 is eating
+[34m6 ms: 68 is sleeping
+[34m6 ms: 2 is sleeping
+[34m6 ms: 70 is sleeping
+[33m6 ms: 63 has taken a fork
+[33m6 ms: 63 has taken a fork
+[32m6 ms: 63 is eating
+[34m6 ms: 4 is sleeping
+[34m6 ms: 72 is sleeping
+[33m6 ms: 65 has taken a fork
+[33m6 ms: 65 has taken a fork
+[32m6 ms: 65 is eating
+[34m7 ms: 6 is sleeping
+[34m7 ms: 74 is sleeping
+[33m7 ms: 67 has taken a fork
+[33m7 ms: 67 has taken a fork
+[32m7 ms: 67 is eating
+[33m7 ms: 1 has taken a fork
+[33m7 ms: 1 has taken a fork
+[32m7 ms: 1 is eating
+[34m7 ms: 76 is sleeping
+[34m7 ms: 8 is sleeping
+[33m7 ms: 69 has taken a fork
+[33m7 ms: 69 has taken a fork
+[32m7 ms: 69 is eating
+[34m7 ms: 78 is sleeping
+[33m7 ms: 3 has taken a fork
+[33m7 ms: 3 has taken a fork
+[32m7 ms: 3 is eating
+[34m7 ms: 10 is sleeping
+[33m7 ms: 71 has taken a fork
+[33m7 ms: 71 has taken a fork
+[32m7 ms: 71 is eating
+[34m7 ms: 80 is sleeping
+[33m7 ms: 5 has taken a fork
+[33m7 ms: 5 has taken a fork
+[32m7 ms: 5 is eating
+[33m7 ms: 73 has taken a fork
+[33m7 ms: 73 has taken a fork
+[32m7 ms: 73 is eating
+[34m7 ms: 12 is sleeping
+[34m8 ms: 82 is sleeping
+[33m8 ms: 75 has taken a fork
+[33m8 ms: 75 has taken a fork
+[32m8 ms: 75 is eating
+[34m8 ms: 14 is sleeping
+[33m8 ms: 7 has taken a fork
+[33m8 ms: 7 has taken a fork
+[32m8 ms: 7 is eating
+[34m8 ms: 84 is sleeping
+[33m8 ms: 77 has taken a fork
+[33m8 ms: 77 has taken a fork
+[32m8 ms: 77 is eating
+[33m8 ms: 9 has taken a fork
+[33m8 ms: 9 has taken a fork
+[32m8 ms: 9 is eating
+[34m8 ms: 16 is sleeping
+[34m8 ms: 86 is sleeping
+[33m8 ms: 79 has taken a fork
+[33m8 ms: 79 has taken a fork
+[32m8 ms: 79 is eating
+[34m8 ms: 18 is sleeping
+[33m8 ms: 11 has taken a fork
+[33m8 ms: 11 has taken a fork
+[32m8 ms: 11 is eating
+[34m8 ms: 88 is sleeping
+[34m9 ms: 20 is sleeping
+[33m9 ms: 81 has taken a fork
+[33m9 ms: 81 has taken a fork
+[32m9 ms: 81 is eating
+[33m9 ms: 13 has taken a fork
+[33m9 ms: 13 has taken a fork
+[32m9 ms: 13 is eating
+[34m9 ms: 90 is sleeping
+[33m9 ms: 83 has taken a fork
+[33m9 ms: 83 has taken a fork
+[32m9 ms: 83 is eating
+[34m9 ms: 22 is sleeping
+[33m9 ms: 15 has taken a fork
+[33m9 ms: 15 has taken a fork
+[32m9 ms: 15 is eating
+[34m9 ms: 92 is sleeping
+[33m9 ms: 85 has taken a fork
+[33m9 ms: 85 has taken a fork
+[32m9 ms: 85 is eating
+[34m9 ms: 24 is sleeping
+[33m9 ms: 17 has taken a fork
+[33m9 ms: 17 has taken a fork
+[32m9 ms: 17 is eating
+[34m9 ms: 94 is sleeping
+[33m9 ms: 87 has taken a fork
+[33m9 ms: 87 has taken a fork
+[32m9 ms: 87 is eating
+[34m9 ms: 26 is sleeping
+[33m10 ms: 19 has taken a fork
+[33m10 ms: 19 has taken a fork
+[32m10 ms: 19 is eating
+[34m10 ms: 96 is sleeping
+[33m10 ms: 89 has taken a fork
+[33m10 ms: 89 has taken a fork
+[32m10 ms: 89 is eating
+[34m10 ms: 28 is sleeping
+[33m10 ms: 21 has taken a fork
+[33m10 ms: 21 has taken a fork
+[32m10 ms: 21 is eating
+[34m10 ms: 98 is sleeping
+[33m10 ms: 91 has taken a fork
+[33m10 ms: 91 has taken a fork
+[32m10 ms: 91 is eating
+[34m10 ms: 30 is sleeping
+[33m10 ms: 23 has taken a fork
+[33m10 ms: 23 has taken a fork
+[32m10 ms: 23 is eating
+[34m10 ms: 100 is sleeping
+[33m10 ms: 93 has taken a fork
+[33m10 ms: 93 has taken a fork
+[32m10 ms: 93 is eating
+[33m10 ms: 25 has taken a fork
+[33m10 ms: 25 has taken a fork
+[32m10 ms: 25 is eating
+[33m10 ms: 95 has taken a fork
+[33m10 ms: 95 has taken a fork
+[32m10 ms: 95 is eating
+[33m11 ms: 27 has taken a fork
+[33m11 ms: 27 has taken a fork
+[32m11 ms: 27 is eating
+[33m11 ms: 97 has taken a fork
+[33m11 ms: 97 has taken a fork
+[32m11 ms: 97 is eating
+[33m11 ms: 29 has taken a fork
+[33m11 ms: 29 has taken a fork
+[32m11 ms: 29 is eating
+[33m11 ms: 99 has taken a fork
+[33m11 ms: 99 has taken a fork
+[32m11 ms: 99 is eating
+[30m100 ms: 32 is thinking
+[30m101 ms: 34 is thinking
+[30m101 ms: 36 is thinking
+[30m101 ms: 38 is thinking
+[34m101 ms: 31 is sleeping
+[30m101 ms: 40 is thinking
+[34m101 ms: 33 is sleeping
+[30m102 ms: 42 is thinking
+[34m102 ms: 35 is sleeping
+[30m102 ms: 44 is thinking
+[34m102 ms: 37 is sleeping
+[30m102 ms: 46 is thinking
+[34m102 ms: 39 is sleeping
+[30m102 ms: 48 is thinking
+[33m103 ms: 32 has taken a fork
+[33m103 ms: 32 has taken a fork
+[32m103 ms: 32 is eating
+[34m103 ms: 41 is sleeping
+[30m103 ms: 50 is thinking
+[33m103 ms: 34 has taken a fork
+[33m103 ms: 34 has taken a fork
+[32m103 ms: 34 is eating
+[34m103 ms: 43 is sleeping
+[30m103 ms: 52 is thinking
+[33m103 ms: 36 has taken a fork
+[33m103 ms: 36 has taken a fork
+[34m103 ms: 45 is sleeping
+[32m103 ms: 36 is eating
+[33m103 ms: 38 has taken a fork
+[33m103 ms: 38 has taken a fork
+[32m103 ms: 38 is eating
+[34m103 ms: 47 is sleeping
+[30m103 ms: 54 is thinking
+[34m104 ms: 49 is sleeping
+[33m104 ms: 40 has taken a fork
+[33m104 ms: 40 has taken a fork
+[32m104 ms: 40 is eating
+[30m104 ms: 56 is thinking
+[33m104 ms: 42 has taken a fork
+[33m104 ms: 42 has taken a fork
+[34m104 ms: 51 is sleeping
+[32m104 ms: 42 is eating
+[30m104 ms: 58 is thinking
+[33m104 ms: 44 has taken a fork
+[33m104 ms: 44 has taken a fork
+[32m104 ms: 44 is eating
+[34m104 ms: 53 is sleeping
+[33m104 ms: 46 has taken a fork
+[33m104 ms: 46 has taken a fork
+[32m104 ms: 46 is eating
+[30m104 ms: 60 is thinking
+[33m105 ms: 48 has taken a fork
+[33m105 ms: 48 has taken a fork
+[32m105 ms: 48 is eating
+[34m105 ms: 55 is sleeping
+[30m105 ms: 62 is thinking
+[33m105 ms: 50 has taken a fork
+[33m105 ms: 50 has taken a fork
+[32m105 ms: 50 is eating
+[34m105 ms: 57 is sleeping
+[30m105 ms: 64 is thinking
+[34m105 ms: 59 is sleeping
+[30m105 ms: 66 is thinking
+[33m105 ms: 52 has taken a fork
+[33m105 ms: 52 has taken a fork
+[32m105 ms: 52 is eating
+[34m106 ms: 61 is sleeping
+[30m106 ms: 68 is thinking
+[33m106 ms: 54 has taken a fork
+[33m106 ms: 54 has taken a fork
+[32m106 ms: 54 is eating
+[30m106 ms: 2 is thinking
+[30m106 ms: 70 is thinking
+[33m106 ms: 56 has taken a fork
+[33m106 ms: 56 has taken a fork
+[32m106 ms: 56 is eating
+[34m106 ms: 63 is sleeping
+[30m106 ms: 4 is thinking
+[30m106 ms: 72 is thinking
+[33m106 ms: 58 has taken a fork
+[33m106 ms: 58 has taken a fork
+[32m106 ms: 58 is eating
+[34m106 ms: 65 is sleeping
+[30m107 ms: 6 is thinking
+[30m107 ms: 74 is thinking
+[34m107 ms: 67 is sleeping
+[33m107 ms: 60 has taken a fork
+[33m107 ms: 60 has taken a fork
+[32m107 ms: 60 is eating
+[34m107 ms: 1 is sleeping
+[30m107 ms: 76 is thinking
+[30m107 ms: 8 is thinking
+[34m107 ms: 69 is sleeping
+[33m107 ms: 62 has taken a fork
+[33m107 ms: 62 has taken a fork
+[32m107 ms: 62 is eating
+[30m107 ms: 78 is thinking
+[34m107 ms: 3 is sleeping
+[30m107 ms: 10 is thinking
+[34m107 ms: 71 is sleeping
+[33m107 ms: 64 has taken a fork
+[33m107 ms: 64 has taken a fork
+[32m107 ms: 64 is eating
+[30m107 ms: 80 is thinking
+[34m108 ms: 5 is sleeping
+[34m108 ms: 73 is sleeping
+[30m108 ms: 12 is thinking
+[33m108 ms: 66 has taken a fork
+[33m108 ms: 66 has taken a fork
+[32m108 ms: 66 is eating
+[30m108 ms: 82 is thinking
+[34m108 ms: 75 is sleeping
+[30m108 ms: 14 is thinking
+[34m108 ms: 7 is sleeping
+[30m108 ms: 84 is thinking
+[33m108 ms: 68 has taken a fork
+[33m108 ms: 68 has taken a fork
+[32m108 ms: 68 is eating
+[34m108 ms: 77 is sleeping
+[34m108 ms: 9 is sleeping
+[30m108 ms: 16 is thinking
+[30m108 ms: 86 is thinking
+[33m108 ms: 2 has taken a fork
+[33m108 ms: 2 has taken a fork
+[32m108 ms: 2 is eating
+[33m108 ms: 70 has taken a fork
+[33m108 ms: 70 has taken a fork
+[32m108 ms: 70 is eating
+[30m108 ms: 18 is thinking
+[34m108 ms: 79 is sleeping
+[34m108 ms: 11 is sleeping
+[30m108 ms: 88 is thinking
+[33m109 ms: 4 has taken a fork
+[33m109 ms: 4 has taken a fork
+[32m109 ms: 4 is eating
+[33m109 ms: 72 has taken a fork
+[33m109 ms: 72 has taken a fork
+[32m109 ms: 72 is eating
+[30m109 ms: 20 is thinking
+[34m109 ms: 81 is sleeping
+[34m109 ms: 13 is sleeping
+[30m109 ms: 90 is thinking
+[33m109 ms: 74 has taken a fork
+[33m109 ms: 74 has taken a fork
+[32m109 ms: 74 is eating
+[33m109 ms: 6 has taken a fork
+[33m109 ms: 6 has taken a fork
+[30m109 ms: 22 is thinking
+[32m109 ms: 6 is eating
+[34m109 ms: 83 is sleeping
+[34m109 ms: 15 is sleeping
+[30m109 ms: 92 is thinking
+[33m109 ms: 76 has taken a fork
+[33m109 ms: 76 has taken a fork
+[32m109 ms: 76 is eating
+[33m109 ms: 8 has taken a fork
+[33m109 ms: 8 has taken a fork
+[32m109 ms: 8 is eating
+[30m109 ms: 24 is thinking
+[34m109 ms: 85 is sleeping
+[34m109 ms: 17 is sleeping
+[30m109 ms: 94 is thinking
+[33m109 ms: 78 has taken a fork
+[33m109 ms: 78 has taken a fork
+[32m109 ms: 78 is eating
+[34m109 ms: 87 is sleeping
+[30m109 ms: 26 is thinking
+[33m110 ms: 10 has taken a fork
+[33m110 ms: 10 has taken a fork
+[32m110 ms: 10 is eating
+[34m110 ms: 19 is sleeping
+[30m110 ms: 96 is thinking
+[33m110 ms: 80 has taken a fork
+[33m110 ms: 80 has taken a fork
+[32m110 ms: 80 is eating
+[34m110 ms: 89 is sleeping
+[30m110 ms: 28 is thinking
+[33m110 ms: 12 has taken a fork
+[33m110 ms: 12 has taken a fork
+[32m110 ms: 12 is eating
+[34m110 ms: 21 is sleeping
+[30m110 ms: 98 is thinking
+[33m110 ms: 82 has taken a fork
+[33m110 ms: 82 has taken a fork
+[32m110 ms: 82 is eating
+[34m110 ms: 91 is sleeping
+[30m110 ms: 30 is thinking
+[34m110 ms: 23 is sleeping
+[33m110 ms: 14 has taken a fork
+[33m110 ms: 14 has taken a fork
+[32m110 ms: 14 is eating
+[30m110 ms: 100 is thinking
+[33m110 ms: 84 has taken a fork
+[33m110 ms: 84 has taken a fork
+[32m110 ms: 84 is eating
+[34m110 ms: 93 is sleeping
+[34m110 ms: 25 is sleeping
+[33m110 ms: 16 has taken a fork
+[33m110 ms: 16 has taken a fork
+[32m110 ms: 16 is eating
+[34m110 ms: 95 is sleeping
+[33m110 ms: 86 has taken a fork
+[33m110 ms: 86 has taken a fork
+[32m110 ms: 86 is eating
+[34m111 ms: 27 is sleeping
+[33m111 ms: 18 has taken a fork
+[33m111 ms: 18 has taken a fork
+[32m111 ms: 18 is eating
+[33m111 ms: 88 has taken a fork
+[33m111 ms: 88 has taken a fork
+[34m111 ms: 97 is sleeping
+[32m111 ms: 88 is eating
+[33m111 ms: 20 has taken a fork
+[33m111 ms: 20 has taken a fork
+[32m111 ms: 20 is eating
+[34m111 ms: 29 is sleeping
+[33m111 ms: 90 has taken a fork
+[33m111 ms: 90 has taken a fork
+[32m111 ms: 90 is eating
+[33m111 ms: 22 has taken a fork
+[33m111 ms: 22 has taken a fork
+[32m111 ms: 22 is eating
+[34m111 ms: 99 is sleeping
+[33m111 ms: 92 has taken a fork
+[33m111 ms: 92 has taken a fork
+[32m111 ms: 92 is eating
+[33m111 ms: 24 has taken a fork
+[33m111 ms: 24 has taken a fork
+[32m111 ms: 24 is eating
+[33m112 ms: 94 has taken a fork
+[33m112 ms: 94 has taken a fork
+[32m112 ms: 94 is eating
+[33m112 ms: 26 has taken a fork
+[33m112 ms: 26 has taken a fork
+[32m112 ms: 26 is eating
+[33m112 ms: 96 has taken a fork
+[33m112 ms: 96 has taken a fork
+[32m112 ms: 96 is eating
+[33m112 ms: 28 has taken a fork
+[33m112 ms: 28 has taken a fork
+[32m112 ms: 28 is eating
+[33m112 ms: 30 has taken a fork
+[33m112 ms: 30 has taken a fork
+[32m112 ms: 30 is eating
+[33m112 ms: 98 has taken a fork
+[33m112 ms: 98 has taken a fork
+[32m112 ms: 98 is eating
+[33m112 ms: 100 has taken a fork
+[33m112 ms: 100 has taken a fork
+[32m112 ms: 100 is eating
+[30m201 ms: 31 is thinking
+[30m202 ms: 33 is thinking
+[30m202 ms: 35 is thinking
+[30m202 ms: 37 is thinking
+[30m202 ms: 39 is thinking
+[34m203 ms: 32 is sleeping
+[30m203 ms: 41 is thinking
+[34m203 ms: 34 is sleeping
+[30m203 ms: 43 is thinking
+[30m203 ms: 45 is thinking
+[34m203 ms: 36 is sleeping
+[34m203 ms: 38 is sleeping
+[30m203 ms: 47 is thinking
+[30m204 ms: 49 is thinking
+[34m204 ms: 40 is sleeping
+[33m204 ms: 33 has taken a fork
+[33m204 ms: 33 has taken a fork
+[32m204 ms: 33 is eating
+[30m204 ms: 51 is thinking
+[34m204 ms: 42 is sleeping
+[34m204 ms: 44 is sleeping
+[33m204 ms: 35 has taken a fork
+[33m204 ms: 35 has taken a fork
+[32m204 ms: 35 is eating
+[30m204 ms: 53 is thinking
+[33m205 ms: 37 has taken a fork
+[33m205 ms: 37 has taken a fork
+[32m205 ms: 37 is eating
+[34m205 ms: 46 is sleeping
+[34m205 ms: 48 is sleeping
+[30m205 ms: 55 is thinking
+[33m205 ms: 39 has taken a fork
+[33m205 ms: 39 has taken a fork
+[32m205 ms: 39 is eating
+[34m205 ms: 50 is sleeping
+[33m205 ms: 41 has taken a fork
+[33m205 ms: 41 has taken a fork
+[32m205 ms: 41 is eating
+[30m205 ms: 57 is thinking
+[33m205 ms: 43 has taken a fork
+[33m205 ms: 43 has taken a fork
+[32m205 ms: 43 is eating
+[30m205 ms: 59 is thinking
+[34m206 ms: 52 is sleeping
+[33m206 ms: 45 has taken a fork
+[33m206 ms: 45 has taken a fork
+[32m206 ms: 45 is eating
+[30m206 ms: 61 is thinking
+[33m206 ms: 47 has taken a fork
+[33m206 ms: 47 has taken a fork
+[32m206 ms: 47 is eating
+[34m206 ms: 54 is sleeping
+[33m206 ms: 49 has taken a fork
+[33m206 ms: 49 has taken a fork
+[32m206 ms: 49 is eating
+[34m206 ms: 56 is sleeping
+[30m206 ms: 63 is thinking
+[30m206 ms: 65 is thinking
+[34m206 ms: 58 is sleeping
+[33m207 ms: 51 has taken a fork
+[33m207 ms: 51 has taken a fork
+[32m207 ms: 51 is eating
+[30m207 ms: 67 is thinking
+[30m207 ms: 1 is thinking
+[33m207 ms: 53 has taken a fork
+[33m207 ms: 53 has taken a fork
+[32m207 ms: 53 is eating
+[34m207 ms: 60 is sleeping
+[30m207 ms: 69 is thinking
+[34m207 ms: 62 is sleeping
+[33m207 ms: 55 has taken a fork
+[33m207 ms: 55 has taken a fork
+[32m207 ms: 55 is eating
+[30m207 ms: 3 is thinking
+[30m207 ms: 71 is thinking
+[34m208 ms: 64 is sleeping
+[33m208 ms: 57 has taken a fork
+[33m208 ms: 57 has taken a fork
+[32m208 ms: 57 is eating
+[30m208 ms: 5 is thinking
+[30m208 ms: 73 is thinking
+[34m208 ms: 66 is sleeping
+[30m208 ms: 75 is thinking
+[30m208 ms: 7 is thinking
+[33m208 ms: 59 has taken a fork
+[33m208 ms: 59 has taken a fork
+[32m208 ms: 59 is eating
+[34m208 ms: 68 is sleeping
+[30m208 ms: 77 is thinking
+[30m208 ms: 9 is thinking
+[33m208 ms: 61 has taken a fork
+[33m208 ms: 61 has taken a fork
+[32m208 ms: 61 is eating
+[34m208 ms: 2 is sleeping
+[34m208 ms: 70 is sleeping
+[30m208 ms: 79 is thinking
+[30m209 ms: 11 is thinking
+[33m209 ms: 63 has taken a fork
+[33m209 ms: 63 has taken a fork
+[32m209 ms: 63 is eating
+[34m209 ms: 4 is sleeping
+[34m209 ms: 72 is sleeping
+[30m209 ms: 81 is thinking
+[33m209 ms: 65 has taken a fork
+[33m209 ms: 65 has taken a fork
+[32m209 ms: 65 is eating
+[30m209 ms: 13 is thinking
+[34m209 ms: 74 is sleeping
+[30m209 ms: 83 is thinking
+[34m209 ms: 6 is sleeping
+[30m209 ms: 15 is thinking
+[33m209 ms: 67 has taken a fork
+[33m209 ms: 67 has taken a fork
+[32m209 ms: 67 is eating
+[34m209 ms: 76 is sleeping
+[34m209 ms: 8 is sleeping
+[30m209 ms: 85 is thinking
+[30m209 ms: 17 is thinking
+[33m209 ms: 69 has taken a fork
+[33m209 ms: 69 has taken a fork
+[32m209 ms: 69 is eating
+[34m209 ms: 78 is sleeping
+[30m210 ms: 87 is thinking
+[34m210 ms: 10 is sleeping
+[30m210 ms: 19 is thinking
+[33m210 ms: 3 has taken a fork
+[33m210 ms: 3 has taken a fork
+[32m210 ms: 3 is eating
+[33m210 ms: 71 has taken a fork
+[33m210 ms: 71 has taken a fork
+[32m210 ms: 71 is eating
+[30m210 ms: 89 is thinking
+[34m210 ms: 80 is sleeping
+[34m210 ms: 12 is sleeping
+[30m210 ms: 21 is thinking
+[33m210 ms: 73 has taken a fork
+[33m210 ms: 73 has taken a fork
+[32m210 ms: 73 is eating
+[34m210 ms: 82 is sleeping
+[30m210 ms: 91 is thinking
+[33m210 ms: 5 has taken a fork
+[33m210 ms: 5 has taken a fork
+[32m210 ms: 5 is eating
+[30m210 ms: 23 is thinking
+[34m210 ms: 14 is sleeping
+[33m210 ms: 75 has taken a fork
+[33m210 ms: 75 has taken a fork
+[32m210 ms: 75 is eating
+[33m210 ms: 7 has taken a fork
+[33m210 ms: 7 has taken a fork
+[32m210 ms: 7 is eating
+[34m210 ms: 84 is sleeping
+[30m210 ms: 93 is thinking
+[30m210 ms: 25 is thinking
+[34m210 ms: 16 is sleeping
+[33m211 ms: 77 has taken a fork
+[33m211 ms: 77 has taken a fork
+[32m211 ms: 77 is eating
+[34m211 ms: 86 is sleeping
+[30m211 ms: 95 is thinking
+[33m211 ms: 9 has taken a fork
+[33m211 ms: 9 has taken a fork
+[32m211 ms: 9 is eating
+[30m211 ms: 27 is thinking
+[34m211 ms: 18 is sleeping
+[30m211 ms: 97 is thinking
+[34m211 ms: 88 is sleeping
+[33m211 ms: 79 has taken a fork
+[33m211 ms: 79 has taken a fork
+[32m211 ms: 79 is eating
+[33m211 ms: 11 has taken a fork
+[33m211 ms: 11 has taken a fork
+[34m211 ms: 20 is sleeping
+[32m211 ms: 11 is eating
+[30m211 ms: 29 is thinking
+[33m211 ms: 81 has taken a fork
+[33m211 ms: 81 has taken a fork
+[32m211 ms: 81 is eating
+[34m211 ms: 90 is sleeping
+[34m211 ms: 22 is sleeping
+[33m211 ms: 13 has taken a fork
+[33m211 ms: 13 has taken a fork
+[32m211 ms: 13 is eating
+[30m211 ms: 99 is thinking
+[33m211 ms: 83 has taken a fork
+[33m211 ms: 83 has taken a fork
+[32m211 ms: 83 is eating
+[34m211 ms: 92 is sleeping
+[33m212 ms: 15 has taken a fork
+[33m212 ms: 15 has taken a fork
+[34m212 ms: 24 is sleeping
+[32m212 ms: 15 is eating
+[33m212 ms: 85 has taken a fork
+[33m212 ms: 85 has taken a fork
+[32m212 ms: 85 is eating
+[34m212 ms: 94 is sleeping
+[33m212 ms: 17 has taken a fork
+[33m212 ms: 17 has taken a fork
+[34m212 ms: 26 is sleeping
+[32m212 ms: 17 is eating
+[33m212 ms: 87 has taken a fork
+[33m212 ms: 87 has taken a fork
+[32m212 ms: 87 is eating
+[34m212 ms: 96 is sleeping
+[33m212 ms: 19 has taken a fork
+[33m212 ms: 19 has taken a fork
+[34m212 ms: 28 is sleeping
+[32m212 ms: 19 is eating
+[34m212 ms: 30 is sleeping
+[33m212 ms: 89 has taken a fork
+[33m212 ms: 89 has taken a fork
+[32m212 ms: 89 is eating
+[34m212 ms: 98 is sleeping
+[33m212 ms: 21 has taken a fork
+[33m212 ms: 21 has taken a fork
+[32m212 ms: 21 is eating
+[34m212 ms: 100 is sleeping
+[33m212 ms: 91 has taken a fork
+[33m212 ms: 91 has taken a fork
+[32m212 ms: 91 is eating
+[33m213 ms: 23 has taken a fork
+[33m213 ms: 23 has taken a fork
+[32m213 ms: 23 is eating
+[33m213 ms: 93 has taken a fork
+[33m213 ms: 93 has taken a fork
+[32m213 ms: 93 is eating
+[33m213 ms: 25 has taken a fork
+[33m213 ms: 25 has taken a fork
+[32m213 ms: 25 is eating
+[33m213 ms: 95 has taken a fork
+[33m213 ms: 95 has taken a fork
+[32m213 ms: 95 is eating
+[33m213 ms: 27 has taken a fork
+[33m213 ms: 27 has taken a fork
+[32m213 ms: 27 is eating
+[33m213 ms: 29 has taken a fork
+[33m213 ms: 29 has taken a fork
+[33m213 ms: 31 has taken a fork
+[32m213 ms: 29 is eating
+[33m213 ms: 31 has taken a fork
+[32m213 ms: 31 is eating
+[33m213 ms: 97 has taken a fork
+[33m213 ms: 97 has taken a fork
+[32m213 ms: 97 is eating
+[33m213 ms: 1 has taken a fork
+[33m213 ms: 1 has taken a fork
+[32m213 ms: 1 is eating
+[33m213 ms: 99 has taken a fork
+[33m213 ms: 99 has taken a fork
+[32m213 ms: 99 is eating
+[30m303 ms: 32 is thinking
+[30m303 ms: 34 is thinking
+[30m303 ms: 36 is thinking
+[30m304 ms: 38 is thinking
+[30m304 ms: 40 is thinking
+[30m304 ms: 42 is thinking
+[34m304 ms: 33 is sleeping
+[30m304 ms: 44 is thinking
+[34m304 ms: 35 is sleeping
+[34m305 ms: 37 is sleeping
+[30m305 ms: 46 is thinking
+[30m305 ms: 48 is thinking
+[34m305 ms: 39 is sleeping
+[30m305 ms: 50 is thinking
+[34m305 ms: 41 is sleeping
+[34m305 ms: 43 is sleeping
+[33m305 ms: 34 has taken a fork
+[33m305 ms: 34 has taken a fork
+[32m305 ms: 34 is eating
+[30m306 ms: 52 is thinking
+[34m306 ms: 45 is sleeping
+[33m306 ms: 36 has taken a fork
+[33m306 ms: 36 has taken a fork
+[32m306 ms: 36 is eating
+[34m306 ms: 47 is sleeping
+[30m306 ms: 54 is thinking
+[33m306 ms: 38 has taken a fork
+[33m306 ms: 38 has taken a fork
+[32m306 ms: 38 is eating
+[33m306 ms: 40 has taken a fork
+[33m306 ms: 40 has taken a fork
+[32m306 ms: 40 is eating
+[30m306 ms: 56 is thinking
+[34m306 ms: 49 is sleeping
+[33m306 ms: 42 has taken a fork
+[33m306 ms: 42 has taken a fork
+[32m306 ms: 42 is eating
+[30m307 ms: 58 is thinking
+[33m307 ms: 44 has taken a fork
+[33m307 ms: 44 has taken a fork
+[34m307 ms: 51 is sleeping
+[32m307 ms: 44 is eating
+[33m307 ms: 46 has taken a fork
+[33m307 ms: 46 has taken a fork
+[32m307 ms: 46 is eating
+[30m307 ms: 60 is thinking
+[34m307 ms: 53 is sleeping
+[30m307 ms: 62 is thinking
+[34m307 ms: 55 is sleeping
+[33m307 ms: 48 has taken a fork
+[33m307 ms: 48 has taken a fork
+[32m307 ms: 48 is eating
+[30m308 ms: 64 is thinking
+[34m308 ms: 57 is sleeping
+[30m308 ms: 66 is thinking
+[33m308 ms: 50 has taken a fork
+[33m308 ms: 50 has taken a fork
+[32m308 ms: 50 is eating
+[34m308 ms: 59 is sleeping
+[33m308 ms: 52 has taken a fork
+[33m308 ms: 52 has taken a fork
+[32m308 ms: 52 is eating
+[30m308 ms: 68 is thinking
+[34m308 ms: 61 is sleeping
+[33m308 ms: 54 has taken a fork
+[33m308 ms: 54 has taken a fork
+[32m308 ms: 54 is eating
+[30m308 ms: 2 is thinking
+[30m308 ms: 70 is thinking
+[34m309 ms: 63 is sleeping
+[33m309 ms: 56 has taken a fork
+[33m309 ms: 56 has taken a fork
+[32m309 ms: 56 is eating
+[30m309 ms: 4 is thinking
+[30m309 ms: 72 is thinking
+[34m309 ms: 65 is sleeping
+[30m309 ms: 74 is thinking
+[30m309 ms: 6 is thinking
+[33m309 ms: 58 has taken a fork
+[33m309 ms: 58 has taken a fork
+[32m309 ms: 58 is eating
+[34m309 ms: 67 is sleeping
+[30m309 ms: 76 is thinking
+[30m309 ms: 8 is thinking
+[33m309 ms: 60 has taken a fork
+[33m309 ms: 60 has taken a fork
+[32m309 ms: 60 is eating
+[30m310 ms: 78 is thinking
+[34m310 ms: 69 is sleeping
+[30m310 ms: 10 is thinking
+[33m310 ms: 62 has taken a fork
+[33m310 ms: 62 has taken a fork
+[32m310 ms: 62 is eating
+[34m310 ms: 3 is sleeping
+[34m310 ms: 71 is sleeping
+[30m310 ms: 80 is thinking
+[33m310 ms: 64 has taken a fork
+[33m310 ms: 64 has taken a fork
+[32m310 ms: 64 is eating
+[30m310 ms: 12 is thinking
+[34m310 ms: 73 is sleeping
+[30m310 ms: 82 is thinking
+[34m310 ms: 5 is sleeping
+[30m310 ms: 14 is thinking
+[33m310 ms: 66 has taken a fork
+[33m310 ms: 66 has taken a fork
+[34m310 ms: 75 is sleeping
+[32m310 ms: 66 is eating
+[34m310 ms: 7 is sleeping
+[30m310 ms: 84 is thinking
+[30m311 ms: 16 is thinking
+[30m311 ms: 86 is thinking
+[34m311 ms: 77 is sleeping
+[33m311 ms: 68 has taken a fork
+[33m311 ms: 68 has taken a fork
+[32m311 ms: 68 is eating
+[34m311 ms: 9 is sleeping
+[30m311 ms: 18 is thinking
+[33m311 ms: 70 has taken a fork
+[33m311 ms: 70 has taken a fork
+[32m311 ms: 70 is eating
+[30m311 ms: 88 is thinking
+[34m311 ms: 79 is sleeping
+[30m311 ms: 20 is thinking
+[34m311 ms: 11 is sleeping
+[33m311 ms: 72 has taken a fork
+[33m311 ms: 72 has taken a fork
+[32m311 ms: 72 is eating
+[34m311 ms: 81 is sleeping
+[30m311 ms: 90 is thinking
+[30m311 ms: 22 is thinking
+[33m311 ms: 4 has taken a fork
+[33m311 ms: 4 has taken a fork
+[32m311 ms: 4 is eating
+[34m311 ms: 13 is sleeping
+[33m311 ms: 74 has taken a fork
+[33m311 ms: 74 has taken a fork
+[32m311 ms: 74 is eating
+[33m311 ms: 6 has taken a fork
+[33m311 ms: 6 has taken a fork
+[32m311 ms: 6 is eating
+[34m311 ms: 83 is sleeping
+[30m311 ms: 92 is thinking
+[30m312 ms: 24 is thinking
+[34m312 ms: 15 is sleeping
+[33m312 ms: 76 has taken a fork
+[33m312 ms: 76 has taken a fork
+[32m312 ms: 76 is eating
+[30m312 ms: 94 is thinking
+[34m312 ms: 85 is sleeping
+[33m312 ms: 8 has taken a fork
+[33m312 ms: 8 has taken a fork
+[32m312 ms: 8 is eating
+[30m312 ms: 26 is thinking
+[34m312 ms: 17 is sleeping
+[30m312 ms: 96 is thinking
+[33m312 ms: 78 has taken a fork
+[33m312 ms: 78 has taken a fork
+[34m312 ms: 87 is sleeping
+[32m312 ms: 78 is eating
+[33m312 ms: 10 has taken a fork
+[33m312 ms: 10 has taken a fork
+[32m312 ms: 10 is eating
+[34m312 ms: 19 is sleeping
+[30m312 ms: 28 is thinking
+[30m312 ms: 30 is thinking
+[33m312 ms: 80 has taken a fork
+[33m312 ms: 80 has taken a fork
+[32m312 ms: 80 is eating
+[30m312 ms: 98 is thinking
+[34m312 ms: 89 is sleeping
+[34m312 ms: 21 is sleeping
+[33m312 ms: 12 has taken a fork
+[33m312 ms: 12 has taken a fork
+[32m312 ms: 12 is eating
+[30m312 ms: 100 is thinking
+[33m313 ms: 82 has taken a fork
+[33m313 ms: 82 has taken a fork
+[32m313 ms: 82 is eating
+[34m313 ms: 91 is sleeping
+[33m313 ms: 14 has taken a fork
+[33m313 ms: 14 has taken a fork
+[32m313 ms: 14 is eating
+[34m313 ms: 23 is sleeping
+[33m313 ms: 84 has taken a fork
+[33m313 ms: 84 has taken a fork
+[32m313 ms: 84 is eating
+[34m313 ms: 93 is sleeping
+[33m313 ms: 16 has taken a fork
+[33m313 ms: 16 has taken a fork
+[32m313 ms: 16 is eating
+[34m313 ms: 25 is sleeping
+[33m313 ms: 86 has taken a fork
+[33m313 ms: 86 has taken a fork
+[34m313 ms: 95 is sleeping
+[32m313 ms: 86 is eating
+[34m313 ms: 27 is sleeping
+[33m313 ms: 18 has taken a fork
+[33m313 ms: 18 has taken a fork
+[32m313 ms: 18 is eating
+[34m313 ms: 29 is sleeping
+[34m313 ms: 31 is sleeping
+[34m313 ms: 97 is sleeping
+[33m313 ms: 88 has taken a fork
+[33m313 ms: 88 has taken a fork
+[32m313 ms: 88 is eating
+[33m313 ms: 20 has taken a fork
+[33m313 ms: 20 has taken a fork
+[32m313 ms: 20 is eating
+[34m313 ms: 1 is sleeping
+[34m313 ms: 99 is sleeping
+[33m314 ms: 90 has taken a fork
+[33m314 ms: 90 has taken a fork
+[32m314 ms: 90 is eating
+[33m314 ms: 22 has taken a fork
+[33m314 ms: 22 has taken a fork
+[32m314 ms: 22 is eating
+[33m314 ms: 92 has taken a fork
+[33m314 ms: 92 has taken a fork
+[32m314 ms: 92 is eating
+[33m314 ms: 24 has taken a fork
+[33m314 ms: 24 has taken a fork
+[32m314 ms: 24 is eating
+[33m314 ms: 94 has taken a fork
+[33m314 ms: 94 has taken a fork
+[32m314 ms: 94 is eating
+[33m314 ms: 26 has taken a fork
+[33m314 ms: 26 has taken a fork
+[32m314 ms: 26 is eating
+[33m314 ms: 30 has taken a fork
+[33m314 ms: 30 has taken a fork
+[32m314 ms: 30 is eating
+[33m314 ms: 32 has taken a fork
+[33m314 ms: 32 has taken a fork
+[32m314 ms: 32 is eating
+[33m314 ms: 28 has taken a fork
+[33m314 ms: 28 has taken a fork
+[32m314 ms: 28 is eating
+[33m314 ms: 96 has taken a fork
+[33m314 ms: 96 has taken a fork
+[32m314 ms: 96 is eating
+[33m315 ms: 2 has taken a fork
+[33m315 ms: 2 has taken a fork
+[32m315 ms: 2 is eating
+[33m315 ms: 100 has taken a fork
+[33m315 ms: 100 has taken a fork
+[32m315 ms: 100 is eating
+[33m315 ms: 98 has taken a fork
+[33m315 ms: 98 has taken a fork
+[32m315 ms: 98 is eating
+[30m404 ms: 33 is thinking
+[30m404 ms: 35 is thinking
+[30m405 ms: 37 is thinking
+[30m405 ms: 39 is thinking
+[30m405 ms: 41 is thinking
+[30m405 ms: 43 is thinking
+[34m406 ms: 34 is sleeping
+[30m406 ms: 45 is thinking
+[34m406 ms: 36 is sleeping
+[30m406 ms: 47 is thinking
+[34m406 ms: 38 is sleeping
+[34m406 ms: 40 is sleeping
+[30m406 ms: 49 is thinking
+[34m407 ms: 42 is sleeping
+[30m407 ms: 51 is thinking
+[34m407 ms: 44 is sleeping
+[33m407 ms: 35 has taken a fork
+[33m407 ms: 35 has taken a fork
+[32m407 ms: 35 is eating
+[34m407 ms: 46 is sleeping
+[30m407 ms: 53 is thinking
+[33m407 ms: 37 has taken a fork
+[33m407 ms: 37 has taken a fork
+[32m407 ms: 37 is eating
+[30m407 ms: 55 is thinking
+[33m407 ms: 39 has taken a fork
+[34m407 ms: 48 is sleeping
+[33m407 ms: 39 has taken a fork
+[32m407 ms: 39 is eating
+[33m408 ms: 41 has taken a fork
+[33m408 ms: 41 has taken a fork
+[32m408 ms: 41 is eating
+[30m408 ms: 57 is thinking
+[33m408 ms: 43 has taken a fork
+[33m408 ms: 43 has taken a fork
+[32m408 ms: 43 is eating
+[34m408 ms: 50 is sleeping
+[30m408 ms: 59 is thinking
+[33m408 ms: 45 has taken a fork
+[33m408 ms: 45 has taken a fork
+[32m408 ms: 45 is eating
+[34m408 ms: 52 is sleeping
+[30m408 ms: 61 is thinking
+[34m408 ms: 54 is sleeping
+[33m409 ms: 47 has taken a fork
+[33m409 ms: 47 has taken a fork
+[32m409 ms: 47 is eating
+[30m409 ms: 63 is thinking
+[34m409 ms: 56 is sleeping
+[30m409 ms: 65 is thinking
+[33m409 ms: 49 has taken a fork
+[33m409 ms: 49 has taken a fork
+[32m409 ms: 49 is eating
+[34m409 ms: 58 is sleeping
+[33m409 ms: 51 has taken a fork
+[33m409 ms: 51 has taken a fork
+[32m409 ms: 51 is eating
+[30m409 ms: 67 is thinking
+[34m409 ms: 60 is sleeping
+[33m410 ms: 53 has taken a fork
+[33m410 ms: 53 has taken a fork
+[32m410 ms: 53 is eating
+[30m410 ms: 69 is thinking
+[34m410 ms: 62 is sleeping
+[30m410 ms: 3 is thinking
+[33m410 ms: 55 has taken a fork
+[33m410 ms: 55 has taken a fork
+[32m410 ms: 55 is eating
+[30m410 ms: 71 is thinking
+[34m410 ms: 64 is sleeping
+[30m410 ms: 73 is thinking
+[30m410 ms: 5 is thinking
+[33m410 ms: 57 has taken a fork
+[33m410 ms: 57 has taken a fork
+[32m410 ms: 57 is eating
+[34m410 ms: 66 is sleeping
+[30m410 ms: 75 is thinking
+[30m410 ms: 7 is thinking
+[33m411 ms: 59 has taken a fork
+[33m411 ms: 59 has taken a fork
+[32m411 ms: 59 is eating
+[30m411 ms: 77 is thinking
+[34m411 ms: 68 is sleeping
+[30m411 ms: 9 is thinking
+[33m411 ms: 61 has taken a fork
+[33m411 ms: 61 has taken a fork
+[32m411 ms: 61 is eating
+[34m411 ms: 70 is sleeping
+[30m411 ms: 79 is thinking
+[33m411 ms: 63 has taken a fork
+[33m411 ms: 63 has taken a fork
+[30m411 ms: 11 is thinking
+[32m411 ms: 63 is eating
+[34m411 ms: 72 is sleeping
+[30m411 ms: 81 is thinking
+[34m411 ms: 4 is sleeping
+[30m411 ms: 13 is thinking
+[34m411 ms: 74 is sleeping
+[33m411 ms: 65 has taken a fork
+[33m411 ms: 65 has taken a fork
+[32m411 ms: 65 is eating
+[34m411 ms: 6 is sleeping
+[30m412 ms: 83 is thinking
+[30m412 ms: 15 is thinking
+[34m412 ms: 76 is sleeping
+[30m412 ms: 85 is thinking
+[33m412 ms: 67 has taken a fork
+[33m412 ms: 67 has taken a fork
+[32m412 ms: 67 is eating
+[34m412 ms: 8 is sleeping
+[30m412 ms: 17 is thinking
+[33m412 ms: 69 has taken a fork
+[33m412 ms: 69 has taken a fork
+[32m412 ms: 69 is eating
+[30m412 ms: 87 is thinking
+[34m412 ms: 78 is sleeping
+[34m412 ms: 10 is sleeping
+[30m412 ms: 19 is thinking
+[33m412 ms: 71 has taken a fork
+[33m412 ms: 71 has taken a fork
+[32m412 ms: 71 is eating
+[34m412 ms: 80 is sleeping
+[30m412 ms: 89 is thinking
+[30m412 ms: 21 is thinking
+[34m412 ms: 12 is sleeping
+[33m413 ms: 73 has taken a fork
+[33m413 ms: 73 has taken a fork
+[32m413 ms: 73 is eating
+[33m413 ms: 5 has taken a fork
+[33m413 ms: 5 has taken a fork
+[32m413 ms: 5 is eating
+[30m413 ms: 91 is thinking
+[34m413 ms: 82 is sleeping
+[30m413 ms: 23 is thinking
+[34m413 ms: 14 is sleeping
+[33m413 ms: 75 has taken a fork
+[33m413 ms: 75 has taken a fork
+[32m413 ms: 75 is eating
+[34m413 ms: 84 is sleeping
+[30m413 ms: 93 is thinking
+[33m413 ms: 7 has taken a fork
+[33m413 ms: 7 has taken a fork
+[32m413 ms: 7 is eating
+[34m413 ms: 16 is sleeping
+[30m413 ms: 25 is thinking
+[33m413 ms: 77 has taken a fork
+[33m413 ms: 77 has taken a fork
+[30m413 ms: 95 is thinking
+[32m413 ms: 77 is eating
+[34m413 ms: 86 is sleeping
+[33m413 ms: 9 has taken a fork
+[33m413 ms: 9 has taken a fork
+[30m413 ms: 31 is thinking
+[32m413 ms: 9 is eating
+[30m413 ms: 27 is thinking
+[34m413 ms: 18 is sleeping
+[30m413 ms: 29 is thinking
+[33m413 ms: 79 has taken a fork
+[30m413 ms: 97 is thinking
+[33m413 ms: 79 has taken a fork
+[32m413 ms: 79 is eating
+[34m413 ms: 88 is sleeping
+[34m413 ms: 20 is sleeping
+[33m414 ms: 11 has taken a fork
+[33m414 ms: 11 has taken a fork
+[32m414 ms: 11 is eating
+[30m414 ms: 1 is thinking
+[30m414 ms: 99 is thinking
+[33m414 ms: 81 has taken a fork
+[33m414 ms: 81 has taken a fork
+[32m414 ms: 81 is eating
+[34m414 ms: 90 is sleeping
+[34m414 ms: 22 is sleeping
+[33m414 ms: 13 has taken a fork
+[33m414 ms: 13 has taken a fork
+[32m414 ms: 13 is eating
+[33m414 ms: 83 has taken a fork
+[33m414 ms: 83 has taken a fork
+[32m414 ms: 83 is eating
+[34m414 ms: 92 is sleeping
+[33m414 ms: 15 has taken a fork
+[33m414 ms: 15 has taken a fork
+[32m414 ms: 15 is eating
+[34m414 ms: 24 is sleeping
+[33m414 ms: 85 has taken a fork
+[33m414 ms: 85 has taken a fork
+[32m414 ms: 85 is eating
+[34m414 ms: 94 is sleeping
+[33m414 ms: 17 has taken a fork
+[33m414 ms: 17 has taken a fork
+[32m414 ms: 17 is eating
+[34m414 ms: 26 is sleeping
+[34m414 ms: 30 is sleeping
+[34m414 ms: 28 is sleeping
+[34m414 ms: 32 is sleeping
+[34m414 ms: 96 is sleeping
+[33m414 ms: 87 has taken a fork
+[33m414 ms: 87 has taken a fork
+[32m414 ms: 87 is eating
+[33m415 ms: 19 has taken a fork
+[33m415 ms: 19 has taken a fork
+[32m415 ms: 19 is eating
+[34m415 ms: 2 is sleeping
+[34m415 ms: 100 is sleeping
+[34m415 ms: 98 is sleeping
+[33m415 ms: 89 has taken a fork
+[33m415 ms: 89 has taken a fork
+[32m415 ms: 89 is eating
+[33m415 ms: 21 has taken a fork
+[33m415 ms: 21 has taken a fork
+[32m415 ms: 21 is eating
+[33m415 ms: 91 has taken a fork
+[33m415 ms: 91 has taken a fork
+[32m415 ms: 91 is eating
+[33m415 ms: 23 has taken a fork
+[33m415 ms: 23 has taken a fork
+[32m415 ms: 23 is eating
+[33m415 ms: 93 has taken a fork
+[33m415 ms: 93 has taken a fork
+[32m415 ms: 93 is eating
+[33m415 ms: 25 has taken a fork
+[33m415 ms: 25 has taken a fork
+[32m415 ms: 25 is eating
+[33m415 ms: 31 has taken a fork
+[33m415 ms: 29 has taken a fork
+[33m415 ms: 33 has taken a fork
+[33m415 ms: 31 has taken a fork
+[33m415 ms: 29 has taken a fork
+[32m415 ms: 29 is eating
+[33m415 ms: 33 has taken a fork
+[32m415 ms: 33 is eating
+[32m415 ms: 31 is eating
+[33m415 ms: 27 has taken a fork
+[33m415 ms: 27 has taken a fork
+[32m415 ms: 27 is eating
+[33m416 ms: 95 has taken a fork
+[33m416 ms: 95 has taken a fork
+[32m416 ms: 95 is eating
+[33m416 ms: 3 has taken a fork
+[33m416 ms: 3 has taken a fork
+[32m416 ms: 3 is eating
+[33m416 ms: 1 has taken a fork
+[33m416 ms: 1 has taken a fork
+[32m416 ms: 1 is eating
+[33m416 ms: 97 has taken a fork
+[33m416 ms: 99 has taken a fork
+[33m416 ms: 99 has taken a fork
+[32m416 ms: 99 is eating
+[33m416 ms: 97 has taken a fork
+[32m416 ms: 97 is eating
+[30m506 ms: 34 is thinking
+[30m506 ms: 36 is thinking
+[30m506 ms: 38 is thinking
+[30m506 ms: 40 is thinking
+[30m507 ms: 42 is thinking
+[30m507 ms: 44 is thinking
+[34m507 ms: 35 is sleeping
+[30m507 ms: 46 is thinking
+[34m507 ms: 37 is sleeping
+[34m508 ms: 39 is sleeping
+[30m508 ms: 48 is thinking
+[34m508 ms: 41 is sleeping
+[34m508 ms: 43 is sleeping
+[30m508 ms: 50 is thinking
+[34m508 ms: 45 is sleeping
+[30m508 ms: 52 is thinking
+[33m508 ms: 36 has taken a fork
+[33m508 ms: 36 has taken a fork
+[32m508 ms: 36 is eating
+[30m509 ms: 54 is thinking
+[33m509 ms: 38 has taken a fork
+[33m509 ms: 38 has taken a fork
+[32m509 ms: 38 is eating
+[34m509 ms: 47 is sleeping
+[33m509 ms: 40 has taken a fork
+[33m509 ms: 40 has taken a fork
+[32m509 ms: 40 is eating
+[30m509 ms: 56 is thinking
+[33m509 ms: 42 has taken a fork
+[33m509 ms: 42 has taken a fork
+[32m509 ms: 42 is eating
+[34m509 ms: 49 is sleeping
+[30m509 ms: 58 is thinking
+[33m509 ms: 44 has taken a fork
+[33m509 ms: 44 has taken a fork
+[32m509 ms: 44 is eating
+[34m509 ms: 51 is sleeping
+[30m510 ms: 60 is thinking
+[34m510 ms: 53 is sleeping
+[33m510 ms: 46 has taken a fork
+[33m510 ms: 46 has taken a fork
+[32m510 ms: 46 is eating
+[30m510 ms: 62 is thinking
+[34m510 ms: 55 is sleeping
+[30m510 ms: 64 is thinking
+[33m510 ms: 48 has taken a fork
+[33m510 ms: 48 has taken a fork
+[32m510 ms: 48 is eating
+[34m510 ms: 57 is sleeping
+[30m510 ms: 66 is thinking
+[33m510 ms: 50 has taken a fork
+[33m510 ms: 50 has taken a fork
+[32m510 ms: 50 is eating
+[34m511 ms: 59 is sleeping
+[30m511 ms: 68 is thinking
+[33m511 ms: 52 has taken a fork
+[33m511 ms: 52 has taken a fork
+[32m511 ms: 52 is eating
+[34m511 ms: 61 is sleeping
+[30m511 ms: 70 is thinking
+[33m511 ms: 54 has taken a fork
+[33m511 ms: 54 has taken a fork
+[32m511 ms: 54 is eating
+[34m511 ms: 63 is sleeping
+[30m511 ms: 72 is thinking
+[30m511 ms: 4 is thinking
+[33m511 ms: 56 has taken a fork
+[33m511 ms: 56 has taken a fork
+[32m511 ms: 56 is eating
+[30m512 ms: 74 is thinking
+[34m512 ms: 65 is sleeping
+[30m512 ms: 6 is thinking
+[33m512 ms: 58 has taken a fork
+[33m512 ms: 58 has taken a fork
+[32m512 ms: 58 is eating
+[30m512 ms: 76 is thinking
+[34m512 ms: 67 is sleeping
+[30m512 ms: 8 is thinking
+[33m512 ms: 60 has taken a fork
+[33m512 ms: 60 has taken a fork
+[32m512 ms: 60 is eating
+[34m512 ms: 69 is sleeping
+[30m512 ms: 78 is thinking
+[33m512 ms: 62 has taken a fork
+[33m512 ms: 62 has taken a fork
+[32m512 ms: 62 is eating
+[30m512 ms: 10 is thinking
+[34m512 ms: 71 is sleeping
+[30m512 ms: 80 is thinking
+[30m513 ms: 12 is thinking
+[34m513 ms: 73 is sleeping
+[33m513 ms: 64 has taken a fork
+[33m513 ms: 64 has taken a fork
+[32m513 ms: 64 is eating
+[34m513 ms: 5 is sleeping
+[30m513 ms: 82 is thinking
+[30m513 ms: 14 is thinking
+[34m513 ms: 75 is sleeping
+[33m513 ms: 66 has taken a fork
+[33m513 ms: 66 has taken a fork
+[30m513 ms: 84 is thinking
+[32m513 ms: 66 is eating
+[34m513 ms: 7 is sleeping
+[30m513 ms: 16 is thinking
+[33m513 ms: 68 has taken a fork
+[33m513 ms: 68 has taken a fork
+[32m513 ms: 68 is eating
+[30m513 ms: 86 is thinking
+[34m513 ms: 77 is sleeping
+[33m513 ms: 70 has taken a fork
+[33m513 ms: 70 has taken a fork
+[32m513 ms: 70 is eating
+[34m513 ms: 9 is sleeping
+[30m513 ms: 18 is thinking
+[34m513 ms: 79 is sleeping
+[30m513 ms: 88 is thinking
+[30m514 ms: 20 is thinking
+[34m514 ms: 11 is sleeping
+[33m514 ms: 72 has taken a fork
+[33m514 ms: 72 has taken a fork
+[32m514 ms: 72 is eating
+[34m514 ms: 81 is sleeping
+[30m514 ms: 90 is thinking
+[30m514 ms: 22 is thinking
+[34m514 ms: 13 is sleeping
+[33m514 ms: 74 has taken a fork
+[33m514 ms: 74 has taken a fork
+[32m514 ms: 74 is eating
+[34m514 ms: 83 is sleeping
+[30m514 ms: 92 is thinking
+[33m514 ms: 6 has taken a fork
+[33m514 ms: 6 has taken a fork
+[32m514 ms: 6 is eating
+[34m514 ms: 15 is sleeping
+[30m514 ms: 24 is thinking
+[34m514 ms: 85 is sleeping
+[30m514 ms: 94 is thinking
+[33m514 ms: 76 has taken a fork
+[33m514 ms: 76 has taken a fork
+[32m514 ms: 76 is eating
+[33m514 ms: 8 has taken a fork
+[33m514 ms: 8 has taken a fork
+[32m514 ms: 8 is eating
+[34m514 ms: 17 is sleeping
+[30m514 ms: 26 is thinking
+[30m514 ms: 30 is thinking
+[30m514 ms: 28 is thinking
+[30m514 ms: 32 is thinking
+[30m515 ms: 96 is thinking
+[34m515 ms: 87 is sleeping
+[33m515 ms: 78 has taken a fork
+[33m515 ms: 78 has taken a fork
+[32m515 ms: 78 is eating
+[34m515 ms: 19 is sleeping
+[33m515 ms: 10 has taken a fork
+[33m515 ms: 10 has taken a fork
+[30m515 ms: 98 is thinking
+[30m515 ms: 2 is thinking
+[32m515 ms: 10 is eating
+[30m515 ms: 100 is thinking
+[34m515 ms: 89 is sleeping
+[33m515 ms: 80 has taken a fork
+[33m515 ms: 80 has taken a fork
+[32m515 ms: 80 is eating
+[34m515 ms: 21 is sleeping
+[33m515 ms: 12 has taken a fork
+[33m515 ms: 12 has taken a fork
+[32m515 ms: 12 is eating
+[33m515 ms: 82 has taken a fork
+[33m515 ms: 82 has taken a fork
+[32m515 ms: 82 is eating
+[34m515 ms: 91 is sleeping
+[34m515 ms: 23 is sleeping
+[33m515 ms: 14 has taken a fork
+[33m515 ms: 14 has taken a fork
+[32m515 ms: 14 is eating
+[33m515 ms: 84 has taken a fork
+[33m515 ms: 84 has taken a fork
+[32m515 ms: 84 is eating
+[34m515 ms: 93 is sleeping
+[33m515 ms: 16 has taken a fork
+[33m515 ms: 16 has taken a fork
+[32m515 ms: 16 is eating
+[34m515 ms: 25 is sleeping
+[34m516 ms: 29 is sleeping
+[34m516 ms: 31 is sleeping
+[33m516 ms: 86 has taken a fork
+[33m516 ms: 86 has taken a fork
+[34m516 ms: 27 is sleeping
+[34m516 ms: 33 is sleeping
+[32m516 ms: 86 is eating
+[34m516 ms: 95 is sleeping
+[33m516 ms: 18 has taken a fork
+[33m516 ms: 18 has taken a fork
+[32m516 ms: 18 is eating
+[34m516 ms: 3 is sleeping
+[34m516 ms: 1 is sleeping
+[34m516 ms: 99 is sleeping
+[34m516 ms: 97 is sleeping
+[33m516 ms: 88 has taken a fork
+[33m516 ms: 88 has taken a fork
+[32m516 ms: 88 is eating
+[33m516 ms: 20 has taken a fork
+[33m516 ms: 20 has taken a fork
+[32m516 ms: 20 is eating
+[33m516 ms: 90 has taken a fork
+[33m516 ms: 90 has taken a fork
+[32m516 ms: 90 is eating
+[33m516 ms: 22 has taken a fork
+[33m516 ms: 22 has taken a fork
+[32m516 ms: 22 is eating
+[33m516 ms: 92 has taken a fork
+[33m516 ms: 92 has taken a fork
+[32m516 ms: 92 is eating
+[33m517 ms: 24 has taken a fork
+[33m517 ms: 24 has taken a fork
+[32m517 ms: 24 is eating
+[33m517 ms: 32 has taken a fork
+[33m517 ms: 32 has taken a fork
+[32m517 ms: 32 is eating
+[33m517 ms: 34 has taken a fork
+[33m517 ms: 34 has taken a fork
+[33m517 ms: 94 has taken a fork
+[32m517 ms: 34 is eating
+[33m517 ms: 28 has taken a fork
+[33m517 ms: 28 has taken a fork
+[32m517 ms: 28 is eating
+[33m517 ms: 94 has taken a fork
+[32m517 ms: 94 is eating
+[33m517 ms: 26 has taken a fork
+[33m517 ms: 26 has taken a fork
+[32m517 ms: 26 is eating
+[33m517 ms: 30 has taken a fork
+[33m517 ms: 30 has taken a fork
+[32m517 ms: 30 is eating
+[33m517 ms: 4 has taken a fork
+[33m517 ms: 4 has taken a fork
+[32m517 ms: 4 is eating
+[33m517 ms: 96 has taken a fork
+[33m517 ms: 96 has taken a fork
+[32m517 ms: 96 is eating
+[33m517 ms: 2 has taken a fork
+[33m517 ms: 100 has taken a fork
+[33m517 ms: 100 has taken a fork
+[33m517 ms: 2 has taken a fork
+[33m517 ms: 98 has taken a fork
+[33m517 ms: 98 has taken a fork
+[32m517 ms: 100 is eating
+[32m517 ms: 98 is eating
+[32m517 ms: 2 is eating
+[30m607 ms: 35 is thinking
+[30m607 ms: 37 is thinking
+[30m608 ms: 39 is thinking
+[30m608 ms: 41 is thinking
+[30m608 ms: 43 is thinking
+[30m608 ms: 45 is thinking
+[34m608 ms: 36 is sleeping
+[34m609 ms: 38 is sleeping
+[30m609 ms: 47 is thinking
+[34m609 ms: 40 is sleeping
+[34m609 ms: 42 is sleeping
+[30m609 ms: 49 is thinking
+[34m609 ms: 44 is sleeping
+[30m609 ms: 51 is thinking
+[33m610 ms: 37 has taken a fork
+[33m610 ms: 37 has taken a fork
+[32m610 ms: 37 is eating
+[30m610 ms: 53 is thinking
+[34m610 ms: 46 is sleeping
+[33m610 ms: 39 has taken a fork
+[33m610 ms: 39 has taken a fork
+[32m610 ms: 39 is eating
+[30m610 ms: 55 is thinking
+[33m610 ms: 41 has taken a fork
+[33m610 ms: 41 has taken a fork
+[32m610 ms: 41 is eating
+[34m610 ms: 48 is sleeping
+[30m610 ms: 57 is thinking
+[33m610 ms: 43 has taken a fork
+[33m610 ms: 43 has taken a fork
+[32m610 ms: 43 is eating
+[34m611 ms: 50 is sleeping
+[30m611 ms: 59 is thinking
+[34m611 ms: 52 is sleeping
+[33m611 ms: 45 has taken a fork
+[33m611 ms: 45 has taken a fork
+[32m611 ms: 45 is eating
+[30m611 ms: 61 is thinking
+[34m611 ms: 54 is sleeping
+[30m611 ms: 63 is thinking
+[33m611 ms: 47 has taken a fork
+[33m611 ms: 47 has taken a fork
+[32m611 ms: 47 is eating
+[34m612 ms: 56 is sleeping
+[30m612 ms: 65 is thinking
+[33m612 ms: 49 has taken a fork
+[33m612 ms: 49 has taken a fork
+[32m612 ms: 49 is eating
+[34m612 ms: 58 is sleeping
+[30m612 ms: 67 is thinking
+[33m612 ms: 51 has taken a fork
+[33m612 ms: 51 has taken a fork
+[32m612 ms: 51 is eating
+[34m612 ms: 60 is sleeping
+[30m612 ms: 69 is thinking
+[33m612 ms: 53 has taken a fork
+[33m612 ms: 53 has taken a fork
+[32m612 ms: 53 is eating
+[30m612 ms: 71 is thinking
+[34m612 ms: 62 is sleeping
+[33m613 ms: 55 has taken a fork
+[33m613 ms: 55 has taken a fork
+[32m613 ms: 55 is eating
+[30m613 ms: 73 is thinking
+[30m613 ms: 5 is thinking
+[34m613 ms: 64 is sleeping
+[33m613 ms: 57 has taken a fork
+[33m613 ms: 57 has taken a fork
+[32m613 ms: 57 is eating
+[30m613 ms: 75 is thinking
+[34m613 ms: 66 is sleeping
+[30m613 ms: 7 is thinking
+[33m613 ms: 59 has taken a fork
+[33m613 ms: 59 has taken a fork
+[32m613 ms: 59 is eating
+[34m613 ms: 68 is sleeping
+[30m613 ms: 77 is thinking
+[33m613 ms: 61 has taken a fork
+[33m613 ms: 61 has taken a fork
+[32m613 ms: 61 is eating
+[30m613 ms: 9 is thinking
+[34m613 ms: 70 is sleeping
+[30m614 ms: 79 is thinking
+[30m614 ms: 11 is thinking
+[34m614 ms: 72 is sleeping
+[33m614 ms: 63 has taken a fork
+[33m614 ms: 63 has taken a fork
+[32m614 ms: 63 is eating
+[30m614 ms: 81 is thinking
+[34m614 ms: 74 is sleeping
+[30m614 ms: 83 is thinking
+[30m614 ms: 13 is thinking
+[33m614 ms: 65 has taken a fork
+[33m614 ms: 65 has taken a fork
+[32m614 ms: 65 is eating
+[34m614 ms: 6 is sleeping
+[30m614 ms: 15 is thinking
+[33m614 ms: 67 has taken a fork
+[33m614 ms: 67 has taken a fork
+[32m614 ms: 67 is eating
+[30m614 ms: 85 is thinking
+[34m614 ms: 76 is sleeping
+[33m614 ms: 69 has taken a fork
+[33m614 ms: 69 has taken a fork
+[32m614 ms: 69 is eating
+[30m614 ms: 17 is thinking
+[34m614 ms: 8 is sleeping
+[30m615 ms: 87 is thinking
+[34m615 ms: 78 is sleeping
+[30m615 ms: 19 is thinking
+[34m615 ms: 10 is sleeping
+[33m615 ms: 71 has taken a fork
+[33m615 ms: 71 has taken a fork
+[32m615 ms: 71 is eating
+[30m615 ms: 89 is thinking
+[34m615 ms: 80 is sleeping
+[30m615 ms: 21 is thinking
+[34m615 ms: 12 is sleeping
+[34m615 ms: 82 is sleeping
+[33m615 ms: 73 has taken a fork
+[33m615 ms: 73 has taken a fork
+[32m615 ms: 73 is eating
+[30m615 ms: 91 is thinking
+[30m615 ms: 23 is thinking
+[34m615 ms: 14 is sleeping
+[34m615 ms: 84 is sleeping
+[30m615 ms: 93 is thinking
+[33m615 ms: 75 has taken a fork
+[33m615 ms: 75 has taken a fork
+[32m615 ms: 75 is eating
+[33m616 ms: 7 has taken a fork
+[33m616 ms: 7 has taken a fork
+[32m616 ms: 7 is eating
+[34m616 ms: 16 is sleeping
+[30m616 ms: 25 is thinking
+[30m616 ms: 29 is thinking
+[30m616 ms: 31 is thinking
+[30m616 ms: 27 is thinking
+[30m616 ms: 33 is thinking
+[33m616 ms: 77 has taken a fork
+[33m616 ms: 77 has taken a fork
+[32m616 ms: 77 is eating
+[34m616 ms: 86 is sleeping
+[30m616 ms: 95 is thinking
+[34m616 ms: 18 is sleeping
+[30m616 ms: 3 is thinking
+[33m616 ms: 9 has taken a fork
+[33m616 ms: 9 has taken a fork
+[32m616 ms: 9 is eating
+[30m616 ms: 1 is thinking
+[30m616 ms: 99 is thinking
+[30m616 ms: 97 is thinking
+[34m616 ms: 88 is sleeping
+[33m616 ms: 79 has taken a fork
+[33m616 ms: 79 has taken a fork
+[32m616 ms: 79 is eating
+[34m616 ms: 20 is sleeping
+[33m616 ms: 11 has taken a fork
+[33m616 ms: 11 has taken a fork
+[32m616 ms: 11 is eating
+[33m616 ms: 81 has taken a fork
+[33m616 ms: 81 has taken a fork
+[32m616 ms: 81 is eating
+[34m616 ms: 90 is sleeping
+[34m616 ms: 22 is sleeping
+[33m616 ms: 13 has taken a fork
+[33m616 ms: 13 has taken a fork
+[32m616 ms: 13 is eating
+[33m616 ms: 83 has taken a fork
+[33m616 ms: 83 has taken a fork
+[32m616 ms: 83 is eating
+[34m616 ms: 92 is sleeping
+[33m617 ms: 15 has taken a fork
+[33m617 ms: 15 has taken a fork
+[32m617 ms: 15 is eating
+[34m617 ms: 24 is sleeping
+[33m617 ms: 85 has taken a fork
+[33m617 ms: 85 has taken a fork
+[32m617 ms: 85 is eating
+[34m617 ms: 32 is sleeping
+[34m617 ms: 34 is sleeping
+[34m617 ms: 28 is sleeping
+[34m617 ms: 94 is sleeping
+[34m617 ms: 26 is sleeping
+[34m617 ms: 30 is sleeping
+[33m617 ms: 17 has taken a fork
+[33m617 ms: 17 has taken a fork
+[32m617 ms: 17 is eating
+[34m617 ms: 4 is sleeping
+[34m617 ms: 96 is sleeping
+[34m617 ms: 2 is sleeping
+[34m617 ms: 100 is sleeping
+[33m617 ms: 87 has taken a fork
+[33m617 ms: 87 has taken a fork
+[34m617 ms: 98 is sleeping
+[32m617 ms: 87 is eating
+[33m617 ms: 19 has taken a fork
+[33m617 ms: 19 has taken a fork
+[32m617 ms: 19 is eating
+[33m617 ms: 89 has taken a fork
+[33m617 ms: 89 has taken a fork
+[32m617 ms: 89 is eating
+[33m617 ms: 21 has taken a fork
+[33m617 ms: 21 has taken a fork
+[32m617 ms: 21 is eating
+[33m618 ms: 91 has taken a fork
+[33m618 ms: 91 has taken a fork
+[32m618 ms: 91 is eating
+[33m618 ms: 23 has taken a fork
+[33m618 ms: 23 has taken a fork
+[32m618 ms: 23 is eating
+[33m618 ms: 33 has taken a fork
+[33m618 ms: 33 has taken a fork
+[32m618 ms: 33 is eating
+[33m618 ms: 25 has taken a fork
+[33m618 ms: 25 has taken a fork
+[32m618 ms: 25 is eating
+[33m618 ms: 93 has taken a fork
+[33m618 ms: 35 has taken a fork
+[33m618 ms: 35 has taken a fork
+[33m618 ms: 27 has taken a fork
+[33m618 ms: 27 has taken a fork
+[32m618 ms: 27 is eating
+[33m618 ms: 29 has taken a fork
+[33m618 ms: 29 has taken a fork
+[32m618 ms: 29 is eating
+[33m618 ms: 93 has taken a fork
+[32m618 ms: 93 is eating
+[33m618 ms: 31 has taken a fork
+[33m618 ms: 31 has taken a fork
+[32m618 ms: 31 is eating
+[32m618 ms: 35 is eating
+[33m618 ms: 5 has taken a fork
+[33m618 ms: 5 has taken a fork
+[32m618 ms: 5 is eating
+[33m618 ms: 95 has taken a fork
+[33m618 ms: 95 has taken a fork
+[32m618 ms: 95 is eating
+[33m618 ms: 3 has taken a fork
+[33m618 ms: 3 has taken a fork
+[32m618 ms: 3 is eating
+[33m618 ms: 1 has taken a fork
+[33m618 ms: 1 has taken a fork
+[33m618 ms: 99 has taken a fork
+[33m618 ms: 99 has taken a fork
+[32m618 ms: 99 is eating
+[32m618 ms: 1 is eating
+[33m618 ms: 97 has taken a fork
+[33m618 ms: 97 has taken a fork
+[32m618 ms: 97 is eating
+[30m709 ms: 36 is thinking
+[30m709 ms: 38 is thinking
+[30m709 ms: 40 is thinking
+[30m709 ms: 42 is thinking
+[30m709 ms: 44 is thinking
+[34m710 ms: 37 is sleeping
+[30m710 ms: 46 is thinking
+[34m710 ms: 39 is sleeping
+[34m710 ms: 41 is sleeping
+[30m710 ms: 48 is thinking
+[34m711 ms: 43 is sleeping
+[30m711 ms: 50 is thinking
+[30m711 ms: 52 is thinking
+[34m711 ms: 45 is sleeping
+[33m711 ms: 38 has taken a fork
+[33m711 ms: 38 has taken a fork
+[32m711 ms: 38 is eating
+[30m711 ms: 54 is thinking
+[33m711 ms: 40 has taken a fork
+[33m711 ms: 40 has taken a fork
+[32m711 ms: 40 is eating
+[34m712 ms: 47 is sleeping
+[33m712 ms: 42 has taken a fork
+[33m712 ms: 42 has taken a fork
+[32m712 ms: 42 is eating
+[30m712 ms: 56 is thinking
+[34m712 ms: 49 is sleeping
+[30m712 ms: 58 is thinking
+[34m712 ms: 51 is sleeping
+[33m712 ms: 44 has taken a fork
+[33m712 ms: 44 has taken a fork
+[32m712 ms: 44 is eating
+[30m712 ms: 60 is thinking
+[34m712 ms: 53 is sleeping
+[30m712 ms: 62 is thinking
+[33m713 ms: 46 has taken a fork
+[33m713 ms: 46 has taken a fork
+[32m713 ms: 46 is eating
+[34m713 ms: 55 is sleeping
+[30m713 ms: 64 is thinking
+[33m713 ms: 48 has taken a fork
+[33m713 ms: 48 has taken a fork
+[32m713 ms: 48 is eating
+[34m713 ms: 57 is sleeping
+[30m713 ms: 66 is thinking
+[33m713 ms: 50 has taken a fork
+[33m713 ms: 50 has taken a fork
+[32m713 ms: 50 is eating
+[30m713 ms: 68 is thinking
+[34m713 ms: 59 is sleeping
+[33m713 ms: 52 has taken a fork
+[33m713 ms: 52 has taken a fork
+[32m713 ms: 52 is eating
+[34m713 ms: 61 is sleeping
+[30m714 ms: 70 is thinking
+[33m714 ms: 54 has taken a fork
+[33m714 ms: 54 has taken a fork
+[32m714 ms: 54 is eating
+[30m714 ms: 72 is thinking
+[30m714 ms: 74 is thinking
+[34m714 ms: 63 is sleeping
+[33m714 ms: 56 has taken a fork
+[33m714 ms: 56 has taken a fork
+[32m714 ms: 56 is eating
+[34m714 ms: 65 is sleeping
+[30m714 ms: 6 is thinking
+[34m714 ms: 67 is sleeping
+[33m714 ms: 58 has taken a fork
+[33m714 ms: 58 has taken a fork
+[32m714 ms: 58 is eating
+[30m714 ms: 76 is thinking
+[34m715 ms: 69 is sleeping
+[30m715 ms: 8 is thinking
+[33m715 ms: 60 has taken a fork
+[33m715 ms: 60 has taken a fork
+[32m715 ms: 60 is eating
+[30m715 ms: 78 is thinking
+[30m715 ms: 10 is thinking
+[34m715 ms: 71 is sleeping
+[30m715 ms: 80 is thinking
+[34m715 ms: 73 is sleeping
+[30m715 ms: 12 is thinking
+[30m715 ms: 82 is thinking
+[33m715 ms: 62 has taken a fork
+[33m715 ms: 62 has taken a fork
+[32m715 ms: 62 is eating
+[33m715 ms: 64 has taken a fork
+[33m715 ms: 64 has taken a fork
+[32m715 ms: 64 is eating
+[30m715 ms: 14 is thinking
+[33m715 ms: 66 has taken a fork
+[33m715 ms: 66 has taken a fork
+[32m715 ms: 66 is eating
+[30m715 ms: 84 is thinking
+[34m715 ms: 75 is sleeping
+[33m716 ms: 68 has taken a fork
+[33m716 ms: 68 has taken a fork
+[34m716 ms: 7 is sleeping
+[30m716 ms: 16 is thinking
+[32m716 ms: 68 is eating
+[30m716 ms: 86 is thinking
+[34m716 ms: 77 is sleeping
+[30m716 ms: 18 is thinking
+[34m716 ms: 9 is sleeping
+[33m716 ms: 70 has taken a fork
+[33m716 ms: 70 has taken a fork
+[32m716 ms: 70 is eating
+[30m716 ms: 88 is thinking
+[34m716 ms: 79 is sleeping
+[30m716 ms: 20 is thinking
+[34m716 ms: 11 is sleeping
+[33m716 ms: 72 has taken a fork
+[33m716 ms: 72 has taken a fork
+[32m716 ms: 72 is eating
+[34m716 ms: 81 is sleeping
+[30m716 ms: 90 is thinking
+[30m716 ms: 22 is thinking
+[34m716 ms: 13 is sleeping
+[30m717 ms: 92 is thinking
+[34m717 ms: 83 is sleeping
+[33m717 ms: 74 has taken a fork
+[33m717 ms: 74 has taken a fork
+[32m717 ms: 74 is eating
+[34m717 ms: 15 is sleeping
+[30m717 ms: 24 is thinking
+[34m717 ms: 85 is sleeping
+[34m717 ms: 17 is sleeping
+[30m717 ms: 32 is thinking
+[30m717 ms: 94 is thinking
+[30m717 ms: 30 is thinking
+[30m717 ms: 34 is thinking
+[33m717 ms: 76 has taken a fork
+[33m717 ms: 76 has taken a fork
+[30m717 ms: 28 is thinking
+[30m717 ms: 26 is thinking
+[32m717 ms: 76 is eating
+[33m717 ms: 8 has taken a fork
+[33m717 ms: 8 has taken a fork
+[32m717 ms: 8 is eating
+[30m717 ms: 4 is thinking
+[30m717 ms: 96 is thinking
+[30m717 ms: 2 is thinking
+[30m717 ms: 100 is thinking
+[30m717 ms: 98 is thinking
+[34m717 ms: 87 is sleeping
+[33m717 ms: 78 has taken a fork
+[33m717 ms: 78 has taken a fork
+[32m717 ms: 78 is eating
+[34m717 ms: 19 is sleeping
+[33m717 ms: 10 has taken a fork
+[33m717 ms: 10 has taken a fork
+[32m717 ms: 10 is eating
+[33m717 ms: 80 has taken a fork
+[33m717 ms: 80 has taken a fork
+[32m717 ms: 80 is eating
+[34m717 ms: 89 is sleeping
+[34m717 ms: 21 is sleeping
+[33m717 ms: 12 has taken a fork
+[33m717 ms: 12 has taken a fork
+[32m717 ms: 12 is eating
+[34m718 ms: 91 is sleeping
+[33m718 ms: 82 has taken a fork
+[33m718 ms: 82 has taken a fork
+[32m718 ms: 82 is eating
+[33m718 ms: 14 has taken a fork
+[33m718 ms: 14 has taken a fork
+[32m718 ms: 14 is eating
+[34m718 ms: 23 is sleeping
+[33m718 ms: 16 has taken a fork
+[33m718 ms: 84 has taken a fork
+[33m718 ms: 84 has taken a fork
+[33m718 ms: 16 has taken a fork
+[34m718 ms: 25 is sleeping
+[32m718 ms: 84 is eating
+[32m718 ms: 16 is eating
+[34m718 ms: 33 is sleeping
+[34m718 ms: 27 is sleeping
+[34m718 ms: 29 is sleeping
+[34m718 ms: 93 is sleeping
+[34m718 ms: 31 is sleeping
+[34m718 ms: 35 is sleeping
+[34m718 ms: 5 is sleeping
+[34m718 ms: 95 is sleeping
+[34m718 ms: 3 is sleeping
+[34m718 ms: 99 is sleeping
+[34m718 ms: 1 is sleeping
+[34m718 ms: 97 is sleeping
+[33m718 ms: 86 has taken a fork
+[33m718 ms: 86 has taken a fork
+[32m718 ms: 86 is eating
+[33m718 ms: 18 has taken a fork
+[33m718 ms: 18 has taken a fork
+[32m718 ms: 18 is eating
+[33m718 ms: 88 has taken a fork
+[33m718 ms: 88 has taken a fork
+[32m718 ms: 88 is eating
+[33m718 ms: 20 has taken a fork
+[33m718 ms: 20 has taken a fork
+[32m718 ms: 20 is eating
+[33m719 ms: 90 has taken a fork
+[33m719 ms: 90 has taken a fork
+[32m719 ms: 90 is eating
+[33m719 ms: 22 has taken a fork
+[33m719 ms: 22 has taken a fork
+[32m719 ms: 22 is eating
+[33m719 ms: 24 has taken a fork
+[33m719 ms: 24 has taken a fork
+[32m719 ms: 24 is eating
+[33m719 ms: 26 has taken a fork
+[33m719 ms: 26 has taken a fork
+[32m719 ms: 26 is eating
+[33m719 ms: 28 has taken a fork
+[33m719 ms: 28 has taken a fork
+[32m719 ms: 28 is eating
+[33m719 ms: 92 has taken a fork
+[33m719 ms: 34 has taken a fork
+[33m719 ms: 92 has taken a fork
+[33m719 ms: 34 has taken a fork
+[33m719 ms: 32 has taken a fork
+[32m719 ms: 34 is eating
+[33m719 ms: 32 has taken a fork
+[32m719 ms: 92 is eating
+[33m719 ms: 30 has taken a fork
+[33m719 ms: 30 has taken a fork
+[32m719 ms: 30 is eating
+[33m719 ms: 36 has taken a fork
+[33m719 ms: 36 has taken a fork
+[32m719 ms: 32 is eating
+[33m719 ms: 6 has taken a fork
+[32m719 ms: 36 is eating
+[33m719 ms: 94 has taken a fork
+[33m719 ms: 94 has taken a fork
+[32m719 ms: 94 is eating
+[33m719 ms: 6 has taken a fork
+[32m719 ms: 6 is eating
+[33m719 ms: 4 has taken a fork
+[33m719 ms: 4 has taken a fork
+[32m719 ms: 4 is eating
+[33m719 ms: 2 has taken a fork
+[33m719 ms: 2 has taken a fork
+[32m719 ms: 2 is eating
+[33m719 ms: 100 has taken a fork
+[33m719 ms: 100 has taken a fork
+[32m719 ms: 100 is eating
+[33m719 ms: 98 has taken a fork
+[33m719 ms: 98 has taken a fork
+[32m719 ms: 98 is eating
+[33m719 ms: 96 has taken a fork
+[33m719 ms: 96 has taken a fork
+[32m719 ms: 96 is eating
+[30m810 ms: 37 is thinking
+[30m810 ms: 39 is thinking
+[30m810 ms: 41 is thinking
+[30m811 ms: 43 is thinking
+[30m811 ms: 45 is thinking
+[34m811 ms: 38 is sleeping
+[34m811 ms: 40 is sleeping
+[30m812 ms: 47 is thinking
+[34m812 ms: 42 is sleeping
+[30m812 ms: 49 is thinking
+[30m812 ms: 51 is thinking
+[34m812 ms: 44 is sleeping
+[30m812 ms: 53 is thinking
+[33m813 ms: 39 has taken a fork
+[33m813 ms: 39 has taken a fork
+[32m813 ms: 39 is eating
+[34m813 ms: 46 is sleeping
+[30m813 ms: 55 is thinking
+[33m813 ms: 41 has taken a fork
+[33m813 ms: 41 has taken a fork
+[32m813 ms: 41 is eating
+[34m813 ms: 48 is sleeping
+[30m813 ms: 57 is thinking
+[34m813 ms: 50 is sleeping
+[33m813 ms: 43 has taken a fork
+[33m813 ms: 43 has taken a fork
+[32m813 ms: 43 is eating
+[30m813 ms: 59 is thinking
+[34m814 ms: 52 is sleeping
+[30m814 ms: 61 is thinking
+[33m814 ms: 45 has taken a fork
+[33m814 ms: 45 has taken a fork
+[32m814 ms: 45 is eating
+[34m814 ms: 54 is sleeping
+[33m814 ms: 47 has taken a fork
+[33m814 ms: 47 has taken a fork
+[32m814 ms: 47 is eating
+[30m814 ms: 63 is thinking
+[30m814 ms: 65 is thinking
+[34m814 ms: 56 is sleeping
+[33m814 ms: 49 has taken a fork
+[33m814 ms: 49 has taken a fork
+[32m814 ms: 49 is eating
+[30m814 ms: 67 is thinking
+[34m814 ms: 58 is sleeping
+[33m815 ms: 51 has taken a fork
+[33m815 ms: 51 has taken a fork
+[32m815 ms: 51 is eating
+[30m815 ms: 69 is thinking
+[34m815 ms: 60 is sleeping
+[30m815 ms: 71 is thinking
+[33m815 ms: 53 has taken a fork
+[33m815 ms: 53 has taken a fork
+[32m815 ms: 53 is eating
+[30m815 ms: 73 is thinking
+[34m815 ms: 62 is sleeping
+[34m815 ms: 64 is sleeping
+[33m815 ms: 55 has taken a fork
+[33m815 ms: 55 has taken a fork
+[32m815 ms: 55 is eating
+[33m815 ms: 57 has taken a fork
+[33m815 ms: 57 has taken a fork
+[32m815 ms: 57 is eating
+[34m815 ms: 66 is sleeping
+[30m816 ms: 75 is thinking
+[30m816 ms: 7 is thinking
+[34m816 ms: 68 is sleeping
+[33m816 ms: 59 has taken a fork
+[33m816 ms: 59 has taken a fork
+[32m816 ms: 59 is eating
+[30m816 ms: 77 is thinking
+[30m816 ms: 9 is thinking
+[34m816 ms: 70 is sleeping
+[30m816 ms: 79 is thinking
+[30m816 ms: 11 is thinking
+[34m816 ms: 72 is sleeping
+[33m816 ms: 61 has taken a fork
+[33m816 ms: 61 has taken a fork
+[32m816 ms: 61 is eating
+[30m816 ms: 81 is thinking
+[33m816 ms: 63 has taken a fork
+[33m816 ms: 63 has taken a fork
+[32m816 ms: 63 is eating
+[30m816 ms: 13 is thinking
+[33m817 ms: 65 has taken a fork
+[33m817 ms: 65 has taken a fork
+[32m817 ms: 65 is eating
+[30m817 ms: 83 is thinking
+[34m817 ms: 74 is sleeping
+[30m817 ms: 15 is thinking
+[33m817 ms: 67 has taken a fork
+[33m817 ms: 67 has taken a fork
+[32m817 ms: 67 is eating
+[30m817 ms: 85 is thinking
+[30m817 ms: 17 is thinking
+[34m817 ms: 76 is sleeping
+[33m817 ms: 69 has taken a fork
+[33m817 ms: 69 has taken a fork
+[32m817 ms: 69 is eating
+[34m817 ms: 8 is sleeping
+[30m817 ms: 87 is thinking
+[34m817 ms: 78 is sleeping
+[30m817 ms: 19 is thinking
+[34m817 ms: 10 is sleeping
+[34m817 ms: 80 is sleeping
+[33m817 ms: 71 has taken a fork
+[33m817 ms: 71 has taken a fork
+[32m817 ms: 71 is eating
+[30m817 ms: 89 is thinking
+[30m817 ms: 21 is thinking
+[34m818 ms: 12 is sleeping
+[30m818 ms: 91 is thinking
+[34m818 ms: 82 is sleeping
+[33m818 ms: 73 has taken a fork
+[33m818 ms: 73 has taken a fork
+[32m818 ms: 73 is eating
+[34m818 ms: 14 is sleeping
+[30m818 ms: 23 is thinking
+[30m818 ms: 25 is thinking
+[34m818 ms: 84 is sleeping
+[30m818 ms: 33 is thinking
+[34m818 ms: 16 is sleeping
+[30m818 ms: 27 is thinking
+[30m818 ms: 29 is thinking
+[33m818 ms: 75 has taken a fork
+[33m818 ms: 75 has taken a fork
+[30m818 ms: 93 is thinking
+[32m818 ms: 75 is eating
+[30m818 ms: 35 is thinking
+[30m818 ms: 31 is thinking
+[30m818 ms: 5 is thinking
+[30m818 ms: 95 is thinking
+[30m818 ms: 3 is thinking
+[30m818 ms: 1 is thinking
+[30m818 ms: 99 is thinking
+[30m818 ms: 97 is thinking
+[34m818 ms: 86 is sleeping
+[33m818 ms: 77 has taken a fork
+[33m818 ms: 77 has taken a fork
+[32m818 ms: 77 is eating
+[34m818 ms: 18 is sleeping
+[33m818 ms: 9 has taken a fork
+[33m818 ms: 9 has taken a fork
+[32m818 ms: 9 is eating
+[33m818 ms: 79 has taken a fork
+[33m818 ms: 79 has taken a fork
+[32m818 ms: 79 is eating
+[34m818 ms: 88 is sleeping
+[34m819 ms: 20 is sleeping
+[33m819 ms: 11 has taken a fork
+[33m819 ms: 11 has taken a fork
+[32m819 ms: 11 is eating
+[34m819 ms: 90 is sleeping
+[33m819 ms: 81 has taken a fork
+[33m819 ms: 81 has taken a fork
+[32m819 ms: 81 is eating
+[33m819 ms: 13 has taken a fork
+[34m819 ms: 22 is sleeping
+[33m819 ms: 13 has taken a fork
+[32m819 ms: 13 is eating
+[33m819 ms: 83 has taken a fork
+[33m819 ms: 83 has taken a fork
+[32m819 ms: 83 is eating
+[34m819 ms: 24 is sleeping
+[33m819 ms: 15 has taken a fork
+[33m819 ms: 15 has taken a fork
+[32m819 ms: 15 is eating
+[34m819 ms: 26 is sleeping
+[34m819 ms: 28 is sleeping
+[34m819 ms: 30 is sleeping
+[34m819 ms: 34 is sleeping
+[34m819 ms: 92 is sleeping
+[34m819 ms: 32 is sleeping
+[34m819 ms: 36 is sleeping
+[34m819 ms: 94 is sleeping
+[34m819 ms: 6 is sleeping
+[34m819 ms: 4 is sleeping
+[33m819 ms: 85 has taken a fork
+[33m819 ms: 85 has taken a fork
+[34m819 ms: 2 is sleeping
+[32m819 ms: 85 is eating
+[34m819 ms: 96 is sleeping
+[34m819 ms: 100 is sleeping
+[34m819 ms: 98 is sleeping
+[33m819 ms: 17 has taken a fork
+[33m819 ms: 17 has taken a fork
+[32m819 ms: 17 is eating
+[33m819 ms: 87 has taken a fork
+[33m819 ms: 87 has taken a fork
+[32m819 ms: 87 is eating
+[33m820 ms: 19 has taken a fork
+[33m820 ms: 19 has taken a fork
+[32m820 ms: 19 is eating
+[33m820 ms: 89 has taken a fork
+[33m820 ms: 89 has taken a fork
+[32m820 ms: 89 is eating
+[33m820 ms: 21 has taken a fork
+[33m820 ms: 21 has taken a fork
+[32m820 ms: 21 is eating
+[33m820 ms: 23 has taken a fork
+[33m820 ms: 23 has taken a fork
+[32m820 ms: 23 is eating
+[33m820 ms: 25 has taken a fork
+[33m820 ms: 25 has taken a fork
+[32m820 ms: 25 is eating
+[33m820 ms: 27 has taken a fork
+[33m820 ms: 91 has taken a fork
+[33m820 ms: 91 has taken a fork
+[33m820 ms: 29 has taken a fork
+[33m820 ms: 29 has taken a fork
+[32m820 ms: 91 is eating
+[33m820 ms: 27 has taken a fork
+[32m820 ms: 27 is eating
+[32m820 ms: 29 is eating
+[33m820 ms: 31 has taken a fork
+[33m820 ms: 31 has taken a fork
+[32m820 ms: 31 is eating
+[33m820 ms: 37 has taken a fork
+[33m820 ms: 37 has taken a fork
+[32m820 ms: 37 is eating
+[33m820 ms: 35 has taken a fork
+[33m820 ms: 35 has taken a fork
+[33m820 ms: 33 has taken a fork
+[32m820 ms: 35 is eating
+[33m820 ms: 33 has taken a fork
+[33m820 ms: 7 has taken a fork
+[33m820 ms: 7 has taken a fork
+[33m820 ms: 93 has taken a fork
+[32m820 ms: 33 is eating
+[33m820 ms: 5 has taken a fork
+[33m820 ms: 5 has taken a fork
+[32m820 ms: 5 is eating
+[33m820 ms: 93 has taken a fork
+[32m820 ms: 7 is eating
+[32m820 ms: 93 is eating
+[33m820 ms: 3 has taken a fork
+[33m820 ms: 3 has taken a fork
+[32m820 ms: 3 is eating
+[33m820 ms: 1 has taken a fork
+[33m820 ms: 97 has taken a fork
+[33m820 ms: 99 has taken a fork
+[33m820 ms: 99 has taken a fork
+[33m820 ms: 95 has taken a fork
+[32m820 ms: 99 is eating
+[33m820 ms: 97 has taken a fork
+[33m820 ms: 1 has taken a fork
+[33m820 ms: 95 has taken a fork
+[32m820 ms: 1 is eating
+[32m820 ms: 97 is eating
+[32m820 ms: 95 is eating
+[30m911 ms: 38 is thinking
+[30m912 ms: 40 is thinking
+[30m912 ms: 42 is thinking
+[30m912 ms: 44 is thinking
+[30m913 ms: 46 is thinking
+[30m913 ms: 48 is thinking
+[30m913 ms: 50 is thinking
+[30m914 ms: 52 is thinking
+[30m914 ms: 54 is thinking
+[33m914 ms: 40 has taken a fork
+[33m914 ms: 40 has taken a fork
+[32m914 ms: 40 is eating
+[30m914 ms: 56 is thinking
+[33m914 ms: 42 has taken a fork
+[33m914 ms: 42 has taken a fork
+[32m914 ms: 42 is eating
+[30m914 ms: 58 is thinking
+[30m915 ms: 60 is thinking
+[33m915 ms: 44 has taken a fork
+[33m915 ms: 44 has taken a fork
+[32m915 ms: 44 is eating
+[33m915 ms: 46 has taken a fork
+[33m915 ms: 46 has taken a fork
+[32m915 ms: 46 is eating
+[30m915 ms: 62 is thinking
+[30m915 ms: 64 is thinking
+[33m915 ms: 48 has taken a fork
+[33m915 ms: 48 has taken a fork
+[32m915 ms: 48 is eating
+[30m916 ms: 66 is thinking
+[33m916 ms: 50 has taken a fork
+[33m916 ms: 50 has taken a fork
+[32m916 ms: 50 is eating
+[30m916 ms: 68 is thinking
+[30m916 ms: 70 is thinking
+[33m916 ms: 52 has taken a fork
+[33m916 ms: 52 has taken a fork
+[32m916 ms: 52 is eating
+[30m916 ms: 72 is thinking
+[33m916 ms: 54 has taken a fork
+[33m916 ms: 54 has taken a fork
+[32m916 ms: 54 is eating
+[33m917 ms: 56 has taken a fork
+[33m917 ms: 56 has taken a fork
+[32m917 ms: 56 is eating
+[30m917 ms: 74 is thinking
+[33m917 ms: 58 has taken a fork
+[33m917 ms: 58 has taken a fork
+[32m917 ms: 58 is eating
+[30m917 ms: 76 is thinking
+[30m917 ms: 8 is thinking
+[30m917 ms: 78 is thinking
+[30m917 ms: 10 is thinking
+[30m917 ms: 80 is thinking
+[33m917 ms: 60 has taken a fork
+[33m917 ms: 60 has taken a fork
+[32m917 ms: 60 is eating
+[33m917 ms: 62 has taken a fork
+[33m917 ms: 62 has taken a fork
+[32m917 ms: 62 is eating
+[30m918 ms: 12 is thinking
+[33m918 ms: 64 has taken a fork
+[33m918 ms: 64 has taken a fork
+[32m918 ms: 64 is eating
+[30m918 ms: 82 is thinking
+[30m918 ms: 14 is thinking
+[33m918 ms: 66 has taken a fork
+[33m918 ms: 66 has taken a fork
+[32m918 ms: 66 is eating
+[30m918 ms: 84 is thinking
+[30m918 ms: 16 is thinking
+[33m918 ms: 68 has taken a fork
+[33m918 ms: 68 has taken a fork
+[32m918 ms: 68 is eating
+[30m918 ms: 86 is thinking
+[30m918 ms: 18 is thinking
+[30m918 ms: 88 is thinking
+[33m918 ms: 70 has taken a fork
+[33m918 ms: 70 has taken a fork
+[32m918 ms: 70 is eating
+[30m919 ms: 20 is thinking
+[30m919 ms: 90 is thinking
+[33m919 ms: 72 has taken a fork
+[33m919 ms: 72 has taken a fork
+[32m919 ms: 72 is eating
+[30m919 ms: 22 is thinking
+[30m919 ms: 24 is thinking
+[30m919 ms: 26 is thinking
+[30m919 ms: 28 is thinking
+[30m919 ms: 34 is thinking
+[30m919 ms: 30 is thinking
+[33m919 ms: 74 has taken a fork
+[33m919 ms: 74 has taken a fork
+[30m919 ms: 92 is thinking
+[32m919 ms: 74 is eating
+[30m919 ms: 32 is thinking
+[30m919 ms: 36 is thinking
+[30m919 ms: 94 is thinking
+[30m919 ms: 6 is thinking
+[30m919 ms: 4 is thinking
+[30m919 ms: 2 is thinking
+[33m919 ms: 76 has taken a fork
+[33m919 ms: 76 has taken a fork
+[32m919 ms: 76 is eating
+[30m919 ms: 96 is thinking
+[30m919 ms: 98 is thinking
+[30m919 ms: 100 is thinking
+[33m920 ms: 78 has taken a fork
+[33m920 ms: 78 has taken a fork
+[32m920 ms: 78 is eating
+[33m920 ms: 10 has taken a fork
+[33m920 ms: 10 has taken a fork
+[32m920 ms: 10 is eating
+[33m920 ms: 80 has taken a fork
+[33m920 ms: 80 has taken a fork
+[32m920 ms: 80 is eating
+[33m920 ms: 12 has taken a fork
+[33m920 ms: 12 has taken a fork
+[32m920 ms: 12 is eating
+[33m920 ms: 82 has taken a fork
+[33m920 ms: 82 has taken a fork
+[32m920 ms: 82 is eating
+[33m920 ms: 14 has taken a fork
+[33m920 ms: 14 has taken a fork
+[32m920 ms: 14 is eating
+[33m920 ms: 84 has taken a fork
+[33m920 ms: 84 has taken a fork
+[32m920 ms: 84 is eating
+[33m921 ms: 16 has taken a fork
+[33m921 ms: 16 has taken a fork
+[32m921 ms: 16 is eating
+[33m921 ms: 86 has taken a fork
+[33m921 ms: 86 has taken a fork
+[32m921 ms: 86 is eating
+[33m921 ms: 18 has taken a fork
+[33m921 ms: 18 has taken a fork
+[32m921 ms: 18 is eating
+[33m921 ms: 88 has taken a fork
+[33m921 ms: 88 has taken a fork
+[32m921 ms: 88 is eating
+[33m921 ms: 20 has taken a fork
+[33m921 ms: 20 has taken a fork
+[32m921 ms: 20 is eating
+[33m921 ms: 22 has taken a fork
+[33m921 ms: 22 has taken a fork
+[32m921 ms: 22 is eating
+[33m921 ms: 24 has taken a fork
+[33m921 ms: 24 has taken a fork
+[32m921 ms: 24 is eating
+[33m921 ms: 90 has taken a fork
+[33m921 ms: 90 has taken a fork
+[32m921 ms: 90 is eating
+[33m921 ms: 26 has taken a fork
+[33m921 ms: 26 has taken a fork
+[32m921 ms: 26 is eating
+[33m921 ms: 28 has taken a fork
+[33m921 ms: 28 has taken a fork
+[32m921 ms: 28 is eating
+[33m921 ms: 30 has taken a fork
+[33m921 ms: 30 has taken a fork
+[32m921 ms: 30 is eating
+[33m921 ms: 38 has taken a fork
+[33m921 ms: 38 has taken a fork
+[32m921 ms: 38 is eating
+[33m921 ms: 36 has taken a fork
+[33m921 ms: 36 has taken a fork
+[32m921 ms: 36 is eating
+[33m921 ms: 32 has taken a fork
+[33m921 ms: 32 has taken a fork
+[32m921 ms: 32 is eating
+[33m921 ms: 34 has taken a fork
+[33m921 ms: 34 has taken a fork
+[32m921 ms: 34 is eating
+[33m921 ms: 8 has taken a fork
+[33m921 ms: 8 has taken a fork
+[32m921 ms: 8 is eating
+[33m921 ms: 6 has taken a fork
+[33m921 ms: 6 has taken a fork
+[32m921 ms: 6 is eating
+[33m922 ms: 92 has taken a fork
+[33m922 ms: 92 has taken a fork
+[32m922 ms: 92 is eating
+[33m922 ms: 4 has taken a fork
+[33m922 ms: 4 has taken a fork
+[32m922 ms: 4 is eating
+[33m922 ms: 96 has taken a fork
+[33m922 ms: 94 has taken a fork
+[33m922 ms: 96 has taken a fork
+[33m922 ms: 98 has taken a fork
+[33m922 ms: 98 has taken a fork
+[32m922 ms: 96 is eating
+[33m922 ms: 94 has taken a fork
+[33m922 ms: 2 has taken a fork
+[33m922 ms: 2 has taken a fork
+[32m922 ms: 94 is eating
+[32m922 ms: 2 is eating
+[32m922 ms: 98 is eating
+[33m922 ms: 100 has taken a fork
+[33m922 ms: 100 has taken a fork
+[32m922 ms: 100 is eating

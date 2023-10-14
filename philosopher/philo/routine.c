@@ -6,21 +6,11 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/14 11:10:47 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/14 13:24:21 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void	init_eat(t_philo *p)
-{
-	struct timeval	end;
-
-	gettimeofday(&end, NULL);
-	pthread_mutex_lock(p->time_lock);
-	p->last_eat = ((end.tv_sec % 1000) * 1000) + (end.tv_usec / 1000);
-	pthread_mutex_unlock(p->time_lock);
-}
 
 void	wait_all_philo(t_philo *p)
 {
@@ -34,7 +24,6 @@ void	wait_all_philo(t_philo *p)
 	}
 	pthread_mutex_unlock(p->end_lock);
 	time_init(p);
-	init_eat(p);
 }
 
 void	impair_routine(t_philo *p)

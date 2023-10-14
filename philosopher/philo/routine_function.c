@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/14 10:57:25 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/14 13:45:40 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	ft_usleep(t_philo *p, long sleep)
 		usleep((total - p->tt[0]) *1000);
 		pthread_mutex_lock(p->end_lock);
 		*p->end += 1;
+		p->alive = 0;
 		pthread_mutex_unlock(p->end_lock);
 		pthread_mutex_lock(p->time_lock);
 		gettimeofday(&time, NULL);
@@ -59,7 +60,7 @@ int	ft_eat(t_philo *p)
 	struct timeval	time;
 	long			delay;
 
-	if (dead_check(p) == -1 || ft_eat_dead(p) == -1)
+	if (ft_dead(p) == -1 || ft_eat_dead(p) == -1)
 		return (-1);
 	if (p->num > p->n_philo->num)
 	{
@@ -75,7 +76,8 @@ int	ft_eat(t_philo *p)
 		pthread_mutex_lock(&p->n_philo->fork_lock);
 		p->n_philo->fork = 0;
 	}
-	if (dead_check(p) == -1 )
+	usleep(1000);
+	if (ft_dead(p) == -1 || ft_dead(p) == -1)
 	{
 		if (p->num > p->n_philo->num)
 		{
@@ -124,8 +126,10 @@ int	ft_eat(t_philo *p)
 	p->nb_eat++;
 	if (p->nb_eat == p->tt[3] && p->tt[3] != 0)
 	{
+		usleep(10000);
 		pthread_mutex_lock(p->end_lock);
 		*p->end += 1;
+		p->alive = 0;
 		pthread_mutex_unlock(p->end_lock);
 		return (-1);
 	}
