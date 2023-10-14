@@ -27,8 +27,8 @@ debug_build: $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o debug
 	clear
 #	colour-valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1
-	colour-valgrind -s --tool=helgrind \
-	./debug 2 60 60 60 2
+	colour-valgrind -s --tool=drd \
+	./debug 3 70 60 60 2
 clean:
 	rm -f $(OBJS) $(BOBJS)
 

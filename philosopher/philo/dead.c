@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 11:04:44 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/14 16:36:59 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/14 16:58:59 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@ int	dead_check(t_philo *p)
 	if (*p->end > 0 && p->nb_eat != p->tt[3])
 	{
 		pthread_mutex_unlock(p->end_lock);
-		return(-1);
+		return (-1);
 	}
 	pthread_mutex_unlock(p->end_lock);
 	return (0);
 }
+
 void	execute_dead(t_philo *p, long time)
 {
 	pthread_mutex_lock(p->end_lock);
@@ -50,7 +51,7 @@ int	ft_eat_dead(t_philo *p)
 	{
 		time = (p->last_eat + p->tt[0]) - *p->start_time;
 		pthread_mutex_unlock(p->time_lock);
-		usleep(500);
+		usleep(100 * p->num);
 		execute_dead(p, time);
 		return (-1);
 	}
@@ -68,9 +69,10 @@ int	ft_dead(t_philo *p)
 	pthread_mutex_lock(p->time_lock);
 	elapsed_ms = (((time.tv_sec % 1000) * 1000) + (time.tv_usec / 1000));
 	pthread_mutex_unlock(p->time_lock);
-	if (elapsed_ms - p->last_eat >= p->tt[0] || (p->n_philo == 0 && p->num == 1))
+	if (elapsed_ms - p->last_eat >= p->tt[0] || \
+	(p->n_philo == 0 && p->num == 1))
 	{
-		usleep(500);
+		usleep(100 * p->num);
 		execute_dead(p, ft_time(p));
 		return (-1);
 	}

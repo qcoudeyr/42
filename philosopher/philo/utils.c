@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:30:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/14 16:41:02 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/14 16:59:12 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ void	m_printf(char *str, long int delay, t_philo *p)
 	pthread_mutex_lock(p->time_lock);
 	if (*p->start_time < 0)
 		return ((void) pthread_mutex_unlock(p->time_lock));
-	pthread_mutex_unlock(p->time_lock);
 	pthread_mutex_lock(p->end_lock);
-	if (*p->end > 1 && p->nb_eat >= p->tt[3]  && p->tt[3] != 0)
+	if (*p->end > 1 && p->nb_eat >= p->tt[3] && p->tt[3] != 0)
 		return ((void)pthread_mutex_unlock(p->end_lock));
 	pthread_mutex_unlock(p->end_lock);
 	pthread_mutex_lock(p->print_lock);
 	printf(str, delay, p->num);
 	pthread_mutex_unlock(p->print_lock);
+	pthread_mutex_unlock(p->time_lock);
 }
 
 static int	ft_isspace(const char c)

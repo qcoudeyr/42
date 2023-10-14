@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/14 16:35:03 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/14 17:22:40 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,18 @@
 int	ft_usleep(t_philo *p, long sleep)
 {
 	long			total;
+	long			time;
 
 	if (dead_check(p) == -1)
 		return (-1);
-	total = ft_time(p) + (sleep / 1000);
+	time = ft_time(p);
+	total = time + (sleep / 1000);
 	pthread_mutex_lock(p->time_lock);
-	if (p->last_eat - total >= p->tt[0])
+	if (total >= p->tt[0])
 	{
+		total = ((p->last_eat + p->tt[0]) - time);
 		pthread_mutex_unlock(p->time_lock);
-		usleep((p->tt[0] + 2) * 1003);
+		usleep(time * 1000);
 		execute_dead(p, ft_time(p));
 		return (-1);
 	}
@@ -35,7 +38,7 @@ int	ft_usleep(t_philo *p, long sleep)
 long	ft_time(t_philo *p)
 {
 	struct timeval	end;
-	long		elapsed_ms;
+	long			elapsed_ms;
 
 	gettimeofday(&end, NULL);
 	pthread_mutex_lock(p->time_lock);
@@ -125,7 +128,6 @@ int	ft_eat(t_philo *p)
 		return (-1);
 	}
 	return(delay);
-
 }
 
 int	ft_sleep(t_philo *p)

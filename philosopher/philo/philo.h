@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/14 15:08:46 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/14 16:57:43 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ int			ft_eat_dead(t_philo *p);
 int			dead_check(t_philo *p);
 void		m_printf(char *str, long delay, t_philo *p);
 int			ft_end(t_philo *p);
-
 
 // Text colors
 # define COLOR_BLACK   "\033[30m"
