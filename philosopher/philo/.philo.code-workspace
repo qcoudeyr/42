@@ -9,7 +9,14 @@
 			"pthread.h": "c",
 			"atomic": "c",
 			"random": "c",
-			"philo.h": "c"
+			"philo.h": "c",
+			"array": "c",
+			"deque": "c",
+			"string": "c",
+			"unordered_map": "c",
+			"vector": "c",
+			"string_view": "c",
+			"initializer_list": "c"
 		}
 	}
 }

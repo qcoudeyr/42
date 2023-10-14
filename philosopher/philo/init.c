@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:18:56 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/14 13:31:23 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/14 15:30:49 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	var_philo_init(t_var *var, int i, void *p_philo)
 	var->p->p_philo = p_philo;
 	if (var->p->p_philo != NULL)
 		var->p->p_philo->n_philo = var->p;
+	if (var->nb_philo == i && var->f_philo != NULL)
+		var->f_philo->p_philo = var->p;
 	var_mutex_init(var);
 }
 
