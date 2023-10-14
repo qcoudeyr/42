@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/13 20:34:43 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/13 20:56:22 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,13 @@ void	fork_handle(t_philo *p)
 	p = p->n_philo;
 	while (verif != p->num)
 	{
-		pthread_mutex_lock(p->eat_lock);
+		pthread_mutex_lock(p->wait_lock);
 		if (p->f_lock == 1 && p->n_philo->f_lock == 1)
 		{
-			pthread_mutex_unlock(p->eat_lock);
+			pthread_mutex_unlock(p->wait_lock);
 			mutex_unlock_order(p);
 		}
+		pthread_mutex_unlock(p->wait_lock);
 		p = p->n_philo;
 	}
 }

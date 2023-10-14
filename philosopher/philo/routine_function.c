@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/13 20:50:44 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/13 21:03:01 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,55 +14,41 @@
 
 void	mutex_unlock_order(t_philo *p)
 {
-
-	pthread_mutex_lock(p->eat_lock);
+	pthread_mutex_lock(p->wait_lock);
 	if (p->num < p->n_philo->num)
 	{
-		if (p->n_philo->f_lock == 1)
-		{
-			p->n_philo->f_lock = 0;
-			pthread_mutex_unlock(&p->n_philo->fork_lock);
-		}
-		if (p->f_lock == 1)
-		{
-			p->f_lock = 0;
-			pthread_mutex_unlock(&p->fork_lock);
-		}
+		pthread_mutex_unlock(&p->fork_lock);
+		p->f_lock = 0;
+		pthread_mutex_unlock(&p->n_philo->fork_lock);
+		p->n_philo->f_lock = 0;
 	}
 	else
 	{
-		if (p->f_lock == 1 && p->n_philo->f_lock == 1)
-		{
-			p->f_lock = 0;
-			pthread_mutex_unlock(&p->fork_lock);
-		}
-		if (p->n_philo->f_lock == 1)
-		{
-			p->n_philo->f_lock = 0;
-			pthread_mutex_unlock(&p->n_philo->fork_lock);
-		}
+		p->n_philo->f_lock = 0;
+		pthread_mutex_unlock(&p->fork_lock);
+		p->f_lock = 0;
 	}
-	pthread_mutex_unlock(p->eat_lock);
-	printf("num = %i, fork= %i\n", p->num, p->f_lock);
+	pthread_mutex_unlock(p->wait_lock);
+
 }
 
 void	mutex_lock_order(t_philo *p)
 {
-	printf("num = %i, fork= %i\n", p->num, p->f_lock);
+	pthread_mutex_lock(p->wait_lock);
 	if (p->num < p->n_philo->num)
 	{
-		pthread_mutex_lock(&p->n_philo->fork_lock);
-		p->n_philo->f_lock = 1;
 		pthread_mutex_lock(&p->fork_lock);
 		p->f_lock = 1;
+		pthread_mutex_lock(&p->n_philo->fork_lock);
+		p->n_philo->f_lock = 1;
 	}
 	else
 	{
-		pthread_mutex_lock(&p->fork_lock);
-		p->f_lock = 1;
 		pthread_mutex_lock(&p->n_philo->fork_lock);
 		p->n_philo->f_lock = 1;
+		p->f_lock = 1;
 	}
+	pthread_mutex_unlock(p->wait_lock);
 }
 
 int	ft_eat(t_philo *p)

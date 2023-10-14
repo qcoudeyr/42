@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/13 20:48:08 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/13 20:56:58 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,9 @@ void	*ft_start_routine(void *t)
 			break;
 	}
 	ft_end(p);
+	pthread_mutex_lock(p->wait_lock);
 	if (p->f_lock == 1)
 		pthread_mutex_unlock(&p->fork_lock);
+	pthread_mutex_unlock(p->wait_lock);
 	return (NULL);
 }
