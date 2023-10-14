@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:30:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/14 13:44:31 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/14 14:07:04 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	ft_end(t_philo *p)
 
 void	m_printf(char *str, long delay, t_philo *p)
 {
+	if (*p->start_time < 0)
+		return ((void)0);
 	pthread_mutex_lock(p->end_lock);
 	if (*p->end > 1 && p->nb_eat >= p->tt[3])
 		return ((void)pthread_mutex_unlock(p->end_lock));
