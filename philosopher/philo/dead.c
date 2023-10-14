@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 11:04:44 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/14 15:41:06 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/14 15:48:31 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,8 @@ int	ft_eat_dead(t_philo *p)
 	long			time;
 
 	pthread_mutex_lock(p->time_lock);
-	printf("philo %i time = %li last_eat = %li\n", p->num,(p->tt[1] + p->n_philo->last_eat), (p->last_eat + p->tt[0]));
-	if (((p->tt[1] + p->n_philo->last_eat)+5 > p->last_eat + p->tt[0]) || \
-	((p->tt[1] + p->p_philo->last_eat)+5 > p->last_eat + p->tt[0]))
+	if (((p->tt[1] + p->n_philo->last_eat) > p->last_eat + p->tt[0]) || \
+	((p->tt[1] + p->p_philo->last_eat) > p->last_eat + p->tt[0]))
 	{
 		time = (p->last_eat + p->tt[0]) - *p->start_time;
 		pthread_mutex_unlock(p->time_lock);
