@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/16 08:32:31 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/16 08:41:53 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@ int	ft_usleep(t_philo *p, long sleep)
 	if (dead_check(p) == -1)
 		return (-1);
 	time = ft_time(p);
-	total = time + (sleep / 1000);
 	pthread_mutex_lock(p->time_lock);
+	time -= p->last_eat;
+	total = time + (sleep / 1000);
 	if (total >= p->tt[0])
 	{
+		printf("%i = %li \n", p->num, total);
 		total = ((p->last_eat + p->tt[0]) - time);
 		pthread_mutex_unlock(p->time_lock);
 		usleep(time * 1000);
