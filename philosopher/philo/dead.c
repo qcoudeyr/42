@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 11:04:44 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/16 10:49:21 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/16 12:37:32 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_end(t_philo *p)
 {
-	usleep(5000);
+	usleep(50000);
 	pthread_mutex_lock(p->end_lock);
 	if (p->alive == 1)
 		*p->end += 1;
