@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/16 13:06:29 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/16 10:21:13 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	ft_eat(t_philo *p)
 {
 	int	val;
 
-	usleep(100);
+	if (p->nb_eat > 0)
+		usleep(4000);
 	if (ft_dead(p) == -1 || ft_eat_dead(p) == -1)
 		return (-1);
 	eat_mutex_lock(p);
@@ -61,7 +62,6 @@ int	ft_eat(t_philo *p)
 		eat_mutex_unlock(p);
 		return (-1);
 	}
-	printf("ENTER EAT %i\n", p->num);
 	val = print_eat(p);
 	p->nb_eat++;
 	if (p->nb_eat == p->tt[3] && p->tt[3] != 0)
