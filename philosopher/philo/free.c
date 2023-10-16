@@ -6,11 +6,28 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 08:07:20 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/16 08:09:27 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/16 08:23:17 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	join_philo(t_var *var)
+{
+	t_philo	*philo;
+	t_philo	*temp;
+	int		i;
+
+	i = 0;
+	philo = var->f_philo;
+	while (i < var->nb_philo)
+	{
+		i++;
+		temp = philo->n_philo;
+		pthread_join(philo->tid, NULL);
+		philo = temp;
+	}
+}
 
 void	mutex_free(t_var *var)
 {

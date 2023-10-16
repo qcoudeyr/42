@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/16 08:07:12 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/16 08:23:14 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,23 +48,6 @@ void	wait_dead(t_var *var)
 		pthread_mutex_lock(&var->end_lock);
 	}
 	pthread_mutex_unlock(&var->end_lock);
-}
-
-void	join_philo(t_var *var)
-{
-	t_philo	*philo;
-	t_philo	*temp;
-	int		i;
-
-	i = 0;
-	philo = var->f_philo;
-	while (i < var->nb_philo)
-	{
-		i++;
-		temp = philo->n_philo;
-		pthread_join(philo->tid, NULL);
-		philo = temp;
-	}
 }
 
 int	main(int argc, char **argv)
