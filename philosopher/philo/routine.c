@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/16 10:00:45 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/16 10:31:03 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ void	wait_all_philo(t_philo *p)
 	{
 		pthread_mutex_unlock(p->end_lock);
 		usleep(1000 * 10);
+		time_init(p);
 		pthread_mutex_lock(p->end_lock);
 	}
 	pthread_mutex_unlock(p->end_lock);
-	time_init(p);
 }
 
 void	impair_routine(t_philo *p)
