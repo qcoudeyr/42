@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:18:56 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/16 10:33:34 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/16 14:18:07 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	unlock_philo(t_var *var)
 		usleep(1000);
 		pthread_mutex_lock(&var->end_lock);
 	}
+	usleep(1000);
 	var->end = 0;
 	pthread_mutex_unlock(&var->end_lock);
 }
