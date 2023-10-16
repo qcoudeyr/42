@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/16 09:12:29 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/16 09:59:38 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,24 +46,6 @@ void	eat_mutex_lock(t_philo *p)
 		pthread_mutex_lock(&p->n_philo->fork_lock);
 		p->n_philo->fork = 0;
 	}
-}
-
-int	print_eat(t_philo *p)
-{
-	long			delay;
-	struct timeval	time;
-
-	gettimeofday(&time, NULL);
-	delay = ft_time(p);
-	m_printf(COLOR_YELLOW"%li ms: %i has taken a fork\n", delay, p);
-	m_printf(COLOR_YELLOW"%li ms: %i has taken a fork\n", delay, p);
-	pthread_mutex_lock(p->time_lock);
-	p->last_eat = ((time.tv_sec % 1000) * 1000) + (time.tv_usec / 1000);
-	pthread_mutex_unlock(p->time_lock);
-	m_printf(COLOR_GREEN"%li ms: %i is eating\n", delay, p);
-	delay = ft_usleep(p, p->tt[1] * 1000);
-	eat_mutex_unlock(p);
-	return ((int) delay);
 }
 
 int	ft_eat(t_philo *p)

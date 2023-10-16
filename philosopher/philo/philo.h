@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/14 16:57:43 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/16 10:04:10 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_var
 }	t_var;
 
 long int	ft_atoi(const char *str);
+int			print_eat(t_philo *p);
 void		ft_free(t_var *var);
 void		init_philo(t_var *var);
 void		ft_readarg(int argc, char **argv, t_var *var);
@@ -73,6 +74,8 @@ int			ft_eat_dead(t_philo *p);
 int			dead_check(t_philo *p);
 void		m_printf(char *str, long delay, t_philo *p);
 int			ft_end(t_philo *p);
+void		eat_mutex_lock(t_philo *p);
+void		eat_mutex_unlock(t_philo *p);
 
 // Text colors
 # define COLOR_BLACK   "\033[30m"
