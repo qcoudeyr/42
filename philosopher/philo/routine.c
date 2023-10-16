@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/16 10:31:03 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/16 14:08:39 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,16 @@ int	print_eat(t_philo *p)
 void	wait_all_philo(t_philo *p)
 {
 	pthread_mutex_lock(p->end_lock);
+	usleep(10000);
 	*p->end -= 1;
 	while (*p->end != 0)
 	{
 		pthread_mutex_unlock(p->end_lock);
-		usleep(1000 * 10);
-		time_init(p);
+		usleep(100);
 		pthread_mutex_lock(p->end_lock);
 	}
 	pthread_mutex_unlock(p->end_lock);
+	time_init(p);
 }
 
 void	impair_routine(t_philo *p)
