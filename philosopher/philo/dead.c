@@ -6,11 +6,28 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 11:04:44 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/16 08:32:49 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/16 09:13:20 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	ft_end(t_philo *p)
+{
+	usleep(5000);
+	pthread_mutex_lock(p->end_lock);
+	if (p->alive == 1)
+		*p->end += 1;
+	p->alive = 0;
+	while (*p->end != p->nb_ph)
+	{
+		pthread_mutex_unlock(p->end_lock);
+		usleep(1000);
+		pthread_mutex_lock(p->end_lock);
+	}
+	pthread_mutex_unlock(p->end_lock);
+	return (0);
+}
 
 int	dead_check(t_philo *p)
 {

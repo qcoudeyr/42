@@ -6,27 +6,49 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:30:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/14 16:59:12 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/16 09:13:08 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_end(t_philo *p)
+
+int	ft_usleep(t_philo *p, long sleep)
 {
-	usleep(5000);
-	pthread_mutex_lock(p->end_lock);
-	if (p->alive == 1)
-		*p->end += 1;
-	p->alive = 0;
-	while (*p->end != p->nb_ph)
+	long			total;
+	long			time;
+
+	if (dead_check(p) == -1)
+		return (-1);
+	time = ft_time(p);
+	pthread_mutex_lock(p->time_lock);
+	time -= p->last_eat;
+	total = time + (sleep / 1000);
+	if (total >= p->tt[0])
 	{
-		pthread_mutex_unlock(p->end_lock);
-		usleep(1000);
-		pthread_mutex_lock(p->end_lock);
+		printf("%i = %li \n", p->num, total);
+		total = ((p->last_eat + p->tt[0]) - time);
+		pthread_mutex_unlock(p->time_lock);
+		usleep(time * 1000);
+		execute_dead(p, ft_time(p));
+		return (-1);
 	}
-	pthread_mutex_unlock(p->end_lock);
+	pthread_mutex_unlock(p->time_lock);
+	usleep(sleep + 500);
 	return (0);
+}
+
+long	ft_time(t_philo *p)
+{
+	struct timeval	end;
+	long			elapsed_ms;
+
+	gettimeofday(&end, NULL);
+	pthread_mutex_lock(p->time_lock);
+	elapsed_ms = (((end.tv_sec % 1000) * 1000) + (end.tv_usec / 1000)) - \
+	*p->start_time;
+	pthread_mutex_unlock(p->time_lock);
+	return (elapsed_ms);
 }
 
 void	m_printf(char *str, long int delay, t_philo *p)

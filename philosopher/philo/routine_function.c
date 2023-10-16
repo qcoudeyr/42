@@ -6,49 +6,11 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/16 09:06:23 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/16 09:12:29 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-int	ft_usleep(t_philo *p, long sleep)
-{
-	long			total;
-	long			time;
-
-	if (dead_check(p) == -1)
-		return (-1);
-	time = ft_time(p);
-	pthread_mutex_lock(p->time_lock);
-	time -= p->last_eat;
-	total = time + (sleep / 1000);
-	if (total >= p->tt[0])
-	{
-		printf("%i = %li \n", p->num, total);
-		total = ((p->last_eat + p->tt[0]) - time);
-		pthread_mutex_unlock(p->time_lock);
-		usleep(time * 1000);
-		execute_dead(p, ft_time(p));
-		return (-1);
-	}
-	pthread_mutex_unlock(p->time_lock);
-	usleep(sleep + 500);
-	return (0);
-}
-
-long	ft_time(t_philo *p)
-{
-	struct timeval	end;
-	long			elapsed_ms;
-
-	gettimeofday(&end, NULL);
-	pthread_mutex_lock(p->time_lock);
-	elapsed_ms = (((end.tv_sec % 1000) * 1000) + (end.tv_usec / 1000)) - \
-	*p->start_time;
-	pthread_mutex_unlock(p->time_lock);
-	return (elapsed_ms);
-}
 
 void	eat_mutex_unlock(t_philo *p)
 {
