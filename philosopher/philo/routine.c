@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/18 11:30:49 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/18 11:37:43 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	wait_all_philo(t_philo *p)
 {
 	int	philo_entered;
 
-	usleep(1000);
+	usleep(10000 - (p->num * 100));
 	pthread_mutex_lock(p->end_lock);
 	*p->end -= 1;
 	philo_entered = p->nb_ph + *p->end;
