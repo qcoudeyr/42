@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/18 11:38:28 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/19 08:45:27 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	ft_eat(t_philo *p)
 
 	if (p->nb_eat > 0)
 		usleep(4000);
+	usleep(1000);
 	if (ft_dead(p) == -1 || (ft_eat_dead(p) == -1 && p->nb_eat > 0))
 		return (-1);
 	eat_mutex_lock(p);
@@ -78,6 +79,7 @@ int	ft_sleep(t_philo *p)
 	long int	delay;
 	int			i;
 
+	usleep(1000);
 	if (ft_dead(p) == -1)
 		return (-1);
 	delay = ft_time(p);
@@ -90,6 +92,7 @@ int	ft_thinks(t_philo *p)
 {
 	long int	delay;
 
+	usleep(1000);
 	if (ft_dead(p) == -1)
 		return (-1);
 	delay = ft_time(p);

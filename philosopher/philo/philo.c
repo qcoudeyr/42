@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/16 09:59:55 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/19 08:41:19 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ or a time2die, time2eat, time2sleep >= 60 ms\n");
 void	wait_dead(t_var *var)
 {
 	pthread_mutex_lock(&var->end_lock);
-	while (var->end != var->nb_philo)
+	while (var->end < var->nb_philo)
 	{
 		pthread_mutex_unlock(&var->end_lock);
 		usleep(100000);
