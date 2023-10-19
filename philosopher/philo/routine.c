@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/18 11:37:43 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/19 09:33:29 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,22 @@ int	print_eat(t_philo *p)
 
 void	wait_all_philo(t_philo *p)
 {
-	int	philo_entered;
-
-	usleep(10000 - (p->num * 100));
 	pthread_mutex_lock(p->end_lock);
 	*p->end -= 1;
-	philo_entered = p->nb_ph + *p->end;
-	while (*p->end != 0)
+	while (*p->end < 0)
 	{
 		pthread_mutex_unlock(p->end_lock);
-		usleep(100 * (philo_entered));
+		usleep(100);
 		pthread_mutex_lock(p->end_lock);
-		philo_entered = p->nb_ph + *p->end;
 	}
 	pthread_mutex_unlock(p->end_lock);
-	time_init(p);
 }
 
 void	impair_routine(t_philo *p)
 {
 	int	lock;
 
+	time_init(p);
 	lock = 1;
 	pthread_mutex_lock(p->end_lock);
 	while (*p->end == 0)
@@ -76,6 +71,7 @@ void	pair_routine(t_philo *p)
 {
 	int	lock;
 
+	time_init(p);
 	lock = 1;
 	pthread_mutex_lock(p->end_lock);
 	while (*p->end == 0)

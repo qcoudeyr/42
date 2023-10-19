@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 11:04:44 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/19 08:47:12 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/19 09:36:24 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_end(t_philo *p)
 {
-	usleep(50000);
+	usleep(500000);
 	pthread_mutex_lock(p->end_lock);
 	if (p->alive == 1)
 		*p->end += 1;
@@ -52,7 +52,6 @@ void	execute_dead(t_philo *p, long time)
 	{
 		pthread_mutex_unlock(p->time_lock);
 		m_printf(COLOR_RED"%li ms: %i died\n", time, p);
-		usleep(p->tt[0] * 100);
 		pthread_mutex_lock(p->time_lock);
 	}
 	*p->start_time = -1;

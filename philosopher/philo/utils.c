@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:30:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/18 11:36:40 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/19 09:50:12 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,23 @@ int	ft_usleep(t_philo *p, long sleep)
 {
 	long			total;
 	long			time;
+	struct timeval	end;
 
 	if (dead_check(p) == -1)
 		return (-1);
-	time = ft_time(p);
+	gettimeofday(&end, NULL);
+	time = ((end.tv_sec % 1000) * 1000) + (end.tv_usec / 1000);
+	printf("%i :time %li\n",p->num, time);
 	pthread_mutex_lock(p->time_lock);
 	time -= p->last_eat;
 	total = time + (sleep / 1000);
+	printf("%i : sleep %li at %li\n",p->num, total, time);
 	if (total >= p->tt[0])
 	{
-		total = ((p->last_eat + p->tt[0]) - time);
+		total -= (p->tt[0] * 1000);
 		pthread_mutex_unlock(p->time_lock);
-		printf("time = %li", time);
-/* 		usleep(time * 1000); */
+		printf("%i : sleep %li at %li\n",p->num, total, ft_time(p));
+		usleep(total);
 		execute_dead(p, ft_time(p));
 		return (-1);
 	}

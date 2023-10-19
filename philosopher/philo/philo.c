@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/19 08:41:19 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/19 09:36:40 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	wait_dead(t_var *var)
 	while (var->end < var->nb_philo)
 	{
 		pthread_mutex_unlock(&var->end_lock);
-		usleep(100000);
+		usleep(10000);
 		pthread_mutex_lock(&var->end_lock);
 	}
 	pthread_mutex_unlock(&var->end_lock);
