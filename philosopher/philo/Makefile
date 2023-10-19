@@ -28,7 +28,7 @@ debug_build: $(OBJS)
 	clear
 #	colour-valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1
 	colour-valgrind -s --tool=helgrind \
-	./debug 7 200 205 200
+	./debug 7 200 200 200
 clean:
 	rm -f $(OBJS) $(BOBJS)
 

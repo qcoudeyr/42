@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/19 09:33:29 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/19 10:20:17 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ void	wait_all_philo(t_philo *p)
 	while (*p->end < 0)
 	{
 		pthread_mutex_unlock(p->end_lock);
-		usleep(100);
+		usleep(1000);
 		pthread_mutex_lock(p->end_lock);
 	}
 	pthread_mutex_unlock(p->end_lock);
+	usleep(1000);
 }
 
 void	impair_routine(t_philo *p)
@@ -54,11 +55,11 @@ void	impair_routine(t_philo *p)
 	{
 		pthread_mutex_unlock(p->end_lock);
 		lock = 0;
+		if (ft_dead(p) == -1 || ft_thinks(p) == -1)
+			break ;
 		if (ft_dead(p) == -1 || ft_eat(p) == -1)
 			break ;
 		if (ft_dead(p) == -1 || ft_sleep(p) == -1)
-			break ;
-		if (ft_dead(p) == -1 || ft_thinks(p) == -1)
 			break ;
 		pthread_mutex_lock(p->end_lock);
 		lock = 1;
