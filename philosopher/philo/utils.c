@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:30:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/19 19:51:49 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/19 20:01:21 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ long int	ft_time(t_philo *p)
 
 	gettimeofday(&end, NULL);
 	pthread_mutex_lock(p->time_lock);
-	printf("\t actual time = %li | stime = %li\n", ((end.tv_sec * 1000) + (end.tv_usec / 1000)), *p->start_time);
 	elapsed_ms = ((end.tv_sec * 1000) + (end.tv_usec / 1000)) - *p->start_time;
 	pthread_mutex_unlock(p->time_lock);
 	return (elapsed_ms);
@@ -55,18 +54,29 @@ long int	ft_time(t_philo *p)
 
 void	m_printf(char *str, long int delay, t_philo *p)
 {
-	pthread_mutex_lock(p->time_lock);
-	if (*p->start_time < 0)
-		return ((void) pthread_mutex_unlock(p->time_lock));
 	pthread_mutex_lock(p->end_lock);
 	if (*p->end > 1 && p->nb_eat >= p->tt[3] && p->tt[3] != 0)
-		return ((void)pthread_mutex_unlock(p->end_lock));
+	{
+		pthread_mutex_unlock(p->end_lock);
+		return ;
+	}
 	pthread_mutex_unlock(p->end_lock);
+	if (delay == -1)
+		delay = ft_time(p);
+	pthread_mutex_lock(p->time_lock);
+	if (*p->start_time < 0)
+	{
+		pthread_mutex_unlock(p->time_lock);
+		return ;
+	}
 	pthread_mutex_lock(p->print_lock);
-	printf(str, delay, p->num);
+	{
+		printf(str, delay, p->num);
+	}
 	pthread_mutex_unlock(p->print_lock);
 	pthread_mutex_unlock(p->time_lock);
 }
+
 
 static int	ft_isspace(const char c)
 {
