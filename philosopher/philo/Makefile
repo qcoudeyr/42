@@ -11,10 +11,10 @@ NAME = philo
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(THREADFLAG) $(OBJS) -o $(NAME)
 
 %.o: %.c $(HEADERS)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(THREADFLAG) -c $< -o $@
 
 norme:
 	norminette $(SRCS) $(HEADERS)
