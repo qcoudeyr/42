@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 11:04:44 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/19 10:16:08 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/19 10:39:28 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	dead_check(t_philo *p)
 
 void	execute_dead(t_philo *p, long time)
 {
-	usleep(100);
+	usleep(1000);
 	pthread_mutex_lock(p->end_lock);
 	*p->end += 1;
 	p->alive = 0;
@@ -52,6 +52,7 @@ void	execute_dead(t_philo *p, long time)
 	if (*p->start_time > 0)
 	{
 		pthread_mutex_unlock(p->time_lock);
+		usleep(100 * p->num);
 		m_printf(COLOR_RED"%li ms: %i died\n", time, p);
 		pthread_mutex_lock(p->time_lock);
 		*p->start_time = -1;
@@ -87,7 +88,7 @@ int	ft_dead(t_philo *p)
 	dead_check(p);
 	gettimeofday(&time, NULL);
 	pthread_mutex_lock(p->time_lock);
-	elapsed_ms = (((time.tv_sec % 1000) * 1000) + (time.tv_usec / 1000));
+	elapsed_ms = ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 	pthread_mutex_unlock(p->time_lock);
 	if (elapsed_ms - p->last_eat >= p->tt[0] || \
 	(p->n_philo == 0 && p->num == 1))
