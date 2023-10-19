@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:30:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/19 10:35:17 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/19 11:03:10 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_usleep(t_philo *p, long sleep)
 		usleep(p->tt[0] * 1000);
 		execute_dead(p, ft_time(p));
 		return (-1);
-	}
+	}	usleep(100 * p->tt[0]);
 	pthread_mutex_unlock(p->time_lock);
 	usleep(sleep);
 	return (0);
