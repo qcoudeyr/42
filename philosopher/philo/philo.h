@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/16 10:04:10 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/19 11:52:54 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void		eat_mutex_lock(t_philo *p);
 void		eat_mutex_unlock(t_philo *p);
 
 // Text colors
-# define COLOR_BLACK   "\033[30m"
+# define COLOR_BLACK   "\033[36m"
 # define COLOR_RED     "\033[31m"
 # define COLOR_GREEN   "\033[32m"
 # define COLOR_YELLOW  "\033[33m"
