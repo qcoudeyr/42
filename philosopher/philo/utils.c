@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:30:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/19 10:07:58 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/19 10:31:03 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,7 @@ long	ft_time(t_philo *p)
 
 	gettimeofday(&end, NULL);
 	pthread_mutex_lock(p->time_lock);
-	elapsed_ms = (((end.tv_sec % 1000) * 1000) + (end.tv_usec / 1000)) - \
-	*p->start_time;
+	elapsed_ms = ((end.tv_sec - p->start_time->tv_sec) * 1000) + ((end.tv_usec - p->start_time->tv_usec) / 1000);
 	pthread_mutex_unlock(p->time_lock);
 	return (elapsed_ms);
 }
