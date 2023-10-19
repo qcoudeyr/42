@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 11:04:44 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/19 11:22:00 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/19 13:18:54 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	execute_dead(t_philo *p, long time)
 	if (*p->start_time > 0)
 	{
 		pthread_mutex_unlock(p->time_lock);
-		usleep(100 * p->num);
 		m_printf(COLOR_RED"%li ms: %i died\n", time, p);
 		pthread_mutex_lock(p->time_lock);
 		*p->start_time = -1;

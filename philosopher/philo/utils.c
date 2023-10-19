@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:30:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/19 11:46:06 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/19 13:19:18 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ long	ft_time(t_philo *p)
 
 void	m_printf(char *str, long int delay, t_philo *p)
 {
-	usleep(10 * p->num);
 	pthread_mutex_lock(p->time_lock);
 	if (*p->start_time < 0)
 		return ((void) pthread_mutex_unlock(p->time_lock));
@@ -64,6 +63,7 @@ void	m_printf(char *str, long int delay, t_philo *p)
 	pthread_mutex_unlock(p->end_lock);
 	pthread_mutex_lock(p->print_lock);
 	printf(str, delay, p->num);
+	usleep(10 * p->num);
 	pthread_mutex_unlock(p->print_lock);
 	pthread_mutex_unlock(p->time_lock);
 }
