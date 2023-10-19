@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:30:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/19 19:21:27 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/19 19:51:49 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,14 @@ int	ft_usleep(t_philo *p, long sleep)
 	return (0);
 }
 
-long	ft_time(t_philo *p)
+long int	ft_time(t_philo *p)
 {
 	struct timeval	end;
-	long			elapsed_ms;
+	long int		elapsed_ms;
 
 	gettimeofday(&end, NULL);
 	pthread_mutex_lock(p->time_lock);
+	printf("\t actual time = %li | stime = %li\n", ((end.tv_sec * 1000) + (end.tv_usec / 1000)), *p->start_time);
 	elapsed_ms = ((end.tv_sec * 1000) + (end.tv_usec / 1000)) - *p->start_time;
 	pthread_mutex_unlock(p->time_lock);
 	return (elapsed_ms);
