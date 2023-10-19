@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/19 14:08:18 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/19 19:21:41 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	ft_eat(t_philo *p)
 	int	val;
 
 	if (p->nb_eat > 0)
-		usleep(1000);
+		usleep(500);
 	if (ft_dead(p) == -1 || (p->nb_eat > 0 && ft_eat_dead(p) == -1))
 		return (-1);
 	eat_mutex_lock(p);
