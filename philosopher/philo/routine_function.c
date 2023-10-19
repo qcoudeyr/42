@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/19 11:41:02 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/19 14:08:18 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	ft_sleep(t_philo *p)
 		return (-1);
 	delay = ft_time(p);
 	m_printf(COLOR_BLUE"%li ms: %i is sleeping\n", delay, p);
-	i = ft_usleep(p, p->tt[2] * 1000);
+	i = ft_usleep(p, (p->tt[2] * 1000));
 	return (i);
 }
 

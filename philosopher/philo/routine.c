@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/19 13:27:28 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/19 14:06:55 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	print_eat(t_philo *p)
 	pthread_mutex_lock(p->time_lock);
 	p->last_eat = (time.tv_sec * 1000) + (time.tv_usec / 1000);
 	pthread_mutex_unlock(p->time_lock);
+	delay = ft_time(p);
 	m_printf(COLOR_GREEN"%li ms: %i is eating\n", delay, p);
 	delay = ft_usleep(p, p->tt[1] * 1000);
 	eat_mutex_unlock(p);
