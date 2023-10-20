@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/20 10:38:38 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/20 10:50:13 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,12 @@ int	ft_eat(t_philo *p)
 int	ft_sleep(t_philo *p)
 {
 	int			i;
+	long		delay;
 
-	usleep(1000);
+	delay = ft_time(p);
 	if (ft_dead(p) == -1)
 		return (-1);
-	m_printf(COLOR_BLUE"%li ms: %i is sleeping\n", -1, p);
+	m_printf(COLOR_BLUE"%li ms: %i is sleeping\n", delay, p);
 	i = ft_usleep(p, (p->tt[2] * 1000));
 	usleep(100);
 	return (i);
@@ -88,9 +89,12 @@ int	ft_sleep(t_philo *p)
 
 int	ft_thinks(t_philo *p)
 {
+	long		delay;
+
+	delay = ft_time(p);
 	usleep(1000);
 	if (ft_dead(p) == -1)
 		return (-1);
-	m_printf(COLOR_BLACK"%li ms: %i is thinking\n", -1, p);
+	m_printf(COLOR_BLACK"%li ms: %i is thinking\n", delay, p);
 	return (0);
 }

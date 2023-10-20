@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:53:31 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/20 10:43:12 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/20 10:53:30 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	print_eat(t_philo *p)
 	m_printf(COLOR_YELLOW"%li ms: %i has taken a fork\n", -1, p);
 	m_printf(COLOR_GREEN"%li ms: %i is eating\n", -1, p);
 	pthread_mutex_lock(p->time_lock);
-	p->last_eat = (((time.tv_sec % 1000) * 1000) + (time.tv_usec / 1000));
+	p->last_eat = ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 	pthread_mutex_unlock(p->time_lock);
 	delay = ft_usleep(p, (p->tt[1] * 1000));
 	eat_mutex_unlock(p);
@@ -53,11 +53,11 @@ void	impair_routine(t_philo *p)
 	{
 		pthread_mutex_unlock(p->end_lock);
 		lock = 0;
-		if (ft_dead(p) == -1 || ft_thinks(p) == -1)
-			break ;
 		if (ft_dead(p) == -1 || ft_eat(p) == -1)
 			break ;
 		if (ft_dead(p) == -1 || ft_sleep(p) == -1)
+			break ;
+		if (ft_dead(p) == -1 || ft_thinks(p) == -1)
 			break ;
 		pthread_mutex_lock(p->end_lock);
 		lock = 1;

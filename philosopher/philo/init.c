@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:18:56 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/20 10:43:05 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/20 10:52:15 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	time_init(t_philo *p)
 	gettimeofday(&time, NULL);
 	pthread_mutex_lock(p->time_lock);
 	if (*p->start_time == 0)
-		*p->start_time = (((time.tv_sec % 1000) * 1000) + (time.tv_usec / 1000));
+		*p->start_time = ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 	p->last_eat += *p->start_time;
 	pthread_mutex_unlock(p->time_lock);
 }
