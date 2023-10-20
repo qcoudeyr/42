@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:30:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/20 10:11:56 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/20 10:33:10 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ long int	ft_time(t_philo *p)
 
 	gettimeofday(&time, NULL);
 	pthread_mutex_lock(p->time_lock);
-	elapsed_ms = (time.tv_sec * 1000000 + time.tv_usec) / 1000;
+	elapsed_ms = ((time.tv_sec * 1000000) + time.tv_usec) / 1000;
 	elapsed_ms -= *p->start_time;
 	pthread_mutex_unlock(p->time_lock);
 	return (elapsed_ms);
@@ -62,6 +62,8 @@ void	m_printf(char *str, long int delay, t_philo *p)
 		return ;
 	}
 	pthread_mutex_unlock(p->end_lock);
+	if (delay == -1)
+		delay = ft_time(p);
 	pthread_mutex_lock(p->time_lock);
 	if (*p->start_time < 0)
 	{
@@ -69,10 +71,7 @@ void	m_printf(char *str, long int delay, t_philo *p)
 		return ;
 	}
 	pthread_mutex_lock(p->print_lock);
-	{
-		printf(str, delay, p->num);
-		usleep(100);
-	}
+	printf(str, delay, p->num);
 	pthread_mutex_unlock(p->print_lock);
 	pthread_mutex_unlock(p->time_lock);
 }

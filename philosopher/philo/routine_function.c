@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/20 09:57:25 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/20 10:34:30 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	ft_eat(t_philo *p)
 {
 	int	val;
 
+	usleep(1000);
 	if (ft_dead(p) == -1 || ft_eat_dead(p) == -1)
 		return (-1);
 	eat_mutex_lock(p);
@@ -68,6 +69,7 @@ int	ft_eat(t_philo *p)
 		pthread_mutex_unlock(p->end_lock);
 		return (-1);
 	}
+	usleep(100);
 	return (val);
 }
 
@@ -77,8 +79,10 @@ int	ft_sleep(t_philo *p)
 
 	if (ft_dead(p) == -1)
 		return (-1);
-	m_printf(COLOR_BLUE"%li ms: %i is sleeping\n", ft_time(p), p);
+	usleep(100);
+	m_printf(COLOR_BLUE"%li ms: %i is sleeping\n", -1, p);
 	i = ft_usleep(p, (p->tt[2] * 1000));
+	usleep(100);
 	return (i);
 }
 
@@ -86,6 +90,8 @@ int	ft_thinks(t_philo *p)
 {
 	if (ft_dead(p) == -1)
 		return (-1);
-	m_printf(COLOR_BLACK"%li ms: %i is thinking\n", ft_time(p), p);
+	usleep(100);
+	m_printf(COLOR_BLACK"%li ms: %i is thinking\n", -1, p);
+	usleep(100);
 	return (0);
 }
