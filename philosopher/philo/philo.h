@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:05 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/20 09:30:12 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/20 09:43:17 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_philo
 	int				fork;
 	int				*end;
 	long			last_eat;
-	struct timeval	*start_time;
+	long			*start_time;
 	struct s_philo	*n_philo;
 	struct s_philo	*p_philo;
 	pthread_mutex_t	*time_lock;
@@ -44,7 +44,7 @@ typedef struct s_var
 {
 	int				nb_philo;
 	int				tt[4];
-	struct timeval	start_time;
+	long			start_time;
 	int				end;
 	t_philo			*f_philo;
 	t_philo			*p;

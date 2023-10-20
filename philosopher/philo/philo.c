@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:19:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/20 09:30:29 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/20 09:43:18 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	main(int argc, char **argv)
 	var = malloc(sizeof(t_var));
 	var->nb_philo = 0;
 	var->p = NULL;
+	var->start_time = 0;
 	var->end = 0;
 	pthread_mutex_init(&var->end_lock, NULL);
 	pthread_mutex_init(&var->time_lock, NULL);
