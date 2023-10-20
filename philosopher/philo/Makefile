@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -pthread
-THREADFLAG = -fsanitize=thread
+THREADFLAG = 
 
 HEADERS = philo.h
 SRCS = philo.c utils.c routine.c routine_function.c init.c dead.c free.c

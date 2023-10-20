@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 11:04:44 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/20 11:11:59 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/20 12:10:26 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,12 @@ int	ft_eat_dead(t_philo *p)
 		usleep(100);
 		pthread_mutex_lock(p->time_lock);
 	}
-	if (((p->tt[1] + (p->n_philo->last_eat / 1000)) >= (p->last_eat / 1000) + p->tt[0]) || \
-	((p->tt[1] + (p->p_philo->last_eat / 1000)) >= (p->last_eat / 1000) + p->tt[0]))
+	if (((p->tt[1] + (p->n_philo->last_eat / 1000)) >= (p->last_eat / 1000) \
+	+ p->tt[0]) || ((p->tt[1] + (p->p_philo->last_eat / 1000)) >= \
+	(p->last_eat / 1000) + p->tt[0]))
 	{
+		if (p->tt[1] >= p->tt[0])
+			return (pthread_mutex_unlock(p->time_lock) * 0);
 		time = ((p->last_eat - *p->start_time) / 1000) + p->tt[0];
 		pthread_mutex_unlock(p->time_lock);
 		usleep(100 * p->tt[0]);
