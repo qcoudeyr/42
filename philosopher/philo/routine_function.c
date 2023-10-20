@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/19 20:02:08 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/20 09:10:43 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int	ft_sleep(t_philo *p)
 {
 	int			i;
 
+	usleep(1000);
 	if (ft_dead(p) == -1)
 		return (-1);
 	m_printf(COLOR_BLUE"%li ms: %i is sleeping\n", (-1), p);
