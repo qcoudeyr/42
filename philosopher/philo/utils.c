@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:30:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/19 20:01:21 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/19 20:11:27 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	m_printf(char *str, long int delay, t_philo *p)
 	pthread_mutex_unlock(p->print_lock);
 	pthread_mutex_unlock(p->time_lock);
 }
-
 
 static int	ft_isspace(const char c)
 {
