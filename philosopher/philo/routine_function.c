@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:17:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/20 10:50:13 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/20 11:16:10 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int	ft_sleep(t_philo *p)
 	int			i;
 	long		delay;
 
+	usleep(1000);
 	delay = ft_time(p);
 	if (ft_dead(p) == -1)
 		return (-1);
@@ -91,8 +92,8 @@ int	ft_thinks(t_philo *p)
 {
 	long		delay;
 
-	delay = ft_time(p);
 	usleep(1000);
+	delay = ft_time(p);
 	if (ft_dead(p) == -1)
 		return (-1);
 	m_printf(COLOR_BLACK"%li ms: %i is thinking\n", delay, p);

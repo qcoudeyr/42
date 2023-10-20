@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:30:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/20 10:53:48 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/20 11:15:20 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ int	ft_usleep(t_philo *p, long sleep)
 
 	if (dead_check(p) == -1)
 		return (-1);
-	gettimeofday(&time, NULL);
-	delay = ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 	pthread_mutex_lock(p->time_lock);
-	total = (delay - p->last_eat) + (sleep / 1000);
+	gettimeofday(&time, NULL);
+	delay = (time.tv_sec * 1000000 + time.tv_usec);
+	total = ((delay - p->last_eat) / 1000) + (sleep / 1000);
 	if (total > p->tt[0])
 	{
-		delay = p->last_eat - *p->start_time;
+		delay = (p->last_eat - *p->start_time) / 1000;
 		pthread_mutex_unlock(p->time_lock);
 		total = (ft_time(p) - (delay));
 		if (total < 10)
@@ -45,11 +45,12 @@ long int	ft_time(t_philo *p)
 	struct timeval	time;
 	long int		elapsed_ms;
 
-	gettimeofday(&time, NULL);
 	pthread_mutex_lock(p->time_lock);
-	elapsed_ms = ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+	gettimeofday(&time, NULL);
+	elapsed_ms = (time.tv_sec * 1000000 + time.tv_usec);
 	elapsed_ms -= *p->start_time;
 	pthread_mutex_unlock(p->time_lock);
+	elapsed_ms /= 1000;
 	return (elapsed_ms);
 }
 

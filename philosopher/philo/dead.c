@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 11:04:44 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/10/20 10:52:32 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/20 11:11:59 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,18 @@ int	ft_eat_dead(t_philo *p)
 	long			time;
 	struct timeval	end;
 
-	gettimeofday(&end, NULL);
 	pthread_mutex_lock(p->time_lock);
+	gettimeofday(&end, NULL);
 	while (p->n_philo->last_eat == 0 || p->p_philo->last_eat == 0)
 	{
 		pthread_mutex_unlock(p->time_lock);
 		usleep(100);
 		pthread_mutex_lock(p->time_lock);
 	}
-	if (((p->tt[1] + p->n_philo->last_eat) >= p->last_eat + p->tt[0]) || \
-	((p->tt[1] + p->p_philo->last_eat) >= p->last_eat + p->tt[0]))
+	if (((p->tt[1] + (p->n_philo->last_eat / 1000)) >= (p->last_eat / 1000) + p->tt[0]) || \
+	((p->tt[1] + (p->p_philo->last_eat / 1000)) >= (p->last_eat / 1000) + p->tt[0]))
 	{
-		time = (p->last_eat + p->tt[0]) - *p->start_time;
+		time = ((p->last_eat - *p->start_time) / 1000) + p->tt[0];
 		pthread_mutex_unlock(p->time_lock);
 		usleep(100 * p->tt[0]);
 		execute_dead(p, time);
@@ -90,11 +90,11 @@ int	ft_dead(t_philo *p)
 	long			elapsed_ms;
 
 	dead_check(p);
-	gettimeofday(&time, NULL);
 	pthread_mutex_lock(p->time_lock);
-	elapsed_ms = ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+	gettimeofday(&time, NULL);
+	elapsed_ms = (time.tv_sec * 1000000 + time.tv_usec);
 	pthread_mutex_unlock(p->time_lock);
-	if (elapsed_ms - p->last_eat >= p->tt[0] || \
+	if ((elapsed_ms - p->last_eat) / 1000 >= p->tt[0] || \
 	(p->n_philo == 0 && p->num == 1))
 	{
 		usleep(100 * p->num);
