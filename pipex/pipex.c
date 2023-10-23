@@ -6,12 +6,11 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 09:44:16 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/28 14:10:36 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/23 13:25:40 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include "string.h"
 
 void	ft_execve(t_pp *t, int i)
 {

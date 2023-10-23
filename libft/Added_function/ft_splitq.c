@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 09:43:46 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/09/28 12:11:30 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/10/23 07:00:25 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,28 +74,26 @@ static char	**ft_empty_tab(void)
 char	**ft_splitq(char const *str)
 {
 	int		i;
-	char	c;
 	int		index;
 	char	**tab;
 	char	*s;
 
-	c = ' ';
 	s = ft_strdup(str);
 	if (!str || *s == '\0')
 		return (ft_empty_tab());
 	i = 0;
 	index = 0;
-	tab = (char **)malloc(sizeof(char *) * (ft_wordctq(s, c) + 1));
-	while (s[i] != 0 || (s[i] == c && s[i + 1] == 0))
+	tab = (char **)malloc(sizeof(char *) * (ft_wordctq(s, ' ') + 1));
+	while (s[i] != 0 || (s[i] == ' ' && s[i + 1] == 0))
 	{
-		while (s[i] == c && s[i] != 0)
+		while (s[i] == ' ' && s[i] != 0)
 			i++;
-		tab[index] = malloc(sizeof(char) * ft_wordlen(&s[i], c) + 1);
+		tab[index] = malloc(sizeof(char) * ft_wordlen(&s[i], ' ') + 1);
 		if (s[i] == 34 || s[i] == 39)
-			ft_strlcpy(tab[index++], &s[i + 1], ft_wordlen(&s[i], c) -1);
+			ft_strlcpy(tab[index++], &s[i + 1], ft_wordlen(&s[i], ' ') - 1);
 		else
-			ft_strlcpy(tab[index++], &s[i], ft_wordlen(&s[i], c) +1);
-		i += ft_wordlen(&s[i], c);
+			ft_strlcpy(tab[index++], &s[i], ft_wordlen(&s[i], ' ') + 1);
+		i += ft_wordlen(&s[i], ' ');
 	}
 	tab[index] = NULL;
 	free (s);

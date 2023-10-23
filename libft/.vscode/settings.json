@@ -38,6 +38,7 @@
     "stdlib.h": "c",
     "stddef.h": "c",
     "fcntl.h": "c",
-    "stdarg.h": "c"
+    "stdarg.h": "c",
+    "random": "c"
   }
 }
