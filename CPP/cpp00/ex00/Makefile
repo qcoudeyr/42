@@ -1,20 +1,13 @@
 vpath %.c %.o %.h %.a ./libft ./parsing ./error ./main ./builtins ./utils ./object
 VPATH = . : ./libft : ./parsing : ./error : ./main : ./builtins : ./utils
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g
+CC = c++
+CFLAGS = -Wall -Werror -Wextra -std=c++98
 LIB_DIR = ./libft/
 LIBS = -lft -lreadline -lncurses -lhistory
 
 HEADERS = minishell.h
 
-SRCS =	main.c \
-		parsing.c error.c bultinexe.c ft_cd.c ft_echo.c \
-		remove_quotes.c find_redirect.c heredoc.c signal.c\
-		env_var.c pipe.c bonus.c utils.c free.c exec.c \
-		error_2.c env.c ft_unset.c ft_export.c init.c \
-		ft_pwd.c export_utils.c import_env.c path.c path2.c\
-		utils2.c
-
+SRCS =
 OBJDIR = ./object/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
 
