@@ -1,20 +1,23 @@
-CC = c++
+CXX = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRCS = megaphone.cpp
 OBJDIR = ./object/
-OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
+OBJS = $(addprefix $(OBJDIR),$(SRCS:.cpp=.o))
 
 NAME = megaphone
 
 all: $(OBJDIR) $(NAME)
 	@echo "\033[32m\tCompilation done !\033[0m"
 
-$(OBJDIR)%.o: %.c $(HEADERS)
-	@echo "\033[2m\033[31mStart to compile\033[0m"
-	@$(CC) $(CFLAGS) -I$(<D) -c $< -o $@
+$(OBJDIR)%.o: %.cpp $(HEADERS)
+	@$(CXX) $(CFLAGS) -I$(<D) -c $< -o $@
+
+$(NAME): $(OBJDIR) $(OBJS)  # Define 'megaphone' target
+	@$(CXX) $(CFLAGS) $(OBJS) -o $(NAME)
 
 $(OBJDIR):
+	@echo "\033[2m\033[31mStart to compile\033[0m"
 	@mkdir -p $(OBJDIR)
 
 
