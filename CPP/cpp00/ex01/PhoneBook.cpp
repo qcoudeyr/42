@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 10:58:34 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/20 11:32:24 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/20 11:35:22 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,9 @@ int	main(int argc, char **argv)
 		std::cout<<"Error ! Usage : $>./PhoneBook"<<std::endl;
 		return (0);
 	}
+	MenuHeader("What do you want to do ?");
 	while (1)
 	{
-		MenuHeader(NULL);
-		std::>>
 		std::cout<<"$> ";
 		std::cin>>input;
 		if (input == "EXIT")
@@ -53,7 +52,7 @@ int	main(int argc, char **argv)
 		}
 		else
 		{
-			MenuHeader("\n Nothing can be done with " + input +\
+			MenuHeader("/!\ Nothing can be done with " + input +\
 			"\n\t May you want to ADD or SEARCH an contact ?");
 		}
 
