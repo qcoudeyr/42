@@ -2,14 +2,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "CPP00 debug",
+      "name": "CPP01 debug",
       "type": "cppdbg",
       "request": "launch",
-      "args": ["ceci est un test"],
+      "args": [""],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/qcoudeyr/Desktop/42/CPP/cpp00/ex00/",
-      "program": "/home/qcoudeyr/Desktop/42/CPP/cpp00/ex00/megaphone",
+      "cwd": "/home/qcoudeyr/Desktop/42/CPP/cpp00/ex01/",
+      "program": "/home/qcoudeyr/Desktop/42/CPP/cpp00/ex01/PhoneBook",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
