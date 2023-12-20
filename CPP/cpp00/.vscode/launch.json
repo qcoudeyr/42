@@ -2,30 +2,6 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "CPP01 debug",
-      "type": "cppdbg",
-      "request": "launch",
-      "args": [""],
-      "stopAtEntry": false,
-      "externalConsole": false,
-      "cwd": "/home/qcoudeyr/Desktop/42/CPP/cpp00/ex01/",
-      "program": "/home/qcoudeyr/Desktop/42/CPP/cpp00/ex01/PhoneBook",
-      "MIMode": "gdb",
-      "miDebuggerPath": "gdb",
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ]
-    }
-  ]
-}
-{
-  "version": "0.2.0",
-  "configurations": [
-    {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
