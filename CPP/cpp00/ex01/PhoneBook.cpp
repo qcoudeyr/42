@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 10:58:34 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/20 11:29:29 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/20 11:32:24 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 void MenuHeader(std::string str)
 {
+	std::cout << "\033[2J\033[H";
 	std::cout<<"#######################"<<std::endl;
 	std::cout<<"#       Welcome       #"<<std::endl;
 	std::cout<<"#         to          #"<<std::endl;
@@ -36,7 +37,8 @@ int	main(int argc, char **argv)
 	}
 	while (1)
 	{
-		MenuHeader();
+		MenuHeader(NULL);
+		std::>>
 		std::cout<<"$> ";
 		std::cin>>input;
 		if (input == "EXIT")
@@ -51,8 +53,8 @@ int	main(int argc, char **argv)
 		}
 		else
 		{
-			std::cout<<"\n Nothing can be done with " + input<<std::endl;
-			std::cout<<"\t May you want to ADD or SEARCH an contact ?"<<std::endl;
+			MenuHeader("\n Nothing can be done with " + input +\
+			"\n\t May you want to ADD or SEARCH an contact ?");
 		}
 
 	}
