@@ -6,7 +6,7 @@ SRCS = PhoneBook.cpp
 OBJDIR = ./object/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.cpp=.o))
 
-NAME = megaphone
+NAME = PhoneBook
 
 all: $(OBJDIR) $(NAME)
 	@echo "\033[32m\tCompilation done !\033[0m"
