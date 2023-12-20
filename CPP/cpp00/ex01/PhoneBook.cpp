@@ -6,12 +6,13 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 10:58:34 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/20 11:41:30 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/20 11:44:35 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string.h>
+#include "PhoneBook"
 
 void MenuHeader(std::string str)
 {
@@ -28,12 +29,14 @@ void MenuHeader(std::string str)
 
 void AddContact(void);
 {
-	
+	MenuHeader("So you want to add a contact ?\nCan you tell me more about it ?!")
+	std::cin>>
 }
 
 int	main(int argc, char **argv)
 {
 	(void) argv;
+	PhoneBook
 	std::string input;
 
 	if (argc > 1)
