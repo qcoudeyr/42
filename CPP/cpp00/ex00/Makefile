@@ -1,5 +1,5 @@
 CXX = c++
-CFLAGS = -Wall -Werror -Wextra -std=c++98
+CFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
 SRCS = megaphone.cpp
 OBJDIR = ./object/
