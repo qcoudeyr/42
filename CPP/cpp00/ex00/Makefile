@@ -1,22 +1,18 @@
-vpath %.c %.o %.h %.a ./libft ./parsing ./error ./main ./builtins ./utils ./object
-VPATH = . : ./libft : ./parsing : ./error : ./main : ./builtins : ./utils
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
-LIB_DIR = ./libft/
-LIBS = -lft -lreadline -lncurses -lhistory
 
-HEADERS = minishell.h
-
-SRCS =
+SRCS = megaphone.cpp
 OBJDIR = ./object/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
 
 NAME = megaphone
 
 all: $(OBJDIR) $(NAME)
+	@echo "\033[2m\033[31mStart to compile\033[0m"
 
 $(OBJDIR)%.o: %.c $(HEADERS)
 	@$(CC) $(CFLAGS) -I$(<D) -c $< -o $@
+	@echo "\033[2m\033[31mCompilation done !\033[0m"
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)
