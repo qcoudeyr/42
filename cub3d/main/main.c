@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:59:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/24 20:32:49 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/24 20:34:26 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,21 @@ int	check_arg(int argc, char **argv, t_cub *t)
 	}
 	else if (argc == 2)
 	{
-		if (ft_strnstr((argv[1] + (ft_strlen(argv[1] - 4))) , ".cub", 4) == NULL)
+		if (ft_strnstr((argv[1] + (ft_strlen(argv[1]) - 4)) , ".cub", 4) == NULL)
+		{
 			ft_printf\
 (CL_RED BOLD"Error, Wrong format map entered !\nUsage: ./cub3D map.cub\n"RESET);
+			return (-1);
+		}
 		else
+		{
 			t->fd_map = open(argv[1], O_RDONLY);
 			if (t->fd_map < 0)
 			{
 				perror("open");
+				return (-1);
+			}
+		}
 	}
 	return (0);
 }
