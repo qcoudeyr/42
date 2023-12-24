@@ -59,8 +59,11 @@ SRCS =	./Original_function/ft_strlcpy.c\
 		./Added_function/ft_fprintf/srcs/fd_putnbr_base.c\
 		./Added_function/ft_fprintf/srcs/fd_putstr_fd.c\
 		./Added_function/ft_fprintf/srcs/fd_putnbr_fd.c\
-		./Added_function/ft_fprintf/srcs/fd_putchar_fd.c
-
+		./Added_function/ft_fprintf/srcs/fd_putchar_fd.c\
+		./Added_function/ft_checkaccess.c\
+		./Added_function/ft_tablen.c\
+		./Added_function/ft_pfree.c\
+		./Added_function/ft_tabfree.c
 
 OBJS = $(SRCS:.c=.o)
 
