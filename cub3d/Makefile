@@ -1,5 +1,6 @@
 vpath %.c %.o %.h %.a ./libft ./free ./parsing ./error ./main ./map ./utils ./object ./mlx_linux ./rendering ./windows
 VPATH = . : ./libft : ./parsing : ./error : ./main : ./utils : ./map : ./rendering : ./mlx_linux : ./windows : ./free :
+./libft ./free ./parsing ./error ./main ./map ./utils ./object ./rendering ./windows
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g
 LIB_DIR = ./libft/
@@ -54,7 +55,7 @@ re: fclean all
 
 norme:
 	@echo "\033[2m\033[31mLet's check the norme for $(NAME)\033[0m"
-	@if [ $$(norminette | grep Error | wc -c) -eq 0 ]; then \
+	@if [ $$(norminette $(SRCS) $(HEADERS) | grep Error | wc -c) -eq 0 ]; then \
 		echo "\033[32m\033[1m\tNorme is OK!\033[0m"; \
 	else \
 		echo "\033[31m\033[1m\tNorme is BAD!\033[0m"; \
