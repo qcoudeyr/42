@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:59:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/24 20:17:54 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/24 20:20:33 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,18 @@ int	check_arg(int argc, char **argv, t_cub *t)
 	return (0);
 }
 
-void	*init_struct(void)
+void	init_struct(t_cub *t)
 {
-	t_cub *t;
-	t = ft_calloc(1, sizeof(t_cub));
 	t->fd_map = 0;
-	t->data = NULL;
-	t->map = NULL;
 }
 
 int	main(int argc, char **argv)
 {
 // init var
-	t_cub *t;
+	t_cub	*t;
 
-	t = init_struct;
+	t = ft_calloc(1, sizeof(t_cub));
+	init_struct(t);
 // check arg before init
 	if (check_arg(argc, argv, t) != 0)
 		return (0);
