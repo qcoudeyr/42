@@ -55,11 +55,11 @@ NORME = ./libft ./free ./parsing ./error ./main ./map ./utils ./object ./renderi
 
 norme:
 	@echo "\033[2m\033[31mLet's check the norme for $(NAME)\033[0m"
-	if [ $$(norminette $(NORME) | grep Error | wc -c) -eq 0 ]; then \
+	@if [ $$(norminette $(NORME) | grep Error | wc -c) -eq 0 ]; then \
 		echo "\033[32m\033[1m\tNorme is OK!\033[0m"; \
 	else \
 		echo "\033[31m\033[1m\tNorme is BAD!\033[0m"; \
-		norminette | grep Error ;\
+		norminette $(NORME) | grep Error ;\
 		echo "\033[31m\033[1mNEED TO FIX ALL OF THIS !!!\033[0m"; \
 	fi
 
