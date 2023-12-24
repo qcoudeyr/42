@@ -28,8 +28,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/qcoudeyr/Bureau/42/libft",
-      "program": "/home/qcoudeyr/Bureau/42/libft/build/Debug/outDebug",
+      "cwd": "/home/qcoudeyr/Desktop/42/libft",
+      "program": "/home/qcoudeyr/Desktop/42/libft/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
@@ -45,7 +45,9 @@
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/debug",
-      "args": ["-O0"],
+      "args": [
+        "-O0"
+      ],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "environment": [],
