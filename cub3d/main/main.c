@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:59:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/24 21:54:55 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/24 21:56:52 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ int	check_arg(int argc, char **argv, t_cub *t)
 		return (handle_nomap(t));
 	else if (argc == 2)
 	{
-		if (ft_strnstr((argv[1] + (ft_strlen(argv[1]) - 4)) , ".cub", 4))
-			return (printerr("Error, Wrong format map entered !\nUsage: ./cub3D map.cub\n"));
+		if (!ft_strnstr((argv[1] + (ft_strlen(argv[1]) - 4)), ".cub", 4))
+			return \
+	(printerr("Error, Wrong format map entered !\nUsage: ./cub3D map.cub\n"));
 		else
 		{
 			t->fd_map = open(argv[1], O_RDONLY);
@@ -65,13 +66,11 @@ void	init_struct(t_cub *t)
 
 int	main(int argc, char **argv)
 {
-// init var
 	t_cub	*t;
 
 	t = ft_calloc(1, sizeof(t_cub));
 	init_struct(t);
-// check arg before init
 	if (check_arg(argc, argv, t) != 0)
 		return (0);
-
+	return (0);
 }

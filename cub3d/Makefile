@@ -7,7 +7,8 @@ LIBS = -lft -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm
 
 HEADERS = cub3d.h
 
-SRCS =	main.c
+SRCS =	main.c \
+		utils.c error.c
 
 OBJDIR = ./object/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
