@@ -6,12 +6,12 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/24 20:03:00 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/24 20:21:51 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D
-# define CUB3D
+#ifndef CUB3D_H
+# define CUB3D_H
 
 # include "./libft/libft.h"
 # include "./mlx_linux/mlx.h"
@@ -41,13 +41,10 @@ typedef struct s_map
 
 typedef struct s_cub
 {
-	int			fd_map;
-
-
+	int				fd_map;
 	struct s_map	map;
 	struct s_data	data;
 }					t_cub;
-
 
 // Text colors
 # define CL_BLACK   "\033[30m"

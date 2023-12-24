@@ -12,9 +12,9 @@ SRCS =	main.c
 OBJDIR = ./object/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
 
-NAME = minishell
+NAME = cub3D
 
-all: $(OBJDIR) $(NAME) norme generate_env
+all: $(OBJDIR) $(NAME) norme
 
 $(NAME): $(OBJS) libft
 	@echo "\033[2m\033[31mStart to make $(NAME)\033[0m"
@@ -62,16 +62,12 @@ norme:
 		echo "\033[31m\033[1mNEED TO FIX ALL OF THIS !!!\033[0m"; \
 	fi
 
-generate_env:
-	@/usr/bin/env > ./utils/.env
-
-
 debug: $(OBJS)
 	@clear
 	@$(CC) $(CFLAGS) -g $(OBJS) -L$(LIB_DIR) $(LIBS) -o debug
 	valgrind -s --track-origins=yes --tool=memcheck --leak-check=full --error-exitcode=1 \
 	./debug
 
-.PHONY: all clean fclean re debug libft norme generate_env
+.PHONY: all clean fclean re debug libft norme
 
 #--show-leak-kinds=all --track-origins=yes
