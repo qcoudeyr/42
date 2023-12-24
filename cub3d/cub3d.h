@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/24 19:44:24 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/24 20:03:00 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,15 @@ typedef struct s_map
 	struct s_map	*px;
 	struct s_map	*first;
 }					t_map;
+
+typedef struct s_cub
+{
+	int			fd_map;
+
+
+	struct s_map	map;
+	struct s_data	data;
+}					t_cub;
 
 
 // Text colors
