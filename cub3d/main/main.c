@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:59:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/24 20:34:26 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/24 21:39:07 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	check_arg(int argc, char **argv, t_cub *t)
 
 	if (argc > 2)
 	{
-		ft_printf(CL_RED BOLD"Error, Too many args !\nUsage: ./cub3D map.cub\n"RESET);
+		ft_printf("Error, Too many args !\nUsage: ./cub3D map.cub\n"RESET);
 		return (-1);
 	}
 	else if (argc == 1)

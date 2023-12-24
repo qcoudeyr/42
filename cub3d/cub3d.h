@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/24 20:21:51 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/24 21:42:19 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,45 @@ typedef struct s_cub
 	struct s_map	map;
 	struct s_data	data;
 }					t_cub;
+
+//Main File Function
+/*
+
+
+
+ */
+//Free File Function
+/*
+
+
+
+ */
+//Parsing File Function
+/*
+
+
+
+ */
+//Windows File Function
+/*
+
+
+
+ */
+//Rendering File Function
+/*
+
+
+
+ */
+//Utils File Function
+/*
+
+
+
+ */
+//Error File Function
+int				printerr(char *str);
 
 // Text colors
 # define CL_BLACK   "\033[30m"
