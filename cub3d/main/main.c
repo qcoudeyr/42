@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:59:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/24 21:39:07 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/24 21:47:10 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,18 @@
 
 int	check_arg(int argc, char **argv, t_cub *t)
 {
-	char *temp;
+	char	*temp;
 
 	if (argc > 2)
-	{
-		ft_printf("Error, Too many args !\nUsage: ./cub3D map.cub\n"RESET);
-		return (-1);
-	}
+		return (printerr("Error, Too many args !\nUsage: ./cub3D map.cub\n"));
 	else if (argc == 1)
 	{
-		ft_printf("No map entered, do you want to load the default one ? \nY/N $>");
+		printerr("No map entered, do you want to load the default one ? \nY/N $>");
 		temp = get_next_line(0);
 		if ((!temp && !(*temp)) || ft_strrchr("yY", *temp) == 0)
 		{
-			ft_printf\
-(CL_RED BOLD"Error, no map entered !\nUsage: ./cub3D map.cub\n"RESET);
 			temp = pfree(temp);
-			return (-1);
+			return (printerr("Error, no map entered !\nUsage: ./cub3D map.cub\n"));
 		}
 		else if (ft_strrchr("yY", *temp) != 0)
 			t->fd_map = open("../map/default.cub", O_RDONLY);
@@ -39,11 +34,7 @@ int	check_arg(int argc, char **argv, t_cub *t)
 	else if (argc == 2)
 	{
 		if (ft_strnstr((argv[1] + (ft_strlen(argv[1]) - 4)) , ".cub", 4) == NULL)
-		{
-			ft_printf\
-(CL_RED BOLD"Error, Wrong format map entered !\nUsage: ./cub3D map.cub\n"RESET);
-			return (-1);
-		}
+			return ("Error, Wrong format map entered !\nUsage: ./cub3D map.cub\n");
 		else
 		{
 			t->fd_map = open(argv[1], O_RDONLY);
