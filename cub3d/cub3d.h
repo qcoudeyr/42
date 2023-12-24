@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/24 19:03:52 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/24 19:04:34 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,20 @@ typedef struct s_data
 	int		line_length;
 	int		endian;
 }				t_data;
+
+typedef struct s_map
+{
+	int				x;
+	int				y;
+	int				value;
+	struct s_map	*nx;
+	struct s_map	*ny;
+	struct s_map	*py;
+	struct s_map	*px;
+	struct s_map	*first;
+}					t_map;
+
+
 
 
 // Text colors
