@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/26 09:14:25 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/26 17:43:22 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,45 +71,50 @@ typedef struct s_cub
 	struct s_data	data;
 	struct s_mlx	*lib;
 }					t_cub;
-
-//Main File Function
 /*
 
+//Main File Function  */
+/*
 
-
- */
-//Free File Function
+//Free File Function */
 int				free_struct(t_cub *t);
 void			free_lib(t_mlx *lib);
 void			ft_freemap(t_mlx *lib);
-//Init File Function
+/*
+
+//Init File Function  */
 void			init_struct(t_cub *t);
-//Parsing File Function
+void			lib_init(t_mlx *lib);
+void			init_windows(t_mlx *lib);
+/*
+
+//Parsing File Function */
+int				parse(char *str, t_mlx *lib, int x, t_map *p_x);
+void			read_map(char *filename, t_mlx *lib);
+/*
+
+//Map File Function */
+void			addmap(t_mlx *lib, t_data *data);
 t_map			*origin_map(t_map *map);
+t_map			*create_map_ptn(int x, int y, int value);
+void			map_addelement(t_map **first, t_map **p_x, t_map **p_e, t_mlx *lib);
 /*
 
-
-
- */
-//Windows File Function
+//Windows File Function  */
+int	closewin(t_mlx *lib);
 /*
 
-
-
- */
-//Rendering File Function
+//Rendering File Function */
+int				tcolor(int red, int green, int blue);
+void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 /*
 
-
-
- */
-//Utils File Function
+//Utils File Function */
+int				keyhandle(int keycode, t_mlx *lib);
+int				mouse_scroll(int button, int x, int y, t_mlx *lib);
 /*
 
-
-
- */
-//Error File Function
+//Error File Function */
 int				printerr(char *str);
 
 // Text colors

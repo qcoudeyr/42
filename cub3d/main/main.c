@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:59:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/26 08:58:09 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/26 16:38:54 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,8 @@ int	main(int argc, char **argv)
 	init_struct(t);
 	if (check_arg(argc, argv, t) != 0)
 		return (free_struct(t));
+	read_map(argv[1], t->lib); // need to modify the parsing to follow the new rules
+	t->lib->mlx = mlx_init();
+	init_windows(t->lib);
 	return (0);
 }
