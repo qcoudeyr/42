@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:59:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/24 21:56:52 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/26 08:58:09 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	handle_nomap(t_cub *t)
 
 	printerr("No map entered, do you want to load the default one ? \nY/N $>");
 	temp = get_next_line(0);
+	get_next_line(-1);
 	if ((!temp && !(*temp)) || ft_strrchr("yY", *temp) == 0)
 	{
 		temp = pfree(temp);
@@ -59,11 +60,6 @@ int	check_arg(int argc, char **argv, t_cub *t)
 	return (0);
 }
 
-void	init_struct(t_cub *t)
-{
-	t->fd_map = 0;
-}
-
 int	main(int argc, char **argv)
 {
 	t_cub	*t;
@@ -71,6 +67,6 @@ int	main(int argc, char **argv)
 	t = ft_calloc(1, sizeof(t_cub));
 	init_struct(t);
 	if (check_arg(argc, argv, t) != 0)
-		return (0);
+		return (free_struct(t));
 	return (0);
 }

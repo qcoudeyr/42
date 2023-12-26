@@ -8,7 +8,7 @@ LIBS = -lft -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm
 HEADERS = cub3d.h
 
 SRCS =	main.c \
-		utils.c error.c
+		utils.c error.c init.c free.c parsing.c
 
 OBJDIR = ./object/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
@@ -67,9 +67,7 @@ norme:
 debug: $(OBJS)
 	@clear
 	@$(CC) $(CFLAGS) -g $(OBJS) -L$(LIB_DIR) $(LIBS) -o debug
-	valgrind -s --track-origins=yes --tool=memcheck --leak-check=full --error-exitcode=1 \
+	valgrind -s --track-origins=yes --tool=memcheck --show-leak-kinds=all --leak-check=full --error-exitcode=1 \
 	./debug
 
 .PHONY: all clean fclean re debug libft norme
-
-#--show-leak-kinds=all --track-origins=yes

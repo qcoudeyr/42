@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/24 21:43:58 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/26 09:14:25 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,37 @@ typedef struct s_map
 	struct s_map	*first;
 }					t_map;
 
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*current_win;
+	int		sizex;
+	int		sizey;
+	int		xlen;
+	int		ylen;
+	int		scalex;
+	int		scaley;
+	int		offsetx;
+	int		offsety;
+	double	multheight;
+	double	vcos;
+	double	vsin;
+	double	z_angle;
+	double	y_angle;
+	double	x_angle;
+	t_map	*map_origin;
+	t_data	*data;
+	t_data	*tampon;
+	t_map	*map;
+
+}				t_mlx;
+
 typedef struct s_cub
 {
 	int				fd_map;
 	struct s_map	map;
 	struct s_data	data;
+	struct s_mlx	*lib;
 }					t_cub;
 
 //Main File Function
@@ -53,12 +79,13 @@ typedef struct s_cub
 
  */
 //Free File Function
-/*
-
-
-
- */
+int				free_struct(t_cub *t);
+void			free_lib(t_mlx *lib);
+void			ft_freemap(t_mlx *lib);
+//Init File Function
+void			init_struct(t_cub *t);
 //Parsing File Function
+t_map			*origin_map(t_map *map);
 /*
 
 

@@ -2,14 +2,33 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "cub3D Debug",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": false,
+      "cwd": "${workspaceFolder}/", // Use workspaceFolder variable
+      "program": "${workspaceFolder}/cub3D", // Use workspaceFolder variable
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/qcoudeyr/Desktop/42/cub3d/main",
-      "program": "/home/qcoudeyr/Desktop/42/cub3d/main/build/Debug/outDebug",
+      "cwd": "/home/qcoudeyr/Desktop/42/cub3d/utils",
+      "program": "/home/qcoudeyr/Desktop/42/cub3d/utils/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
