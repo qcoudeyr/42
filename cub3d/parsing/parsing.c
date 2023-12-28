@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/28 14:52:03 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/28 17:10:31 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,12 @@ int	parse(char *str, t_mlx *lib, int x, t_map *p_x)
 	return (1);
 }
 
-void	read_map(char *filename, t_mlx *lib)
+void	get_map_info(t_cub *t, int fd)
+{
+	
+}
+
+void	read_map(t_cub *t, char *filename, t_mlx *lib)
 {
 	int		fd;
 	int		x;
@@ -66,12 +71,8 @@ void	read_map(char *filename, t_mlx *lib)
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-	{
-		perror("Failed to open the file");
-		ft_freemap(lib);
-		free_lib(lib);
-		exit (0);
-	}
+		return (perror("open"));
+	get_map_info();
 	x = 0;
 	p_x = NULL;
 	while (parse(get_next_line(fd), lib, x, p_x) != 0)
