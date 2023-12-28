@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:59:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/26 16:38:54 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/28 14:53:49 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,12 @@ int	main(int argc, char **argv)
 	read_map(argv[1], t->lib); // need to modify the parsing to follow the new rules
 	t->lib->mlx = mlx_init();
 	init_windows(t->lib);
+	mlx_mouse_hook(t->lib->current_win, mouse_scroll, t->lib);
+	mlx_hook(t->lib->current_win, 2, 1L << 0, keyhandle, t->lib);
+	mlx_hook(t->lib->current_win, 17, 0, closewin, t->lib);
+	mlx_loop(t->lib->mlx);
+	mlx_destroy_window(t->lib->mlx, t->lib->current_win);
+	mlx_destroy_display(t->lib->mlx);
+	free_struct(t);
 	return (0);
 }

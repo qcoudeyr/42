@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/26 18:03:01 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/28 14:52:03 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ adapter le parsing fdf pour la map en 0 et en 1 et supprimer les variables
 multiplicatrices;
 chercher sur la map le point n-1 ou n+1 si il existe, et si non,
 verifier que n soit un 1 sinon erreur !
-
  */
 
 int	parse(char *str, t_mlx *lib, int x, t_map *p_x)
