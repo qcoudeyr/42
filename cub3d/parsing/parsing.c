@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/28 17:32:00 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/28 17:50:36 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,10 @@ void	get_map_info(t_cub *t, int fd)
 	s = read(fd, buf, 100000);
 	buf[s] = 0;
 	s = 0;
-	if (ft_strchr("0", buf[s]) != NULL)
-		s++;
+	if (ft_strnstr(buf, "NO ", 3) != NULL)
+	if (ft_strnstr(buf, "SO ", 3) != NULL)
+	if (ft_strnstr(buf, "WE ", 3) != NULL)
+	if (ft_strnstr(buf, "EA ", 3) != NULL)
 }
 
 void	read_map(t_cub *t, char *filename, t_mlx *lib)
