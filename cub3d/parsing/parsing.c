@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 16:21:19 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 16:27:51 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,28 @@ void	get_color(t_cub *t, char *str, int s)
 	temp = tabfree((void **)temp);
 }
 
+int	is_map(char *str)
+{
+	int	i;
+
+	i = 0;
+	while(str[i])
+	{
+		if (ft_strchr("01 NSEW", str[i]) == 0)
+			return (0);
+	}
+	return (1)
+}
+
 void	get_map_str(t_cub *t, char *str)
 {
-	
+	char	**tmp;
+	int		i;
+
+	i = 0;
+	tmp = ft_split(str, "\n");
+	while (is_map(tmp[i++]) == 0)
+
 }
 
 int	get_map_info(t_cub *t)
