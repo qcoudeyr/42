@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 14:29:36 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 14:32:53 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,26 @@ char	*get_texture_path(char *str)
 	return (temp);
 }
 
-void	get_color(t_cub *t, char *str)
+void	get_color(t_cub *t, char *str, int s)
 {
 	char **temp;
 	char *value;
+	int	i = 0;
 
 	value = get_texture_path(str);
 	temp = ft_split(value, ',');
-	
+	value = pfree(value);
+	if (s == 1)
+	{
+		while (i < 3)
+			t->lib->floor[i++] = ft_atoi(temp[i]);
+	}
+	else
+	{
+		while (i < 3)
+			t->lib->floor[i++] = ft_atoi(temp[i]);
+	}
+
 }
 
 void	get_map_info(t_cub *t, int fd)
@@ -112,12 +124,12 @@ void	get_map_info(t_cub *t, int fd)
 		return ;
 	temp = ft_strnstr(buf, "F ", 2);
 	if (temp != NULL && *temp != 0 && ft_strnstr(temp +2, "F ", 2) == NULL)
-		get_color(temp + 3);
+		get_color(t, temp + 3, 1);
 	else
 		return ;
 	temp = ft_strnstr(buf, "C ", 2);
 	if (temp != NULL && *temp != 0 && ft_strnstr(temp +2, "C ", 2) == NULL)
-		get_color(temp + 3);
+		get_color(t, temp + 3, -1);
 	else
 		return ;
 }
