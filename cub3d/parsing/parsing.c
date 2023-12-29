@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 16:32:38 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 16:42:43 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,7 @@ int	parse(char *str, t_mlx *lib, int x, t_map *p_x)
 		return (0);
 	while (str[y])
 	{
-		/*
-		Need to modify here to handle the NWES and
-		only 1 0 and ' ' caractere in the map
-		 */
+		if (str[y] == ' ')
 		lib->map = create_map_ptn(x, y, ft_atoi(str[y]));
 		map_addelement(&first, &p_x, &p_e, lib);
 		free(str[y]);
@@ -132,9 +129,7 @@ void	get_map(t_cub *t, char *str)
 	tmp = ft_split(str, "\n");
 	while (is_map(tmp[i++]) == 0);
 	if (tmp[i] != NULL)
-	{
 		grep_map(t->lib, tmp + i);
-	}
 }
 
 int	get_map_info(t_cub *t)
