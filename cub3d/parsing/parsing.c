@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 14:32:53 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 14:35:45 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,10 @@ char	*get_texture_path(char *str)
 	i = 0;
 	temp = ft_calloc(1000, sizeof(char));
 	while (str[i] && str[i] != '\n')
-		temp[i++] = str[i];
+	{
+		temp[i] = str[i];
+		i++;
+	}
 	temp[i] = 0;
 	return (temp);
 }
@@ -75,15 +78,16 @@ void	get_color(t_cub *t, char *str, int s)
 {
 	char **temp;
 	char *value;
-	int	i = 0;
+	int	i;
 
 	value = get_texture_path(str);
 	temp = ft_split(value, ',');
 	value = pfree(value);
+	i = 0;
 	if (s == 1)
 	{
 		while (i < 3)
-			t->lib->floor[i++] = ft_atoi(temp[i]);
+			t->lib->floor[i] = ft_atoi(temp[i]);
 	}
 	else
 	{
