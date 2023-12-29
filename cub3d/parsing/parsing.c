@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/28 17:50:36 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 13:50:23 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,11 @@ int	parse(char *str, t_mlx *lib, int x, t_map *p_x)
 	lib->map = first;
 	free(temp);
 	return (1);
+}
+
+void	get_texture_path(t_cub *t, char *str)
+{
+
 }
 
 void	get_map_info(t_cub *t, int fd)
