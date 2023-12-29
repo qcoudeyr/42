@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 14:35:45 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 14:38:42 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,18 +83,18 @@ void	get_color(t_cub *t, char *str, int s)
 	value = get_texture_path(str);
 	temp = ft_split(value, ',');
 	value = pfree(value);
-	i = 0;
+	i = -1;
 	if (s == 1)
 	{
-		while (i < 3)
+		while (i++ < 3)
 			t->lib->floor[i] = ft_atoi(temp[i]);
 	}
 	else
 	{
-		while (i < 3)
-			t->lib->floor[i++] = ft_atoi(temp[i]);
+		while (i++ < 3)
+			t->lib->floor[i] = ft_atoi(temp[i]);
 	}
-
+	temp = tabfree((void **)temp);
 }
 
 void	get_map_info(t_cub *t, int fd)
@@ -103,6 +103,7 @@ void	get_map_info(t_cub *t, int fd)
 	char	*buf;
 	int		s;
 
+	buf = ft_calloc(100000, sizeof(char));
 	s = read(fd, buf, 100000);
 	buf[s] = 0;
 	s = 0;
@@ -136,6 +137,7 @@ void	get_map_info(t_cub *t, int fd)
 		get_color(t, temp + 3, -1);
 	else
 		return ;
+	buf = pfree(buf);
 }
 
 void	read_map(t_cub *t, char *filename, t_mlx *lib)
@@ -147,8 +149,8 @@ void	read_map(t_cub *t, char *filename, t_mlx *lib)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (perror("open"));
-	if (check_map(fd) == -1)
-		return (ft_printf("Error !\nMap file have invalid caractere in it!"));
+/* 	if (check_map(fd) == -1)
+		return (ft_printf("Error !\nMap file have invalid caractere in it!")); */
 	get_map_info(t, fd);
 	x = 0;
 	p_x = NULL;
