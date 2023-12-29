@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 13:50:23 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 14:18:03 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,11 @@ int	parse(char *str, t_mlx *lib, int x, t_map *p_x)
 
 void	get_texture_path(t_cub *t, char *str)
 {
+	char	*temp;
+	int		i;
 
+	i = 0;
+	while (temp[i] )
 }
 
 void	get_map_info(t_cub *t, int fd)
@@ -72,10 +76,26 @@ void	get_map_info(t_cub *t, int fd)
 	s = read(fd, buf, 100000);
 	buf[s] = 0;
 	s = 0;
-	if (ft_strnstr(buf, "NO ", 3) != NULL)
-	if (ft_strnstr(buf, "SO ", 3) != NULL)
-	if (ft_strnstr(buf, "WE ", 3) != NULL)
-	if (ft_strnstr(buf, "EA ", 3) != NULL)
+	temp = ft_strnstr(buf, "NO ", 3);
+	if (temp != NULL && *temp != 0 && ft_strnstr(temp +2, "NO ", 3) == NULL)
+		get_texture_path(t, temp + 3);
+	else
+		return ;
+	temp = ft_strnstr(buf, "SO ", 3);
+	if (temp != NULL && *temp != 0 && ft_strnstr(temp +2, "SO ", 3) == NULL)
+		get_texture_path(t, temp + 3);
+	else
+		return ;
+	temp = ft_strnstr(buf, "WE ", 3);
+	if (temp != NULL && *temp != 0 && ft_strnstr(temp +2, "WE ", 3) == NULL)
+		get_texture_path(t, temp + 3);
+	else
+		return ;
+	temp = ft_strnstr(buf, "EA ", 3);
+	if (temp != NULL && *temp != 0 && ft_strnstr(temp +2, "EA ", 3) == NULL)
+		get_texture_path(t, temp + 3);
+	else
+		return ;
 }
 
 void	read_map(t_cub *t, char *filename, t_mlx *lib)
