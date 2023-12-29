@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/28 17:30:15 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 14:25:06 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ typedef struct s_mlx
 	int		fd_so;
 	int		fd_we;
 	int		fd_ea;
-	int		fd_f;
-	int		fd_c;
+	int		floor[3];
+	int		ceiling[3];
 	double	multheight;
 	double	vcos;
 	double	vsin;
