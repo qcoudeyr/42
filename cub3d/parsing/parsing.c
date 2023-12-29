@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 16:51:59 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 16:54:49 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,15 @@ int	parse(char *str, t_mlx *lib, int x, t_map *p_x)
 	while (str[y])
 	{
 		v = map_value(str[y]);
-		if (v = -9)
+		if (v == -9)
 			return (0);// Need to handle error here ! in case there is a probleme in the map!
 		lib->map = create_map_ptn(x, y, v);
 		map_addelement(&first, &p_x, &p_e, lib);
-		free(str[y]);
 		y++;
 	}
 	if (lib->ylen == 0)
 		lib->ylen = y;
 	lib->map = first;
-	free(str);
 	return (1);
 }
 
@@ -126,7 +124,7 @@ int	is_map(char *str)
 		if (ft_strchr("01 NSEW", str[i]) == 0)
 			return (0);
 	}
-	return (1)
+	return (1);
 }
 
 void	grep_map(t_mlx *lib, char **map)
@@ -152,10 +150,11 @@ void	get_map(t_cub *t, char *str)
 	int		i;
 
 	i = 0;
-	tmp = ft_split(str, "\n");
+	tmp = ft_split(str, '\n');
 	while (is_map(tmp[i++]) == 0);
 	if (tmp[i] != NULL)
 		grep_map(t->lib, tmp + i);
+	tmp = tabfree((void **) tmp);
 }
 
 int	get_map_info(t_cub *t)
@@ -197,7 +196,7 @@ int	get_map_info(t_cub *t)
 		get_color(t, temp + 2, -1);
 	else
 		return (-1);
-	get_map_str(t, buf);
+	get_map(t, buf);
 	buf = pfree(buf);
 	return (1);
 }
