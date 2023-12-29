@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 15:01:37 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 15:09:51 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,9 @@ Pour la gestion du parsing:
 Les espace sont sont a gerer comme des -1 soit non existant pour que la
 map reste coherente;
 
-Pour le NO SO WE EA juste a faire un strcmp et prendre la valeur ensuite
-en supprimant les espaces.
-
-Gerer les lignes vides par un while (strncmp(temp, "\n", 2) == 0);
-
-Gerer les couleurs par des variables dans la fonction lib lib.f[3] = RGB
-et lib.c[3]
-
 adapter le parsing fdf pour la map en 0 et en 1 et supprimer les variables
 multiplicatrices;
+
 chercher sur la map le point n-1 ou n+1 si il existe, et si non,
 verifier que n soit un 1 sinon erreur !
  */

@@ -5,7 +5,7 @@
       "name": "cub3D Debug",
       "type": "cppdbg",
       "request": "launch",
-      "args": [],
+      "args": ["./map/default.cub"],
       "stopAtEntry": false,
       "externalConsole": false,
       "cwd": "${workspaceFolder}/",
