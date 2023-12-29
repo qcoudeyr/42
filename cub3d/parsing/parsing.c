@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 16:46:07 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 16:49:05 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,24 @@ chercher sur la map le point n-1 ou n+1 si il existe, et si non,
 verifier que n soit un 1 sinon erreur !
  */
 
+int	map_value(char c)
+{
+		if (str[y] == ' ')
+		v = -1;
+	else if (str[y] == 'N')
+		v = 2;
+	else if (str[y] == 'S')
+		v = 3;
+	else if (str[y] == 'E')
+		v = 4;
+	else if (str[y] == 'W')
+		v = 5;
+	else if (str[y] == '1')
+		v = 1;
+	else if (str[y] == '0')
+		v = 0;
+}
+
 int	parse(char *str, t_mlx *lib, int x, t_map *p_x)
 {
 	t_map	*p_e;
@@ -38,13 +56,7 @@ int	parse(char *str, t_mlx *lib, int x, t_map *p_x)
 		return (0);
 	while (str[y])
 	{
-		if (str[y] == ' ')
-			v = -1;
-		else if ()
-		else if ()
-		else if ()
-		else if (ft_strchr("", str[y]))
-			v = ft_atoi(str[y]);
+		v = map_value(str[y]);
 		lib->map = create_map_ptn(x, y, v);
 		map_addelement(&first, &p_x, &p_e, lib);
 		free(str[y]);
