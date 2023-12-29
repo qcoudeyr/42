@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 14:56:26 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 15:01:37 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,13 @@ void	get_color(t_cub *t, char *str, int s)
 	i = -1;
 	if (s == 1)
 	{
-		while (i++ < 3)
+		while (i++ < 2)
 			t->lib->floor[i] = ft_atoi(temp[i]);
 	}
 	else
 	{
-		while (i++ < 3)
-			t->lib->floor[i] = ft_atoi(temp[i]);
+		while (i++ < 2)
+			t->lib->ceiling[i] = ft_atoi(temp[i]);
 	}
 	temp = tabfree((void **)temp);
 }
@@ -106,35 +106,34 @@ int	get_map_info(t_cub *t)
 	buf = ft_calloc(100000, sizeof(char));
 	s = read(t->fd_map, buf, 100000);
 	buf[s] = 0;
-	s = 0;
-	temp = ft_strnstr(buf, "NO ", 3);
-	if (temp != NULL && *temp != 0 && ft_strnstr(temp +2, "NO ", 3) == NULL)
+	temp = ft_strnstr(buf, "NO ", s);
+	if (temp != NULL && *temp != 0 && ft_strnstr(temp + 2, "NO ", s) == NULL)
 		t->lib->fd_no = open(get_texture_path(temp + 3), O_RDONLY);
 	else
 		return (-1);
-	temp = ft_strnstr(buf, "SO ", 3);
-	if (temp != NULL && *temp != 0 && ft_strnstr(temp +2, "SO ", 3) == NULL)
+	temp = ft_strnstr(buf, "SO ", s);
+	if (temp != NULL && *temp != 0 && ft_strnstr(temp + 2, "SO ", s) == NULL)
 		t->lib->fd_so = open(get_texture_path(temp + 3), O_RDONLY);
 	else
 		return (-1);
-	temp = ft_strnstr(buf, "WE ", 3);
-	if (temp != NULL && *temp != 0 && ft_strnstr(temp +2, "WE ", 3) == NULL)
+	temp = ft_strnstr(buf, "WE ", s);
+	if (temp != NULL && *temp != 0 && ft_strnstr(temp + 2, "WE ", s) == NULL)
 		t->lib->fd_we = open(get_texture_path(temp + 3), O_RDONLY);
 	else
 		return (-1);
-	temp = ft_strnstr(buf, "EA ", 3);
-	if (temp != NULL && *temp != 0 && ft_strnstr(temp +2, "EA ", 3) == NULL)
+	temp = ft_strnstr(buf, "EA ", s);
+	if (temp != NULL && *temp != 0 && ft_strnstr(temp + 2, "EA ", s) == NULL)
 		t->lib->fd_ea = open(get_texture_path(temp + 3), O_RDONLY);
 	else
 		return (-1);
-	temp = ft_strnstr(buf, "F ", 2);
-	if (temp != NULL && *temp != 0 && ft_strnstr(temp +2, "F ", 2) == NULL)
-		get_color(t, temp + 3, 1);
+	temp = ft_strnstr(buf, "F ", s);
+	if (temp != NULL && *temp != 0 && ft_strnstr(temp + 2, "F ", s) == NULL)
+		get_color(t, temp + 2, 1);
 	else
 		return (-1);
-	temp = ft_strnstr(buf, "C ", 2);
-	if (temp != NULL && *temp != 0 && ft_strnstr(temp +2, "C ", 2) == NULL)
-		get_color(t, temp + 3, -1);
+	temp = ft_strnstr(buf, "C ", s);
+	if (temp != NULL && *temp != 0 && ft_strnstr(temp + 2, "C ", s) == NULL)
+		get_color(t, temp + 2, -1);
 	else
 		return (-1);
 	buf = pfree(buf);
