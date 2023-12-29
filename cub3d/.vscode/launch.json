@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "${workspaceFolder}/", // Use workspaceFolder variable
-      "program": "${workspaceFolder}/cub3D", // Use workspaceFolder variable
+      "cwd": "${workspaceFolder}/",
+      "program": "${workspaceFolder}/cub3D",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
@@ -27,8 +27,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/qcoudeyr/Desktop/42/cub3d/utils",
-      "program": "/home/qcoudeyr/Desktop/42/cub3d/utils/build/Debug/outDebug",
+      "cwd": "/home/qcoudeyr/Desktop/42/cub3d/parsing",
+      "program": "/home/qcoudeyr/Desktop/42/cub3d/parsing/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
