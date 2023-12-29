@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 16:49:05 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 16:51:59 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,26 @@ verifier que n soit un 1 sinon erreur !
 
 int	map_value(char c)
 {
-		if (str[y] == ' ')
+	int	v;
+
+	if (c == ' ')
 		v = -1;
-	else if (str[y] == 'N')
+	else if (c == 'N')
 		v = 2;
-	else if (str[y] == 'S')
+	else if (c == 'S')
 		v = 3;
-	else if (str[y] == 'E')
+	else if (c == 'E')
 		v = 4;
-	else if (str[y] == 'W')
+	else if (c == 'W')
 		v = 5;
-	else if (str[y] == '1')
+	else if (c == '1')
 		v = 1;
-	else if (str[y] == '0')
+	else if (c == '0')
 		v = 0;
+	else
+		v = -9;
+
+	return (v);
 }
 
 int	parse(char *str, t_mlx *lib, int x, t_map *p_x)
@@ -57,6 +63,8 @@ int	parse(char *str, t_mlx *lib, int x, t_map *p_x)
 	while (str[y])
 	{
 		v = map_value(str[y]);
+		if (v = -9)
+			return (0);// Need to handle error here ! in case there is a probleme in the map!
 		lib->map = create_map_ptn(x, y, v);
 		map_addelement(&first, &p_x, &p_e, lib);
 		free(str[y]);
