@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 15:13:26 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 15:25:45 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,28 +26,30 @@ verifier que n soit un 1 sinon erreur !
 
 int	parse(char *str, t_mlx *lib, int x, t_map *p_x)
 {
-	char	**temp;
 	t_map	*p_e;
 	t_map	*first;
 	int		y;
+	int		v;
 
 	y = 0;
 	p_e = NULL;
 	first = NULL;
 	if (str == NULL)
 		return (0);
-	temp = (char **)ft_split((char *)str, ' ');
-	while (temp[y])
+	while (str[y])
 	{
-		lib->map = create_map_ptn(x, y, ft_atoi(temp[y]));
+		/*
+		Need to modify here to handle the NWES 
+		 */
+		lib->map = create_map_ptn(x, y, ft_atoi(str[y]));
 		map_addelement(&first, &p_x, &p_e, lib);
-		free(temp[y]);
+		free(str[y]);
 		y++;
 	}
 	if (lib->ylen == 0)
 		lib->ylen = y;
 	lib->map = first;
-	free(temp);
+	free(str);
 	return (1);
 }
 
