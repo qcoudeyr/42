@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 16:56:36 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 17:03:32 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	parse(char *str, t_mlx *lib, int x, t_map *p_x)
 	y = 0;
 	p_e = NULL;
 	first = NULL;
-	if (str == NULL)
+	if (str == NULL || *str == 0)
 		return (0);
 	while (str[y])
 	{
