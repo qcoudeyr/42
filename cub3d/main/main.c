@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:59:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/28 17:06:56 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 14:39:55 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	handle_nomap(t_cub *t)
 		return (printerr("Error, no map entered !\nUsage: ./cub3D map.cub\n"));
 	}
 	else if (ft_strrchr("yY", *temp) != 0)
-		t->fd_map = open("../map/default.cub", O_RDONLY);
+		t->fd_map = open("./map/default.cub", O_RDONLY);
 	temp = pfree(temp);
 	if (t->fd_map < 0)
 	{

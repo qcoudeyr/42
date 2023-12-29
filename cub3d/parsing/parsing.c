@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 14:38:42 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 14:41:55 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,10 +146,14 @@ void	read_map(t_cub *t, char *filename, t_mlx *lib)
 	int		x;
 	t_map	*p_x;
 
-	fd = open(filename, O_RDONLY);
+	if (t->fd_map == 0)
+	{
+		fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (perror("open"));
-/* 	if (check_map(fd) == -1)
+	}
+/*
+if (check_map(fd) == -1)
 		return (ft_printf("Error !\nMap file have invalid caractere in it!")); */
 	get_map_info(t, fd);
 	x = 0;
