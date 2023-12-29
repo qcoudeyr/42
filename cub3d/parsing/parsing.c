@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 16:42:43 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 16:46:07 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,13 @@ int	parse(char *str, t_mlx *lib, int x, t_map *p_x)
 	while (str[y])
 	{
 		if (str[y] == ' ')
-		lib->map = create_map_ptn(x, y, ft_atoi(str[y]));
+			v = -1;
+		else if ()
+		else if ()
+		else if ()
+		else if (ft_strchr("", str[y]))
+			v = ft_atoi(str[y]);
+		lib->map = create_map_ptn(x, y, v);
 		map_addelement(&first, &p_x, &p_e, lib);
 		free(str[y]);
 		y++;
