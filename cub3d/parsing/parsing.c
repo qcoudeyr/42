@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 14:48:04 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 14:49:42 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	get_color(t_cub *t, char *str, int s)
 	temp = tabfree((void **)temp);
 }
 
-void	get_map_info(t_cub *t)
+int	get_map_info(t_cub *t)
 {
 	char	*temp;
 	char	*buf;
@@ -111,36 +111,37 @@ void	get_map_info(t_cub *t)
 	if (temp != NULL && *temp != 0 && ft_strnstr(temp +2, "NO ", 3) == NULL)
 		t->lib->fd_no = open(get_texture_path(temp + 3), O_RDONLY);
 	else
-		return ;
+		return (-1);
 	temp = ft_strnstr(buf, "SO ", 3);
 	if (temp != NULL && *temp != 0 && ft_strnstr(temp +2, "SO ", 3) == NULL)
 		t->lib->fd_so = open(get_texture_path(temp + 3), O_RDONLY);
 	else
-		return ;
+		return (-1);
 	temp = ft_strnstr(buf, "WE ", 3);
 	if (temp != NULL && *temp != 0 && ft_strnstr(temp +2, "WE ", 3) == NULL)
 		t->lib->fd_we = open(get_texture_path(temp + 3), O_RDONLY);
 	else
-		return ;
+		return (-1);
 	temp = ft_strnstr(buf, "EA ", 3);
 	if (temp != NULL && *temp != 0 && ft_strnstr(temp +2, "EA ", 3) == NULL)
 		t->lib->fd_ea = open(get_texture_path(temp + 3), O_RDONLY);
 	else
-		return ;
+		return (-1);
 	temp = ft_strnstr(buf, "F ", 2);
 	if (temp != NULL && *temp != 0 && ft_strnstr(temp +2, "F ", 2) == NULL)
 		get_color(t, temp + 3, 1);
 	else
-		return ;
+		return (-1);
 	temp = ft_strnstr(buf, "C ", 2);
 	if (temp != NULL && *temp != 0 && ft_strnstr(temp +2, "C ", 2) == NULL)
 		get_color(t, temp + 3, -1);
 	else
-		return ;
+		return (-1);
 	buf = pfree(buf);
+	return (1);
 }
 
-void	read_map(t_cub *t, t_mlx *lib)
+int	read_map(t_cub *t, t_mlx *lib)
 {
 	int		x;
 	t_map	*p_x;
@@ -150,6 +151,7 @@ void	read_map(t_cub *t, t_mlx *lib)
 if (check_map(fd) == -1)
 		return (ft_printf("Error !\nMap file have invalid caractere in it!")); */
 	if (get_map_info(t) == -1)
+		return (-1);
 	x = 0;
 	p_x = NULL;
 	while (parse(get_next_line(t->fd_map), lib, x, p_x) != 0)
@@ -162,4 +164,5 @@ if (check_map(fd) == -1)
 	lib->map_origin = origin_map(lib->map->first);
 	lib->scalex = (lib->sizey / lib->xlen) / 2;
 	lib->scaley = (lib->sizex / lib->ylen) / 2;
+	return (1);
 }

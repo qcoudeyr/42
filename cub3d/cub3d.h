@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 14:25:06 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 14:49:17 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void			init_windows(t_mlx *lib);
 
 //Parsing File Function */
 int				parse(char *str, t_mlx *lib, int x, t_map *p_x);
-void			read_map(t_cub *t, char *filename, t_mlx *lib);
+int				read_map(t_cub *t, t_mlx *lib);
 /*
 
 //Map File Function */
