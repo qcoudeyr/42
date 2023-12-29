@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 16:54:49 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 16:56:36 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ int	is_map(char *str)
 	{
 		if (ft_strchr("01 NSEW", str[i]) == 0)
 			return (0);
+		i++;
 	}
 	return (1);
 }
