@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 15:26:06 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 16:21:19 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,11 @@ void	get_color(t_cub *t, char *str, int s)
 	temp = tabfree((void **)temp);
 }
 
+void	get_map_str(t_cub *t, char *str)
+{
+	
+}
+
 int	get_map_info(t_cub *t)
 {
 	char	*temp;
@@ -132,6 +137,7 @@ int	get_map_info(t_cub *t)
 		get_color(t, temp + 2, -1);
 	else
 		return (-1);
+	get_map_str(t, buf);
 	buf = pfree(buf);
 	return (1);
 }
