@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 08:53:29 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 17:10:31 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/30 15:39:02 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	lib_init(t_mlx *lib)
 {
 	lib->data = ft_calloc(1, sizeof(t_data));
 	lib->tampon = ft_calloc(1, sizeof(t_data));
-	lib->sizex = 1920;
-	lib->sizey = 1080;
+	lib->sizex = 960;
+	lib->sizey = 540;
 	lib->xlen = 0;
 	lib->ylen = 0;
 	lib->scalex = 0;
