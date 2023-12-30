@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:33:30 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/26 17:47:06 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/30 15:17:04 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	addmap(t_mlx *lib, t_data *data)
 
 t_map	*origin_map(t_map *map)
 {
-	if (map->px == NULL)
+	if (map->px == NULL && map->py == NULL)
 		return (map);
 	while (map->px != NULL)
 		map = map->px;
@@ -59,20 +59,20 @@ t_map	*create_map_ptn(int x, int y, int value)
 	return (new_element);
 }
 
-void	map_addelement(t_map **first, t_map **p_x, t_map **p_e, t_mlx *lib)
+void	map_addelement(t_map **first, t_map **p_y, t_map **p_e, t_mlx *lib)
 {
-	if (*p_x != NULL)
+	if (*p_y != NULL)
 	{
-		(*p_x)->nx = lib->map;
-		*p_x = (*p_x)->ny;
+		(*p_y)->ny = lib->map;
+		lib->map->py = *p_y;
+		*p_y = (*p_y)->nx;
 	}
 	if (*first == NULL)
 		*first = lib->map;
 	if (*p_e != NULL)
-		(*p_e)->ny = lib->map;
-	lib->map->py = *p_e;
-	lib->map->px = *p_x;
+		(*p_e)->nx = lib->map;
+	lib->map->px = *p_e;
 	lib->map->first = *first;
 	*p_e = lib->map;
-	lib->map = lib->map->ny;
+	lib->map = lib->map->nx;
 }

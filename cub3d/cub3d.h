@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 16:54:02 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/30 14:56:47 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,25 @@
 # include "./mlx_linux/mlx.h"
 # include <limits.h>
 # include <math.h>
+
+typedef struct s_utils
+{
+	int		i;
+	int		x;
+	int		y;
+	int		z;
+	char	c;
+	char	*tmp1;
+	char	*tmp2;
+	char	*str1;
+	char	*str2;
+	char	**lst;
+	char	**tab;
+	void	*ptr;
+	void	*ptr1;
+	void	*ptr2;
+	void	**lstptr;
+}				t_utils;
 
 typedef struct s_data
 {
@@ -51,10 +70,10 @@ typedef struct s_mlx
 	int		scaley;
 	int		offsetx;
 	int		offsety;
-	int		fd_no;
-	int		fd_so;
-	int		fd_we;
-	int		fd_ea;
+	char	*tx_no;
+	char	*tx_so;
+	char	*tx_we;
+	char	*tx_ea;
 	int		floor[3];
 	int		ceiling[3];
 	double	multheight;
@@ -73,7 +92,7 @@ typedef struct s_mlx
 typedef struct s_cub
 {
 	int				fd_map;
-	struct s_map	map;
+	struct s_map	*map;
 	struct s_data	data;
 	struct s_mlx	*lib;
 }					t_cub;

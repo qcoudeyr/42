@@ -29,8 +29,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/qcoudeyr/Desktop/42/cub3d/parsing",
-      "program": "/home/qcoudeyr/Desktop/42/cub3d/parsing/build/Debug/outDebug",
+      "cwd": "/home/qcoudeyr/Desktop/42/cub3d/free",
+      "program": "/home/qcoudeyr/Desktop/42/cub3d/free/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

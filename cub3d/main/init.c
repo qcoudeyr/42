@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 08:53:29 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/26 17:45:39 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 17:10:31 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ void	lib_init(t_mlx *lib)
 	lib->x_angle = 0;
 	lib->y_angle = 0;
 	lib->z_angle = 0;
+	lib->tx_no = NULL;
+	lib->tx_so = NULL;
+	lib->tx_we = NULL;
+	lib->tx_ea = NULL;
 	lib->map_origin = NULL;
 	lib->map = NULL;
 	lib->mlx = NULL;

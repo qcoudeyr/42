@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 08:56:38 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 17:04:05 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/29 17:10:35 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ void	free_lib(t_mlx *lib)
 	ft_freemap(lib);
 	lib->mlx = pfree(lib->mlx);
 	lib->data = pfree(lib->data);
+	lib->tx_no = pfree(lib->tx_no);
+	lib->tx_so = pfree(lib->tx_so);
+	lib->tx_we = pfree(lib->tx_we);
+	lib->tx_ea = pfree(lib->tx_ea);
 	lib->tampon = pfree(lib->tampon);
 	lib = pfree(lib);
 }

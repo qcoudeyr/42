@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 17:03:32 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2023/12/30 14:36:19 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,29 +48,29 @@ int	map_value(char c)
 	return (v);
 }
 
-int	parse(char *str, t_mlx *lib, int x, t_map *p_x)
+int	parse(char *str, t_mlx *lib, int y, t_map *p_y)
 {
 	t_map	*p_e;
 	t_map	*first;
-	int		y;
+	int		x;
 	int		v;
 
-	y = 0;
+	x = 0;
 	p_e = NULL;
 	first = NULL;
 	if (str == NULL || *str == 0)
 		return (0);
-	while (str[y])
+	while (str[x] != '\0')
 	{
-		v = map_value(str[y]);
+		v = map_value(str[x]);
 		if (v == -9)
 			return (0);// Need to handle error here ! in case there is a probleme in the map!
 		lib->map = create_map_ptn(x, y, v);
-		map_addelement(&first, &p_x, &p_e, lib);
-		y++;
+		map_addelement(&first, &p_y, &p_e, lib);
+		x++;
 	}
-	if (lib->ylen == 0)
-		lib->ylen = y;
+	if (lib->xlen < x)
+		lib->xlen = x;
 	lib->map = first;
 	return (1);
 }
@@ -130,17 +130,17 @@ int	is_map(char *str)
 
 void	grep_map(t_mlx *lib, char **map)
 {
-	int		x;
-	t_map	*p_x;
+	int		y;
+	t_map	*p_y;
 
-	x = 0;
-	p_x = NULL;
-	while (parse(map[x], lib, x, p_x) != 0)
+	y = 0;
+	p_y = NULL;
+	while (parse(map[y], lib, y, p_y) != 0)
 	{
-		p_x = lib->map;
-		x++;
+		p_y = lib->map;
+		y++;
 	}
-	lib->xlen = x;
+	lib->ylen = y;
 	lib->map = origin_map(lib->map->first);
 	lib->map_origin = origin_map(lib->map->first);
 }
@@ -154,7 +154,7 @@ void	get_map(t_cub *t, char *str)
 	tmp = ft_split(str, '\n');
 	while (is_map(tmp[i++]) == 0);
 	if (tmp[i] != NULL)
-		grep_map(t->lib, tmp + i);
+		grep_map(t->lib, tmp + (i - 1));
 	tmp = tabfree((void **) tmp);
 }
 
@@ -169,22 +169,22 @@ int	get_map_info(t_cub *t)
 	buf[s] = 0;
 	temp = ft_strnstr(buf, "NO ", s);
 	if (temp != NULL && *temp != 0 && ft_strnstr(temp + 2, "NO ", s) == NULL)
-		t->lib->fd_no = open(get_texture_path(temp + 3), O_RDONLY);
+		t->lib->tx_no = get_texture_path(temp + 3);
 	else
 		return (-1);
 	temp = ft_strnstr(buf, "SO ", s);
 	if (temp != NULL && *temp != 0 && ft_strnstr(temp + 2, "SO ", s) == NULL)
-		t->lib->fd_so = open(get_texture_path(temp + 3), O_RDONLY);
+		t->lib->tx_so = get_texture_path(temp + 3);
 	else
 		return (-1);
 	temp = ft_strnstr(buf, "WE ", s);
 	if (temp != NULL && *temp != 0 && ft_strnstr(temp + 2, "WE ", s) == NULL)
-		t->lib->fd_we = open(get_texture_path(temp + 3), O_RDONLY);
+		t->lib->tx_we = get_texture_path(temp + 3);
 	else
 		return (-1);
 	temp = ft_strnstr(buf, "EA ", s);
 	if (temp != NULL && *temp != 0 && ft_strnstr(temp + 2, "EA ", s) == NULL)
-		t->lib->fd_ea = open(get_texture_path(temp + 3), O_RDONLY);
+		t->lib->tx_ea = get_texture_path(temp + 3);
 	else
 		return (-1);
 	temp = ft_strnstr(buf, "F ", s);
