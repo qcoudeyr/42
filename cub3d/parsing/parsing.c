@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 11:53:36 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 11:59:04 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,15 +136,17 @@ void	format_map(t_mlx *lib)
 	{
 		while (lib->map->x < lib->xlen)
 		{
-		if (!lib->map->nx)
-		{
-			lib->map->nx = create_map_ptn(lib->map->x + 1, lib->map->y, -1);
-			if (lib->map->y > 0 && lib->map->py && lib->map->py->nx)
-				map_addelement(&lib->map->first, &lib->map->py->nx, &lib->map, lib);
+			if (!lib->map->nx)
+			{
+				lib->map->nx = create_map_ptn(lib->map->x + 1, lib->map->y, -1);
+				lib->map = lib->map->nx;
+				if (lib->map->y > 0 && lib->map->py && lib->map->py->nx)
+					map_addelement(&lib->map->first, &lib->map->py->nx, &lib->map, lib);
+				else
+					map_addelement(&lib->map->first, NULL, &lib->map, lib);
+			}
 			else
-				map_addelement(&lib->map->first, NULL, &lib->map, lib);
-		}
-		lib->map = lib->map->nx;
+				lib->map = lib->map->nx;
 		}
 		lib->map = lib->map->first->ny;
 	}
