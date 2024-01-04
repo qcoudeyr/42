@@ -6,11 +6,18 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:33:30 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/30 15:17:04 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 09:41:55 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+int	check_error_map(t_map *map)
+{
+	if (map == NULL)
+		return (-1);
+	if (!map->px || !map->py == NULL || map->nx == NULL || map->ny == NULL)
+}
 
 void	addmap(t_mlx *lib, t_data *data)
 {
