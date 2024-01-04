@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 11:45:11 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 11:50:05 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,17 +132,7 @@ void	format_map(t_mlx *lib)
 {
 	if (!lib->map)
 		return ;
-	while (lib->map->x < lib->xlen)
-	{
-		if (!lib->map->nx)
-		{
-			
-		}
-		lib->map = lib->map->nx;
-
-	{}
-	}
-	while
+	while (lib->map->y <= ylen && )
 }
 
 void	grep_map(t_mlx *lib, char **map)
