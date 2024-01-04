@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 12:08:27 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 12:10:08 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,8 +130,6 @@ int	is_map(char *str)
 
 void	format_map(t_mlx *lib)
 {
-	t_map	*p_e;
-
 	if (!lib->map)
 		return ;
 	while (lib->map->y <= lib->ylen && lib->map->x <= lib->xlen)
@@ -140,12 +138,11 @@ void	format_map(t_mlx *lib)
 		{
 			if (!lib->map->nx)
 			{
-				p_e = lib->map;
 				lib->map->nx = create_map_ptn(lib->map->x + 1, lib->map->y, -1);
 				if (lib->map->y > 0 && lib->map->py && lib->map->py->nx)
-					map_addelement(&p_e->first, &p_e->py->nx, &p_e, lib->map->nx);
+					map_addelement(&lib->map->first, &lib->map->py->nx, &lib->map, lib->map->nx);
 				else
-					map_addelement(&p_e->first, NULL, &p_e, llib->map->nxib);
+					map_addelement(&lib->map->first, NULL, &lib->map, lib->map->nx);
 			}
 			else
 				lib->map = lib->map->nx;
@@ -181,7 +178,7 @@ void	get_map(t_cub *t, char *str)
 	while (is_map(tmp[i++]) == 0);
 	if (tmp[i] != NULL)
 		grep_map(t->lib, tmp + (i - 1));
-	/* format_map(t->lib); */
+	format_map(t->lib);
 	tmp = tabfree((void **) tmp);
 }
 

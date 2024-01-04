@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:33:30 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 11:55:29 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 12:07:40 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,20 +80,20 @@ t_map	*create_map_ptn(int x, int y, int value)
 	return (new_element);
 }
 
-void	map_addelement(t_map **first, t_map **p_y, t_map **p_e, t_mlx *lib)
+void	map_addelement(t_map **first, t_map **p_y, t_map **p_e, t_map *map)
 {
 	if (p_y && *p_y != NULL)
 	{
-		(*p_y)->ny = lib->map;
-		lib->map->py = *p_y;
+		(*p_y)->ny = map;
+		map->py = *p_y;
 		*p_y = (*p_y)->nx;
 	}
 	if (first && *first == NULL)
-		*first = lib->map;
+		*first = map;
 	if (p_e && *p_e != NULL)
-		(*p_e)->nx = lib->map;
-	lib->map->px = *p_e;
-	lib->map->first = *first;
-	*p_e = lib->map;
-	lib->map = lib->map->nx;
+		(*p_e)->nx = map;
+	map->px = *p_e;
+	map->first = *first;
+	*p_e = map;
+	map = map->nx;
 }

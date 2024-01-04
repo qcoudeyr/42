@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 11:36:52 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 12:07:35 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ int				check_error_map(t_map *map);
 void			addmap(t_mlx *lib, t_data *data);
 t_map			*origin_map(t_map *map);
 t_map			*create_map_ptn(int x, int y, int value);
-void			map_addelement(t_map **first, t_map **p_x, t_map **p_e, t_mlx *lib);
+void			map_addelement(t_map **first, t_map **p_x, t_map **p_e, t_map *map);
 /*
 
 //Windows File Function  */
