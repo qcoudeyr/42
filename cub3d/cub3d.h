@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 12:07:35 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 14:56:32 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,8 @@ typedef struct s_mlx
 	int		sizey;
 	int		xlen;
 	int		ylen;
-	int		scalex;
-	int		scaley;
-	int		offsetx;
-	int		offsety;
+	int		scale[2];
+	int		offset[2];
 	char	*tx_no;
 	char	*tx_so;
 	char	*tx_we;

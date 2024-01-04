@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 11:53:45 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 14:59:08 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@ void	sqr_print(t_data *data, int	len[2], int offset[2], int color)
 		u->y++;
 	}
 }
-/*
+
 void	dspl_map(t_mlx *lib, t_map *map)
 {
-
-} */
+	while ()
+	sqr_print(t->lib->data, array1, lib->offset, tcolor(255,255,255));
+}
