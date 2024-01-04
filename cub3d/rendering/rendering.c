@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 15:27:15 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 15:38:14 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	sqr_print(t_data *data, int	len[2], int offset[2], int color)
 		u->x = 0;
 		while (u->x <= len[0])
 		{
-			pixel_put(data, (offset[0] + u->x), (offset[0] + u->y), color);
+			pixel_put(data, (offset[0] + u->x), (offset[1] + u->y), color);
 			u->x++;
 		}
 		u->y++;
