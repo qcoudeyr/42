@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:33:30 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 10:18:33 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 11:01:32 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	addmap(t_mlx *lib, t_data *data)
 		lib->map = line->ny;
 		line = line->ny;
 	}
-	mlx_put_image_to_window(lib->mlx, lib->current_win, data->img, 0, 0);
+	mlx_put_image_to_window(lib->mlx, lib->c_win, data->img, 0, 0);
 	lib->map = lib->map_origin;
 }
 

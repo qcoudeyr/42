@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:30:16 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/26 16:32:38 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 11:01:32 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	closewin(t_mlx *lib)
 {
-	mlx_clear_window(lib->mlx, lib->current_win);
+	mlx_clear_window(lib->mlx, lib->c_win);
 	mlx_destroy_image(lib->mlx, lib->data->img);
 	mlx_destroy_image(lib->mlx, lib->tampon->img);
 	mlx_loop_end(lib->mlx);
