@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 10:15:59 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 11:40:59 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,15 @@ int	is_map(char *str)
 	return (1);
 }
 
+void	format_map(t_map *map)
+{
+	if (!map)
+		return ;
+	while (map->nx)
+		map = map->nx
+	while (map->value)
+}
+
 void	grep_map(t_mlx *lib, char **map)
 {
 	int		y;
@@ -155,6 +164,7 @@ void	get_map(t_cub *t, char *str)
 	while (is_map(tmp[i++]) == 0);
 	if (tmp[i] != NULL)
 		grep_map(t->lib, tmp + (i - 1));
+	format_map(t->lib->map);
 	tmp = tabfree((void **) tmp);
 }
 
