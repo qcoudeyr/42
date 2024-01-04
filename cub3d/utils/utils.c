@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 21:48:20 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 10:43:24 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 10:44:43 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,6 @@ t_utils	*utils_init(void)
 
 t_utils	*utils_free(t_utils *u)
 {
-
-	u->i = 0;
-	u->x = 0;
-	u->y = 0;
-	u->z = 0;
-	u->c = 0;
 	if (u->tmp1 != NULL)
 		u->tmp1 = pfree(u->tmp1);
 	if (u->tmp2 != NULL)
@@ -104,10 +98,11 @@ t_utils	*utils_free(t_utils *u)
 	if (u->ptr != NULL)
 		u->ptr = pfree(u->ptr);
 	if (u->ptr1 != NULL)
-		u->ptr1 = pfree();
+		u->ptr1 = pfree(u->ptr1);
 	if (u->ptr2 != NULL)
-		u->ptr2 = pfree();
+		u->ptr2 = pfree(u->ptr2);
 	if (u->lstptr != NULL)
 		u->lstptr = tabfree(u->lstptr);
+	u = pfree(u);
 	return (u);
 }
