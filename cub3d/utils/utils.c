@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 21:48:20 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 10:44:43 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 10:49:37 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,8 @@ int	mouse_scroll(int button, int x, int y, t_mlx *lib)
 	return (0);
 }
 
-t_utils	*utils_init(void)
+void	utils_init(t_utils *u)
 {
-	t_utils	*u;
-	u = ft_calloc(1, sizeof(t_utils));
-
 	u->i = 0;
 	u->x = 0;
 	u->y = 0;
@@ -78,7 +75,6 @@ t_utils	*utils_init(void)
 	u->ptr1 = NULL;
 	u->ptr2 = NULL;
 	u->lstptr = NULL;
-	return (u);
 }
 
 t_utils	*utils_free(t_utils *u)

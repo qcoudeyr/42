@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 10:47:36 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 10:55:01 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	tcolor(int red, int green, int blue)
 	return ((red << 16) | (green << 8) | blue);
 }
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
@@ -25,10 +25,19 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	sqr_print(t_data *data, int lenx, int leny, int color)
+void	sqr_print(t_data *data, int	len[2], int offset[2], int color)
 {
 	t_utils *u;
 
-	u = utils_init;
-	while (u->x < lenx)
+	u = ft_calloc(1, sizeof(t_utils));
+	utils_init(u);
+	while (u->y <= len[1])
+	{
+		while (u->x <= len[0])
+		{
+			pixel_put(data, (offset[0] + u->x), (offset[0] + u->y), color);
+			u->x++;
+		}
+		u->y++;
+	}
 }
