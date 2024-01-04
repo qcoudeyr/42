@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 21:48:20 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 10:49:37 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 15:06:45 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	keyhandle(int keycode, t_mlx *lib)
 	else
 	{
 		if (keycode == 65364)
-			lib->offsetx += 10;
+			lib->offset[0] += 10;
 		if (keycode == 65362)
-			lib->offsetx -= 10;
+			lib->offset[0] -= 10;
 		if (keycode == 65363)
-			lib->offsety += 10;
+			lib->offset[1] += 10;
 		if (keycode == 65361)
-			lib->offsety -= 10;
+			lib->offset[1] -= 10;
 	}
 	return (0);
 }
@@ -36,23 +36,23 @@ int	mouse_scroll(int button, int x, int y, t_mlx *lib)
 	(void)y;
 	if (button == 4)
 	{
-		if (lib->scalex > 2 && lib->scaley > 2)
+		if (lib->scale[0] > 2 && lib->scale[1] > 2)
 		{
-			lib->scalex = 0.90 * (double)lib->scalex;
-			lib->scaley = 0.90 * (double)lib->scaley;
+			lib->scale[0] = 0.90 * (double)lib->scale[0];
+			lib->scale[1] = 0.90 * (double)lib->scale[1];
 		}
 	}
 	else if (button == 5)
 	{
-		if (lib->scalex < 10 && lib->scaley < 10)
+		if (lib->scale[0] < 10 && lib->scale[1] < 10)
 		{
-			lib->scalex += 1;
-			lib->scaley += 1;
+			lib->scale[0] += 1;
+			lib->scale[1] += 1;
 		}
 		else
 		{
-			lib->scalex = 1.2 * (double)lib->scalex;
-			lib->scaley = 1.2 * (double)lib->scaley;
+			lib->scale[0] = 1.2 * (double)lib->scale[0];
+			lib->scale[1] = 1.2 * (double)lib->scale[1];
 		}
 	}
 	return (0);
