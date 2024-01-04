@@ -29,8 +29,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/qcoudeyr/Desktop/42/cub3d/main",
-      "program": "/home/qcoudeyr/Desktop/42/cub3d/main/build/Debug/outDebug",
+      "cwd": "/home/qcoudeyr/Desktop/42/cub3d/map",
+      "program": "/home/qcoudeyr/Desktop/42/cub3d/map/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
