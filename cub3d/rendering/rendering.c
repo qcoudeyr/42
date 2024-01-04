@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 15:50:47 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 15:54:13 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	dspl_map(t_mlx *lib, t_map *map)
 	while (map->nx || map->first->ny)
 	{
 		if (map->value == 0)
-			color = tcolor(255,255,255);
+			color = tcolor(255,255,255) * ;
 		else if (map->value == -1)
 			color = tcolor(130,130,130);
 		else if (map->value == 1)
@@ -78,5 +78,5 @@ void	dspl_map(t_mlx *lib, t_map *map)
 		else
 			break;
 	}
-
+	return;
 }
