@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 15:26:23 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 15:27:15 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,13 @@ void	dspl_map(t_mlx *lib, t_map *map)
 		if (map->nx)
 		{
 			map = map->nx;
-			offset[0] = lib->offset[0] + (2 * map->x);
+			offset[0] = lib->offset[0] + (5 * map->x);
 		}
 		else
 		{
 			map = map->first->ny;
-			offset[0] = lib->offset[0] + (2 * map->x);;
-			offset[1] = lib->offset[1] + (2 * map->y);;
+			offset[0] = lib->offset[0] + (5 * map->x);;
+			offset[1] = lib->offset[1] + (5 * map->y);;
 		}
 	}
 
