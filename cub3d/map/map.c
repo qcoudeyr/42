@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:33:30 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 11:01:32 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 11:55:29 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,15 @@ t_map	*create_map_ptn(int x, int y, int value)
 
 void	map_addelement(t_map **first, t_map **p_y, t_map **p_e, t_mlx *lib)
 {
-	if (*p_y != NULL)
+	if (p_y && *p_y != NULL)
 	{
 		(*p_y)->ny = lib->map;
 		lib->map->py = *p_y;
 		*p_y = (*p_y)->nx;
 	}
-	if (*first == NULL)
+	if (first && *first == NULL)
 		*first = lib->map;
-	if (*p_e != NULL)
+	if (p_e && *p_e != NULL)
 		(*p_e)->nx = lib->map;
 	lib->map->px = *p_e;
 	lib->map->first = *first;
