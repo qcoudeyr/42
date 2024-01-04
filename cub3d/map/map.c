@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:33:30 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 09:55:27 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 10:00:13 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,19 @@ int	check_error_map(t_map *map)
 {
 	if (map == NULL)
 		return (-1);
-	while (!map->nx && !map->ny)
+	while (map->nx && map->ny)
 	{
-		if ((!map->px || !map->py || !map->nx || !map->ny) && map->value != 1 || map->value != -1)
+		if ((!map->px || !map->py || !map->nx || !map->ny) && (map->value != 1 && map->value != -1))
 			return (-1);
 		else if (((map->px && map->px->value == -1) || (map->py && map->py->value == -1) \
 		|| (map->ny && map->ny->value == -1) || (map->nx && map->nx->value == -1)) && \
 		(map->value != 1 || map->value != -1))
 			return (-1);
 		if (!map->nx)
-			
+			map = map->first->ny;
 		map = map->nx;
-
 	}
 	return (0);
-
 }
 
 void	addmap(t_mlx *lib, t_data *data)

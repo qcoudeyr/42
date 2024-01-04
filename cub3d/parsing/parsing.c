@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/30 14:36:19 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 09:57:21 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,8 @@ int	read_map(t_cub *t, t_mlx *lib)
 if (check_map(fd) == -1)
 		return (ft_printf("Error !\nMap file have invalid caractere in it!")); */
 	if (get_map_info(t) == -1)
+		return (-1);
+	if (check_error_map(origin_map(lib->map)) != 0)
 		return (-1);
 	lib->scalex = (lib->sizey / lib->xlen) / 2;
 	lib->scaley = (lib->sizex / lib->ylen) / 2;

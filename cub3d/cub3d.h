@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/30 14:56:47 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 09:58:02 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ int				read_map(t_cub *t, t_mlx *lib);
 /*
 
 //Map File Function */
+int				check_error_map(t_map *map);
 void			addmap(t_mlx *lib, t_data *data);
 t_map			*origin_map(t_map *map);
 t_map			*create_map_ptn(int x, int y, int value);
