@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 11:01:32 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 11:36:52 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,13 @@ typedef struct s_mlx
 	t_map	*map;
 
 }				t_mlx;
+
+typedef struct s_ply
+{
+	float	x;
+	float	y;
+	float	rot;
+}					t_ply;
 
 typedef struct s_cub
 {
