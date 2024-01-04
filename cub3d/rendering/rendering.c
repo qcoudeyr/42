@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 14:59:08 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 15:05:17 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,26 @@ void	sqr_print(t_data *data, int	len[2], int offset[2], int color)
 
 void	dspl_map(t_mlx *lib, t_map *map)
 {
-	while ()
-	sqr_print(t->lib->data, array1, lib->offset, tcolor(255,255,255));
+	int	v[2];
+	int	color;
+
+	lib->offset[0] = 
+	while (map->ny || map->nx)
+	{
+		v[0] = map->x;
+		v[1] = map->y;
+		if (map->value == 0)
+			color = tcolor(255,255,255);
+		else if (map->value == -1)
+			color = tcolor(0,0,0);
+		else if (map->value == 1)
+			color = tcolor(153, 73, 0);
+		else
+			color = tcolor(0, 255, 0);
+		sqr_print(lib->data, v, lib->offset, color);
+		if (map->nx)
+			map = map->nx;
+		else
+			map = map->first->ny;
+	}
 }
