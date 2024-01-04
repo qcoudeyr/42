@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:59:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/30 15:08:23 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 10:05:45 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ int	main(int argc, char **argv)
 	init_struct(t);
 	if (check_arg(argc, argv, t) != 0)
 		return (free_struct(t));
-	read_map(t, t->lib); // need to modify the parsing to follow the new rules
+	if (read_map(t, t->lib) == -1)
+		return (free_struct(t));
 	if (t->lib->map == NULL)
 		return (free_struct(t));
 	t->map = origin_map(t->lib->map);
