@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 12:04:19 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 12:08:27 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	parse(char *str, t_mlx *lib, int y, t_map *p_y)
 		if (v == -9)
 			return (0);// Need to handle error here ! in case there is a probleme in the map!
 		lib->map = create_map_ptn(x, y, v);
-		map_addelement(&first, &p_y, &p_e, lib);
+		map_addelement(&first, &p_y, &p_e, lib->map);
 		x++;
 	}
 	if (lib->xlen < x)
@@ -141,11 +141,11 @@ void	format_map(t_mlx *lib)
 			if (!lib->map->nx)
 			{
 				p_e = lib->map;
-				lib->map = create_map_ptn(lib->map->x + 1, lib->map->y, -1);
+				lib->map->nx = create_map_ptn(lib->map->x + 1, lib->map->y, -1);
 				if (lib->map->y > 0 && lib->map->py && lib->map->py->nx)
-					map_addelement(&p_e->first, &p_e->py->nx, &p_e, lib);
+					map_addelement(&p_e->first, &p_e->py->nx, &p_e, lib->map->nx);
 				else
-					map_addelement(&p_e->first, NULL, &p_e, lib);
+					map_addelement(&p_e->first, NULL, &p_e, llib->map->nxib);
 			}
 			else
 				lib->map = lib->map->nx;
@@ -181,7 +181,7 @@ void	get_map(t_cub *t, char *str)
 	while (is_map(tmp[i++]) == 0);
 	if (tmp[i] != NULL)
 		grep_map(t->lib, tmp + (i - 1));
-	format_map(t->lib);
+	/* format_map(t->lib); */
 	tmp = tabfree((void **) tmp);
 }
 
