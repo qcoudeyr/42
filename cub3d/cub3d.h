@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 09:58:02 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 10:13:45 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ int				mouse_scroll(int button, int x, int y, t_mlx *lib);
 
 //Error File Function */
 int				printerr(char *str);
-
+int				printerrf(char *str, void *ptr);
 // Text colors
 # define CL_BLACK   "\033[30m"
 # define CL_RED     "\033[31m"
