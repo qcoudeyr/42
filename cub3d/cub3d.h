@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 10:13:45 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 10:37:45 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 //Utils File Function */
 int				keyhandle(int keycode, t_mlx *lib);
 int				mouse_scroll(int button, int x, int y, t_mlx *lib);
+t_utils			*utils_init(void);
 /*
 
 //Error File Function */

@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 21:48:20 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 10:33:46 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 10:39:39 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,44 @@ int	mouse_scroll(int button, int x, int y, t_mlx *lib)
 
 t_utils	*utils_init(void)
 {
-	i = 0;
-	x = 0;
-	y = 0;
-	z = 0;
-	c = 0;
-	tmp1;
-	tmp2 = NULL;
-	str1 = NULL;
-	str2 = NULL;
-	lst = NULL;
-	tab = NULL;
-	ptr = NULL;
-	ptr1 = NULL;
-	ptr2 = NULL;
-	lstptr = NULL;
+	t_utils	*u;
+	u = ft_calloc(1, sizeof(t_utils));
+
+	u->i = 0;
+	u->x = 0;
+	u->y = 0;
+	u->z = 0;
+	u->c = 0;
+	u->tmp1 = NULL;
+	u->tmp2 = NULL;
+	u->str1 = NULL;
+	u->str2 = NULL;
+	u->lst = NULL;
+	u->tab = NULL;
+	u->ptr = NULL;
+	u->ptr1 = NULL;
+	u->ptr2 = NULL;
+	u->lstptr = NULL;
+	return (u);
+}
+
+t_utils	*utils_free(t_utils *u)
+{
+
+	u->i = 0;
+	u->x = 0;
+	u->y = 0;
+	u->z = 0;
+	u->c = 0;
+	if (u->tmp1 = NULL;
+	if (u->tmp2 = NULL;
+	if (u->str1 = NULL;
+	if (u->str2 = NULL;
+	if (u->lst = NULL;
+	if (u->tab = NULL;
+	if (u->ptr = NULL;
+	if (u->ptr1 = NULL;
+	if (u->ptr2 = NULL;
+	if (u->lstptr = NULL;
+	return (u);
 }
