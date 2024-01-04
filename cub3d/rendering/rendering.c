@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 15:48:10 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 15:50:47 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	dspl_map(t_mlx *lib, t_map *map)
 	v[1] = 5;
 	offset[0] = lib->offset[0] + map->x;
 	offset[1] = lib->offset[1] + map->y;
-	while (map->x <= lib->xlen || map->y < lib->ylen)
+	while (map->nx || map->first->ny)
 	{
 		if (map->value == 0)
 			color = tcolor(255,255,255);
@@ -69,7 +69,7 @@ void	dspl_map(t_mlx *lib, t_map *map)
 			map = map->nx;
 			offset[0] = lib->offset[0] + (5 * map->x);
 		}
-		else if (map->ny)
+		else if (map->ny && map->y <= lib->ylen - 1)
 		{
 			map = map->first->ny;
 			offset[0] = lib->offset[0] + (5 * map->x);;
