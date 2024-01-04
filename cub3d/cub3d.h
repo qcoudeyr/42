@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 14:56:32 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 15:08:29 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ int	closewin(t_mlx *lib);
 int				tcolor(int red, int green, int blue);
 void			pixel_put(t_data *data, int x, int y, int color);
 void			sqr_print(t_data *data, int	len[2], int offset[2], int color);
-
+void			dspl_map(t_mlx *lib, t_map *map);
 /*
 
 //Utils File Function */

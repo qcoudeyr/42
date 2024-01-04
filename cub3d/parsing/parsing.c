@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 12:13:48 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 15:07:37 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,7 +236,7 @@ if (check_map(fd) == -1)
 		return (-1);
 	if (check_error_map(origin_map(lib->map)) != 0)
 		return (-1);
-	lib->scalex = (lib->sizey / lib->xlen) / 2;
-	lib->scaley = (lib->sizex / lib->ylen) / 2;
+	lib->scale[0] = (lib->sizey / lib->xlen) / 2;
+	lib->scale[1] = (lib->sizex / lib->ylen) / 2;
 	return (1);
 }

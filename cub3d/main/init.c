@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 08:53:29 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 11:01:32 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 15:07:16 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	lib_init(t_mlx *lib)
 	lib->sizey = 540;
 	lib->xlen = 0;
 	lib->ylen = 0;
-	lib->scalex = 0;
-	lib->scaley = 0;
-	lib->offsetx = 150;
-	lib->offsety = 500;
+	lib->scale[0] = 0;
+	lib->scale[1] = 0;
+	lib->offset[0] = 150;
+	lib->offset[1] = 500;
 	lib->vsin = 0.523599;
 	lib->vcos = 0.523599;
 	lib->multheight = 1;
