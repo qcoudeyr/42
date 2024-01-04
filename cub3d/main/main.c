@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:59:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 11:03:13 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 11:04:46 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	main(int argc, char **argv)
 	int array1[2] = {100, 50};
 	int array2[2] = {300, 300};
 	sqr_print(t->lib->data, array1, array2, 65450);
-	mlx_put_image_to_window(t->lib->mlx, t->lib->c_win, t->lib->data, 960, 540);
+	mlx_put_image_to_window(t->lib->mlx, t->lib->c_win, t->lib->data, 0, 0);
 	mlx_mouse_hook(t->lib->c_win, mouse_scroll, t->lib);
 	mlx_hook(t->lib->c_win, 2, 1L << 0, keyhandle, t->lib);
 	mlx_hook(t->lib->c_win, 17, 0, closewin, t->lib);
