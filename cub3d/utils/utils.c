@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 21:48:20 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/26 17:44:44 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 10:33:46 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,23 @@ int	mouse_scroll(int button, int x, int y, t_mlx *lib)
 		}
 	}
 	return (0);
+}
+
+t_utils	*utils_init(void)
+{
+	i = 0;
+	x = 0;
+	y = 0;
+	z = 0;
+	c = 0;
+	tmp1;
+	tmp2 = NULL;
+	str1 = NULL;
+	str2 = NULL;
+	lst = NULL;
+	tab = NULL;
+	ptr = NULL;
+	ptr1 = NULL;
+	ptr2 = NULL;
+	lstptr = NULL;
 }
