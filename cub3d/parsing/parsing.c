@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 09:57:21 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 10:11:33 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,32 +171,32 @@ int	get_map_info(t_cub *t)
 	if (temp != NULL && *temp != 0 && ft_strnstr(temp + 2, "NO ", s) == NULL)
 		t->lib->tx_no = get_texture_path(temp + 3);
 	else
-		return (-1);
+		return (printerr("Error !\n NO WAll is not set !\n"));
 	temp = ft_strnstr(buf, "SO ", s);
 	if (temp != NULL && *temp != 0 && ft_strnstr(temp + 2, "SO ", s) == NULL)
 		t->lib->tx_so = get_texture_path(temp + 3);
 	else
-		return (-1);
+		return (printerr("Error !\n SO WAll is not set !\n"));
 	temp = ft_strnstr(buf, "WE ", s);
 	if (temp != NULL && *temp != 0 && ft_strnstr(temp + 2, "WE ", s) == NULL)
 		t->lib->tx_we = get_texture_path(temp + 3);
 	else
-		return (-1);
+		return (printerr("Error !\n WE WAll is not set !\n"));
 	temp = ft_strnstr(buf, "EA ", s);
 	if (temp != NULL && *temp != 0 && ft_strnstr(temp + 2, "EA ", s) == NULL)
 		t->lib->tx_ea = get_texture_path(temp + 3);
 	else
-		return (-1);
+		return (printerr("Error !\n EA WAll is not set !\n"));
 	temp = ft_strnstr(buf, "F ", s);
 	if (temp != NULL && *temp != 0 && ft_strnstr(temp + 2, "F ", s) == NULL)
 		get_color(t, temp + 2, 1);
 	else
-		return (-1);
+		return (printerr("Error !\n Floor color not set !\n"));
 	temp = ft_strnstr(buf, "C ", s);
 	if (temp != NULL && *temp != 0 && ft_strnstr(temp + 2, "C ", s) == NULL)
 		get_color(t, temp + 2, -1);
 	else
-		return (-1);
+		return (printerr("Error !\n Celling color not set !\n"));
 	get_map(t, buf);
 	buf = pfree(buf);
 	return (1);
