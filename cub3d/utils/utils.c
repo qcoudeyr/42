@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 21:48:20 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 10:39:39 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 10:43:24 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,25 @@ t_utils	*utils_free(t_utils *u)
 	u->y = 0;
 	u->z = 0;
 	u->c = 0;
-	if (u->tmp1 = NULL;
-	if (u->tmp2 = NULL;
-	if (u->str1 = NULL;
-	if (u->str2 = NULL;
-	if (u->lst = NULL;
-	if (u->tab = NULL;
-	if (u->ptr = NULL;
-	if (u->ptr1 = NULL;
-	if (u->ptr2 = NULL;
-	if (u->lstptr = NULL;
+	if (u->tmp1 != NULL)
+		u->tmp1 = pfree(u->tmp1);
+	if (u->tmp2 != NULL)
+		u->tmp2 = pfree(u->tmp2);
+	if (u->str1 != NULL)
+		u->str1 = pfree(u->str1);
+	if (u->str2 != NULL)
+		u->str2 = pfree(u->str2);
+	if (u->lst != NULL)
+		u->lst = pfree(u->lst);
+	if (u->tab != NULL)
+		u->tab = tabfree((void **)u->tab);
+	if (u->ptr != NULL)
+		u->ptr = pfree(u->ptr);
+	if (u->ptr1 != NULL)
+		u->ptr1 = pfree();
+	if (u->ptr2 != NULL)
+		u->ptr2 = pfree();
+	if (u->lstptr != NULL)
+		u->lstptr = tabfree(u->lstptr);
 	return (u);
 }
