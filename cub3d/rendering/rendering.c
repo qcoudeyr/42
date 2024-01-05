@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 15:54:13 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/04 15:56:18 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ void	dspl_map(t_mlx *lib, t_map *map)
 	int	color;
 	int	offset[2];
 
-	v[0] = 5;
-	v[1] = 5;
-	offset[0] = lib->offset[0] + map->x;
-	offset[1] = lib->offset[1] + map->y;
+	v[0] = 10;
+	v[1] = 10;
+	offset[0] = lib->offset[0] + map->x +1;
+	offset[1] = lib->offset[1] + map->y +1;
 	while (map->nx || map->first->ny)
 	{
 		if (map->value == 0)
-			color = tcolor(255,255,255) * ;
+			color = tcolor(255,255,(255 - map->y));
 		else if (map->value == -1)
 			color = tcolor(130,130,130);
 		else if (map->value == 1)
@@ -67,13 +67,13 @@ void	dspl_map(t_mlx *lib, t_map *map)
 		if (map->nx)
 		{
 			map = map->nx;
-			offset[0] = lib->offset[0] + (5 * map->x);
+			offset[0] = lib->offset[0] + (v[0] * map->x) +1;
 		}
 		else if (map->ny && map->y <= lib->ylen - 1)
 		{
 			map = map->first->ny;
-			offset[0] = lib->offset[0] + (5 * map->x);;
-			offset[1] = lib->offset[1] + (5 * map->y);;
+			offset[0] = lib->offset[0] + (v[0] * map->x) +1;
+			offset[1] = lib->offset[1] + (v[1] * map->y) +1;
 		}
 		else
 			break;
