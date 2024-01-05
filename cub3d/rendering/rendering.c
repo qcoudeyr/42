@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/05 14:15:17 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/05 14:50:34 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ void	dspl_map(t_mlx *lib, t_map *map)
 	int	color;
 	int	offset[2];
 
+	v[0] = 10 * (lib->xlen + 1) + 5;
+	v[1] = 10 * (lib->ylen + 1) + 5;
+	color = tcolor(30, 30, 30);
+	offset[0] = lib->offset[0] - 6;
+	offset[1] = lib->offset[1] - 6;
+	sqr_print(lib->data, v, offset, color);
 	v[0] = 10;
 	v[1] = 10;
 	offset[0] = lib->offset[0] + map->x +1;
@@ -58,7 +64,7 @@ void	dspl_map(t_mlx *lib, t_map *map)
 		if (map->value == 0)
 			color = tcolor(255,255,(255 - map->y));
 		else if (map->value == -1)
-			color = tcolor(0, 0, 0);
+			color = tcolor(30, 30, 30);
 		else if (map->value == 1)
 			color = tcolor(153, 73, 0);
 		else
@@ -77,9 +83,9 @@ void	dspl_map(t_mlx *lib, t_map *map)
 		}
 		else
 			map = map->first->ny;
-		mlx_put_image_to_window(lib->mlx, lib->c_win, lib->data->img, 0, 0);
 	}
 	if (!map->nx && map)
 		sqr_print(lib->data, v, offset, color);
+	mlx_put_image_to_window(lib->mlx, lib->c_win, lib->data->img, 0, 0);
 	return;
 }
