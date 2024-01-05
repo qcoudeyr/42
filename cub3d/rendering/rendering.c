@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 15:56:18 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/05 14:15:17 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	dspl_map(t_mlx *lib, t_map *map)
 		if (map->value == 0)
 			color = tcolor(255,255,(255 - map->y));
 		else if (map->value == -1)
-			color = tcolor(130,130,130);
+			color = tcolor(0, 0, 0);
 		else if (map->value == 1)
 			color = tcolor(153, 73, 0);
 		else
@@ -69,14 +69,17 @@ void	dspl_map(t_mlx *lib, t_map *map)
 			map = map->nx;
 			offset[0] = lib->offset[0] + (v[0] * map->x) +1;
 		}
-		else if (map->ny && map->y <= lib->ylen - 1)
+		else if (map->first->ny)
 		{
 			map = map->first->ny;
 			offset[0] = lib->offset[0] + (v[0] * map->x) +1;
 			offset[1] = lib->offset[1] + (v[1] * map->y) +1;
 		}
 		else
-			break;
+			map = map->first->ny;
+		mlx_put_image_to_window(lib->mlx, lib->c_win, lib->data->img, 0, 0);
 	}
+	if (!map->nx && map)
+		sqr_print(lib->data, v, offset, color);
 	return;
 }

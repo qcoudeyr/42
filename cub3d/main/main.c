@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:59:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 15:09:10 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/05 14:08:47 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ int	main(int argc, char **argv)
 	t->lib->mlx = mlx_init();
 	init_windows(t->lib);
 	dspl_map(t->lib, origin_map(t->lib->map));
-	mlx_put_image_to_window(t->lib->mlx, t->lib->c_win, t->lib->data->img, 0, 0);
 	mlx_mouse_hook(t->lib->c_win, mouse_scroll, t->lib);
 	mlx_hook(t->lib->c_win, 2, 1L << 0, keyhandle, t->lib);
 	mlx_hook(t->lib->c_win, 17, 0, closewin, t->lib);
