@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 08:53:29 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 15:30:50 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/06 12:24:02 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,26 @@ void	lib_init(t_mlx *lib)
 	lib->c_win = NULL;
 }
 
+void	init_player(t_ply *p)
+{
+	//x and y start position
+	p->posX = 22.0;
+	p->posY = 11.5;
+	//initial direction vector
+	p->dirX = -1.0;
+	p->dirY = 0.0;
+	p->planeX = 0.0;
+	p->planeY = 0.66; //the 2d raycaster version of camera plane
+	p->time = 0; //time of current frame
+	p->oldTime = 0; //time of previous frame
+}
+
 void	init_struct(t_cub *t)
 {
 	t->fd_map = 0;
+	t->ply = ft_calloc(1, sizeof(t_ply));
+	init_player(t->ply);
 	t->lib = ft_calloc(1, sizeof(t_mlx));
 	lib_init(t->lib);
 }
+

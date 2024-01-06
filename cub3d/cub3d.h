@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 15:08:29 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/06 12:23:11 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,14 @@ typedef struct s_mlx
 
 typedef struct s_ply
 {
-	float	x;
-	float	y;
-	float	rot;
+	double	posX;
+	double	posY;
+	double	dirX;
+	double	dirY;
+	double	planeX;
+	double	planeY;
+	double	time;
+	double	oldTime;
 }					t_ply;
 
 typedef struct s_cub
@@ -100,6 +105,7 @@ typedef struct s_cub
 	struct s_map	*map;
 	struct s_data	data;
 	struct s_mlx	*lib;
+	struct s_ply	*ply;
 }					t_cub;
 /*
 
