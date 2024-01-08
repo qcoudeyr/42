@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:59:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/05 14:08:47 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/08 14:34:33 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ int	main(int argc, char **argv)
 	t->lib->mlx = mlx_init();
 	init_windows(t->lib);
 	dspl_map(t->lib, origin_map(t->lib->map));
+	sleep(3);
+	render(t, t->ply);
 	mlx_mouse_hook(t->lib->c_win, mouse_scroll, t->lib);
 	mlx_hook(t->lib->c_win, 2, 1L << 0, keyhandle, t->lib);
 	mlx_hook(t->lib->c_win, 17, 0, closewin, t->lib);

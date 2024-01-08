@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/08 13:59:45 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/08 14:31:54 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 # include <math.h>
 # include <stdint.h>
 # include <stdlib.h>
-
+# include <time.h>
+# include <unistd.h>
 typedef struct s_utils
 {
 	int		i;
@@ -148,6 +149,7 @@ int				tcolor(int red, int green, int blue);
 void			pixel_put(t_data *data, int x, int y, int color);
 void			sqr_print(t_data *data, int	len[2], int offset[2], int color);
 void			dspl_map(t_mlx *lib, t_map *map);
+void			render(t_cub *t, t_ply *p);
 /*
 
 //Utils File Function */

@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/08 14:16:32 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/08 14:26:49 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ int worldMap[mapWidth][mapHeight]=
   {4,4,4,4,4,4,4,4,4,4,1,1,1,2,2,2,2,2,2,3,3,3,3,3}
 };
 
-void	render(t_cub *t, t_map *m, t_ply *p)
+void	render(t_cub *t, t_ply *p)
 {
 	uint32_t	*texture[8];
 	uint32_t	buffer[screenHeight][screenWidth];
@@ -146,24 +146,27 @@ void	render(t_cub *t, t_map *m, t_ply *p)
 	texture[i] = (uint32_t*)malloc(numPixels * sizeof(uint32_t));
 	}
 	for(int x = 0; x < texWidth; x++)
-	for(int y = 0; y < texHeight; y++)
 	{
-	int xorcolor = (x * 256 / texWidth) ^ (y * 256 / texHeight);
-	//int xcolor = x * 256 / texWidth;
-	int ycolor = y * 256 / texHeight;
-	int xycolor = y * 128 / texHeight + x * 128 / texWidth;
-	texture[0][texWidth * y + x] = 65536 * 254 * (x != y && x != texWidth - y); //flat red texture with black cross
-	texture[1][texWidth * y + x] = xycolor + 256 * xycolor + 65536 * xycolor; //sloped greyscale
-	texture[2][texWidth * y + x] = 256 * xycolor + 65536 * xycolor; //sloped yellow gradient
-	texture[3][texWidth * y + x] = xorcolor + 256 * xorcolor + 65536 * xorcolor; //xor greyscale
-	texture[4][texWidth * y + x] = 256 * xorcolor; //xor green
-	texture[5][texWidth * y + x] = 65536 * 192 * (x % 16 && y % 16); //red bricks
-	texture[6][texWidth * y + x] = 65536 * ycolor; //red gradient
-	texture[7][texWidth * y + x] = 128 + 256 * 128 + 65536 * 128; //flat grey texture
+		for(int y = 0; y < texHeight; y++)
+		{
+		int xorcolor = (x * 256 / texWidth) ^ (y * 256 / texHeight);
+		//int xcolor = x * 256 / texWidth;
+		int ycolor = y * 256 / texHeight;
+		int xycolor = y * 128 / texHeight + x * 128 / texWidth;
+		texture[0][texWidth * y + x] = 65536 * 254 * (x != y && x != texWidth - y); //flat red texture with black cross
+		texture[1][texWidth * y + x] = xycolor + 256 * xycolor + 65536 * xycolor; //sloped greyscale
+		texture[2][texWidth * y + x] = 256 * xycolor + 65536 * xycolor; //sloped yellow gradient
+		texture[3][texWidth * y + x] = xorcolor + 256 * xorcolor + 65536 * xorcolor; //xor greyscale
+		texture[4][texWidth * y + x] = 256 * xorcolor; //xor green
+		texture[5][texWidth * y + x] = 65536 * 192 * (x % 16 && y % 16); //red bricks
+		texture[6][texWidth * y + x] = 65536 * ycolor; //red gradient
+		texture[7][texWidth * y + x] = 128 + 256 * 128 + 65536 * 128; //flat grey texture
+		}
+	}
 	//start the main loop
 	int h = texHeight;
 	int w = texWidth;
-	while(!done())
+	while(1)
 	{
 	for(int x = 0; x < w; x++)
 	{
@@ -280,19 +283,23 @@ void	render(t_cub *t, t_map *m, t_ply *p)
 		}
 	}
 
-	drawBuffer(buffer[0]);
+	for (int y = 0; y < 640; y++) {
+	for (int x = 0; x < 540; x++) {
+		pixel_put(t->lib->data->img, x, y, buffer[y][x]);
+	}
 	for(int y = 0; y < h; y++) for(int x = 0; x < w; x++) buffer[y][x] = 0; //clear the buffer instead of cls()
-	//timing for input and FPS counter
+	mlx_put_image_to_window(t->lib->mlx, t->lib->c_win, t->lib->data->img, 0, 0);
+/* 	//timing for input and FPS counter
 	p->oldTime = p->time;
 	p->time = getTicks();
 	double frameTime = (p->time - p->oldTime) / 1000.0; //frametime is the p->time this frame has taken, in seconds
-	print(1.0 / frameTime); //FPS counter
-	redraw();
-
+	ft_printf("%i\n", (1.0 / frameTime)); //FPS counters
+ */
+/*
 	//speed modifiers
 	double moveSpeed = frameTime * 5.0; //the constant value is in squares/second
 	double rotSpeed = frameTime * 3.0; //the constant value is in radians/second
-
+ */
 	/* readKeys();
 	//move forward if no wall in front of you
 	if(keyDown(SDLK_UP))
