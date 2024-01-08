@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 08:53:29 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/06 12:24:02 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/08 13:47:04 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,13 @@ void	init_player(t_ply *p)
 	//initial direction vector
 	p->dirX = -1.0;
 	p->dirY = 0.0;
+	//the 2d raycaster version of camera plane
 	p->planeX = 0.0;
-	p->planeY = 0.66; //the 2d raycaster version of camera plane
-	p->time = 0; //time of current frame
-	p->oldTime = 0; //time of previous frame
+	p->planeY = 0.66;
+	//time of current frame
+	p->time = 0;
+	//time of previous frame
+	p->oldTime = 0;
 }
 
 void	init_struct(t_cub *t)
