@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/06 12:23:11 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/08 13:59:45 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include "./mlx_linux/mlx.h"
 # include <limits.h>
 # include <math.h>
+# include <stdint.h>
+# include <stdlib.h>
 
 typedef struct s_utils
 {
