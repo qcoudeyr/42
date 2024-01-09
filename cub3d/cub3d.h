@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/09 16:44:10 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/09 16:46:54 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ typedef struct s_mlx
 
 typedef struct s_ply
 {
-	int		**worldMap;
+	int		worldMap[24][24];
 	int		is_set;
 	double	posX;
 	double	posY;
