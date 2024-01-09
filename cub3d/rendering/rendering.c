@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/08 14:26:49 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/08 15:12:49 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,9 +286,9 @@ void	render(t_cub *t, t_ply *p)
 	for (int y = 0; y < 640; y++) {
 	for (int x = 0; x < 540; x++) {
 		pixel_put(t->lib->data->img, x, y, buffer[y][x]);
+		mlx_put_image_to_window(t->lib->mlx, t->lib->c_win, t->lib->data->img, 0, 0);
 	}
 	for(int y = 0; y < h; y++) for(int x = 0; x < w; x++) buffer[y][x] = 0; //clear the buffer instead of cls()
-	mlx_put_image_to_window(t->lib->mlx, t->lib->c_win, t->lib->data->img, 0, 0);
 /* 	//timing for input and FPS counter
 	p->oldTime = p->time;
 	p->time = getTicks();
