@@ -6,68 +6,92 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 21:48:20 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/09 16:30:50 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/09 17:51:21 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-/*
-void	ply_mov(t_cub *t)
+
+
+static int worldMap[24][24]=
+{
+  {4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,7,7,7,7,7,7,7,7},
+  {4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
+  {4,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7},
+  {4,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7},
+  {4,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
+  {4,0,4,0,0,0,0,5,5,5,5,5,5,5,5,5,7,7,0,7,7,7,7,7},
+  {4,0,5,0,0,0,0,5,0,5,0,5,0,5,0,5,7,0,0,0,7,7,7,1},
+  {4,0,6,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,0,0,0,8},
+  {4,0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,1},
+  {4,0,8,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,0,0,0,8},
+  {4,0,0,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,7,7,7,1},
+  {4,0,0,0,0,0,0,5,5,5,5,0,5,5,5,5,7,7,7,7,7,7,7,1},
+  {6,6,6,6,6,6,6,6,6,6,6,0,6,6,6,6,6,6,6,6,6,6,6,6},
+  {8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
+  {6,6,6,6,6,6,0,6,6,6,6,0,6,6,6,6,6,6,6,6,6,6,6,6},
+  {4,4,4,4,4,4,0,4,4,4,6,0,6,2,2,2,2,2,2,2,3,3,3,3},
+  {4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,0,0,0,2},
+  {4,0,0,0,0,0,0,0,0,0,0,0,6,2,0,0,5,0,0,2,0,0,0,2},
+  {4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,2,0,2,2},
+  {4,0,6,0,6,0,0,0,0,4,6,0,0,0,0,0,5,0,0,0,0,0,0,2},
+  {4,0,0,5,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,2,0,2,2},
+  {4,0,6,0,6,0,0,0,0,4,6,0,6,2,0,0,5,0,0,2,0,0,0,2},
+  {4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,0,0,0,2},
+  {4,4,4,4,4,4,4,4,4,4,1,1,1,2,2,2,2,2,2,3,3,3,3,3}
+};
+
+void	ply_mov(t_ply *p, int keycode)
 {
 	//speed modifiers
-	double moveSpeed = frameTime * 5.0; //the constant value is in squares/second
-	double rotSpeed = frameTime * 3.0; //the constant value is in radians/second
+	double moveSpeed = p->frameTime * 5.0; //the constant value is in squares/second
+	double rotSpeed = p->frameTime * 3.0; //the constant value is in radians/second
 	//move forward if no wall in front of you
-	if(keyDown(SDLK_UP))
+	if(keycode == 65362)
 	{
-		if(worldMap[int(posX + dirX * moveSpeed)][int(posY)] == false) posX += dirX * moveSpeed;
-		if(worldMap[int(posX)][int(posY + dirY * moveSpeed)] == false) posY += dirY * moveSpeed;
+		if(worldMap[(int)(p->posX + p->dirX * moveSpeed)][(int)(p->posY)] == 0) p->posX += p->dirX * moveSpeed;
+		if(worldMap[(int)(p->posX)][(int)(p->posY + p->dirY * moveSpeed)] == 0) p->posY += p->dirY * moveSpeed;
 	}
 	//move backwards if no wall behind you
-	if(keyDown(SDLK_DOWN))
+	if(keycode == 65364)
 	{
-		if(worldMap[int(posX - dirX * moveSpeed)][int(posY)] == false) posX -= dirX * moveSpeed;
-		if(worldMap[int(posX)][int(posY - dirY * moveSpeed)] == false) posY -= dirY * moveSpeed;
+		if(worldMap[(int)(p->posX - p->dirX * moveSpeed)][(int)(p->posY)] == 0) p->posX -= p->dirX * moveSpeed;
+		if(worldMap[(int)(p->posX)][(int)(p->posY - p->dirY * moveSpeed)] == 0) p->posY -= p->dirY * moveSpeed;
 	}
 	//rotate to the right
-	if(keyDown(SDLK_RIGHT))
+	if(keycode == 65363)
 	{
 		//both camera direction and camera plane must be rotated
-		double oldDirX = dirX;
-		dirX = dirX * cos(-rotSpeed) - dirY * sin(-rotSpeed);
-		dirY = oldDirX * sin(-rotSpeed) + dirY * cos(-rotSpeed);
-		double oldPlaneX = planeX;
-		planeX = planeX * cos(-rotSpeed) - planeY * sin(-rotSpeed);
-		planeY = oldPlaneX * sin(-rotSpeed) + planeY * cos(-rotSpeed);
+		double oldDirX = p->dirX;
+		p->dirX = p->dirX * cos(-rotSpeed) - p->dirY * sin(-rotSpeed);
+		p->dirY = oldDirX * sin(-rotSpeed) + p->dirY * cos(-rotSpeed);
+		double oldPlaneX = p->planeX;
+		p->planeX = p->planeX * cos(-rotSpeed) - p->planeY * sin(-rotSpeed);
+		p->planeY = oldPlaneX * sin(-rotSpeed) + p->planeY * cos(-rotSpeed);
 	}
 	//rotate to the left
-	if(keyDown(SDLK_LEFT))
+	if(keycode == 65361)
 	{
 		//both camera direction and camera plane must be rotated
-		double oldDirX = dirX;
-		dirX = dirX * cos(rotSpeed) - dirY * sin(rotSpeed);
-		dirY = oldDirX * sin(rotSpeed) + dirY * cos(rotSpeed);
-		double oldPlaneX = planeX;
-		planeX = planeX * cos(rotSpeed) - planeY * sin(rotSpeed);
-		planeY = oldPlaneX * sin(rotSpeed) + planeY * cos(rotSpeed);
+		double oldDirX = p->dirX;
+		p->dirX = p->dirX * cos(rotSpeed) - p->dirY * sin(rotSpeed);
+		p->dirY = oldDirX * sin(rotSpeed) + p->dirY * cos(rotSpeed);
+		double oldPlaneX = p->planeX;
+		p->planeX = p->planeX * cos(rotSpeed) - p->planeY * sin(rotSpeed);
+		p->planeY = oldPlaneX * sin(rotSpeed) + p->planeY * cos(rotSpeed);
 	}
 }
- */
-int	keyhandle(int keycode, t_mlx *lib)
+
+int	keyhandle(int keycode, t_cub *t)
 {
 	ft_printf("%i\n", keycode);
 	if (keycode == 65307)
-		return (closewin(lib));
+		return (closewin(t->lib));
 	else
 	{
-		if (keycode == 65364) //Down
-			lib->offset[0] += 10;
-		if (keycode == 65362) //Up
-			lib->offset[0] -= 10;
-		if (keycode == 65363) // Right
-			lib->offset[1] += 10;
-		if (keycode == 65361) // Left
-			lib->offset[1] -= 10;
+		if (keycode <= 65364 && keycode >= 65361)
+			ply_mov(t->ply, keycode);
+		render(t, t->ply);
 	}
 	return (0);
 }

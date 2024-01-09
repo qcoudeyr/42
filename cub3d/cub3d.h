@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/09 16:46:54 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/09 17:48:15 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ typedef struct s_ply
 	double	planeY;
 	double	time;
 	double	oldTime;
+	double	frameTime;
 }					t_ply;
 
 typedef struct s_cub
@@ -157,7 +158,7 @@ void			render(t_cub *t, t_ply *p);
 /*
 
 //Utils File Function */
-int				keyhandle(int keycode, t_mlx *lib);
+int				keyhandle(int keycode, t_cub *t);
 int				mouse_scroll(int button, int x, int y, t_mlx *lib);
 void			utils_init(t_utils *u);
 /*
