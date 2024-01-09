@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/09 11:58:09 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/09 12:12:23 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,25 +133,50 @@ int worldMap[mapWidth][mapHeight]=
   {4,4,4,4,4,4,4,4,4,4,1,1,1,2,2,2,2,2,2,3,3,3,3,3}
 };
 
+int	verLine(t_mlx *lib, int x, int y1, int y2, int color)
+{
+	int h = lib->sizey;
+	int w = lib->sizex;
+
+	// Swap y1 and y2 if necessary
+	if (y2 < y1) {
+		int temp = y1;
+		y1 = y2;
+		y2 = temp;
+	}
+
+	// Clipping and validation checks
+	if (y2 < 0 || y1 >= h || x < 0 || x >= w) return 0; //no single point of the line is on screen
+	if (y1 < 0) y1 = 0; //clip
+	if (y2 >= h) y2 = h - 1; //clip
+
+	// Draw the line
+	for (int y = y1; y <= y2; y++) {
+		pixel_put(lib->data, x, y, color);
+	}
+	return 1;
+	}
+
 void	render(t_cub *t, t_ply *p)
 {
-	  double posX = 22, posY = 12;  //x and y start position
-  double dirX = -1, dirY = 0; //initial direction vector
-  double planeX = 0, planeY = 0.66; //the 2d raycaster version of camera plane
-
+	double posX = 22, posY = 12;  //x and y start position
+	double dirX = -1, dirY = 0; //initial direction vector
+	double planeX = 0, planeY = 0.66; //the 2d raycaster version of camera plane
+/*
   double time = 0; //time of current frame
-  double oldTime = 0; //time of previous frame
+  double oldTime = 0; //time of previous frame*/
 
-  screen(screenWidth, screenHeight, 0, "Raycaster");
-  while(!done())
-  {
+	p->posX = 22, p->posY = 12;  //x and y start position
+	p->dirX = -1, p->dirY = 0; //initial direction vector
+	p->planeX = 0, p->planeY = 0.66;
+
 	for(int x = 0; x < t->lib->sizex; x++)
 	{
 		double cameraX = 2 * x / (double)t->lib->sizex - 1; //x-coordinate in camera space
 		double rayDirX = dirX + planeX * cameraX;
 		double rayDirY = dirY + planeY * cameraX;
-		int mapX = (int)(posX);
-		int mapY = (int)(posY);
+		int mapX = (int)(p->posX);
+		int mapY = (int)(p->posY);
 
 		//length of ray from current position to next x or y-side
 		double sideDistX;
@@ -233,8 +258,9 @@ void	render(t_cub *t, t_ply *p)
 		if(side == 1) {color = color / 2;}
 
 		//draw the pixels of the stripe as a vertical line
-		verLine(x, drawStart, drawEnd, color);
+		verLine(t->lib, x, drawStart, drawEnd, color);
 	}
+	mlx_put_image_to_window(t->lib->mlx, t->lib->c_win, t->lib->data->img, 0 , 0);
 	//timing for input and FPS counter
 	oldTime = time;
 	time = getTicks();
@@ -280,6 +306,5 @@ void	render(t_cub *t, t_ply *p)
 		double oldPlaneX = planeX;
 		planeX = planeX * cos(rotSpeed) - planeY * sin(rotSpeed);
 		planeY = oldPlaneX * sin(rotSpeed) + planeY * cos(rotSpeed);
-	}
-  }
+	} */
 }
