@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/09 17:53:36 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/09 18:05:30 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	ft_abs(double i)
 		return (i);
 }
 
-unsigned long getTicks()
+unsigned long getTicks(t_cub *t)
 {
 	struct timeval tv;
 	if (gettimeofday(&tv, NULL) != 0)
@@ -106,7 +106,9 @@ unsigned long getTicks()
 		perror("gettimeofday failed");
 		exit(EXIT_FAILURE);
 	}
-	return (unsigned long)(tv.tv_sec * 1000UL + tv.tv_usec / 1000UL);
+	if (t->init_t == 0)
+		t->init_t = ((tv.tv_sec / 1000UL) * 1000UL + (tv.tv_usec / 1000UL));
+	return (unsigned long)(t->init_t - (((tv.tv_sec / 1000UL) * 1000UL )+ tv.tv_usec / 1000UL));
 }
 
 int	verLine(t_mlx *lib, int x, int y1, int y2, int color)
@@ -229,7 +231,7 @@ void	render(t_cub *t, t_ply *p)
 	}
 	//timing for input and FPS counter
 	p->oldTime = p->time;
-	p->time = getTicks();
+	p->time = getTicks(t);
 	p->frameTime = (p->time - p->oldTime) / 1000.0; //frameTime is the time this frame has taken, in seconds
 	mlx_string_put(t->lib->mlx, t->lib->c_win, 0, 0,tcolor(255,255,255), ft_itoa(p->frameTime));
 	//print(1.0 / frameTime); //FPS counter
