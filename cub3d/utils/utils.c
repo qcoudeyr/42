@@ -6,25 +6,67 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 21:48:20 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 15:06:45 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/09 16:30:50 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
+/*
+void	ply_mov(t_cub *t)
+{
+	//speed modifiers
+	double moveSpeed = frameTime * 5.0; //the constant value is in squares/second
+	double rotSpeed = frameTime * 3.0; //the constant value is in radians/second
+	//move forward if no wall in front of you
+	if(keyDown(SDLK_UP))
+	{
+		if(worldMap[int(posX + dirX * moveSpeed)][int(posY)] == false) posX += dirX * moveSpeed;
+		if(worldMap[int(posX)][int(posY + dirY * moveSpeed)] == false) posY += dirY * moveSpeed;
+	}
+	//move backwards if no wall behind you
+	if(keyDown(SDLK_DOWN))
+	{
+		if(worldMap[int(posX - dirX * moveSpeed)][int(posY)] == false) posX -= dirX * moveSpeed;
+		if(worldMap[int(posX)][int(posY - dirY * moveSpeed)] == false) posY -= dirY * moveSpeed;
+	}
+	//rotate to the right
+	if(keyDown(SDLK_RIGHT))
+	{
+		//both camera direction and camera plane must be rotated
+		double oldDirX = dirX;
+		dirX = dirX * cos(-rotSpeed) - dirY * sin(-rotSpeed);
+		dirY = oldDirX * sin(-rotSpeed) + dirY * cos(-rotSpeed);
+		double oldPlaneX = planeX;
+		planeX = planeX * cos(-rotSpeed) - planeY * sin(-rotSpeed);
+		planeY = oldPlaneX * sin(-rotSpeed) + planeY * cos(-rotSpeed);
+	}
+	//rotate to the left
+	if(keyDown(SDLK_LEFT))
+	{
+		//both camera direction and camera plane must be rotated
+		double oldDirX = dirX;
+		dirX = dirX * cos(rotSpeed) - dirY * sin(rotSpeed);
+		dirY = oldDirX * sin(rotSpeed) + dirY * cos(rotSpeed);
+		double oldPlaneX = planeX;
+		planeX = planeX * cos(rotSpeed) - planeY * sin(rotSpeed);
+		planeY = oldPlaneX * sin(rotSpeed) + planeY * cos(rotSpeed);
+	}
+}
+ */
 int	keyhandle(int keycode, t_mlx *lib)
 {
+	ft_printf("%i\n", keycode);
 	if (keycode == 65307)
 		return (closewin(lib));
 	else
 	{
-		if (keycode == 65364)
+		if (keycode == 65364) //Down
 			lib->offset[0] += 10;
-		if (keycode == 65362)
+		if (keycode == 65362) //Up
 			lib->offset[0] -= 10;
-		if (keycode == 65363)
+		if (keycode == 65363) // Right
 			lib->offset[1] += 10;
-		if (keycode == 65361)
+		if (keycode == 65361) // Left
 			lib->offset[1] -= 10;
 	}
 	return (0);

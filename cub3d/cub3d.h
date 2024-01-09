@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/08 14:31:54 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/09 16:44:10 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <math.h>
 # include <stdint.h>
 # include <stdlib.h>
-# include <time.h>
+# include <sys/time.h>
 # include <unistd.h>
 typedef struct s_utils
 {
@@ -92,6 +92,8 @@ typedef struct s_mlx
 
 typedef struct s_ply
 {
+	int		**worldMap;
+	int		is_set;
 	double	posX;
 	double	posY;
 	double	dirX;
@@ -105,6 +107,8 @@ typedef struct s_ply
 typedef struct s_cub
 {
 	int				fd_map;
+	int				texW;
+	int				texH;
 	struct s_map	*map;
 	struct s_data	data;
 	struct s_mlx	*lib;
