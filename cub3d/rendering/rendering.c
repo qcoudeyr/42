@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/10 18:45:21 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/10 19:07:12 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -269,19 +269,15 @@ int	render(t_cub *t)
 			int texY = (int)texPos & (t->lib->no.h - 1);
 			texPos += step;
 			unsigned int color;
-			unsigned int* colorPtr;
+			(void)texY;
 			if (texNum != 0)
-			{
-				colorPtr = t->lib->no.ptr + (t->lib->no.h * texY + texX);
-				color = *colorPtr;
-			}
-			if(side == 1) color = (color >> 1) & 8355711;
+				color = trgb(0, 255, 0, 0);/* t->lib->no.ptr. + (t->lib->no.h * texY + texX); */
+			if(side == 1)
+				color = (color >> 1) & 8355711;
 			buffer[y][x] = color;
 		}
-		verLine(t->lib, buffer);
-		for(int y = 0; y < t->lib->sizey; y++) for(int x = 0; x < t->lib->sizex; x++)
-			buffer[y][x] = 0;
 	}
+	(void)buffer;
 	//timing for input and FPS counter
 	t->ply->oldTime = t->ply->time;
 	t->ply->time = getTicks(t);
