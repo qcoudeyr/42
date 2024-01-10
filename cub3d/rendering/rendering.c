@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/10 08:49:16 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/10 09:01:57 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,11 @@ unsigned long getTicks(t_cub *t)
 		exit(EXIT_FAILURE);
 	}
 	if (t->init_t == 0)
+	{
 		t->init_t = (tv.tv_sec * 1000UL + tv.tv_usec / 1000UL);
-	return (unsigned long)(tv.tv_sec * 1000UL + tv.tv_usec / 1000UL);
+		gettimeofday(&tv, NULL);
+	}
+	return (unsigned long)(t->init_t - (tv.tv_sec * 1000UL + tv.tv_usec / 1000UL));
 }
 
 int	verLine(t_mlx *lib, int x, int y1, int y2, int color)
