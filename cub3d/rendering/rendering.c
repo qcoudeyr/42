@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/10 15:18:01 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/10 15:50:35 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,9 +177,9 @@ int	render(t_cub *t)
 		for(int x = 0; x < t->lib->sizex; x++)
 		{
 			if (y < (t->lib->sizey / 2))
-				pixel_put(t->lib->data, x, y, trgb(50, 50,50,50));
+				pixel_put(t->lib->data, x, y, trgb(80, t->lib->ceiling[0], t->lib->ceiling[1], t->lib->ceiling[2]));
 			else
-				pixel_put(t->lib->data, x, y, trgb(50, 255,0,0));
+				pixel_put(t->lib->data, x, y, trgb(80, t->lib->floor[0], t->lib->floor[1], t->lib->floor[2]));
 		}
 	}
 	for(int x = 0; x < t->lib->sizex; x++)

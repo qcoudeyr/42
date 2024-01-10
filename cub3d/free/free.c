@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 08:56:38 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/29 17:10:35 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/10 15:43:09 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,23 @@ void	ft_freemap(t_mlx *lib)
 	lib->map = NULL;
 }
 
+void	free_text(t_tex *t)
+{
+	if (t->fname != NULL)
+		t->fname = pfree(t->fname);
+	if (t->ptr != NULL)
+		t->ptr = pfree(t->ptr);
+}
+
 void	free_lib(t_mlx *lib)
 {
 	ft_freemap(lib);
 	lib->mlx = pfree(lib->mlx);
 	lib->data = pfree(lib->data);
-	lib->tx_no = pfree(lib->tx_no);
-	lib->tx_so = pfree(lib->tx_so);
-	lib->tx_we = pfree(lib->tx_we);
-	lib->tx_ea = pfree(lib->tx_ea);
+	free_text(&lib->no);
+	free_text(&lib->so);
+	free_text(&lib->we);
+	free_text(&lib->ea);
 	lib->tampon = pfree(lib->tampon);
 	lib = pfree(lib);
 }

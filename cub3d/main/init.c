@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 08:53:29 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/10 11:27:55 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/10 15:40:29 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,22 @@ void	init_windows(t_mlx *lib)
 &lib->tampon->bits_per_pixel, &lib->tampon->line_length, &lib->tampon->endian);
 	lib->c_win = mlx_new_window(lib->mlx, lib->sizex, \
 lib->sizey, "Qcoudeyr - QuanranteDoom3D - Menu");
+}
+
+void	init_text(t_tex *t)
+{
+	t->fname = NULL;
+	t->w = 0;
+	t->h = 0;
+	t->ptr = NULL;
+}
+
+void	lib_init_text(t_mlx *lib)
+{
+	init_text(&lib->no);
+	init_text(&lib->so);
+	init_text(&lib->we);
+	init_text(&lib->ea);
 }
 
 void	lib_init(t_mlx *lib)
@@ -42,10 +58,7 @@ void	lib_init(t_mlx *lib)
 	lib->x_angle = 0;
 	lib->y_angle = 0;
 	lib->z_angle = 0;
-	lib->tx_no = NULL;
-	lib->tx_so = NULL;
-	lib->tx_we = NULL;
-	lib->tx_ea = NULL;
+	lib_init_text(lib);
 	lib->map_origin = NULL;
 	lib->map = NULL;
 	lib->mlx = NULL;

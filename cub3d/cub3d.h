@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/10 15:17:07 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/10 15:44:04 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,15 @@ typedef struct s_map
 	struct s_map	*first;
 }					t_map;
 
+typedef struct s_tex
+{
+	char	*fname;
+	int		w;
+	int		h;
+	void	*ptr;
+}					t_tex;
+
+
 typedef struct s_mlx
 {
 	void	*mlx;
@@ -71,10 +80,6 @@ typedef struct s_mlx
 	int		ylen;
 	int		scale[2];
 	int		offset[2];
-	char	*tx_no;
-	char	*tx_so;
-	char	*tx_we;
-	char	*tx_ea;
 	int		floor[3];
 	int		ceiling[3];
 	double	multheight;
@@ -83,6 +88,10 @@ typedef struct s_mlx
 	double	z_angle;
 	double	y_angle;
 	double	x_angle;
+	t_tex	no;
+	t_tex	so;
+	t_tex	we;
+	t_tex	ea;
 	t_map	*map_origin;
 	t_data	*data;
 	t_data	*tampon;
@@ -136,6 +145,7 @@ void			init_windows(t_mlx *lib);
 //Parsing File Function */
 int				parse(char *str, t_mlx *lib, int x, t_map *p_x);
 int				read_map(t_cub *t, t_mlx *lib);
+int				get_texture(t_mlx *lib);
 /*
 
 //Map File Function */

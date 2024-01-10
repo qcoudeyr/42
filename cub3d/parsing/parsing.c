@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/05 14:12:50 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/10 15:49:25 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,22 +194,22 @@ int	get_map_info(t_cub *t)
 	buf[s] = 0;
 	temp = ft_strnstr(buf, "NO ", s);
 	if (temp != NULL && *temp != 0 && ft_strnstr(temp + 2, "NO ", s) == NULL)
-		t->lib->tx_no = get_texture_path(temp + 3);
+		t->lib->no.fname = get_texture_path(temp + 3);
 	else
 		return (printerrf("Error !\n NO WAll is not set !\n", buf));
 	temp = ft_strnstr(buf, "SO ", s);
 	if (temp != NULL && *temp != 0 && ft_strnstr(temp + 2, "SO ", s) == NULL)
-		t->lib->tx_so = get_texture_path(temp + 3);
+		t->lib->so.fname = get_texture_path(temp + 3);
 	else
 		return (printerrf("Error !\n SO WAll is not set !\n", buf));
 	temp = ft_strnstr(buf, "WE ", s);
 	if (temp != NULL && *temp != 0 && ft_strnstr(temp + 2, "WE ", s) == NULL)
-		t->lib->tx_we = get_texture_path(temp + 3);
+		t->lib->we.fname = get_texture_path(temp + 3);
 	else
 		return (printerrf("Error !\n WE WAll is not set !\n", buf));
 	temp = ft_strnstr(buf, "EA ", s);
 	if (temp != NULL && *temp != 0 && ft_strnstr(temp + 2, "EA ", s) == NULL)
-		t->lib->tx_ea = get_texture_path(temp + 3);
+		t->lib->ea.fname = get_texture_path(temp + 3);
 	else
 		return (printerrf("Error !\n EA WAll is not set !\n", buf));
 	temp = ft_strnstr(buf, "F ", s);
@@ -223,8 +223,17 @@ int	get_map_info(t_cub *t)
 	else
 		return (printerrf("Error !\n Celling color not set !\n", buf));
 	get_map(t, buf);
+	get_texture(t->lib);
 	buf = pfree(buf);
 	return (1);
+}
+
+int	check_color(int color)
+{
+	if (color < 0 || color > 255)
+		return (-1);
+	else
+		return (0);
 }
 
 int	read_map(t_cub *t, t_mlx *lib)
@@ -238,5 +247,21 @@ if (check_map(fd) == -1)
 		return (-1);
 	lib->scale[0] = (lib->sizey / lib->xlen) / 2;
 	lib->scale[1] = (lib->sizex / lib->ylen) / 2;
+	if (check_color(lib->floor[0]) != 0 || check_color(lib->floor[1]) != 0 || check_color(lib->floor[2]) != 0)
+		return (printerr("Error !\nColor of the floor is weird !\n"));
+	if (check_color(lib->ceiling[0]) != 0 || check_color(lib->ceiling[1]) != 0 || check_color(lib->ceiling[2]) != 0)
+		return (printerr("Error !\nColor of the ceiling is weird !\n"));
 	return (1);
+}
+
+int	get_texture(t_mlx *lib)
+{
+	lib->no.ptr = mlx_xpm_file_to_image(lib->mlx, lib->no.fname, &lib->no.w, &lib->no.h);
+	lib->so.ptr = mlx_xpm_file_to_image(lib->mlx, lib->so.fname, &lib->so.w, &lib->so.h);
+	lib->ea.ptr = mlx_xpm_file_to_image(lib->mlx, lib->ea.fname, &lib->ea.w, &lib->ea.h);
+	lib->we.ptr = mlx_xpm_file_to_image(lib->mlx, lib->we.fname, &lib->we.w, &lib->we.h);
+	if (!lib->no.ptr || !lib->so.ptr || !lib->ea.ptr || !lib->we.ptr)
+		return (printerr("Error !\nMap textures are not valid !\n"));
+	else
+		return (0);
 }
