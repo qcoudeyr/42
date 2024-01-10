@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:59:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/10 15:20:49 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/10 16:34:21 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	main(int argc, char **argv)
 	if (t->lib->map == NULL)
 		return (free_struct(t));
 	t->map = origin_map(t->lib->map);
-	while(t->map != NULL)
+/* 	while(t->map != NULL)
 	{
 		while(t->map->nx != NULL)
 		{
@@ -86,10 +86,11 @@ int	main(int argc, char **argv)
 			break;
 		t->map = t->map->first->ny;
 		ft_printf("\n");
-	}
+	} */
 
 	t->lib->mlx = mlx_init();
 	init_windows(t->lib);
+	get_texture(t->lib);
 	/* dspl_map(t->lib, origin_map(t->lib->map)); */
 	mlx_mouse_hook(t->lib->c_win, mouse_scroll, t->lib);
 	mlx_hook(t->lib->c_win, 2, 1L << 0, keyhandle, t);

@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/10 16:27:05 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/10 16:34:04 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,7 +223,6 @@ int	get_map_info(t_cub *t)
 	else
 		return (printerrf("Error !\n Celling color not set !\n", buf));
 	get_map(t, buf);
-	get_texture(t->lib);
 	buf = pfree(buf);
 	return (1);
 }
@@ -256,7 +255,7 @@ if (check_map(fd) == -1)
 
 int	get_texture(t_mlx *lib)
 {
-	lib->no.ptr = mlx_xpm_file_to_image(lib->mlx, "/home/qcoudeyr/Desktop/42/cub3d/map/64x/Bricks.xpm", &lib->no.w, &lib->no.h);
+	lib->no.ptr = mlx_xpm_file_to_image(lib->mlx, lib->no.fname, &lib->no.w, &lib->no.h);
 	lib->so.ptr = mlx_xpm_file_to_image(lib->mlx, lib->so.fname, &lib->so.w, &lib->so.h);
 	lib->ea.ptr = mlx_xpm_file_to_image(lib->mlx, lib->ea.fname, &lib->ea.w, &lib->ea.h);
 	lib->we.ptr = mlx_xpm_file_to_image(lib->mlx, lib->we.fname, &lib->we.w, &lib->we.h);
