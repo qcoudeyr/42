@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/10 09:01:57 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/10 09:10:05 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -265,7 +265,10 @@ void	render(t_cub *t, t_ply *p)
 	//timing for input and FPS counter
 	p->oldTime = p->time;
 	p->time = getTicks(t);
+	if (p->oldTime == 0)
+		p->oldTime = p->time;
 	p->frameTime = (p->time - p->oldTime) / 1000.0; //frameTime is the time this frame has taken, in seconds
+	p->frameTime %= 1000000000;
 	ft_printf("%i\n", p->frameTime);
 	mlx_string_put(t->lib->mlx, t->lib->c_win, 10, 10, tcolor(255,255,255), ft_itoa(p->frameTime));
 	//print(1.0 / frameTime); //FPS counter
