@@ -6,11 +6,41 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/09 18:05:30 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/10 08:49:16 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+
+static int worldMap[24][24]=
+{
+  {4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,7,7,7,7,7,7,7,7},
+  {4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
+  {4,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7},
+  {4,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7},
+  {4,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
+  {4,0,4,0,0,0,0,5,5,5,5,5,5,5,5,5,7,7,0,7,7,7,7,7},
+  {4,0,5,0,0,0,0,5,0,5,0,5,0,5,0,5,7,0,0,0,7,7,7,1},
+  {4,0,6,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,0,0,0,8},
+  {4,0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,1},
+  {4,0,8,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,0,0,0,8},
+  {4,0,0,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,7,7,7,1},
+  {4,0,0,0,0,0,0,5,5,5,5,0,5,5,5,5,7,7,7,7,7,7,7,1},
+  {6,6,6,6,6,6,6,6,6,6,6,0,6,6,6,6,6,6,6,6,6,6,6,6},
+  {8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
+  {6,6,6,6,6,6,0,6,6,6,6,0,6,6,6,6,6,6,6,6,6,6,6,6},
+  {4,4,4,4,4,4,0,4,4,4,6,0,6,2,2,2,2,2,2,2,3,3,3,3},
+  {4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,0,0,0,2},
+  {4,0,0,0,0,0,0,0,0,0,0,0,6,2,0,0,5,0,0,2,0,0,0,2},
+  {4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,2,0,2,2},
+  {4,0,6,0,6,0,0,0,0,4,6,0,0,0,0,0,5,0,0,0,0,0,0,2},
+  {4,0,0,5,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,2,0,2,2},
+  {4,0,6,0,6,0,0,0,0,4,6,0,6,2,0,0,5,0,0,2,0,0,0,2},
+  {4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,0,0,0,2},
+  {4,4,4,4,4,4,4,4,4,4,1,1,1,2,2,2,2,2,2,3,3,3,3,3}
+};
+
 
 int	tcolor(int red, int green, int blue)
 {
@@ -107,8 +137,8 @@ unsigned long getTicks(t_cub *t)
 		exit(EXIT_FAILURE);
 	}
 	if (t->init_t == 0)
-		t->init_t = ((tv.tv_sec / 1000UL) * 1000UL + (tv.tv_usec / 1000UL));
-	return (unsigned long)(t->init_t - (((tv.tv_sec / 1000UL) * 1000UL )+ tv.tv_usec / 1000UL));
+		t->init_t = (tv.tv_sec * 1000UL + tv.tv_usec / 1000UL);
+	return (unsigned long)(tv.tv_sec * 1000UL + tv.tv_usec / 1000UL);
 }
 
 int	verLine(t_mlx *lib, int x, int y1, int y2, int color)
@@ -198,7 +228,7 @@ void	render(t_cub *t, t_ply *p)
 		  side = 1;
 		}
 		//Check if ray has hit a wall
-		if(p->worldMap[mapX][mapY] > 0) hit = 1;
+		if(worldMap[mapX][mapY] > 0) hit = 1;
 		}
 		if(side == 0) perpWallDist = (sideDistX - deltaDistX);
 		else          perpWallDist = (sideDistY - deltaDistY);
@@ -214,7 +244,7 @@ void	render(t_cub *t, t_ply *p)
 
 		//choose wall color
 		int color;
-		switch(p->worldMap[mapX][mapY])
+		switch(worldMap[mapX][mapY])
 		{
 		case 1:  color = tcolor(255,0,0);    break; //red
 		case 2:  color = tcolor(0,255,0);  break; //green
@@ -233,7 +263,8 @@ void	render(t_cub *t, t_ply *p)
 	p->oldTime = p->time;
 	p->time = getTicks(t);
 	p->frameTime = (p->time - p->oldTime) / 1000.0; //frameTime is the time this frame has taken, in seconds
-	mlx_string_put(t->lib->mlx, t->lib->c_win, 0, 0,tcolor(255,255,255), ft_itoa(p->frameTime));
+	ft_printf("%i\n", p->frameTime);
+	mlx_string_put(t->lib->mlx, t->lib->c_win, 10, 10, tcolor(255,255,255), ft_itoa(p->frameTime));
 	//print(1.0 / frameTime); //FPS counter
 	mlx_clear_window(t->lib->mlx, t->lib->c_win);
 	mlx_put_image_to_window(t->lib->mlx, t->lib->c_win, t->lib->data->img, 0 , 0);
