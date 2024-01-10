@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/10 15:50:35 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/10 18:45:21 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,34 +144,24 @@ unsigned long getTicks(t_cub *t)
 	return (((tv.tv_sec * 1000UL) + (tv.tv_usec / 1000UL)) - t->init_t);
 }
 
-int	verLine(t_mlx *lib, int x, int y1, int y2, int color)
+int	verLine(t_mlx *lib, int buffer[lib->sizex][lib->sizey])
 {
-	int h = lib->sizey;
-	int w = lib->sizex;
+	int	h,w;
 
-	if(y2 < y1)
+	h = lib->sizey;
+	w = lib->sizex;
+	for (int y = 0; y <= h; y++)
 	{
-		y1 += y2;
-		y2 = y1 - y2;
-		y1 -= y2;
-	} //swap y1 and y2
-	if(y2 < 0 || y1 >= h  || x < 0 || x >= w)
-		return 0; //no single point of the line is on screen
-	if(y1 < 0)
-		y1 = 0; //clip
-	if(y2 >= w)
-		y2 = h - 1; //clip
-
-	// Draw the line
-	for (int y = y1; y <= y2; y++)
-	{
-		pixel_put(lib->data, x, y, color);
+		for (int x = 0; x <= w; x++)
+			pixel_put(lib->data, x, y, buffer[x][y]);
 	}
 	return 1;
 	}
 
 int	render(t_cub *t)
 {
+	int	buffer[t->lib->sizey][t->lib->sizex];
+
 	for(int y = 0; y < t->lib->sizey; y++)
 	{
 		for(int x = 0; x < t->lib->sizex; x++)
@@ -256,22 +246,41 @@ int	render(t_cub *t)
 		int drawEnd = lineHeight / 2 + t->lib->sizey / 2;
 		if(drawEnd >= t->lib->sizey) drawEnd = t->lib->sizey - 1;
 
-		//choose wall color
-		int color;
-		switch(worldMap[mapX][mapY])
+		int texNum = worldMap[mapX][mapY] - 1;
+
+		//calculate value of wallX
+		double wallX; //where exactly the wall was hit
+		if (side == 0)
+			wallX = t->ply->posY + perpWallDist * rayDirY;
+		else
+			wallX = t->ply->posX + perpWallDist * rayDirX;
+		wallX -= floor((wallX));
+
+		//x coordinate on the texture
+		int texX = (int)(wallX * (double)(t->lib->no.w));
+		if(side == 0 && rayDirX > 0) texX = t->lib->no.w - texX - 1;
+		if(side == 1 && rayDirY < 0) texX = t->lib->no.w - texX - 1;
+		double step = 1.0 * t->lib->no.h / lineHeight;
+		// Starting texture coordinate
+		double texPos = (drawStart - t->lib->sizey / 2 + lineHeight / 2) * step;
+		for(int y = drawStart; y<drawEnd; y++)
 		{
-		case 1:  color = tcolor(255, 0, 0);    break; //red
-		case 2:  color = tcolor(0, 255, 0);  break; //green
-		case 3:  color = tcolor( 0, 0, 255);   break; //blue
-		case 4:  color = tcolor(255, 255, 255);  break; //white
-		default: color = tcolor(255,   0, 255); break; //yellow
+			// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
+			int texY = (int)texPos & (t->lib->no.h - 1);
+			texPos += step;
+			unsigned int color;
+			unsigned int* colorPtr;
+			if (texNum != 0)
+			{
+				colorPtr = t->lib->no.ptr + (t->lib->no.h * texY + texX);
+				color = *colorPtr;
+			}
+			if(side == 1) color = (color >> 1) & 8355711;
+			buffer[y][x] = color;
 		}
-
-		//give x and y sides different brightness
-		if(side == 1) {color = color / 2;}
-
-		//draw the pixels of the stripe as a vertical line
-		verLine(t->lib, x, drawStart, drawEnd, color);
+		verLine(t->lib, buffer);
+		for(int y = 0; y < t->lib->sizey; y++) for(int x = 0; x < t->lib->sizex; x++)
+			buffer[y][x] = 0;
 	}
 	//timing for input and FPS counter
 	t->ply->oldTime = t->ply->time;
