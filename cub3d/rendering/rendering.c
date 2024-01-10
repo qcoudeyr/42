@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/10 09:10:05 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/10 10:08:02 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,10 +138,10 @@ unsigned long getTicks(t_cub *t)
 	}
 	if (t->init_t == 0)
 	{
-		t->init_t = (tv.tv_sec * 1000UL + tv.tv_usec / 1000UL);
+		t->init_t = ((tv.tv_sec * 1000UL) + tv.tv_usec / 1000UL);
 		gettimeofday(&tv, NULL);
 	}
-	return (unsigned long)(t->init_t - (tv.tv_sec * 1000UL + tv.tv_usec / 1000UL));
+	return (((tv.tv_sec * 1000UL) + (tv.tv_usec / 1000UL)) - t->init_t);
 }
 
 int	verLine(t_mlx *lib, int x, int y1, int y2, int color)
@@ -267,8 +267,7 @@ void	render(t_cub *t, t_ply *p)
 	p->time = getTicks(t);
 	if (p->oldTime == 0)
 		p->oldTime = p->time;
-	p->frameTime = (p->time - p->oldTime) / 1000.0; //frameTime is the time this frame has taken, in seconds
-	p->frameTime %= 1000000000;
+	p->frameTime = (p->time - p->oldTime) / 1000;
 	ft_printf("%i\n", p->frameTime);
 	mlx_string_put(t->lib->mlx, t->lib->c_win, 10, 10, tcolor(255,255,255), ft_itoa(p->frameTime));
 	//print(1.0 / frameTime); //FPS counter
