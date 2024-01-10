@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/10 10:08:02 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/10 11:06:53 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,10 +120,10 @@ void	dspl_map(t_mlx *lib, t_map *map)
 	return;
 }
 
-int	ft_abs(double i)
+double	ft_abs(double i)
 {
 	if (i < 0)
-		return (i * -1);
+		return (double)(i * (double)-1);
 	else
 		return (i);
 }
@@ -149,18 +149,18 @@ int	verLine(t_mlx *lib, int x, int y1, int y2, int color)
 	int h = lib->sizey;
 	int w = lib->sizex;
 
-
-	// Swap y1 and y2 if necessary
-	if (y2 < y1) {
-		int temp = y1;
-		y1 = y2;
-		y2 = temp;
-	}
-
-	// Clipping and validation checks
-	if (y2 < 0 || y1 >= h || x < 0 || x >= w) return 0; //no single point of the line is on screen
-	if (y1 < 0) y1 = 0; //clip
-	if (y2 >= h) y2 = h - 1; //clip
+	if(y2 < y1)
+	{
+		y1 += y2;
+		y2 = y1 - y2;
+		y1 -= y2;
+	} //swap y1 and y2
+	if(y2 < 0 || y1 >= h  || x < 0 || x >= w)
+		return 0; //no single point of the line is on screen
+	if(y1 < 0)
+		y1 = 0; //clip
+	if(y2 >= w)
+		y2 = h - 1; //clip
 
 	// Draw the line
 	for (int y = y1; y <= y2; y++) {
@@ -177,8 +177,8 @@ void	render(t_cub *t, t_ply *p)
 		double cameraX = 2 * x / (double)t->lib->sizex - 1; //x-coordinate in camera space
 		double rayDirX = p->dirX + p->planeX * cameraX;
 		double rayDirY = p->dirY + p->planeY * cameraX;
-		int mapX = (int)(p->posX);
-		int mapY = (int)(p->posY);
+		int mapX = (int)p->posX;
+		int mapY = (int)p->posY;
 
 		//length of ray from current position to next x or y-side
 		double sideDistX;
@@ -198,47 +198,48 @@ void	render(t_cub *t, t_ply *p)
 
 		if(rayDirX < 0)
 		{
-		stepX = -1;
-		sideDistX = (p->posX - mapX) * deltaDistX;
+			stepX = -1;
+			sideDistX = (p->posX - mapX) * deltaDistX;
 		}
 		else
 		{
-		stepX = 1;
-		sideDistX = (mapX + 1.0 - p->posX) * deltaDistX;
+			stepX = 1;
+			sideDistX = (mapX + 1.0 - p->posX) * deltaDistX;
 		}
 		if(rayDirY < 0)
 		{
-		stepY = -1;
-		sideDistY = (p->posY - mapY) * deltaDistY;
+			stepY = -1;
+			sideDistY = (p->posY - mapY) * deltaDistY;
 		}
 		else
 		{
-		stepY = 1;
-		sideDistY = (mapY + 1.0 - p->posY) * deltaDistY;
+			stepY = 1;
+			sideDistY = (mapY + 1.0 - p->posY) * deltaDistY;
 		}
 		while(hit == 0)
 		{
-		if(sideDistX < sideDistY)
-		{
-		  sideDistX += deltaDistX;
-		  mapX += stepX;
-		  side = 0;
+			if(sideDistX < sideDistY)
+			{
+				sideDistX += deltaDistX;
+				mapX += stepX;
+				side = 0;
+			}
+			else
+			{
+				sideDistY += deltaDistY;
+				mapY += stepY;
+				side = 1;
+			}
+			if(worldMap[mapX][mapY] > 0)
+				hit = 1;
 		}
+		if(side == 0)
+			perpWallDist = (sideDistX - deltaDistX);
 		else
-		{
-		  sideDistY += deltaDistY;
-		  mapY += stepY;
-		  side = 1;
-		}
-		//Check if ray has hit a wall
-		if(worldMap[mapX][mapY] > 0) hit = 1;
-		}
-		if(side == 0) perpWallDist = (sideDistX - deltaDistX);
-		else          perpWallDist = (sideDistY - deltaDistY);
+			perpWallDist = (sideDistY - deltaDistY);
 
 		//Calculate height of line to draw on screen
 		int lineHeight = (int)(t->lib->sizey / perpWallDist);
-
 		//calculate lowest and highest pixel to fill in current stripe
 		int drawStart = -lineHeight / 2 + t->lib->sizey / 2;
 		if(drawStart < 0) drawStart = 0;
@@ -249,10 +250,10 @@ void	render(t_cub *t, t_ply *p)
 		int color;
 		switch(worldMap[mapX][mapY])
 		{
-		case 1:  color = tcolor(255,0,0);    break; //red
-		case 2:  color = tcolor(0,255,0);  break; //green
-		case 3:  color = tcolor(  0,   0, 255);   break; //blue
-		case 4:  color = tcolor(  0, 255, 255);  break; //white
+		case 1:  color = tcolor(255, 0, 0);    break; //red
+		case 2:  color = tcolor(0, 255, 0);  break; //green
+		case 3:  color = tcolor( 0, 0, 255);   break; //blue
+		case 4:  color = tcolor(255, 255, 255);  break; //white
 		default: color = tcolor(255,   0, 255); break; //yellow
 		}
 
@@ -269,8 +270,9 @@ void	render(t_cub *t, t_ply *p)
 		p->oldTime = p->time;
 	p->frameTime = (p->time - p->oldTime) / 1000;
 	ft_printf("%i\n", p->frameTime);
-	mlx_string_put(t->lib->mlx, t->lib->c_win, 10, 10, tcolor(255,255,255), ft_itoa(p->frameTime));
 	//print(1.0 / frameTime); //FPS counter
 	mlx_clear_window(t->lib->mlx, t->lib->c_win);
 	mlx_put_image_to_window(t->lib->mlx, t->lib->c_win, t->lib->data->img, 0 , 0);
+	mlx_string_put(t->lib->mlx, t->lib->c_win, 10, 10, tcolor(255,255,255), ft_itoa(p->frameTime));
+
 }
