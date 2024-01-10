@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/10 19:16:16 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/11 00:09:24 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,14 +268,14 @@ int	render(t_cub *t)
 			// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
 			int texY = (int)texPos & (t->lib->no.h - 1);
 			texPos += step;
-			unsigned int color;
+		/* 	unsigned int color;
 			unsigned int	**texture;
 			texture = (unsigned int **)&t->lib->no.ptr->addr;
 			if (texNum != 0)
 				color = texture[texNum][t->lib->no.h * texY + texX];;
 			if(side == 1)
 				color = (color >> 1) & 8355711;
-			buffer[y][x] = color;
+			buffer[y][x] = color; */
 		}
 	}
 	(void)buffer;
