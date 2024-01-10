@@ -1,7 +1,7 @@
-NO ./map/64x/Bricks.
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./map/64x/Bricks.xpm
+SO ./map/64x/BricksOv.xpm
+WE ./map/64x/bookshelf.xpm
+EA ./map/64x/Gold1.xpm
 
 F 220,100,0
 C 225,30,0
