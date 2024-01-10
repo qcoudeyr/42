@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/10 11:59:28 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/10 15:18:01 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,7 @@ int	verLine(t_mlx *lib, int x, int y1, int y2, int color)
 	return 1;
 	}
 
-void	render(t_cub *t, t_ply *p)
+int	render(t_cub *t)
 {
 	for(int y = 0; y < t->lib->sizey; y++)
 	{
@@ -185,10 +185,10 @@ void	render(t_cub *t, t_ply *p)
 	for(int x = 0; x < t->lib->sizex; x++)
 	{
 		double cameraX = 2 * x / (double)t->lib->sizex - 1; //x-coordinate in camera space
-		double rayDirX = p->dirX + p->planeX * cameraX;
-		double rayDirY = p->dirY + p->planeY * cameraX;
-		int mapX = (int)p->posX;
-		int mapY = (int)p->posY;
+		double rayDirX = t->ply->dirX + t->ply->planeX * cameraX;
+		double rayDirY = t->ply->dirY + t->ply->planeY * cameraX;
+		int mapX = (int)t->ply->posX;
+		int mapY = (int)t->ply->posY;
 
 		//length of ray from current position to next x or y-side
 		double sideDistX;
@@ -209,22 +209,22 @@ void	render(t_cub *t, t_ply *p)
 		if(rayDirX < 0)
 		{
 			stepX = -1;
-			sideDistX = (p->posX - mapX) * deltaDistX;
+			sideDistX = (t->ply->posX - mapX) * deltaDistX;
 		}
 		else
 		{
 			stepX = 1;
-			sideDistX = (mapX + 1.0 - p->posX) * deltaDistX;
+			sideDistX = (mapX + 1.0 - t->ply->posX) * deltaDistX;
 		}
 		if(rayDirY < 0)
 		{
 			stepY = -1;
-			sideDistY = (p->posY - mapY) * deltaDistY;
+			sideDistY = (t->ply->posY - mapY) * deltaDistY;
 		}
 		else
 		{
 			stepY = 1;
-			sideDistY = (mapY + 1.0 - p->posY) * deltaDistY;
+			sideDistY = (mapY + 1.0 - t->ply->posY) * deltaDistY;
 		}
 		while(hit == 0)
 		{
@@ -274,15 +274,15 @@ void	render(t_cub *t, t_ply *p)
 		verLine(t->lib, x, drawStart, drawEnd, color);
 	}
 	//timing for input and FPS counter
-	p->oldTime = p->time;
-	p->time = getTicks(t);
-	if (p->oldTime == 0)
-		p->oldTime = p->time;
-	p->frameTime = (p->time - p->oldTime) / 1000;
-	ft_printf("%i\n", p->frameTime);
+	t->ply->oldTime = t->ply->time;
+	t->ply->time = getTicks(t);
+	if (t->ply->oldTime == 0)
+		t->ply->oldTime = t->ply->time;
+	t->ply->frameTime = (t->ply->time - t->ply->oldTime) / 1000;
+	ft_printf("%i\n", t->ply->frameTime);
 	//print(1.0 / frameTime); //FPS counter
 	mlx_clear_window(t->lib->mlx, t->lib->c_win);
 	mlx_put_image_to_window(t->lib->mlx, t->lib->c_win, t->lib->data->img, 0 , 0);
-	mlx_string_put(t->lib->mlx, t->lib->c_win, 10, 10, tcolor(255,255,255), ft_itoa(p->frameTime));
-
+	mlx_string_put(t->lib->mlx, t->lib->c_win, 10, 10, tcolor(255,255,255), ft_itoa(t->ply->frameTime));
+	return (0);
 }
