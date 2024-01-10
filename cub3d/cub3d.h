@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/10 11:25:39 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/10 11:59:08 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,7 @@ int				keyhandle(int keycode, t_cub *t);
 int				mouse_scroll(int button, int x, int y, t_mlx *lib);
 void			utils_init(t_utils *u);
 void			get_new_image(t_mlx *lib);
+int				trgb(int t, int r, int g, int b);
 /*
 
 //Error File Function */

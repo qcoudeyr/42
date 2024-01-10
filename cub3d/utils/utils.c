@@ -6,11 +6,17 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 21:48:20 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/09 17:51:21 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/10 12:01:20 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+
+int	trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
+}
 
 
 static int worldMap[24][24]=
@@ -44,8 +50,8 @@ static int worldMap[24][24]=
 void	ply_mov(t_ply *p, int keycode)
 {
 	//speed modifiers
-	double moveSpeed = p->frameTime * 5.0; //the constant value is in squares/second
-	double rotSpeed = p->frameTime * 3.0; //the constant value is in radians/second
+	double moveSpeed = (p->frameTime + 0.1) *2; //the constant value is in squares/second
+	double rotSpeed = p->frameTime; //the constant value is in radians/second
 	//move forward if no wall in front of you
 	if(keycode == 65362)
 	{
