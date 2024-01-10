@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/10 11:06:53 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/10 11:10:19 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,8 @@ int	verLine(t_mlx *lib, int x, int y1, int y2, int color)
 		y2 = h - 1; //clip
 
 	// Draw the line
-	for (int y = y1; y <= y2; y++) {
+	for (int y = y1; y <= y2; y++)
+	{
 		pixel_put(lib->data, x, y, color);
 	}
 	return 1;
