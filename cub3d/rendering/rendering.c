@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/10 11:10:19 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/10 11:27:22 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,11 @@ int	verLine(t_mlx *lib, int x, int y1, int y2, int color)
 
 void	render(t_cub *t, t_ply *p)
 {
-
+	for(int y = 0; y < t->lib->sizey; y++)
+	{
+		for(int x = 0; x < t->lib->sizex; x++)
+			pixel_put(t->lib->data, x, y, tcolor(0,0,0));
+	}
 	for(int x = 0; x < t->lib->sizex; x++)
 	{
 		double cameraX = 2 * x / (double)t->lib->sizex - 1; //x-coordinate in camera space

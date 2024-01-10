@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 08:53:29 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/10 11:12:24 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/10 11:27:55 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_windows(t_mlx *lib)
 	lib->data->img = mlx_new_image(lib->mlx, lib->sizex, lib->sizey);
 	lib->data->addr = mlx_get_data_addr(lib->data->img, \
 &lib->data->bits_per_pixel, &lib->data->line_length, &lib->data->endian);
-	lib->tampon->img = mlx_new_image(lib->mlx, lib->sizex, lib->sizey);
+ 	lib->tampon->img = mlx_new_image(lib->mlx, lib->sizex, lib->sizey);
 	lib->tampon->addr = mlx_get_data_addr(lib->tampon->img, \
 &lib->tampon->bits_per_pixel, &lib->tampon->line_length, &lib->tampon->endian);
 	lib->c_win = mlx_new_window(lib->mlx, lib->sizex, \
