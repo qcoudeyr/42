@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/12 14:30:54 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/12 14:43:31 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -279,11 +279,15 @@ int	render(t_cub *t)
 		double texPos = (drawStart - t->lib->sizey / 2 + lineHeight / 2) * step;
 		for(int y = drawStart; y<drawEnd; y++)
 		{
-			int texY = (int)texPos & (t->texH - 1);
-			texPos += step;
-			if (t->ply->posX <)
-			unsigned int color = get_pixel(t->lib->no.ptr, texX,texY);
+			int texY;
+			unsigned int color;
 
+			texY = (int)texPos & (t->texH - 1);
+			texPos += step;
+			if (t->ply->dirX < (-0.5) && (t->ply->dirY > (-0.5) || t->ply->dirY < (0.5)))
+				color = get_pixel(t->lib->ea.ptr, texX,texY);
+			else
+				color = get_pixel(t->lib->no.ptr, texX,texY);
 			if(side == 1) color = (color >> 1) & 8355711;
 			texture_put(t, t->lib->data, x, y, color);
 		}
