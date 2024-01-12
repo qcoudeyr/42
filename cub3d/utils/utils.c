@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 21:48:20 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/12 14:45:13 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/12 14:59:00 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ static int worldMap[24][24]=
 void	ply_mov(t_ply *p, int keycode)
 {
 	//speed modifiers
-	double moveSpeed = (p->frameTime + 0.1) *2; //the constant value is in squares/second
-	double rotSpeed = (p->frameTime + 0.1) *2; //the constant value is in radians/second
+	double moveSpeed = 0.12; //the constant value is in squares/second
+	double rotSpeed = 0.12; //the constant value is in radians/second
 	//move forward if no wall in front of you
 	if(keycode == 65362)
 	{
