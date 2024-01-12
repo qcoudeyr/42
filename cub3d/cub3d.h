@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/12 13:15:54 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/12 15:14:05 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ typedef struct s_cub
 	int				texW;
 	double			init_t;
 	int				texH;
+	double			test;
 	struct s_map	*map;
 	struct s_data	data;
 	struct s_mlx	*lib;

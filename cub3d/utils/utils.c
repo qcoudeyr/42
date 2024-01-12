@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 21:48:20 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/12 14:59:00 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/12 15:18:03 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,10 @@ int	keyhandle(int keycode, t_cub *t)
 		return (closewin(t->lib));
 	else
 	{
+		if(keycode == 65451)
+			t->test += 1;
+		if(keycode == 65453)
+			t->test -= 1;
 		if (keycode <= 65364 && keycode >= 65361)
 			ply_mov(t->ply, keycode);
 		render(t);

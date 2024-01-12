@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 08:53:29 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/10 15:40:29 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/12 15:14:50 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	init_struct(t_cub *t)
 	t->texW = 64;
 	t->init_t = 0;
 	t->texH = 64;
+	t->test = 0.0;
 	t->ply = ft_calloc(1, sizeof(t_ply));
 	init_player(t->ply);
 	t->lib = ft_calloc(1, sizeof(t_mlx));
