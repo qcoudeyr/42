@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/12 15:18:41 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/12 15:21:32 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -289,7 +289,7 @@ int	render(t_cub *t)
 			{
 				if (rayDirX < 0)
 				{
-					color = get_pixel(t->lib->we.ptr, texX, texY - t->test);
+					color = get_pixel(t->lib->we.ptr, texX - t->test, texY);
 				}
 				else
 					color = get_pixel(t->lib->ea.ptr, texX,texY);
