@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/10 18:59:12 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/12 13:18:49 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,6 +256,7 @@ if (check_map(fd) == -1)
 int	get_texture(t_mlx *lib)
 {
 	lib->no.ptr = mlx_xpm_file_to_image(lib->mlx, lib->no.fname, &lib->no.w, &lib->no.h);
+	lib->no.ptr->addr = mlx_get_data_addr(&lib->no.ptr->img, &lib->no.ptr->bits_per_pixel, &lib->no.ptr->line_length, &lib->no.ptr->endian);
 	lib->so.ptr = mlx_xpm_file_to_image(lib->mlx, lib->so.fname, &lib->so.w, &lib->so.h);
 	lib->ea.ptr = mlx_xpm_file_to_image(lib->mlx, lib->ea.fname, &lib->ea.w, &lib->ea.h);
 	lib->we.ptr = mlx_xpm_file_to_image(lib->mlx, lib->we.fname, &lib->we.w, &lib->we.h);

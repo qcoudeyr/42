@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/12 12:30:53 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/12 13:23:01 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,20 @@ void	pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	get_pixel(t_data *data, int x, int y)
+void	texture_put(t_cub *t, t_data *data, int x, int y, unsigned int color)
 {
 	char	*dst;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	return (*(unsigned int *)dst);
+	if (x >= 0 && y >= 0 && x < t->lib->sizex && y < t->lib->sizey)
+	{
+		dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+		*(unsigned int *)dst = color;
+	}
+}
+
+unsigned int	get_pixel(t_data *data, int x, int y)
+{
+	return (*(unsigned int *)(data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8))));
 }
 
 void	sqr_print(t_data *data, int	len[2], int offset[2], int color)
@@ -79,9 +87,6 @@ void	sqr_print(t_data *data, int	len[2], int offset[2], int color)
 		}
 		u->y++;
 	}
-	char *str
-
-
 }
 
 void	dspl_map(t_mlx *lib, t_map *map)
@@ -155,7 +160,7 @@ unsigned long getTicks(t_cub *t)
 	return (((tv.tv_sec * 1000UL) + (tv.tv_usec / 1000UL)) - t->init_t);
 }
 
-int	verLine(t_mlx *lib, int buffer[lib->sizex][lib->sizey])
+/* int	verLine(t_mlx *lib, int buffer[lib->sizex][lib->sizey])
 {
 	int	h,w;
 
@@ -167,13 +172,11 @@ int	verLine(t_mlx *lib, int buffer[lib->sizex][lib->sizey])
 			pixel_put(lib->data, x, y, buffer[x][y]);
 	}
 	return 1;
-	}
+} */
 
 int	render(t_cub *t)
 {
-	int	buffer[t->lib->sizey][t->lib->sizex];
-
-	for(int y = 0; y < t->lib->sizey; y++)
+/* 	for(int y = 0; y < t->lib->sizey; y++)
 	{
 		for(int x = 0; x < t->lib->sizex; x++)
 		{
@@ -182,7 +185,7 @@ int	render(t_cub *t)
 			else
 				pixel_put(t->lib->data, x, y, trgb(80, t->lib->floor[0], t->lib->floor[1], t->lib->floor[2]));
 		}
-	}
+	} */
 	for(int x = 0; x < t->lib->sizex; x++)
 	{
 		double cameraX = 2 * x / (double)t->lib->sizex - 1; //x-coordinate in camera space
@@ -257,7 +260,7 @@ int	render(t_cub *t)
 		int drawEnd = lineHeight / 2 + t->lib->sizey / 2;
 		if(drawEnd >= t->lib->sizey) drawEnd = t->lib->sizey - 1;
 
-		int texNum = worldMap[mapX][mapY] - 1;
+		/* int texNum = worldMap[mapX][mapY] - 1; */
 
 		//calculate value of wallX
 		double wallX; //where exactly the wall was hit
@@ -276,18 +279,13 @@ int	render(t_cub *t)
 		double texPos = (drawStart - t->lib->sizey / 2 + lineHeight / 2) * step;
 		for(int y = drawStart; y<drawEnd; y++)
 		{
-			// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
-			/* int texY = (int)texPos & (t->lib->no.h - 1); */
+			int texY = (int)texPos & (t->texH - 1);
 			texPos += step;
-		 	unsigned int color;
-			if (texNum != 0)
-				color = trgb(0,255, 255,255);
-			if(side == 1)
-				color = (color >> 1) & 8355711;
-			buffer[y][x] = color;
+			unsigned int color = get_pixel(t->lib->no.ptr, texX,texY);
+			if(side == 1) color = (color >> 1) & 8355711;
+			texture_put(t, t->lib->c_win, x, y, color);
 		}
 	}
-	(void)buffer;
 	//timing for input and FPS counter
 	t->ply->oldTime = t->ply->time;
 	t->ply->time = getTicks(t);
