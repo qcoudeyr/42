@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/11 00:09:24 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/11 00:31:02 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,9 @@ void	sqr_print(t_data *data, int	len[2], int offset[2], int color)
 		}
 		u->y++;
 	}
+	char *str
+
+
 }
 
 void	dspl_map(t_mlx *lib, t_map *map)
@@ -79,37 +82,37 @@ void	dspl_map(t_mlx *lib, t_map *map)
 	int	color;
 	int	offset[2];
 
-	v[0] = 10 * (lib->xlen + 1) + 5;
-	v[1] = 10 * (lib->ylen + 1) + 5;
+	v[0] = 7 * (lib->xlen + 1) + 5;
+	v[1] = 7 * (lib->ylen + 1) + 5;
 	color = tcolor(30, 30, 30);
-	offset[0] = lib->offset[0] - 6;
-	offset[1] = lib->offset[1] - 6;
-	sqr_print(lib->data, v, offset, color);
-	v[0] = 10;
-	v[1] = 10;
-	offset[0] = lib->offset[0] + map->x +1;
-	offset[1] = lib->offset[1] + map->y +1;
+	offset[0] = 0;
+	offset[1] = 0;
+ 	sqr_print(lib->data, v, offset, color);
+	v[0] = 7;
+	v[1] = 7;
+	offset[0] = map->x +1;
+	offset[1] = map->y +1;
 	while (map->nx || map->first->ny)
 	{
 		if (map->value == 0)
-			color = tcolor(255,255,(255 - map->y));
+			color = trgb(0, 255,255,(255 - map->y));
 		else if (map->value == -1)
-			color = tcolor(30, 30, 30);
+			color = trgb(100000, 0,0,0);
 		else if (map->value == 1)
-			color = tcolor(153, 73, 0);
+			color = trgb(0,153, 73, 0);
 		else
-			color = tcolor(0, 255, 0);
+			color = trgb(0, 0, 255, 0);
 		sqr_print(lib->data, v, offset, color);
 		if (map->nx)
 		{
 			map = map->nx;
-			offset[0] = lib->offset[0] + (v[0] * map->x) +1;
+			offset[0] = (v[0] * map->x) +1;
 		}
 		else if (map->first->ny)
 		{
 			map = map->first->ny;
-			offset[0] = lib->offset[0] + (v[0] * map->x) +1;
-			offset[1] = lib->offset[1] + (v[1] * map->y) +1;
+			offset[0] = (v[0] * map->x) +1;
+			offset[1] = (v[1] * map->y) +1;
 		}
 		else
 			map = map->first->ny;
@@ -266,16 +269,14 @@ int	render(t_cub *t)
 		for(int y = drawStart; y<drawEnd; y++)
 		{
 			// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
-			int texY = (int)texPos & (t->lib->no.h - 1);
+			/* int texY = (int)texPos & (t->lib->no.h - 1); */
 			texPos += step;
-		/* 	unsigned int color;
-			unsigned int	**texture;
-			texture = (unsigned int **)&t->lib->no.ptr->addr;
+		 	unsigned int color;
 			if (texNum != 0)
-				color = texture[texNum][t->lib->no.h * texY + texX];;
+				color = trgb(0,255, 255,255);
 			if(side == 1)
 				color = (color >> 1) & 8355711;
-			buffer[y][x] = color; */
+			buffer[y][x] = color;
 		}
 	}
 	(void)buffer;
@@ -290,5 +291,6 @@ int	render(t_cub *t)
 	mlx_clear_window(t->lib->mlx, t->lib->c_win);
 	mlx_put_image_to_window(t->lib->mlx, t->lib->c_win, t->lib->data->img, 0 , 0);
 	mlx_string_put(t->lib->mlx, t->lib->c_win, 10, 10, tcolor(255,255,255), ft_itoa(t->ply->frameTime));
+	dspl_map(t->lib, origin_map(t->lib->map));
 	return (0);
 }
