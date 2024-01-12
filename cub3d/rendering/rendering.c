@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/12 13:23:01 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/12 13:28:56 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,7 @@ unsigned long getTicks(t_cub *t)
 
 int	render(t_cub *t)
 {
-/* 	for(int y = 0; y < t->lib->sizey; y++)
+	for(int y = 0; y < t->lib->sizey; y++)
 	{
 		for(int x = 0; x < t->lib->sizex; x++)
 		{
@@ -185,7 +185,7 @@ int	render(t_cub *t)
 			else
 				pixel_put(t->lib->data, x, y, trgb(80, t->lib->floor[0], t->lib->floor[1], t->lib->floor[2]));
 		}
-	} */
+	}
 	for(int x = 0; x < t->lib->sizex; x++)
 	{
 		double cameraX = 2 * x / (double)t->lib->sizex - 1; //x-coordinate in camera space
@@ -283,7 +283,7 @@ int	render(t_cub *t)
 			texPos += step;
 			unsigned int color = get_pixel(t->lib->no.ptr, texX,texY);
 			if(side == 1) color = (color >> 1) & 8355711;
-			texture_put(t, t->lib->c_win, x, y, color);
+			texture_put(t, t->lib->data, x, y, color);
 		}
 	}
 	//timing for input and FPS counter
