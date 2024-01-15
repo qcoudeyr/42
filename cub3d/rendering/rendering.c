@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 11:48:12 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 11:59:58 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,30 +180,29 @@ void	print_background(t_cub *t)
 
 void	draw_texture(t_cub *t)
 {
-	y = drawStart;
-	while (y < drawEnd)
+	t->rdr->y = t->rdr->drawStart;
+	while (t->rdr->y < t->rdr->drawEnd)
 	{
-		texY = (int)texPos & (t->texH - 1);
-		texPos += step;
-		if (side == 0)
+		t->rdr->texY = (int)t->rdr->texPos & (t->texH - 1);
+		t->rdr->texPos += t->rdr->step;
+		if (t->rdr->side == 0)
 		{
-			if (rayDirX < 0)
-			{
-				color = get_pixel(t->lib->we.ptr, texX - t->test, texY);
-			}
+			if (t->rdr->rayDirX < 0)
+				t->rdr->color = get_pixel\
+(t->lib->we.ptr, t->rdr->texX - t->test, t->rdr->texY);
 			else
-				color = get_pixel(t->lib->ea.ptr, texX,texY);
+				t->rdr->color = get_pixel(t->lib->ea.ptr, t->rdr->texX,t->rdr->texY);
 		}
-		else if (side == 1)
+		else if (t->rdr->side == 1)
 		{
-			if (rayDirY > 0)
-				color = get_pixel(t->lib->so.ptr, texX,texY);
+			if (t->rdr->rayDirY > 0)
+				t->rdr->color = get_pixel(t->lib->so.ptr, t->rdr->texX,t->rdr->texY);
 			else
-				color = get_pixel(t->lib->no.ptr, texX,texY);
+				t->rdr->color = get_pixel(t->lib->no.ptr, t->rdr->texX,t->rdr->texY);
 		}
-		if(side == 1)
-			color = (color >> 1) & 8355711;
-		texture_put(t, t->lib->data, x, y++, color);
+		if(t->rdr->side == 1)
+			t->rdr->color = (t->rdr->color >> 1) & 8355711;
+		texture_put(t, t->lib->data, t->rdr->x, t->rdr->y++, t->rdr->color);
 	}
 }
 
@@ -212,95 +211,72 @@ int	render(t_cub *t)
 	t->rdr->x = 0;
 	while (t->rdr->x < t->lib->sizex)
 	{
-		t->rdr->cameraX = 2 * x / (double)t->lib->sizex - 1; //t->rdr->x-coordinate in camera space
+		t->rdr->cameraX = 2 * t->rdr->x / (double)t->lib->sizex - 1; //t->rdr->x-coordinate in camera space
 		t->rdr->rayDirX = t->ply->dirX + t->ply->planeX * t->rdr->cameraX;
 		t->rdr->rayDirY = t->ply->dirY + t->ply->planeY * t->rdr->cameraX;
-		int mapX = (int)t->ply->posX;
-		int mapY = (int)t->ply->posY;
-
-		t->rdr->sideDistX;
-		t->rdr->sideDistY;
-
-		t->rdr->deltaDistX = (rayDirX == 0) ? 1e30 : ft_abs(1 / rayDirX);
-		t->rdr->deltaDistY = (rayDirY == 0) ? 1e30 : ft_abs(1 / rayDirY);
-
-		t->rdr->perpWallDist;
-
-		int stepX;
-		int stepY;
-		int hit;
-		int side;
-
-		hit = 0;
-		if(rayDirX < 0)
+		t->rdr->mapX = (int)t->ply->posX;
+		t->rdr->mapY = (int)t->ply->posY;
+		t->rdr->deltaDistX = (t->rdr->rayDirX == 0) ? 1e30 : ft_abs(1 / t->rdr->rayDirX);
+		t->rdr->deltaDistY = (t->rdr->rayDirY == 0) ? 1e30 : ft_abs(1 / t->rdr->rayDirY);
+		t->rdr->hit = 0;
+		if(t->rdr->rayDirX < 0)
 		{
-			stepX = -1;
-			sideDistX = (t->ply->posX - mapX) * deltaDistX;
+			t->rdr->stepX = -1;
+			t->rdr->sideDistX = (t->ply->posX - t->rdr->mapX) * t->rdr->deltaDistX;
 		}
 		else
 		{
-			stepX = 1;
-			sideDistX = (mapX + 1.0 - t->ply->posX) * deltaDistX;
+			t->rdr->stepX = 1;
+			t->rdr->sideDistX = (t->rdr->mapX + 1.0 - t->ply->posX) * t->rdr->deltaDistX;
 		}
-		if(rayDirY < 0)
+		if(t->rdr->rayDirY < 0)
 		{
-			stepY = -1;
-			sideDistY = (t->ply->posY - mapY) * deltaDistY;
+			t->rdr->stepY = -1;
+			t->rdr->sideDistY = (t->ply->posY - t->rdr->mapY) * t->rdr->deltaDistY;
 		}
 		else
 		{
-			stepY = 1;
-			sideDistY = (mapY + 1.0 - t->ply->posY) * deltaDistY;
+			t->rdr->stepY = 1;
+			t->rdr->sideDistY = (t->rdr->mapY + 1.0 - t->ply->posY) * t->rdr->deltaDistY;
 		}
-		while(hit == 0)
+		while(t->rdr->hit == 0)
 		{
-			if(sideDistX < sideDistY)
+			if(t->rdr->sideDistX < t->rdr->sideDistY)
 			{
-				sideDistX += deltaDistX;
-				mapX += stepX;
-				side = 0;
+				t->rdr->sideDistX += t->rdr->deltaDistX;
+				t->rdr->mapX += t->rdr->stepX;
+				t->rdr->side = 0;
 			}
 			else
 			{
-				sideDistY += deltaDistY;
-				mapY += stepY;
-				side = 1;
+				t->rdr->sideDistY += t->rdr->deltaDistY;
+				t->rdr->mapY += t->rdr->stepY;
+				t->rdr->side = 1;
 			}
 			if(worldMap[mapX][mapY] > 0)
-				hit = 1;
+				t->rdr->hit = 1;
 		}
-		if(side == 0)
-			perpWallDist = (sideDistX - deltaDistX);
+		if(t->rdr->side == 0)
+			t->rdr->perpWallDist = (t->rdr->sideDistX - t->rdr->deltaDistX);
 		else
-			perpWallDist = (sideDistY - deltaDistY);
-
-		//Calculate height of line to draw on screen
-		int lineHeight = (int)(t->lib->sizey / perpWallDist);
-		//calculate lowest and highest pixel to fill in current stripe
-		int drawStart = -lineHeight / 2 + t->lib->sizey / 2;
-		if(drawStart < 0) drawStart = 0;
-		int drawEnd = lineHeight / 2 + t->lib->sizey / 2;
-		if(drawEnd >= t->lib->sizey) drawEnd = t->lib->sizey - 1;
-
-		/* int texNum = worldMap[mapX][mapY] - 1; */
-
-		//calculate value of wallX
-		t->rdr->wallX; //where exactly the wall was hit
-		if (side == 0)
-			wallX = t->ply->posY + perpWallDist * rayDirY;
+			t->rdr->perpWallDist = (t->rdr->sideDistY - t->rdr->deltaDistY);
+		t->rdr->lineHeight = (int)(t->lib->sizey / t->rdr->perpWallDist);
+		t->rdr->drawStart = -t->rdr->lineHeight / 2 + t->lib->sizey / 2;
+		if(t->rdr->drawStart < 0) t->rdr->drawStart = 0;
+		t->rdr->drawEnd = t->rdr->lineHeight / 2 + t->lib->sizey / 2;
+		if(t->rdr->drawEnd >= t->lib->sizey) t->rdr->drawEnd = t->lib->sizey - 1;
+		if (t->rdr->side == 0)
+			t->rdr->wallX = t->ply->posY + t->rdr->perpWallDist * t->rdr->rayDirY;
 		else
-			wallX = t->ply->posX + perpWallDist * rayDirX;
-		wallX -= floor((wallX));
-
-		//x coordinate on the texture
-		int texX = (int)(wallX * (double)(t->lib->no.w));
-		if(side == 0 && rayDirX > 0)
-			texX = t->lib->no.w - texX - 1;
-		if(side == 1 && rayDirY < 0)
-			texX = t->lib->no.w - texX - 1;
-		t->rdr->step = 1.0 * t->lib->no.h / lineHeight;
-		// Starting texture coordinate
-		t->rdr->texPos = (drawStart - t->lib->sizey / 2 + lineHeight / 2) * step;
+			t->rdr->wallX = t->ply->posX + t->rdr->perpWallDist * t->rdr->rayDirX;
+		t->rdr->wallX -= floor((t->rdr->wallX));
+		t->rdr->texX = (int)(t->rdr->wallX * (double)(t->lib->no.w));
+		if(t->rdr->side == 0 && t->rdr->rayDirX > 0)
+			t->rdr->texX = t->lib->no.w - t->rdr->texX - 1;
+		if(t->rdr->side == 1 && t->rdr->rayDirY < 0)
+			t->rdr->texX = t->lib->no.w - t->rdr->texX - 1;
+		t->rdr->step = 1.0 * t->lib->no.h / t->rdr->lineHeight;
+		t->rdr->texPos = (t->rdr->drawStart - t->lib->sizey / 2 + t->rdr->lineHeight / 2) * t->rdr->step;
 		draw_texture(t);
 		t->rdr->x++;
 	}
