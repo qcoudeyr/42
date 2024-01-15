@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 12:28:58 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 13:55:20 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ typedef struct s_rend
 typedef struct s_ply
 {
 	int		is_set;
-	int		**map;
+	int		**wmap;
 	double	posx;
 	double	posy;
 	double	dirx;
