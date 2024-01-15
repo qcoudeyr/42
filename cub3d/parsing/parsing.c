@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 10:20:07 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 10:44:30 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,13 +119,15 @@ int	is_map(char *str)
 	int	i;
 
 	i = 0;
-	if (!str)
+	if (!str && !*str)
 		return (0);
 	while(str[i])
 	{
 		if (ft_strchr("012 NSEW", str[i]) == 0)
 		{
 			if (ft_strchr("\n", str[i]) == 0)
+				return (0);
+			else if (ft_strchr("\n", str[i + 1]) != 0)
 				return (0);
 		}
 		i++;
@@ -186,7 +188,8 @@ void	get_map(t_cub *t, char *str)
 	{
 		while (*(char *)ptr == '\n' && ptr +1 != NULL)
 			ptr++;
-		str = ptr;
+		if (ptr != NULL && *(char *)ptr)
+			str = ptr;
 		ptr = ft_strnstr(ptr, "\n\n", ft_strlen(ptr));
 	}
 	tmp = ft_split(str, '\n');
