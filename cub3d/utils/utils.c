@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 21:48:20 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/12 15:33:01 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/12 15:44:08 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,18 @@ void	ply_mov(t_ply *p, int keycode)
 	//move backwards if no wall behind you
 	if(keycode == 97)
 	{
-		if(worldMap[(int)(p->posX + p->dirX /2)][(int)(p->posY)] == 0)
-			p->posX += p->dirX / 2;
-		if(worldMap[(int)(p->posX)][(int)(p->posY - p->dirY /2)] == 0)
-			p->posY -= p->dirY / 2;
+		if(worldMap[(int)(p->posX - (p->dirY * moveSpeed))][(int)(p->posY)] == 0)
+			p->posX -= p->dirY * moveSpeed;
+		if(worldMap[(int)(p->posX)][(int)(p->posY + (p->dirX * moveSpeed))] == 0)
+			p->posY += p->dirX * moveSpeed;
 
 	}
 	if(keycode == 100)
 	{
-		if(worldMap[(int)(p->posX)][(int)(p->posY - p->dirY /2)] == 0)
-			p->posX -= p->dirX / 2;
-		if(worldMap[(int)(p->posX)][(int)(p->posY + p->dirY /2)] == 0)
-			p->posY += p->dirY / 2;
+		if(worldMap[(int)(p->posX)][(int)(p->posY + (p->dirY * moveSpeed))] == 0)
+			p->posX += p->dirY * moveSpeed;
+		if(worldMap[(int)(p->posX)][(int)(p->posY - (p->dirX * moveSpeed))] == 0)
+			p->posY -= p->dirX * moveSpeed;
 	}
 	if(keycode == 65364 || keycode == 115)
 	{
