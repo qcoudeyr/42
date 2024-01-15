@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 14:43:58 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 14:47:47 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,14 +266,12 @@ int	render(t_cub *t)
 		draw_texture(t);
 		t->rdr->x++;
 	}
-	//timing for input and fps counter
 	t->ply->oldtime = t->ply->time;
 	t->ply->time = getticks(t);
 	if (t->ply->oldtime == 0)
 		t->ply->oldtime = t->ply->time;
 	t->ply->frametime = (t->ply->time - t->ply->oldtime) / 1000;
 	ft_printf("%i\n", t->ply->frametime);
-	//print(1.0 / frametime); //fps counter
 	mlx_clear_window(t->lib->mlx, t->lib->c_win);
 	mlx_put_image_to_window(t->lib->mlx, t->lib->c_win, t->lib->data->img, 0 , 0);
 	mlx_string_put(t->lib->mlx, t->lib->c_win, 10, 10, tcolor(255,255,255), ft_itoa(t->ply->frametime));

@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 14:23:49 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 14:48:48 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,6 +196,11 @@ void	get_map(t_cub *t, char *str)
 		grep_map(t->lib, tmp + (i - 1));
 	format_map(t, t->lib);
 	tmp = tabfree((void **) tmp);
+}
+
+void	ply_direction(t_cub *t)
+{
+
 }
 
 int	get_map_info(t_cub *t)
