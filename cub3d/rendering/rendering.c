@@ -6,14 +6,14 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 11:59:58 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 12:31:19 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
 
-static int worldMap[24][24]=
+static int worldmap[24][24]=
 {
   {4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,7,7,7,7,7,7,7,7},
   {4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
@@ -145,7 +145,7 @@ double	ft_abs(double i)
 		return (i);
 }
 
-unsigned long getTicks(t_cub *t)
+unsigned long getticks(t_cub *t)
 {
 	struct timeval tv;
 	if (gettimeofday(&tv, NULL) != 0)
@@ -180,25 +180,25 @@ void	print_background(t_cub *t)
 
 void	draw_texture(t_cub *t)
 {
-	t->rdr->y = t->rdr->drawStart;
-	while (t->rdr->y < t->rdr->drawEnd)
+	t->rdr->y = t->rdr->drawstart;
+	while (t->rdr->y < t->rdr->drawend)
 	{
-		t->rdr->texY = (int)t->rdr->texPos & (t->texH - 1);
-		t->rdr->texPos += t->rdr->step;
+		t->rdr->texy = (int)t->rdr->texpos & (t->texh - 1);
+		t->rdr->texpos += t->rdr->step;
 		if (t->rdr->side == 0)
 		{
-			if (t->rdr->rayDirX < 0)
+			if (t->rdr->raydirx < 0)
 				t->rdr->color = get_pixel\
-(t->lib->we.ptr, t->rdr->texX - t->test, t->rdr->texY);
+(t->lib->we.ptr, t->rdr->texx - t->test, t->rdr->texy);
 			else
-				t->rdr->color = get_pixel(t->lib->ea.ptr, t->rdr->texX,t->rdr->texY);
+				t->rdr->color = get_pixel(t->lib->ea.ptr, t->rdr->texx,t->rdr->texy);
 		}
 		else if (t->rdr->side == 1)
 		{
-			if (t->rdr->rayDirY > 0)
-				t->rdr->color = get_pixel(t->lib->so.ptr, t->rdr->texX,t->rdr->texY);
+			if (t->rdr->raydiry > 0)
+				t->rdr->color = get_pixel(t->lib->so.ptr, t->rdr->texx,t->rdr->texy);
 			else
-				t->rdr->color = get_pixel(t->lib->no.ptr, t->rdr->texX,t->rdr->texY);
+				t->rdr->color = get_pixel(t->lib->no.ptr, t->rdr->texx,t->rdr->texy);
 		}
 		if(t->rdr->side == 1)
 			t->rdr->color = (t->rdr->color >> 1) & 8355711;
@@ -209,88 +209,89 @@ void	draw_texture(t_cub *t)
 int	render(t_cub *t)
 {
 	t->rdr->x = 0;
+	print_background(t);
 	while (t->rdr->x < t->lib->sizex)
 	{
-		t->rdr->cameraX = 2 * t->rdr->x / (double)t->lib->sizex - 1; //t->rdr->x-coordinate in camera space
-		t->rdr->rayDirX = t->ply->dirX + t->ply->planeX * t->rdr->cameraX;
-		t->rdr->rayDirY = t->ply->dirY + t->ply->planeY * t->rdr->cameraX;
-		t->rdr->mapX = (int)t->ply->posX;
-		t->rdr->mapY = (int)t->ply->posY;
-		t->rdr->deltaDistX = (t->rdr->rayDirX == 0) ? 1e30 : ft_abs(1 / t->rdr->rayDirX);
-		t->rdr->deltaDistY = (t->rdr->rayDirY == 0) ? 1e30 : ft_abs(1 / t->rdr->rayDirY);
+		t->rdr->camerax = 2 * t->rdr->x / (double)t->lib->sizex - 1; //t->rdr->x-coordinate in camera space
+		t->rdr->raydirx = t->ply->dirx + t->ply->planex * t->rdr->camerax;
+		t->rdr->raydiry = t->ply->diry + t->ply->planey * t->rdr->camerax;
+		t->rdr->mapx = (int)t->ply->posx;
+		t->rdr->mapy = (int)t->ply->posy;
+		t->rdr->deltadistx = (t->rdr->raydirx == 0) ? 1e30 : ft_abs(1 / t->rdr->raydirx);
+		t->rdr->deltadisty = (t->rdr->raydiry == 0) ? 1e30 : ft_abs(1 / t->rdr->raydiry);
 		t->rdr->hit = 0;
-		if(t->rdr->rayDirX < 0)
+		if(t->rdr->raydirx < 0)
 		{
-			t->rdr->stepX = -1;
-			t->rdr->sideDistX = (t->ply->posX - t->rdr->mapX) * t->rdr->deltaDistX;
+			t->rdr->stepx = -1;
+			t->rdr->sidedistx = (t->ply->posx - t->rdr->mapx) * t->rdr->deltadistx;
 		}
 		else
 		{
-			t->rdr->stepX = 1;
-			t->rdr->sideDistX = (t->rdr->mapX + 1.0 - t->ply->posX) * t->rdr->deltaDistX;
+			t->rdr->stepx = 1;
+			t->rdr->sidedistx = (t->rdr->mapx + 1.0 - t->ply->posx) * t->rdr->deltadistx;
 		}
-		if(t->rdr->rayDirY < 0)
+		if(t->rdr->raydiry < 0)
 		{
-			t->rdr->stepY = -1;
-			t->rdr->sideDistY = (t->ply->posY - t->rdr->mapY) * t->rdr->deltaDistY;
+			t->rdr->stepy = -1;
+			t->rdr->sidedisty = (t->ply->posy - t->rdr->mapy) * t->rdr->deltadisty;
 		}
 		else
 		{
-			t->rdr->stepY = 1;
-			t->rdr->sideDistY = (t->rdr->mapY + 1.0 - t->ply->posY) * t->rdr->deltaDistY;
+			t->rdr->stepy = 1;
+			t->rdr->sidedisty = (t->rdr->mapy + 1.0 - t->ply->posy) * t->rdr->deltadisty;
 		}
 		while(t->rdr->hit == 0)
 		{
-			if(t->rdr->sideDistX < t->rdr->sideDistY)
+			if(t->rdr->sidedistx < t->rdr->sidedisty)
 			{
-				t->rdr->sideDistX += t->rdr->deltaDistX;
-				t->rdr->mapX += t->rdr->stepX;
+				t->rdr->sidedistx += t->rdr->deltadistx;
+				t->rdr->mapx += t->rdr->stepx;
 				t->rdr->side = 0;
 			}
 			else
 			{
-				t->rdr->sideDistY += t->rdr->deltaDistY;
-				t->rdr->mapY += t->rdr->stepY;
+				t->rdr->sidedisty += t->rdr->deltadisty;
+				t->rdr->mapy += t->rdr->stepy;
 				t->rdr->side = 1;
 			}
-			if(worldMap[mapX][mapY] > 0)
+			if(worldmap[t->rdr->mapx][t->rdr->mapy] > 0)
 				t->rdr->hit = 1;
 		}
 		if(t->rdr->side == 0)
-			t->rdr->perpWallDist = (t->rdr->sideDistX - t->rdr->deltaDistX);
+			t->rdr->perpwalldist = (t->rdr->sidedistx - t->rdr->deltadistx);
 		else
-			t->rdr->perpWallDist = (t->rdr->sideDistY - t->rdr->deltaDistY);
-		t->rdr->lineHeight = (int)(t->lib->sizey / t->rdr->perpWallDist);
-		t->rdr->drawStart = -t->rdr->lineHeight / 2 + t->lib->sizey / 2;
-		if(t->rdr->drawStart < 0) t->rdr->drawStart = 0;
-		t->rdr->drawEnd = t->rdr->lineHeight / 2 + t->lib->sizey / 2;
-		if(t->rdr->drawEnd >= t->lib->sizey) t->rdr->drawEnd = t->lib->sizey - 1;
+			t->rdr->perpwalldist = (t->rdr->sidedisty - t->rdr->deltadisty);
+		t->rdr->lineheight = (int)(t->lib->sizey / t->rdr->perpwalldist);
+		t->rdr->drawstart = -t->rdr->lineheight / 2 + t->lib->sizey / 2;
+		if(t->rdr->drawstart < 0) t->rdr->drawstart = 0;
+		t->rdr->drawend = t->rdr->lineheight / 2 + t->lib->sizey / 2;
+		if(t->rdr->drawend >= t->lib->sizey) t->rdr->drawend = t->lib->sizey - 1;
 		if (t->rdr->side == 0)
-			t->rdr->wallX = t->ply->posY + t->rdr->perpWallDist * t->rdr->rayDirY;
+			t->rdr->wallx = t->ply->posy + t->rdr->perpwalldist * t->rdr->raydiry;
 		else
-			t->rdr->wallX = t->ply->posX + t->rdr->perpWallDist * t->rdr->rayDirX;
-		t->rdr->wallX -= floor((t->rdr->wallX));
-		t->rdr->texX = (int)(t->rdr->wallX * (double)(t->lib->no.w));
-		if(t->rdr->side == 0 && t->rdr->rayDirX > 0)
-			t->rdr->texX = t->lib->no.w - t->rdr->texX - 1;
-		if(t->rdr->side == 1 && t->rdr->rayDirY < 0)
-			t->rdr->texX = t->lib->no.w - t->rdr->texX - 1;
-		t->rdr->step = 1.0 * t->lib->no.h / t->rdr->lineHeight;
-		t->rdr->texPos = (t->rdr->drawStart - t->lib->sizey / 2 + t->rdr->lineHeight / 2) * t->rdr->step;
+			t->rdr->wallx = t->ply->posx + t->rdr->perpwalldist * t->rdr->raydirx;
+		t->rdr->wallx -= floor((t->rdr->wallx));
+		t->rdr->texx = (int)(t->rdr->wallx * (double)(t->lib->no.w));
+		if(t->rdr->side == 0 && t->rdr->raydirx > 0)
+			t->rdr->texx = t->lib->no.w - t->rdr->texx - 1;
+		if(t->rdr->side == 1 && t->rdr->raydiry < 0)
+			t->rdr->texx = t->lib->no.w - t->rdr->texx - 1;
+		t->rdr->step = 1.0 * t->lib->no.h / t->rdr->lineheight;
+		t->rdr->texpos = (t->rdr->drawstart - t->lib->sizey / 2 + t->rdr->lineheight / 2) * t->rdr->step;
 		draw_texture(t);
 		t->rdr->x++;
 	}
-	//timing for input and FPS counter
-	t->ply->oldTime = t->ply->time;
-	t->ply->time = getTicks(t);
-	if (t->ply->oldTime == 0)
-		t->ply->oldTime = t->ply->time;
-	t->ply->frameTime = (t->ply->time - t->ply->oldTime) / 1000;
-	ft_printf("%i\n", t->ply->frameTime);
-	//print(1.0 / frameTime); //FPS counter
+	//timing for input and fps counter
+	t->ply->oldtime = t->ply->time;
+	t->ply->time = getticks(t);
+	if (t->ply->oldtime == 0)
+		t->ply->oldtime = t->ply->time;
+	t->ply->frametime = (t->ply->time - t->ply->oldtime) / 1000;
+	ft_printf("%i\n", t->ply->frametime);
+	//print(1.0 / frametime); //fps counter
 	mlx_clear_window(t->lib->mlx, t->lib->c_win);
 	mlx_put_image_to_window(t->lib->mlx, t->lib->c_win, t->lib->data->img, 0 , 0);
-	mlx_string_put(t->lib->mlx, t->lib->c_win, 10, 10, tcolor(255,255,255), ft_itoa(t->ply->frameTime));
+	mlx_string_put(t->lib->mlx, t->lib->c_win, 10, 10, tcolor(255,255,255), ft_itoa(t->ply->frametime));
 	dspl_map(t->lib, origin_map(t->lib->map));
 	return (0);
 }

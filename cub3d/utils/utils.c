@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 21:48:20 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 11:20:54 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 12:29:16 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	trgb(int t, int r, int g, int b)
 }
 
 
-static int worldMap[24][24]=
+static int worldmap[24][24]=
 {
   {4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,7,7,7,7,7,7,7,7},
   {4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
@@ -49,57 +49,57 @@ static int worldMap[24][24]=
 
 void	ply_mov(t_ply *p, int keycode)
 {
-	//speed modifiers
-	double moveSpeed = 0.12; //the constant value is in squares/second
-	double rotSpeed = 0.12; //the constant value is in radians/second
-	//move forward if no wall in front of you
+	double movespeed = 0.12;
+	double rotspeed = 0.12;
+
 	if(keycode == 65362 || keycode == 119)
 	{
-		if(worldMap[(int)(p->posX + p->dirX * moveSpeed)][(int)(p->posY)] == 0) p->posX += p->dirX * moveSpeed;
-		if(worldMap[(int)(p->posX)][(int)(p->posY + p->dirY * moveSpeed)] == 0) p->posY += p->dirY * moveSpeed;
+		if(worldmap[(int)(p->posx + p->dirx * movespeed)][(int)(p->posy)] == 0)
+			p->posx += p->dirx * movespeed;
+		if(worldmap[(int)(p->posx)][(int)(p->posy + p->diry * movespeed)] == 0)
+			p->posy += p->diry * movespeed;
 	}
-	//move backwards if no wall behind you
 	if(keycode == 97)
 	{
-		if(worldMap[(int)(p->posX - (p->dirY * moveSpeed))][(int)(p->posY)] == 0)
-			p->posX -= p->dirY * moveSpeed;
-		if(worldMap[(int)(p->posX)][(int)(p->posY + (p->dirX * moveSpeed))] == 0)
-			p->posY += p->dirX * moveSpeed;
+		if(worldmap[(int)(p->posx - (p->diry * movespeed))][(int)(p->posy)] == 0)
+			p->posx -= p->diry * movespeed;
+		if(worldmap[(int)(p->posx)][(int)(p->posy + (p->dirx * movespeed))] == 0)
+			p->posy += p->dirx * movespeed;
 
 	}
 	if(keycode == 100)
 	{
-		if(worldMap[(int)(p->posX)][(int)(p->posY + (p->dirY * moveSpeed))] == 0)
-			p->posX += p->dirY * moveSpeed;
-		if(worldMap[(int)(p->posX)][(int)(p->posY - (p->dirX * moveSpeed))] == 0)
-			p->posY -= p->dirX * moveSpeed;
+		if(worldmap[(int)(p->posx)][(int)(p->posy + (p->diry * movespeed))] == 0)
+			p->posx += p->diry * movespeed;
+		if(worldmap[(int)(p->posx)][(int)(p->posy - (p->dirx * movespeed))] == 0)
+			p->posy -= p->dirx * movespeed;
 	}
 	if(keycode == 65364 || keycode == 115)
 	{
-		if(worldMap[(int)(p->posX - p->dirX * moveSpeed)][(int)(p->posY)] == 0) p->posX -= p->dirX * moveSpeed;
-		if(worldMap[(int)(p->posX)][(int)(p->posY - p->dirY * moveSpeed)] == 0) p->posY -= p->dirY * moveSpeed;
+		if(worldmap[(int)(p->posx - p->dirx * movespeed)][(int)(p->posy)] == 0)
+			p->posx -= p->dirx * movespeed;
+		if(worldmap[(int)(p->posx)][(int)(p->posy - p->diry * movespeed)] == 0)
+			p->posy -= p->diry * movespeed;
 	}
 	//rotate to the right
 	if(keycode == 65363)
 	{
 		//both camera direction and camera plane must be rotated
-		double oldDirX = p->dirX;
-		p->dirX = p->dirX * cos(-rotSpeed) - p->dirY * sin(-rotSpeed);
-		p->dirY = oldDirX * sin(-rotSpeed) + p->dirY * cos(-rotSpeed);
-		double oldPlaneX = p->planeX;
-		p->planeX = p->planeX * cos(-rotSpeed) - p->planeY * sin(-rotSpeed);
-		p->planeY = oldPlaneX * sin(-rotSpeed) + p->planeY * cos(-rotSpeed);
+		p->olddirx = p->dirx;
+		p->dirx = p->dirx * cos(-rotspeed) - p->diry * sin(-rotspeed);
+		p->diry = p->olddirx * sin(-rotspeed) + p->diry * cos(-rotspeed);
+		p->oldplanex = p->planex;
+		p->planex = p->planex * cos(-rotspeed) - p->planey * sin(-rotspeed);
+		p->planey = p->oldplanex * sin(-rotspeed) + p->planey * cos(-rotspeed);
 	}
-	//rotate to the left
 	if(keycode == 65361)
 	{
-		//both camera direction and camera plane must be rotated
-		double oldDirX = p->dirX;
-		p->dirX = p->dirX * cos(rotSpeed) - p->dirY * sin(rotSpeed);
-		p->dirY = oldDirX * sin(rotSpeed) + p->dirY * cos(rotSpeed);
-		double oldPlaneX = p->planeX;
-		p->planeX = p->planeX * cos(rotSpeed) - p->planeY * sin(rotSpeed);
-		p->planeY = oldPlaneX * sin(rotSpeed) + p->planeY * cos(rotSpeed);
+		p->olddirx = p->dirx;
+		p->dirx = p->dirx * cos(rotspeed) - p->diry * sin(rotspeed);
+		p->diry = p->olddirx * sin(rotspeed) + p->diry * cos(rotspeed);
+		p->oldplanex = p->planex;
+		p->planex = p->planex * cos(rotspeed) - p->planey * sin(rotspeed);
+		p->planey = p->oldplanex * sin(rotspeed) + p->planey * cos(rotspeed);
 	}
 }
 

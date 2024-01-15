@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 11:45:41 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 12:28:58 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <unistd.h>
+
 typedef struct s_utils
 {
 	int		i;
@@ -67,8 +68,7 @@ typedef struct s_tex
 	int		w;
 	int		h;
 	t_data	*ptr;
-}					t_tex;
-
+}			t_tex;
 
 typedef struct s_mlx
 {
@@ -97,65 +97,68 @@ typedef struct s_mlx
 	t_data	*tampon;
 	t_map	*map;
 
-}				t_mlx;
+}			t_mlx;
 
 typedef struct s_rend
 {
 	unsigned int	color;
-	double			cameraX;
-	double			rayDirX;
-	double			rayDirY;
-	double			sideDistX;
-	double			sideDistY;
-	double			deltaDistX;
-	double			deltaDistY;
-	double			perpWallDist;
+	double			camerax;
+	double			raydirx;
+	double			raydiry;
+	double			sidedistx;
+	double			sidedisty;
+	double			deltadistx;
+	double			deltadisty;
+	double			perpwalldist;
 	double			step;
-	double			texPos;
-	double			wallX;
-	int				texY;
-	int				mapX;
-	int				mapY;
-	int				stepX;
-	int				texX;
-	int				stepY;
+	double			texpos;
+	double			wallx;
+	int				texy;
+	int				mapx;
+	int				mapy;
+	int				stepx;
+	int				texx;
+	int				stepy;
 	int				hit;
-	int				lineHeight;
+	int				lineheight;
 	int				side;
-	int				drawStart;
-	int				drawEnd;
+	int				drawstart;
+	int				drawend;
 	int				x;
 	int				y;
 }				t_rdr;
 
 typedef struct s_ply
 {
-	int		worldMap[24][24];
 	int		is_set;
-	double	posX;
-	double	posY;
-	double	dirX;
-	double	dirY;
-	double	planeX;
-	double	planeY;
+	int		**map;
+	double	posx;
+	double	posy;
+	double	dirx;
+	double	diry;
+	double	planex;
+	double	planey;
+	double	olddirx;
+	double	oldplanex;
 	double	time;
-	double	oldTime;
-	double	frameTime;
-}					t_ply;
+	double	oldtime;
+	double	frametime;
+}				t_ply;
 
 typedef struct s_cub
 {
 	int				fd_map;
-	int				texW;
-	double			init_t;
-	int				texH;
+	int				texw;
+	int				texh;
+	int				**wmap;
 	double			test;
+	double			init_t;
 	struct s_map	*map;
 	struct s_data	data;
 	struct s_mlx	*lib;
 	struct s_ply	*ply;
 	struct s_rend	*rdr;
-}					t_cub;
+}				t_cub;
 /*
 
 //Main File Function  */

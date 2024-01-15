@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:59:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 11:23:41 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 12:40:01 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,17 +74,10 @@ int	main(int argc, char **argv)
 	if (t->lib->map == NULL)
 		return (free_struct(t));
 	t->map = origin_map(t->lib->map);
- 	while(t->map != NULL)
+ 	for(int y = 0; y < t->lib->ylen; y++)
 	{
-		while(t->map->nx != NULL)
-		{
-			ft_printf("%i", t->map->value);
-			t->map = t->map->nx;
-		}
-		ft_printf("%i", t->map->value);
-		if (t->map->first->ny == NULL && t->map->nx == NULL)
-			break;
-		t->map = t->map->first->ny;
+		for(int x = 0 ; x < t->lib->xlen; x++)
+			ft_printf("%i", t->wmap[y][x]);
 		ft_printf("\n");
 	}
 	t->lib->mlx = mlx_init();

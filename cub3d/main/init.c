@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 08:53:29 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 11:45:42 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 12:29:59 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,23 +67,23 @@ void	lib_init(t_mlx *lib)
 
 void	init_player(t_ply *p)
 {
-	p->posX = 5;
-	p->posY = 5;
-	p->dirX = -1;
-	p->dirY = 0;
-	p->planeX = 0;
-	p->planeY = 0.66;
+	p->posx = 5;
+	p->posy = 5;
+	p->dirx = -1;
+	p->diry = 0;
+	p->planex = 0;
+	p->planey = 0.66;
 	p->time = 0;
-	p->oldTime = 0;
-	p->frameTime = 0;
+	p->oldtime = 0;
+	p->frametime = 0;
 }
 
 void	init_struct(t_cub *t)
 {
 	t->fd_map = 0;
-	t->texW = 64;
+	t->texw = 64;
 	t->init_t = 0;
-	t->texH = 64;
+	t->texh = 64;
 	t->test = 0.0;
 	t->ply = ft_calloc(1, sizeof(t_ply));
 	t->rdr = ft_calloc(1, sizeof(t_rdr));

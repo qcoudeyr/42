@@ -6,30 +6,18 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 10:44:30 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 12:46:31 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-/*
-Pour la gestion du parsing:
-Les espace sont sont a gerer comme des -1 soit non existant pour que la
-map reste coherente;
-
-adapter le parsing fdf pour la map en 0 et en 1 et supprimer les variables
-multiplicatrices;
-
-chercher sur la map le point n-1 ou n+1 si il existe, et si non,
-verifier que n soit un 1 sinon erreur !
- */
 
 int	map_value(char c)
 {
 	int	v;
 
 	if (c == ' ')
-		v = -1;
+		v = 1;
 	else if (c == 'N')
 		v = 2;
 	else if (c == 'S')
@@ -135,27 +123,36 @@ int	is_map(char *str)
 	return (1);
 }
 
-void	format_map(t_mlx *lib)
+void	format_map(t_cub *t, t_mlx *lib)
 {
+	int	y;
+	int	x;
+
+	y = 0;
+	t->wmap = ft_calloc((lib->ylen), sizeof(int *));
+	while(y < lib->ylen)
+	{
+		t->wmap[y] = ft_calloc((lib->xlen), sizeof(int));
+		x = 0;
+		while (x < lib->xlen)
+			t->wmap[y][x++] = 1;
+		y++;
+	}
 	if (!lib->map)
 		return ;
-	while (lib->map->y < lib->ylen && lib->map->x < lib->xlen)
+	while (lib->map->y < lib->ylen)
 	{
 		while (lib->map->x < lib->xlen)
 		{
-			if (!lib->map->nx)
-			{
-				lib->map->nx = create_map_ptn(lib->map->x + 1, lib->map->y, 1);
-				if (lib->map->y > 0 && lib->map->py && lib->map->py->nx)
-					map_addelement(&lib->map->first, &lib->map->py->nx, &lib->map, lib->map->nx);
-				else
-					map_addelement(&lib->map->first, NULL, &lib->map, lib->map->nx);
-			}
-			else
-				lib->map = lib->map->nx;
+			t->wmap[lib->map->y][lib->map->x] = lib->map->value;
+			if (lib->map->nx == NULL)
+				break;
+			lib->map = lib->map->nx;
 		}
 		if (lib->map->first->ny != NULL)
 			lib->map = lib->map->first->ny;
+		else
+			break;
 	}
 }
 
@@ -200,7 +197,7 @@ void	get_map(t_cub *t, char *str)
 	while (is_map(tmp[i++]) == 0);
 	if (tmp[i] != NULL)
 		grep_map(t->lib, tmp + (i - 1));
-	format_map(t->lib);
+	format_map(t, t->lib);
 	tmp = tabfree((void **) tmp);
 }
 
