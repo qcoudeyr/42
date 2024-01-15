@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 14:48:48 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 15:47:58 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,9 +198,52 @@ void	get_map(t_cub *t, char *str)
 	tmp = tabfree((void **) tmp);
 }
 
-void	ply_direction(t_cub *t)
+void	set_player_direction(t_cub *t, t_utils *u)
 {
+	if (t->wmap[u->y][u->x] == 2)
+	{
+		t->ply->dirx = 0;
+		t->ply->diry = 1;
+	}
+	else if (t->wmap[u->y][u->x] == 3)
+	{
+		t->ply->dirx = 0;
+		t->ply->diry = -1;
+	}
+	else if (t->wmap[u->y][u->x] == 4)
+	{
+		t->ply->dirx = 1;
+		t->ply->diry = 0;
+	}
+	else if (t->wmap[u->y][u->x] == 5)
+	{
+		t->ply->dirx = -1;
+		t->ply->diry = 0;
+	}
+	if (t->wmap[u->y][u->x] >= 2 && t->wmap[u->y][u->x] <= 5)
+	{
+		t->ply->posx = u->x;
+		t->ply->posy = u->y;
+	}
+}
 
+void	get_ply_pos(t_cub *t)
+{
+	t_utils *u;
+
+	u = ft_calloc(1, sizeof(t_utils));
+	utils_init(u);
+	while (u->y < t->lib->ylen)
+	{
+		u->x = 0;
+		while (u->x < t->lib->xlen)
+		{
+			set_player_direction(t, u);
+			u->x++;
+		}
+		u->y++;
+	}
+	u = pfree(u);
 }
 
 int	get_map_info(t_cub *t)
@@ -244,6 +287,7 @@ int	get_map_info(t_cub *t)
 		return (printerrf("Error !\n Celling color not set !\n", buf));
 	get_map(t, buf);
 	buf = pfree(buf);
+	get_ply_pos(t);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 14:47:47 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 15:29:52 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,16 +148,21 @@ unsigned long getticks(t_cub *t)
 void	print_background(t_cub *t)
 {
 	int y;
+	int x;
 
 	y = 0;
-	while(y < t->lib->sizey)
+	while (y < t->lib->sizey)
 	{
-		for(int x = 0; x < t->lib->sizex; x++)
+		x = 0;
+		while (x < t->lib->sizex)
 		{
 			if (y < (t->lib->sizey / 2))
-				pixel_put(t->lib->data, x, y, trgb(80, t->lib->ceiling[0], t->lib->ceiling[1], t->lib->ceiling[2]));
+				pixel_put(t->lib->data, x, y, \
+trgb(80, t->lib->ceiling[0], t->lib->ceiling[1], t->lib->ceiling[2]));
 			else
-				pixel_put(t->lib->data, x, y, trgb(80, t->lib->floor[0], t->lib->floor[1], t->lib->floor[2]));
+				pixel_put(t->lib->data, x, y, trgb(80, t->lib->floor[0], \
+t->lib->floor[1], t->lib->floor[2]));
+			x++;
 		}
 		y++;
 	}
