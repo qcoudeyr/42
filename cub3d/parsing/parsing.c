@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 09:19:38 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 09:28:39 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,13 +132,13 @@ void	format_map(t_mlx *lib)
 {
 	if (!lib->map)
 		return ;
-/* 	while (lib->map->y < lib->ylen && lib->map->x < lib->xlen)
+	while (lib->map->y < lib->ylen && lib->map->x < lib->xlen)
 	{
 		while (lib->map->x < lib->xlen)
 		{
 			if (!lib->map->nx)
 			{
-				lib->map->nx = create_map_ptn(lib->map->x + 1, lib->map->y, -1);
+				lib->map->nx = create_map_ptn(lib->map->x + 1, lib->map->y, 1);
 				if (lib->map->y > 0 && lib->map->py && lib->map->py->nx)
 					map_addelement(&lib->map->first, &lib->map->py->nx, &lib->map, lib->map->nx);
 				else
@@ -149,7 +149,7 @@ void	format_map(t_mlx *lib)
 		}
 		if (lib->map->first->ny != NULL)
 			lib->map = lib->map->first->ny;
-	} */
+	}
 }
 
 void	grep_map(t_mlx *lib, char **map)
@@ -175,11 +175,11 @@ void	get_map(t_cub *t, char *str)
 	int		i;
 
 	i = 0;
+	tmp = ft_split(str, '\n');
 	if (ft_strnstr(str, "\n\n ", ft_strlen(str)) != NULL)
 		ft_printf("here :%s\n", ft_strnstr(str, "\n\n ", ft_strlen(str)));
 	else if(ft_strnstr(str, "\n\n1", ft_strlen(str)) != NULL)
 		ft_printf("here :%s\n", ft_strnstr(str, "\n\n1", ft_strlen(str)));
-	tmp = ft_split(str, '\n');
 	while (is_map(tmp[i++]) == 0);
 	if (tmp[i] != NULL)
 		grep_map(t->lib, tmp + (i - 1));
