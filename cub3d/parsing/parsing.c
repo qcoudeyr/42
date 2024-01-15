@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 09:28:39 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 10:01:48 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,10 +119,17 @@ int	is_map(char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while(str[i])
 	{
-		if (ft_strchr("01 NSEW", str[i]) == 0)
-			return (0);
+		if (ft_strchr("012 NSEW", str[i]) == 0)
+		{
+			if (ft_strchr("\n", str[i]) == 0)
+				return (0);
+			else if (ft_strchr("\n", str[i + 1]) != 0 && ft_strchr("012 NSEW", str[i + 1]) == 0)
+				return (0);
+		}
 		i++;
 	}
 	return (1);
@@ -172,13 +179,17 @@ void	grep_map(t_mlx *lib, char **map)
 void	get_map(t_cub *t, char *str)
 {
 	char	**tmp;
+	void	*ptr;
 	int		i;
 
 	i = 0;
 	tmp = ft_split(str, '\n');
-	if (ft_strnstr(str, "\n\n ", ft_strlen(str)) != NULL)
+	ptr = ft_strnstr(str, "\n\n", ft_strlen(str));
+	while (ptr != NULL && is_map(ptr) != 1)
+		ptr = ft_strnstr(ptr + 1, "\n\n", ft_strlen(ptr));
+	if (is_map(ptr) != 0)
 		ft_printf("here :%s\n", ft_strnstr(str, "\n\n ", ft_strlen(str)));
-	else if(ft_strnstr(str, "\n\n1", ft_strlen(str)) != NULL)
+	else if(is_map(ptr) != 0)
 		ft_printf("here :%s\n", ft_strnstr(str, "\n\n1", ft_strlen(str)));
 	while (is_map(tmp[i++]) == 0);
 	if (tmp[i] != NULL)
