@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 13:59:13 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 14:33:36 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,51 +61,39 @@ void	sqr_print(t_data *data, int	len[2], int offset[2], int color)
 	u = pfree(u);
 }
 
-void	dspl_map(t_mlx *lib, t_map *map)
+void	dspl_map(t_cub *t, t_mlx *lib)
 {
 	int	v[2];
 	int	color;
 	int	offset[2];
+	int	x;
+	int	y;
 
-	v[0] = 7 * (lib->xlen + 1) + 5;
-	v[1] = 7 * (lib->ylen + 1) + 5;
+	y = 0;
 	color = tcolor(30, 30, 30);
-	offset[0] = 0;
-	offset[1] = 0;
- 	sqr_print(lib->data, v, offset, color);
-	v[0] = 7;
-	v[1] = 7;
-	offset[0] = map->x +1;
-	offset[1] = map->y +1;
-	while (map->nx || map->first->ny)
+	v[0] = 10;
+	v[1] = 10;
+	while (y < lib->ylen)
 	{
-		if (map->value == 0)
-			color = trgb(0, 255,255,(255 - map->y));
-		else if (map->value == -1)
-			color = trgb(100000, 0,0,0);
-		else if (map->value == 1)
-			color = trgb(0,153, 73, 0);
-		else
-			color = trgb(0, 0, 255, 0);
-		sqr_print(lib->data, v, offset, color);
-		if (map->nx)
+		offset[1] = (y + 1) * 10;
+		x = 0;
+		while (x < lib->xlen)
 		{
-			map = map->nx;
-			offset[0] = (v[0] * map->x) +1;
+			offset[0] = (x + 1) * 10;
+			if (t->wmap[y][x] == 0)
+				color = trgb(0, 255,255,(255 - y));
+			else if (t->wmap[y][x] == 1)
+				color = trgb(0,153, 73, 0);
+			sqr_print(lib->data, v, offset, color);
+			x++;
 		}
-		else if (map->first->ny)
-		{
-			map = map->first->ny;
-			offset[0] = (v[0] * map->x) +1;
-			offset[1] = (v[1] * map->y) +1;
-		}
-		else
-			map = map->first->ny;
+		y++;
 	}
-	if (!map->nx && map)
-		sqr_print(lib->data, v, offset, color);
+	offset[1] = (int)(t->ply->posx + 1) *10;
+	offset[0] = (int)(t->ply->posy + 1) *10;
+	color = trgb(0, 255,0,0);
+	sqr_print(lib->data, v, offset, color);
 	mlx_put_image_to_window(lib->mlx, lib->c_win, lib->data->img, 0, 0);
-	return;
 }
 
 double	ft_abs(double i)
@@ -263,6 +251,6 @@ int	render(t_cub *t)
 	mlx_clear_window(t->lib->mlx, t->lib->c_win);
 	mlx_put_image_to_window(t->lib->mlx, t->lib->c_win, t->lib->data->img, 0 , 0);
 	mlx_string_put(t->lib->mlx, t->lib->c_win, 10, 10, tcolor(255,255,255), ft_itoa(t->ply->frametime));
-	dspl_map(t->lib, origin_map(t->lib->map));
+	dspl_map(t, t->lib);
 	return (0);
 }

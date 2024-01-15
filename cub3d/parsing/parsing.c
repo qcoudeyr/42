@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 13:55:51 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 14:23:49 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,10 +191,6 @@ void	get_map(t_cub *t, char *str)
 		ptr = ft_strnstr(ptr, "\n\n", ft_strlen(ptr));
 	}
 	tmp = ft_split(str, '\n');
-	if (is_map(str) != 0)
-		ft_printf("here :%s\n", ft_strnstr(str, "\n\n ", ft_strlen(str)));
-	else if(is_map(str) != 0)
-		ft_printf("here :%s\n", ft_strnstr(str, "\n\n1", ft_strlen(str)));
 	while (is_map(tmp[i++]) == 0);
 	if (tmp[i] != NULL)
 		grep_map(t->lib, tmp + (i - 1));

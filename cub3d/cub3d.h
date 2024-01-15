@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 13:55:20 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 14:22:00 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,7 +198,7 @@ int	closewin(t_mlx *lib);
 int				color(int red, int green, int blue);
 void			pixel_put(t_data *data, int x, int y, int color);
 void			sqr_print(t_data *data, int	len[2], int offset[2], int color);
-void			dspl_map(t_mlx *lib, t_map *map);
+void			dspl_map(t_cub *t, t_mlx *lib);
 int				render(t_cub *t);
 unsigned int	get_pixel(t_data *data, int x, int y);
 void			texture_put(t_cub *t, t_data *data, int x, int y, unsigned int color);
