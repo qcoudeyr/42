@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 15:29:52 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 16:42:41 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,11 +157,9 @@ void	print_background(t_cub *t)
 		while (x < t->lib->sizex)
 		{
 			if (y < (t->lib->sizey / 2))
-				pixel_put(t->lib->data, x, y, \
-trgb(80, t->lib->ceiling[0], t->lib->ceiling[1], t->lib->ceiling[2]));
+				pixel_put(t->lib->data, x, y, trgb(80, t->lib->ceiling[0], t->lib->ceiling[1], t->lib->ceiling[2]));
 			else
-				pixel_put(t->lib->data, x, y, trgb(80, t->lib->floor[0], \
-t->lib->floor[1], t->lib->floor[2]));
+				pixel_put(t->lib->data, x, y, trgb(80, t->lib->floor[0], t->lib->floor[1], t->lib->floor[2]));
 			x++;
 		}
 		y++;
@@ -175,17 +173,16 @@ void	draw_texture(t_cub *t)
 	{
 		t->rdr->texy = (int)t->rdr->texpos & (t->texh - 1);
 		t->rdr->texpos += t->rdr->step;
-		if (t->rdr->side == 0)
+		if (t->rdr->side == 1)
 		{
-			if (t->rdr->raydirx < 0)
-				t->rdr->color = get_pixel\
-(t->lib->we.ptr, t->rdr->texx - t->test, t->rdr->texy);
+			if (t->rdr->raydiry < 0)
+				t->rdr->color = get_pixel(t->lib->we.ptr, t->rdr->texx - t->test, t->rdr->texy);
 			else
 				t->rdr->color = get_pixel(t->lib->ea.ptr, t->rdr->texx,t->rdr->texy);
 		}
-		else if (t->rdr->side == 1)
+		else if (t->rdr->side == 0)
 		{
-			if (t->rdr->raydiry > 0)
+			if (t->rdr->raydirx > 0)
 				t->rdr->color = get_pixel(t->lib->so.ptr, t->rdr->texx,t->rdr->texy);
 			else
 				t->rdr->color = get_pixel(t->lib->no.ptr, t->rdr->texx,t->rdr->texy);

@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 15:47:58 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 16:49:27 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,13 +129,13 @@ void	format_map(t_cub *t, t_mlx *lib)
 	int	x;
 
 	y = 0;
-	t->wmap = ft_calloc((lib->ylen), sizeof(int *));
+	t->wmap = ft_calloc(lib->ylen + 1, sizeof(int *));
 	t->ply->wmap = t->wmap;
-	while(y < lib->ylen)
+	while(y <= lib->ylen)
 	{
-		t->wmap[y] = ft_calloc((lib->xlen), sizeof(int));
+		t->wmap[y] = ft_calloc((lib->xlen +1), sizeof(int));
 		x = 0;
-		while (x < lib->xlen)
+		while (x <= lib->xlen)
 			t->wmap[y][x++] = 1;
 		y++;
 	}
@@ -202,28 +202,37 @@ void	set_player_direction(t_cub *t, t_utils *u)
 {
 	if (t->wmap[u->y][u->x] == 2)
 	{
-		t->ply->dirx = 0;
-		t->ply->diry = 1;
+		t->ply->dirx = -1.00;
+		t->ply->diry = 0.00;
+		t->ply->planex = 0.00;
+		t->ply->planey = 0.66;
 	}
 	else if (t->wmap[u->y][u->x] == 3)
 	{
-		t->ply->dirx = 0;
-		t->ply->diry = -1;
+		t->ply->dirx = 1.00;
+		t->ply->diry = 0.00;
+		t->ply->planex = 0.00;
+		t->ply->planey = -0.66;
 	}
 	else if (t->wmap[u->y][u->x] == 4)
 	{
-		t->ply->dirx = 1;
-		t->ply->diry = 0;
+		t->ply->dirx = 0.00;
+		t->ply->diry = 1.00;
+		t->ply->planex = 0.66;
+		t->ply->planey = 0.00;
 	}
 	else if (t->wmap[u->y][u->x] == 5)
 	{
-		t->ply->dirx = -1;
-		t->ply->diry = 0;
+		t->ply->dirx = 0.00;
+		t->ply->diry = -1.00;
+		t->ply->planex = -0.66;
+		t->ply->planey = 0.00;
 	}
 	if (t->wmap[u->y][u->x] >= 2 && t->wmap[u->y][u->x] <= 5)
 	{
-		t->ply->posx = u->x;
-		t->ply->posy = u->y;
+		t->ply->posy = u->x;
+		t->ply->posx = u->y;
+		t->wmap[u->y][u->x] = 0;
 	}
 }
 
