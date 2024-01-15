@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 11:21:09 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 11:48:12 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ void	texture_put(t_cub *t, t_data *data, int x, int y, unsigned int color)
 
 unsigned int	get_pixel(t_data *data, int x, int y)
 {
-	return (*(unsigned int *)(data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8))));
+	return (*(unsigned int *)(data->addr + \
+	(y * data->line_length + x * (data->bits_per_pixel / 8))));
 }
 
 void	sqr_print(t_data *data, int	len[2], int offset[2], int color)
@@ -159,24 +160,12 @@ unsigned long getTicks(t_cub *t)
 	}
 	return (((tv.tv_sec * 1000UL) + (tv.tv_usec / 1000UL)) - t->init_t);
 }
-
-/* int	verLine(t_mlx *lib, int buffer[lib->sizex][lib->sizey])
+void	print_background(t_cub *t)
 {
-	int	h,w;
+	int y;
 
-	h = lib->sizey;
-	w = lib->sizex;
-	for (int y = 0; y <= h; y++)
-	{
-		for (int x = 0; x <= w; x++)
-			pixel_put(lib->data, x, y, buffer[x][y]);
-	}
-	return 1;
-} */
-
-int	render(t_cub *t)
-{
-	for(int y = 0; y < t->lib->sizey; y++)
+	y = 0;
+	while(y < t->lib->sizey)
 	{
 		for(int x = 0; x < t->lib->sizex; x++)
 		{
@@ -185,31 +174,64 @@ int	render(t_cub *t)
 			else
 				pixel_put(t->lib->data, x, y, trgb(80, t->lib->floor[0], t->lib->floor[1], t->lib->floor[2]));
 		}
+		y++;
 	}
-	for(int x = 0; x < t->lib->sizex; x++)
+}
+
+void	draw_texture(t_cub *t)
+{
+	y = drawStart;
+	while (y < drawEnd)
 	{
-		double cameraX = 2 * x / (double)t->lib->sizex - 1; //x-coordinate in camera space
-		double rayDirX = t->ply->dirX + t->ply->planeX * cameraX;
-		double rayDirY = t->ply->dirY + t->ply->planeY * cameraX;
+		texY = (int)texPos & (t->texH - 1);
+		texPos += step;
+		if (side == 0)
+		{
+			if (rayDirX < 0)
+			{
+				color = get_pixel(t->lib->we.ptr, texX - t->test, texY);
+			}
+			else
+				color = get_pixel(t->lib->ea.ptr, texX,texY);
+		}
+		else if (side == 1)
+		{
+			if (rayDirY > 0)
+				color = get_pixel(t->lib->so.ptr, texX,texY);
+			else
+				color = get_pixel(t->lib->no.ptr, texX,texY);
+		}
+		if(side == 1)
+			color = (color >> 1) & 8355711;
+		texture_put(t, t->lib->data, x, y++, color);
+	}
+}
+
+int	render(t_cub *t)
+{
+	t->rdr->x = 0;
+	while (t->rdr->x < t->lib->sizex)
+	{
+		t->rdr->cameraX = 2 * x / (double)t->lib->sizex - 1; //t->rdr->x-coordinate in camera space
+		t->rdr->rayDirX = t->ply->dirX + t->ply->planeX * t->rdr->cameraX;
+		t->rdr->rayDirY = t->ply->dirY + t->ply->planeY * t->rdr->cameraX;
 		int mapX = (int)t->ply->posX;
 		int mapY = (int)t->ply->posY;
 
-		//length of ray from current position to next x or y-side
-		double sideDistX;
-		double sideDistY;
+		t->rdr->sideDistX;
+		t->rdr->sideDistY;
 
-		double deltaDistX = (rayDirX == 0) ? 1e30 : ft_abs(1 / rayDirX);
-		double deltaDistY = (rayDirY == 0) ? 1e30 : ft_abs(1 / rayDirY);
+		t->rdr->deltaDistX = (rayDirX == 0) ? 1e30 : ft_abs(1 / rayDirX);
+		t->rdr->deltaDistY = (rayDirY == 0) ? 1e30 : ft_abs(1 / rayDirY);
 
-		double perpWallDist;
+		t->rdr->perpWallDist;
 
-		//what direction to step in x or y-direction (either +1 or -1)
 		int stepX;
 		int stepY;
-
-		int hit = 0;
+		int hit;
 		int side;
 
+		hit = 0;
 		if(rayDirX < 0)
 		{
 			stepX = -1;
@@ -263,7 +285,7 @@ int	render(t_cub *t)
 		/* int texNum = worldMap[mapX][mapY] - 1; */
 
 		//calculate value of wallX
-		double wallX; //where exactly the wall was hit
+		t->rdr->wallX; //where exactly the wall was hit
 		if (side == 0)
 			wallX = t->ply->posY + perpWallDist * rayDirY;
 		else
@@ -272,38 +294,15 @@ int	render(t_cub *t)
 
 		//x coordinate on the texture
 		int texX = (int)(wallX * (double)(t->lib->no.w));
-		if(side == 0 && rayDirX > 0) texX = t->lib->no.w - texX - 1;
-		if(side == 1 && rayDirY < 0) texX = t->lib->no.w - texX - 1;
-		double step = 1.0 * t->lib->no.h / lineHeight;
+		if(side == 0 && rayDirX > 0)
+			texX = t->lib->no.w - texX - 1;
+		if(side == 1 && rayDirY < 0)
+			texX = t->lib->no.w - texX - 1;
+		t->rdr->step = 1.0 * t->lib->no.h / lineHeight;
 		// Starting texture coordinate
-		double texPos = (drawStart - t->lib->sizey / 2 + lineHeight / 2) * step;
-
-		for(int y = drawStart; y<drawEnd; y++)
-		{
-			int texY;
-			unsigned int color;
-
-			texY = (int)texPos & (t->texH - 1);
-			texPos += step;
-			if (side == 0)
-			{
-				if (rayDirX < 0)
-				{
-					color = get_pixel(t->lib->we.ptr, texX - t->test, texY);
-				}
-				else
-					color = get_pixel(t->lib->ea.ptr, texX,texY);
-			}
-			else if (side == 1)
-			{
-				if (rayDirY > 0)
-					color = get_pixel(t->lib->so.ptr, texX,texY);
-				else
-					color = get_pixel(t->lib->no.ptr, texX,texY);
-			}
-			if(side == 1) color = (color >> 1) & 8355711;
-			texture_put(t, t->lib->data, x, y, color);
-		}
+		t->rdr->texPos = (drawStart - t->lib->sizey / 2 + lineHeight / 2) * step;
+		draw_texture(t);
+		t->rdr->x++;
 	}
 	//timing for input and FPS counter
 	t->ply->oldTime = t->ply->time;

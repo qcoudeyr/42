@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 08:56:38 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/10 15:43:09 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 11:46:27 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	free_lib(t_mlx *lib)
 int	free_struct(t_cub *t)
 {
 	free_lib(t->lib);
+	t->ply = pfree(t->ply);
+	t->rdr = pfree(t->rdr);
 	t = pfree(t);
 	return (0);
 }

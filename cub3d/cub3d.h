@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/12 15:14:05 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 11:45:41 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,35 @@ typedef struct s_mlx
 
 }				t_mlx;
 
+typedef struct s_rend
+{
+	unsigned int	color;
+	double			cameraX;
+	double			rayDirX;
+	double			rayDirY;
+	double			sideDistX;
+	double			sideDistY;
+	double			deltaDistX;
+	double			deltaDistY;
+	double			perpWallDist;
+	double			step;
+	double			texPos;
+	double			wallX;
+	int				texY;
+	int				mapX;
+	int				mapY;
+	int				stepX;
+	int				texX;
+	int				stepY;
+	int				hit;
+	int				lineHeight;
+	int				side;
+	int				drawStart;
+	int				drawEnd;
+	int				x;
+	int				y;
+}				t_rdr;
+
 typedef struct s_ply
 {
 	int		worldMap[24][24];
@@ -125,6 +154,7 @@ typedef struct s_cub
 	struct s_data	data;
 	struct s_mlx	*lib;
 	struct s_ply	*ply;
+	struct s_rend	*rdr;
 }					t_cub;
 /*
 
