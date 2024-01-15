@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 14:33:36 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 14:43:58 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,26 @@ unsigned int	get_pixel(t_data *data, int x, int y)
 	(y * data->line_length + x * (data->bits_per_pixel / 8))));
 }
 
+void	draw_arrow(t_data *data, t_arrow *arrow)
+{
+	int x, y;
+
+	// Draw arrow body
+	for (x = arrow->x - arrow->size / 2; x <= arrow->x + arrow->size / 2; x++)
+		pixel_put(data, x, arrow->y, arrow->color);
+
+	// Draw arrowhead
+	for (y = arrow->y - arrow->size / 2; y <= arrow->y + arrow->size / 2; y++) {
+		for (x = arrow->x - arrow->size / 2; x <= arrow->x + arrow->size / 2; x++) {
+			if ((x - arrow->x) + (y - arrow->y) >= -arrow->size / 2
+				&& (x - arrow->x) - (y - arrow->y) <= arrow->size / 2
+				&& (x - arrow->x) + (y - arrow->y) <= arrow->size / 2
+				&& (x - arrow->x) - (y - arrow->y) >= -arrow->size / 2)
+				pixel_put(data, x, y, arrow->color);
+		}
+	}
+}
+
 void	sqr_print(t_data *data, int	len[2], int offset[2], int color)
 {
 	t_utils *u;
@@ -68,6 +88,7 @@ void	dspl_map(t_cub *t, t_mlx *lib)
 	int	offset[2];
 	int	x;
 	int	y;
+	struct s_arrow arr;
 
 	y = 0;
 	color = tcolor(30, 30, 30);
@@ -89,10 +110,15 @@ void	dspl_map(t_cub *t, t_mlx *lib)
 		}
 		y++;
 	}
-	offset[1] = (int)(t->ply->posx + 1) *10;
+	arr.x = (int)(t->ply->posy + 1) *10;
+	arr.y = (int)(t->ply->posx + 1) *10;
+	arr.size = 10;
+	arr.color = trgb(0, 255,0,0);
+	draw_arrow(lib->data, &arr);
+/* 	offset[1] = (int)(t->ply->posx + 1) *10;
 	offset[0] = (int)(t->ply->posy + 1) *10;
 	color = trgb(0, 255,0,0);
-	sqr_print(lib->data, v, offset, color);
+	sqr_print(lib->data, v, offset, color); */
 	mlx_put_image_to_window(lib->mlx, lib->c_win, lib->data->img, 0, 0);
 }
 
