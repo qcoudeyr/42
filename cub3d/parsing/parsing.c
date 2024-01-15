@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 10:01:48 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 10:20:07 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,8 +127,6 @@ int	is_map(char *str)
 		{
 			if (ft_strchr("\n", str[i]) == 0)
 				return (0);
-			else if (ft_strchr("\n", str[i + 1]) != 0 && ft_strchr("012 NSEW", str[i + 1]) == 0)
-				return (0);
 		}
 		i++;
 	}
@@ -183,13 +181,18 @@ void	get_map(t_cub *t, char *str)
 	int		i;
 
 	i = 0;
-	tmp = ft_split(str, '\n');
 	ptr = ft_strnstr(str, "\n\n", ft_strlen(str));
 	while (ptr != NULL && is_map(ptr) != 1)
-		ptr = ft_strnstr(ptr + 1, "\n\n", ft_strlen(ptr));
-	if (is_map(ptr) != 0)
+	{
+		while (*(char *)ptr == '\n' && ptr +1 != NULL)
+			ptr++;
+		str = ptr;
+		ptr = ft_strnstr(ptr, "\n\n", ft_strlen(ptr));
+	}
+	tmp = ft_split(str, '\n');
+	if (is_map(str) != 0)
 		ft_printf("here :%s\n", ft_strnstr(str, "\n\n ", ft_strlen(str)));
-	else if(is_map(ptr) != 0)
+	else if(is_map(str) != 0)
 		ft_printf("here :%s\n", ft_strnstr(str, "\n\n1", ft_strlen(str)));
 	while (is_map(tmp[i++]) == 0);
 	if (tmp[i] != NULL)
