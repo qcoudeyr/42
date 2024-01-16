@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 08:56:38 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 11:46:27 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/16 16:07:53 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,12 @@ void	ft_freemap(t_mlx *lib)
 	lib->map = NULL;
 }
 
-void	free_text(t_tex *t)
+void	free_text(t_mlx *lib, t_tex *t)
 {
 	if (t->fname != NULL)
 		t->fname = pfree(t->fname);
+	if (t->ptr->img != NULL)
+		mlx_destroy_image(lib->mlx, t->ptr);
 	if (t->ptr != NULL)
 		t->ptr = pfree(t->ptr);
 }
@@ -50,12 +52,12 @@ void	free_text(t_tex *t)
 void	free_lib(t_mlx *lib)
 {
 	ft_freemap(lib);
+	free_text(lib, &lib->no);
+	free_text(lib, &lib->so);
+	free_text(lib, &lib->we);
+	free_text(lib, &lib->ea);
 	lib->mlx = pfree(lib->mlx);
 	lib->data = pfree(lib->data);
-	free_text(&lib->no);
-	free_text(&lib->so);
-	free_text(&lib->we);
-	free_text(&lib->ea);
 	lib->tampon = pfree(lib->tampon);
 	lib = pfree(lib);
 }
@@ -63,6 +65,7 @@ void	free_lib(t_mlx *lib)
 int	free_struct(t_cub *t)
 {
 	free_lib(t->lib);
+	t->wmap = tabfree((void **)t->wmap);
 	t->ply = pfree(t->ply);
 	t->rdr = pfree(t->rdr);
 	t = pfree(t);
