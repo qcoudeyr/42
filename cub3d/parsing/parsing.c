@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/16 13:59:02 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/16 16:51:42 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	map_value(char c)
 	int	v;
 
 	if (c == ' ')
-		v = 1;
+		v = -1;
 	else if (c == 'N')
 		v = 2;
 	else if (c == 'S')

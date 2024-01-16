@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 08:56:38 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/16 16:25:59 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/16 16:47:16 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,11 @@ void	free_text(t_mlx *lib, t_tex *t)
 	if (t->fname != NULL)
 		t->fname = pfree(t->fname);
 	if (t->ptr != NULL)
+	{
+		if (t->ptr->img != NULL)
+			t->ptr->img = pfree(t->ptr->img);
 		t->ptr = pfree(t->ptr);
+	}
 }
 
 void	free_lib(t_mlx *lib)
@@ -68,7 +72,8 @@ void	free_wmap(t_cub *t)
 	y = 0;
 	while(y <= t->lib->ylen)
 	{
-		t->wmap[y] = pfree(t->wmap[y]);
+		if (t->wmap[y] != NULL)
+			t->wmap[y] = pfree(t->wmap[y]);
 		y++;
 	}
 	t->wmap = pfree(t->wmap);
@@ -76,7 +81,8 @@ void	free_wmap(t_cub *t)
 
 int	free_struct(t_cub *t)
 {
-	free_wmap(t);
+	if (t->wmap != NULL)
+		free_wmap(t);
 	free_lib(t->lib);
 	t->ply = pfree(t->ply);
 	t->rdr = pfree(t->rdr);

@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:59:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/16 16:30:57 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/16 16:38:57 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ int	main(int argc, char **argv)
 	mlx_hook(t->lib->c_win, 9, 0, render, t);
 	mlx_hook(t->lib->c_win, 17, 0, closewin, t->lib);
 	mlx_loop(t->lib->mlx);
+	mlx_destroy_window(t->lib->mlx, t->lib->c_win);
+	mlx_destroy_display(t->lib->mlx);
 	free_struct(t);
 	return (0);
 }
