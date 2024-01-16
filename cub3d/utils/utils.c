@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 21:48:20 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 13:55:00 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 17:32:39 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	ply_mov(t_ply *p, int keycode)
 
 int	keyhandle(int keycode, t_cub *t)
 {
-	ft_printf("%i\n", keycode);
 	if (keycode == 65307)
 		return (closewin(t->lib));
 	else

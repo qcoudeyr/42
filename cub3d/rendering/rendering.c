@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 16:42:41 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 17:38:28 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ void	pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	texture_put(t_cub *t, t_data *data, int x, int y, unsigned int color)
+void	texture_put(t_cub *t, int x, int y, unsigned int color)
 {
 	char	*dst;
+	t_data	*data;
 
+	data = t->lib->data;
 	if (x >= 0 && y >= 0 && x < t->lib->sizex && y < t->lib->sizey)
 	{
 		dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
@@ -189,7 +191,7 @@ void	draw_texture(t_cub *t)
 		}
 		if(t->rdr->side == 1)
 			t->rdr->color = (t->rdr->color >> 1) & 8355711;
-		texture_put(t, t->lib->data, t->rdr->x, t->rdr->y++, t->rdr->color);
+		texture_put(t, t->rdr->x, t->rdr->y++, t->rdr->color);
 	}
 }
 
@@ -268,15 +270,8 @@ int	render(t_cub *t)
 		draw_texture(t);
 		t->rdr->x++;
 	}
-	t->ply->oldtime = t->ply->time;
-	t->ply->time = getticks(t);
-	if (t->ply->oldtime == 0)
-		t->ply->oldtime = t->ply->time;
-	t->ply->frametime = (t->ply->time - t->ply->oldtime) / 1000;
-	ft_printf("%i\n", t->ply->frametime);
 	mlx_clear_window(t->lib->mlx, t->lib->c_win);
 	mlx_put_image_to_window(t->lib->mlx, t->lib->c_win, t->lib->data->img, 0 , 0);
-	mlx_string_put(t->lib->mlx, t->lib->c_win, 10, 10, tcolor(255,255,255), ft_itoa(t->ply->frametime));
 	dspl_map(t, t->lib);
 	return (0);
 }

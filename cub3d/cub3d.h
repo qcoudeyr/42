@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 15:45:10 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 17:36:32 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,13 +128,13 @@ typedef struct s_rend
 	int				y;
 }				t_rdr;
 
-typedef struct	s_arrow {
+typedef struct s_arrow
+{
 	int		x;
 	int		y;
 	int		size;
 	int		color;
 }				t_arrow;
-
 
 typedef struct s_ply
 {
@@ -148,9 +148,6 @@ typedef struct s_ply
 	double	planey;
 	double	olddirx;
 	double	oldplanex;
-	double	time;
-	double	oldtime;
-	double	frametime;
 }				t_ply;
 
 typedef struct s_cub
@@ -195,21 +192,22 @@ int				check_error_map(t_map *map);
 void			addmap(t_mlx *lib, t_data *data);
 t_map			*origin_map(t_map *map);
 t_map			*create_map_ptn(int x, int y, int value);
-void			map_addelement(t_map **first, t_map **p_x, t_map **p_e, t_map *map);
+void			map_addelement(t_map **first, t_map **p_x, \
+t_map **p_e, t_map *map);
 /*
 
 //Windows File Function  */
-int	closewin(t_mlx *lib);
+int				closewin(t_mlx *lib);
 /*
 
 //Rendering File Function */
 int				color(int red, int green, int blue);
 void			pixel_put(t_data *data, int x, int y, int color);
-void			sqr_print(t_data *data, int	len[2], int offset[2], int color);
+void			sqr_print(t_data *data, int len[2], int offset[2], int color);
 void			dspl_map(t_cub *t, t_mlx *lib);
 int				render(t_cub *t);
 unsigned int	get_pixel(t_data *data, int x, int y);
-void			texture_put(t_cub *t, t_data *data, int x, int y, unsigned int color);
+void			texture_put(t_cub *t, int x, int y, unsigned int color);
 /*
 
 //Utils File Function */

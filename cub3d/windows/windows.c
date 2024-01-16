@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:30:16 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/04 11:01:32 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/15 17:33:56 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,3 @@ int	closewin(t_mlx *lib)
 	mlx_loop_end(lib->mlx);
 	return (0);
 }
-
