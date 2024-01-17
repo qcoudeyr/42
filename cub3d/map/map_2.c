@@ -6,36 +6,11 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:17:23 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/17 16:18:40 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/17 17:06:00 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-
-int	map_value(char c)
-{
-	int	v;
-
-	if (c == ' ')
-		v = -1;
-	else if (c == 'N')
-		v = 2;
-	else if (c == 'S')
-		v = 3;
-	else if (c == 'E')
-		v = 4;
-	else if (c == 'W')
-		v = 5;
-	else if (c == '1')
-		v = 1;
-	else if (c == '0')
-		v = 0;
-	else
-		v = -9;
-
-	return (v);
-}
 
 int	is_map(char *str)
 {
@@ -58,6 +33,24 @@ int	is_map(char *str)
 	return (1);
 }
 
+void	cpy_map_to_int(t_cub *t, t_mlx *lib)
+{
+	while (lib->map->y < lib->ylen)
+	{
+		while (lib->map->x < lib->xlen)
+		{
+			t->wmap[lib->map->y][lib->map->x] = lib->map->value;
+			if (lib->map->nx == NULL)
+				break ;
+			lib->map = lib->map->nx;
+		}
+		if (lib->map->first->ny != NULL)
+			lib->map = lib->map->first->ny;
+		else
+			break ;
+	}
+}
+
 void	format_map(t_cub *t, t_mlx *lib)
 {
 	int	y;
@@ -76,20 +69,7 @@ void	format_map(t_cub *t, t_mlx *lib)
 	}
 	if (!lib->map)
 		return ;
-	while (lib->map->y < lib->ylen)
-	{
-		while (lib->map->x < lib->xlen)
-		{
-			t->wmap[lib->map->y][lib->map->x] = lib->map->value;
-			if (lib->map->nx == NULL)
-				break ;
-			lib->map = lib->map->nx;
-		}
-		if (lib->map->first->ny != NULL)
-			lib->map = lib->map->first->ny;
-		else
-			break ;
-	}
+	cpy_map_to_int(t, lib);
 }
 
 void	grep_map(t_mlx *lib, char **map)

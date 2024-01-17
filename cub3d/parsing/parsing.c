@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/17 16:20:36 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/17 17:20:22 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,6 @@ int	get_map_info(t_cub *t)
 	buf = pfree(buf);
 	get_ply_pos(t);
 	return (1);
-}
-
-int	check_color(int color)
-{
-	if (color < 0 || color > 255)
-		return (-1);
-	else
-		return (0);
 }
 
 int	get_texture(t_mlx *lib)

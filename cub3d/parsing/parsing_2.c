@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:11:14 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/17 16:26:03 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/17 16:57:49 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,14 @@ void	get_color(t_cub *t, char *str, int s)
 	temp = tabfree((void **)temp);
 }
 
-void	set_dirnpos_side(t_cub *t, t_utils *u)
+void	set_player_empty(t_cub *t, t_utils *u)
 {
-
+	if (t->wmap[u->y][u->x] >= 2 && t->wmap[u->y][u->x] <= 5)
+	{
+		t->ply->posy = u->x;
+		t->ply->posx = u->y;
+		t->wmap[u->y][u->x] = 0;
+	}
 }
 
 void	set_player_direction(t_cub *t, t_utils *u)
@@ -61,37 +66,24 @@ void	set_player_direction(t_cub *t, t_utils *u)
 	if (t->wmap[u->y][u->x] == 2)
 	{
 		t->ply->dirx = -1.00;
-		t->ply->diry = 0.00;
-		t->ply->planex = 0.00;
 		t->ply->planey = 0.66;
 	}
 	else if (t->wmap[u->y][u->x] == 3)
 	{
 		t->ply->dirx = 1.00;
-		t->ply->diry = 0.00;
-		t->ply->planex = 0.00;
 		t->ply->planey = -0.66;
 	}
 	else if (t->wmap[u->y][u->x] == 4)
 	{
-		t->ply->dirx = 0.00;
 		t->ply->diry = 1.00;
 		t->ply->planex = 0.66;
-		t->ply->planey = 0.00;
 	}
 	else if (t->wmap[u->y][u->x] == 5)
 	{
-		t->ply->dirx = 0.00;
 		t->ply->diry = -1.00;
 		t->ply->planex = -0.66;
-		t->ply->planey = 0.00;
 	}
-	if (t->wmap[u->y][u->x] >= 2 && t->wmap[u->y][u->x] <= 5)
-	{
-		t->ply->posy = u->x;
-		t->ply->posx = u->y;
-		t->wmap[u->y][u->x] = 0;
-	}
+	set_player_empty(t, u);
 }
 
 void	get_ply_pos(t_cub *t)

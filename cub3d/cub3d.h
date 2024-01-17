@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/17 16:15:08 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/17 17:24:29 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,11 @@ void			init_windows(t_mlx *lib);
 int				parse(char *str, t_mlx *lib, int x, t_map *p_x);
 int				read_map(t_cub *t, t_mlx *lib);
 int				get_texture(t_mlx *lib);
+char			*get_texture_path(char *str);
+void			get_color(t_cub *t, char *str, int s);
+void			set_player_empty(t_cub *t, t_utils *u);
+void			set_player_direction(t_cub *t, t_utils *u);
+void			get_ply_pos(t_cub *t);
 /*
 
 //Map File Function */
@@ -198,6 +203,8 @@ t_map			*origin_map(t_map *map);
 t_map			*create_map_ptn(int x, int y, int value);
 void			map_addelement(t_map **first, t_map **p_x, \
 t_map **p_e, t_map *map);
+int				map_value(char c);
+void			get_map(t_cub *t, char *str);
 /*
 
 //Windows File Function  */
@@ -225,6 +232,7 @@ unsigned int	get_pixel(t_data *data, int x, int y);
 //Utils File Function */
 int				keyhandle(int keycode, t_cub *t);
 int				mouse_scroll(int button, int x, int y, t_mlx *lib);
+int				check_color(int color);
 void			utils_init(t_utils *u);
 void			get_new_image(t_mlx *lib);
 int				trgb(int t, int r, int g, int b);

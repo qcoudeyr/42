@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 08:53:29 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 17:33:07 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/17 16:55:38 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ void	init_player(t_ply *p)
 {
 	p->posx = 5;
 	p->posy = 5;
-	p->dirx = -1;
+	p->dirx = 0;
 	p->diry = 0;
 	p->planex = 0;
-	p->planey = 0.66;
+	p->planey = 0;
 }
 
 void	init_struct(t_cub *t)
