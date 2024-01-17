@@ -9,7 +9,8 @@ HEADERS = cub3d.h
 
 SRCS =	main.c \
 		utils.c error.c init.c free.c parsing.c \
-		windows.c rendering.c map.c
+		windows.c rendering.c map.c rendering_2.c\
+		parsing_2.c utils_2.c
 
 OBJDIR = ./object/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))

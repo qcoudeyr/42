@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/15 17:36:32 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/17 16:15:08 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ typedef struct s_utils
 	int		x;
 	int		y;
 	int		z;
+	int		v[2];
+	int		color;
+	int		offset[2];
 	char	c;
 	char	*tmp1;
 	char	*tmp2;
@@ -39,6 +42,7 @@ typedef struct s_utils
 	void	*ptr1;
 	void	*ptr2;
 	void	**lstptr;
+
 }				t_utils;
 
 typedef struct s_data
@@ -198,16 +202,24 @@ t_map **p_e, t_map *map);
 
 //Windows File Function  */
 int				closewin(t_mlx *lib);
+void			print_background(t_cub *t);
+void			sqr_print(t_data *data, int len[2], int offset[2], int color);
+void			dspl_map(t_cub *t, t_mlx *lib);
+
 /*
 
 //Rendering File Function */
+int				render(t_cub *t);
 int				color(int red, int green, int blue);
 void			pixel_put(t_data *data, int x, int y, int color);
-void			sqr_print(t_data *data, int len[2], int offset[2], int color);
-void			dspl_map(t_cub *t, t_mlx *lib);
-int				render(t_cub *t);
-unsigned int	get_pixel(t_data *data, int x, int y);
+void			draw_arrow(t_data *data, t_cub *t);
 void			texture_put(t_cub *t, int x, int y, unsigned int color);
+void			texture_calcul(t_cub *t);
+void			check_hit_wall(t_cub *t);
+void			raydir_calcul(t_cub *t);
+void			draw_texture(t_cub *t);
+void			check_side(t_cub *t);
+unsigned int	get_pixel(t_data *data, int x, int y);
 /*
 
 //Utils File Function */
@@ -216,6 +228,8 @@ int				mouse_scroll(int button, int x, int y, t_mlx *lib);
 void			utils_init(t_utils *u);
 void			get_new_image(t_mlx *lib);
 int				trgb(int t, int r, int g, int b);
+double			ft_abs(double i);
+unsigned long	getticks(t_cub *t);
 /*
 
 //Error File Function */

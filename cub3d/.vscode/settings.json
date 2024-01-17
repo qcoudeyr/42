@@ -61,6 +61,9 @@
     "mlx.h": "c",
     "cub3d.h": "c",
     "cmath": "c",
-    "random": "c"
+    "random": "c",
+    "array": "c",
+    "string_view": "c",
+    "initializer_list": "c"
   }
 }
