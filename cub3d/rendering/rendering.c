@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/17 14:54:34 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/17 15:38:59 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,10 +117,6 @@ void	dspl_map(t_cub *t, t_mlx *lib)
 	arr.size = 10;
 	arr.color = trgb(0, 255,0,0);
 	draw_arrow(lib->data, &arr);
-/* 	offset[1] = (int)(t->ply->posx + 1) *10;
-	offset[0] = (int)(t->ply->posy + 1) *10;
-	color = trgb(0, 255,0,0);
-	sqr_print(lib->data, v, offset, color); */
 	mlx_put_image_to_window(lib->mlx, lib->c_win, lib->data->img, 0, 0);
 }
 
@@ -197,13 +193,19 @@ void	draw_texture(t_cub *t)
 
 void	init_render(t_cub *t)
 {
-	t->rdr->camerax = 2 * t->rdr->x / (double)t->lib->sizex - 1; //t->rdr->x-coordinate in camera space
+	t->rdr->camerax = 2 * t->rdr->x / (double)t->lib->sizex - 1;
 	t->rdr->raydirx = t->ply->dirx + t->ply->planex * t->rdr->camerax;
 	t->rdr->raydiry = t->ply->diry + t->ply->planey * t->rdr->camerax;
 	t->rdr->mapx = (int)t->ply->posx;
 	t->rdr->mapy = (int)t->ply->posy;
-	t->rdr->deltadistx = (t->rdr->raydirx == 0) ? 1e30 : ft_abs(1 / t->rdr->raydirx);
-	t->rdr->deltadisty = (t->rdr->raydiry == 0) ? 1e30 : ft_abs(1 / t->rdr->raydiry);
+	if (t->rdr->raydirx == 0)
+		t->rdr->deltadistx = 1e30;
+	else
+		t->rdr->deltadistx = ft_abs(1 / t->rdr->raydirx);
+	if (t->rdr->raydiry == 0)
+		t->rdr->deltadisty = 1e30;
+	else
+		t->rdr->deltadisty = ft_abs(1 / t->rdr->raydiry);
 	t->rdr->hit = 0;
 }
 
