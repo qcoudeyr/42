@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/17 14:16:50 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/17 14:54:34 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,78 +195,98 @@ void	draw_texture(t_cub *t)
 	}
 }
 
+void	init_render(t_cub *t)
+{
+	t->rdr->camerax = 2 * t->rdr->x / (double)t->lib->sizex - 1; //t->rdr->x-coordinate in camera space
+	t->rdr->raydirx = t->ply->dirx + t->ply->planex * t->rdr->camerax;
+	t->rdr->raydiry = t->ply->diry + t->ply->planey * t->rdr->camerax;
+	t->rdr->mapx = (int)t->ply->posx;
+	t->rdr->mapy = (int)t->ply->posy;
+	t->rdr->deltadistx = (t->rdr->raydirx == 0) ? 1e30 : ft_abs(1 / t->rdr->raydirx);
+	t->rdr->deltadisty = (t->rdr->raydiry == 0) ? 1e30 : ft_abs(1 / t->rdr->raydiry);
+	t->rdr->hit = 0;
+}
+
+void	raydir_calcul(t_cub *t)
+{
+	if(t->rdr->raydirx < 0)
+	{
+		t->rdr->stepx = -1;
+		t->rdr->sidedistx = (t->ply->posx - t->rdr->mapx) * t->rdr->deltadistx;
+	}
+	else
+	{
+		t->rdr->stepx = 1;
+		t->rdr->sidedistx = (t->rdr->mapx + 1.0 - t->ply->posx) * t->rdr->deltadistx;
+	}
+	if(t->rdr->raydiry < 0)
+	{
+		t->rdr->stepy = -1;
+		t->rdr->sidedisty = (t->ply->posy - t->rdr->mapy) * t->rdr->deltadisty;
+	}
+	else
+	{
+		t->rdr->stepy = 1;
+		t->rdr->sidedisty = (t->rdr->mapy + 1.0 - t->ply->posy) * t->rdr->deltadisty;
+	}
+}
+
+void	check_hit_wall(t_cub *t)
+{
+	while(t->rdr->hit == 0)
+	{
+		if(t->rdr->sidedistx < t->rdr->sidedisty)
+		{
+			t->rdr->sidedistx += t->rdr->deltadistx;
+			t->rdr->mapx += t->rdr->stepx;
+			t->rdr->side = 0;
+		}
+		else
+		{
+			t->rdr->sidedisty += t->rdr->deltadisty;
+			t->rdr->mapy += t->rdr->stepy;
+			t->rdr->side = 1;
+		}
+		if(t->wmap[t->rdr->mapx][t->rdr->mapy] > 0)
+			t->rdr->hit = 1;
+	}
+	if(t->rdr->side == 0)
+		t->rdr->perpwalldist = (t->rdr->sidedistx - t->rdr->deltadistx);
+	else
+		t->rdr->perpwalldist = (t->rdr->sidedisty - t->rdr->deltadisty);
+}
+
+void	texture_calcul(t_cub *t)
+{
+	t->rdr->lineheight = (int)(t->lib->sizey / t->rdr->perpwalldist);
+	t->rdr->drawstart = -t->rdr->lineheight / 2 + t->lib->sizey / 2;
+	if(t->rdr->drawstart < 0) t->rdr->drawstart = 0;
+	t->rdr->drawend = t->rdr->lineheight / 2 + t->lib->sizey / 2;
+	if(t->rdr->drawend >= t->lib->sizey) t->rdr->drawend = t->lib->sizey - 1;
+	if (t->rdr->side == 0)
+		t->rdr->wallx = t->ply->posy + t->rdr->perpwalldist * t->rdr->raydiry;
+	else
+		t->rdr->wallx = t->ply->posx + t->rdr->perpwalldist * t->rdr->raydirx;
+	t->rdr->wallx -= floor((t->rdr->wallx));
+	t->rdr->texx = (int)(t->rdr->wallx * (double)(t->lib->no.w));
+	if(t->rdr->side == 0 && t->rdr->raydirx > 0)
+		t->rdr->texx = t->lib->no.w - t->rdr->texx - 1;
+	if(t->rdr->side == 1 && t->rdr->raydiry < 0)
+		t->rdr->texx = t->lib->no.w - t->rdr->texx - 1;
+	t->rdr->step = 1.0 * t->lib->no.h / t->rdr->lineheight;
+	t->rdr->texpos = (t->rdr->drawstart - t->lib->sizey / 2 + t->rdr->lineheight / 2) * t->rdr->step;
+}
+
 int	render(t_cub *t)
 {
 	t->rdr->x = 0;
 	print_background(t);
 	while (t->rdr->x < t->lib->sizex)
 	{
-		t->rdr->camerax = 2 * t->rdr->x / (double)t->lib->sizex - 1; //t->rdr->x-coordinate in camera space
-		t->rdr->raydirx = t->ply->dirx + t->ply->planex * t->rdr->camerax;
-		t->rdr->raydiry = t->ply->diry + t->ply->planey * t->rdr->camerax;
-		t->rdr->mapx = (int)t->ply->posx;
-		t->rdr->mapy = (int)t->ply->posy;
-		t->rdr->deltadistx = (t->rdr->raydirx == 0) ? 1e30 : ft_abs(1 / t->rdr->raydirx);
-		t->rdr->deltadisty = (t->rdr->raydiry == 0) ? 1e30 : ft_abs(1 / t->rdr->raydiry);
-		t->rdr->hit = 0;
-		if(t->rdr->raydirx < 0)
-		{
-			t->rdr->stepx = -1;
-			t->rdr->sidedistx = (t->ply->posx - t->rdr->mapx) * t->rdr->deltadistx;
-		}
-		else
-		{
-			t->rdr->stepx = 1;
-			t->rdr->sidedistx = (t->rdr->mapx + 1.0 - t->ply->posx) * t->rdr->deltadistx;
-		}
-		if(t->rdr->raydiry < 0)
-		{
-			t->rdr->stepy = -1;
-			t->rdr->sidedisty = (t->ply->posy - t->rdr->mapy) * t->rdr->deltadisty;
-		}
-		else
-		{
-			t->rdr->stepy = 1;
-			t->rdr->sidedisty = (t->rdr->mapy + 1.0 - t->ply->posy) * t->rdr->deltadisty;
-		}
-		while(t->rdr->hit == 0)
-		{
-			if(t->rdr->sidedistx < t->rdr->sidedisty)
-			{
-				t->rdr->sidedistx += t->rdr->deltadistx;
-				t->rdr->mapx += t->rdr->stepx;
-				t->rdr->side = 0;
-			}
-			else
-			{
-				t->rdr->sidedisty += t->rdr->deltadisty;
-				t->rdr->mapy += t->rdr->stepy;
-				t->rdr->side = 1;
-			}
-			if(t->wmap[t->rdr->mapx][t->rdr->mapy] > 0)
-				t->rdr->hit = 1;
-		}
-		if(t->rdr->side == 0)
-			t->rdr->perpwalldist = (t->rdr->sidedistx - t->rdr->deltadistx);
-		else
-			t->rdr->perpwalldist = (t->rdr->sidedisty - t->rdr->deltadisty);
-		t->rdr->lineheight = (int)(t->lib->sizey / t->rdr->perpwalldist);
-		t->rdr->drawstart = -t->rdr->lineheight / 2 + t->lib->sizey / 2;
-		if(t->rdr->drawstart < 0) t->rdr->drawstart = 0;
-		t->rdr->drawend = t->rdr->lineheight / 2 + t->lib->sizey / 2;
-		if(t->rdr->drawend >= t->lib->sizey) t->rdr->drawend = t->lib->sizey - 1;
-		if (t->rdr->side == 0)
-			t->rdr->wallx = t->ply->posy + t->rdr->perpwalldist * t->rdr->raydiry;
-		else
-			t->rdr->wallx = t->ply->posx + t->rdr->perpwalldist * t->rdr->raydirx;
-		t->rdr->wallx -= floor((t->rdr->wallx));
-		t->rdr->texx = (int)(t->rdr->wallx * (double)(t->lib->no.w));
-		if(t->rdr->side == 0 && t->rdr->raydirx > 0)
-			t->rdr->texx = t->lib->no.w - t->rdr->texx - 1;
-		if(t->rdr->side == 1 && t->rdr->raydiry < 0)
-			t->rdr->texx = t->lib->no.w - t->rdr->texx - 1;
-		t->rdr->step = 1.0 * t->lib->no.h / t->rdr->lineheight;
-		t->rdr->texpos = (t->rdr->drawstart - t->lib->sizey / 2 + t->rdr->lineheight / 2) * t->rdr->step;
+		init_render(t);
+		raydir_calcul(t);
+		check_hit_wall(t);
+		texture_calcul(t);
 		draw_texture(t);
 		t->rdr->x++;
 	}
