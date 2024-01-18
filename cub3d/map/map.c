@@ -6,20 +6,36 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:33:30 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 14:50:35 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 15:19:16 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	check_error_map(t_map *map)
+int	check_value(int **wmap, int y, int x)
 {
-	if (map == NULL)
-		return (printerr("Error !\nMap don't exist !\n"));
-	while ()
-	{
+	if (x == 0 && wmap[y][x] != )
+}
 
+int	check_error_map(t_cub *t)
+{
+	struct s_utils	*u;
+
+	u = ft_calloc(1, sizeof(t_utils));
+	init_struct(u);
+	if (t->wmap == NULL)
+		return (printerr("Error !\nMap don't exist !\n"));
+	while (u->y < t->lib->ylen)
+	{
+		u->x = 0;
+		while (u->x < t->lib->xlen)
+		{
+			check_value(t->wmap, u->y, u->x);
+			u->x++;
+		}
+		u->y++;
 	}
+	utils_free(u);
 	return (0);
 }
 

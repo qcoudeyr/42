@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 12:26:03 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 15:12:15 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,7 +199,7 @@ void			get_ply_pos(t_cub *t);
 /*
 
 //Map File Function */
-int				check_error_map(t_map *map);
+int				check_error_map(t_cub *t);
 void			addmap(t_mlx *lib, t_data *data);
 t_map			*origin_map(t_map *map);
 t_map			*create_map_ptn(int x, int y, int value);
@@ -239,6 +239,7 @@ void			utils_init(t_utils *u);
 void			get_new_image(t_mlx *lib);
 int				trgb(int t, int r, int g, int b);
 double			ft_abs(double i);
+t_utils			*utils_free(t_utils *u);
 unsigned long	getticks(t_cub *t);
 /*
 
