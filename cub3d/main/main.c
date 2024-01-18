@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:59:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 13:24:43 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 17:29:30 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,16 @@ int	handle_nomap(t_cub *t)
 int	check_arg(int argc, char **argv, t_cub *t)
 {
 	if (argc > 2)
-		return (printerr("Error, Too many args !\nUsage: ./cub3D map.cub\n"));
+		return (\
+printerr("Error, Too many args !\nUsage: ./cub3D ./map/default.cub\n"));
 	else if (argc == 1)
 		return (handle_nomap(t));
 	else if (argc == 2)
 	{
 		if (!ft_strnstr((argv[1] + (ft_strlen(argv[1]) - 4)), ".cub", 4))
 			return \
-	(printerr("Error, Wrong format map entered !\nUsage: ./cub3D map.cub\n"));
+	(printerr("Error, Wrong format map entered !\nUsage:"\
+" ./cub3D ./map/default.cub\n"));
 		else
 		{
 			t->fd_map = open(argv[1], O_RDONLY);
@@ -85,13 +87,12 @@ int	main(int argc, char **argv)
 	t->map = origin_map(t->lib->map);
 	t->lib->mlx = mlx_init();
 	init_windows(t->lib);
-	get_texture(t->lib);
+	if (get_texture(t->lib) == -1)
+		return (closewin(t->lib), free_struct(t));
 	mlx_hook(t->lib->c_win, 2, 1L << 0, keyhandle, t);
 	mlx_hook(t->lib->c_win, 9, 0, render, t);
 	mlx_hook(t->lib->c_win, 17, 0, closewin, t->lib);
 	mlx_loop(t->lib->mlx);
-	mlx_destroy_window(t->lib->mlx, t->lib->c_win);
-	mlx_destroy_display(t->lib->mlx);
 	free_struct(t);
 	return (0);
 }

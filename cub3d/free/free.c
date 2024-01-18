@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 08:56:38 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/17 16:10:16 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 17:09:06 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,11 @@ void	free_wmap(t_cub *t)
 
 int	free_struct(t_cub *t)
 {
+	if (t->lib->mlx != NULL)
+	{
+		mlx_destroy_window(t->lib->mlx, t->lib->c_win);
+		mlx_destroy_display(t->lib->mlx);
+	}
 	if (t->wmap != NULL)
 		free_wmap(t);
 	free_lib(t->lib);

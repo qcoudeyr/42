@@ -67,10 +67,16 @@ norme:
 		echo "\033[31m\033[1mNEED TO FIX ALL OF THIS !!!\033[0m"; \
 	fi
 
-debug: $(OBJS)
+debug: re
 	@clear
 	@$(CC) $(CFLAGS) -g $(OBJS) -L$(LIB_DIR) $(LIBS) -o debug
 	valgrind -s --track-origins=yes --tool=memcheck --show-leak-kinds=all --leak-check=full --error-exitcode=1 \
 	./debug
 
-.PHONY: all clean fclean re debug libft norme
+dg:
+	@clear
+	@$(CC) $(CFLAGS) -g $(OBJS) -L$(LIB_DIR) $(LIBS) -o debug
+	valgrind -s --track-origins=yes --tool=memcheck --show-leak-kinds=all --leak-check=full --error-exitcode=1 \
+	./debug
+
+.PHONY: all clean fclean re debug libft norme dg

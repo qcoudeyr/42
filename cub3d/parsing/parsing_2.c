@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:11:14 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/17 16:57:49 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 17:34:17 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*get_texture_path(char *str)
 	return (temp);
 }
 
-void	get_color(t_cub *t, char *str, int s)
+int	get_color(t_cub *t, char *str, int s)
 {
 	char	**temp;
 	char	*value;
@@ -36,6 +36,11 @@ void	get_color(t_cub *t, char *str, int s)
 
 	value = get_texture_path(str);
 	temp = ft_split(value, ',');
+	if (temp[3] != NULL || (temp[2] == NULL || *temp[2] == 0))
+	{
+		tabfree((void **)temp);
+		return (printerrf("Error !\nColor are not correct !\n", value));
+	}
 	value = pfree(value);
 	i = -1;
 	if (s == 1)
@@ -49,6 +54,7 @@ void	get_color(t_cub *t, char *str, int s)
 			t->lib->ceiling[i] = ft_atoi(temp[i]);
 	}
 	temp = tabfree((void **)temp);
+	return (0);
 }
 
 void	set_player_empty(t_cub *t, t_utils *u)

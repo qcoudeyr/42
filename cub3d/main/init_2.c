@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 12:04:58 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 12:09:47 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 16:59:32 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init_windows(t_mlx *lib)
 	lib->tampon->addr = mlx_get_data_addr(lib->tampon->img, \
 &lib->tampon->bits_per_pixel, &lib->tampon->line_length, &lib->tampon->endian);
 	lib->c_win = mlx_new_window(lib->mlx, lib->sizex, \
-lib->sizey, "Qcoudeyr - QuanranteDoom3D - Menu");
+lib->sizey, "- Cube3D -");
 }
 
 void	utils_init(t_utils *u)

@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 15:12:15 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 17:16:23 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,8 +191,8 @@ void			init_windows(t_mlx *lib);
 int				parse(char *str, t_mlx *lib, int x, t_map *p_x);
 int				read_map(t_cub *t, t_mlx *lib);
 int				get_texture(t_mlx *lib);
+int				get_color(t_cub *t, char *str, int s);
 char			*get_texture_path(char *str);
-void			get_color(t_cub *t, char *str, int s);
 void			set_player_empty(t_cub *t, t_utils *u);
 void			set_player_direction(t_cub *t, t_utils *u);
 void			get_ply_pos(t_cub *t);

@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 15:32:44 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 17:27:03 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,23 @@ int	parse(char *str, t_mlx *lib, int y, t_map *p_y)
 
 int	search_fnc(char **temp, char *buf, int s, t_cub *t)
 {
+	int	x;
+
+	x = 0;
 	*temp = ft_strnstr(buf, "F ", s);
 	if (*temp != NULL && **temp != 0 && ft_strnstr(*temp + 2, "F ", s) == NULL)
-		get_color(t, *temp + 2, 1);
+		x += get_color(t, *temp + 2, 1);
 	else
 		return (printerrf("Error !\n Floor color not set !\n", buf));
+	if (x != 0)
+		return (pfree(buf), -1);
 	*temp = ft_strnstr(buf, "C ", s);
 	if (temp != NULL && **temp != 0 && ft_strnstr(*temp + 2, "C ", s) == NULL)
-		get_color(t, *temp + 2, -1);
+		x += get_color(t, *temp + 2, -1);
 	else
 		return (printerrf("Error !\n Celling color not set !\n", buf));
+	if (x != 0)
+		return (pfree(buf), -1);
 	return (0);
 }
 
@@ -60,22 +67,22 @@ int	search_texture(char **temp, char *buf, int s, t_cub *t)
 	if (*temp != NULL && **temp != 0 && ft_strnstr(*temp + 2, "NO ", s) == NULL)
 		t->lib->no.fname = get_texture_path(*temp + 3);
 	else
-		return (printerrf("Error !\n NO WAll is not set !\n", buf));
+		return (printerrf("Error !\nThere is a problem with NO WAll !\n", buf));
 	*temp = ft_strnstr(buf, "SO ", s);
 	if (*temp != NULL && **temp != 0 && ft_strnstr(*temp + 2, "SO ", s) == NULL)
 		t->lib->so.fname = get_texture_path(*temp + 3);
 	else
-		return (printerrf("Error !\n SO WAll is not set !\n", buf));
+		return (printerrf("Error !\nThere is a problem with SO WAll !\n", buf));
 	*temp = ft_strnstr(buf, "WE ", s);
 	if (*temp != NULL && **temp != 0 && ft_strnstr(*temp + 2, "WE ", s) == NULL)
 		t->lib->we.fname = get_texture_path(*temp + 3);
 	else
-		return (printerrf("Error !\n WE WAll is not set !\n", buf));
+		return (printerrf("Error !\nThere is a problem with WE WAll !\n", buf));
 	*temp = ft_strnstr(buf, "EA ", s);
 	if (*temp != NULL && **temp != 0 && ft_strnstr(*temp + 2, "EA ", s) == NULL)
 		t->lib->ea.fname = get_texture_path(*temp + 3);
 	else
-		return (printerrf("Error !\n EA WAll is not set !\n", buf));
+		return (printerrf("Error !\nThere is a problem with EA WAll !\n", buf));
 	return (0);
 }
 
@@ -88,8 +95,10 @@ int	get_map_info(t_cub *t)
 	buf = ft_calloc(100000, sizeof(char));
 	s = read(t->fd_map, buf, 100000);
 	buf[s] = 0;
-	search_texture(&temp, buf, s, t);
-	search_fnc(&temp, buf, s, t);
+	if (search_texture(&temp, buf, s, t) == -1)
+		return (-1);
+	if (search_fnc(&temp, buf, s, t) == -1)
+		return (-1);
 	get_map(t, buf);
 	buf = pfree(buf);
 	get_ply_pos(t);
