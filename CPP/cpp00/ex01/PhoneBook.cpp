@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 10:58:34 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2023/12/20 11:48:41 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 11:51:12 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void MenuHeader(std::string str)
 
 void AddContact(PhoneBook pb)
 {
+	(void) pb;
 	MenuHeader("So you want to add a contact ?\nCan you tell me more about it ?!");
 }
 
@@ -54,7 +55,7 @@ int	main(int argc, char **argv)
 			break;
 		else if (input == "ADD")
 		{
-			AddContact();
+			/* AddContact(); */
 		}
 		else if (input == "SEARCH")
 		{
