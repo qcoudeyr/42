@@ -6,15 +6,29 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:33:30 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 15:19:16 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 16:22:52 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	check_value(int **wmap, int y, int x)
+int	check_value(t_cub *t, int **wmap, int y, int x)
 {
-	if (x == 0 && wmap[y][x] != )
+	if (x == 0 && (wmap[y][x] != 1 && wmap[y][x] != -1))
+		return (printerr("Error !\nMap isn't closed !\n"));
+	if (x == t->lib->xlen - 1 && (wmap[y][x] != 1 && wmap[y][x] != -1))
+		return (printerr("Error !\nMap isn't closed !\n"));
+	if (y == 0 && (wmap[y][x] != 1 && wmap[y][x] != -1))
+		return (printerr("Error !\nMap isn't closed !\n"));
+	if (y == t->lib->ylen - 1 && (wmap[y][x] != 1 && wmap[y][x] != -1))
+		return (printerr("Error !\nMap isn't closed !\n"));
+	if (x <wmap[y][x] == -1
+		&& wmap[y - 1][x] != 1
+		&& wmap[y + 1][x] != 1
+		&& wmap[y][x + 1] != 1
+		&& wmap[y][x - 1] != 1)
+		return (printerr("Error !\nMap isn't closed !\n"));
+	return (0);
 }
 
 int	check_error_map(t_cub *t)
@@ -22,7 +36,7 @@ int	check_error_map(t_cub *t)
 	struct s_utils	*u;
 
 	u = ft_calloc(1, sizeof(t_utils));
-	init_struct(u);
+	utils_init(u);
 	if (t->wmap == NULL)
 		return (printerr("Error !\nMap don't exist !\n"));
 	while (u->y < t->lib->ylen)
@@ -30,9 +44,12 @@ int	check_error_map(t_cub *t)
 		u->x = 0;
 		while (u->x < t->lib->xlen)
 		{
-			check_value(t->wmap, u->y, u->x);
+			if (check_value(t, t->wmap, u->y, u->x) == -1)
+				return (-1);
+			ft_printf("%i", t->wmap[u->y][u->x]);
 			u->x++;
 		}
+		ft_printf("\n");
 		u->y++;
 	}
 	utils_free(u);

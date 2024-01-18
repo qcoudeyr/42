@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 12:03:59 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 15:32:44 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	read_map(t_cub *t, t_mlx *lib)
 {
 	if (get_map_info(t) == -1)
 		return (-1);
-	if (check_error_map(origin_map(lib->map)) != 0)
+	if (check_error_map(t) != 0)
 		return (-1);
 	lib->scale[0] = (lib->sizey / lib->xlen) / 2;
 	lib->scale[1] = (lib->sizex / lib->ylen) / 2;
