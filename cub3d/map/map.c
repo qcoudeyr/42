@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:33:30 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 16:22:52 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 16:41:17 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ int	check_value(t_cub *t, int **wmap, int y, int x)
 		return (printerr("Error !\nMap isn't closed !\n"));
 	if (y == t->lib->ylen - 1 && (wmap[y][x] != 1 && wmap[y][x] != -1))
 		return (printerr("Error !\nMap isn't closed !\n"));
-	if (x <wmap[y][x] == -1
-		&& wmap[y - 1][x] != 1
-		&& wmap[y + 1][x] != 1
-		&& wmap[y][x + 1] != 1
-		&& wmap[y][x - 1] != 1)
+	if (wmap[y][x] == -1
+		&& ((y > 0 && (wmap[y - 1][x] != 1 && wmap[y - 1][x] != -1))
+		|| (x > 0 && (wmap[y][x - 1] != 1 && wmap[y][x - 1] != -1))
+		|| (y < t->lib->ylen && (wmap[y + 1][x] != 1 && wmap[y + 1][x] != -1))
+		|| (x < t->lib->xlen && (wmap[y][x + 1] != 1 && wmap[y][x + 1] != -1))))
 		return (printerr("Error !\nMap isn't closed !\n"));
 	return (0);
 }
@@ -46,7 +46,6 @@ int	check_error_map(t_cub *t)
 		{
 			if (check_value(t, t->wmap, u->y, u->x) == -1)
 				return (-1);
-			ft_printf("%i", t->wmap[u->y][u->x]);
 			u->x++;
 		}
 		ft_printf("\n");

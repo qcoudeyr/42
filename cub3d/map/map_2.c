@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:17:23 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 12:08:41 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 16:40:16 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	format_map(t_cub *t, t_mlx *lib)
 		t->wmap[y] = ft_calloc((lib->xlen +1), sizeof(int));
 		x = 0;
 		while (x <= lib->xlen)
-			t->wmap[y][x++] = 1;
+			t->wmap[y][x++] = -1;
 		y++;
 	}
 	if (!lib->map)
