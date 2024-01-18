@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:33:30 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/17 17:08:12 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 14:50:35 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,9 @@ int	check_error_map(t_map *map)
 {
 	if (map == NULL)
 		return (printerr("Error !\nMap don't exist !\n"));
-	while (map->nx || map->ny)
+	while ()
 	{
-		if ((!map->px || !map->py || !map->nx || !map->ny) && \
-		(map->value != 1 && map->value != -1))
-			return (printerr("Error !\nMap isn't closed !\n"));
-		else if (((map->px && map->px->value == -1)
-				|| (map->py && map->py->value == -1)
-				|| (map->ny && map->ny->value == -1)
-				|| (map->nx && map->nx->value == -1))
-			&& (map->value != 1 && map->value != -1))
-			return (printerr("Error !\nMap isn't closed !\n"));
-		if (!map->nx)
-			map = map->first->ny;
-		map = map->nx;
+
 	}
 	return (0);
 }

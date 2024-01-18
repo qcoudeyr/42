@@ -6,12 +6,11 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:59:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/16 16:38:57 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 13:24:43 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
 
 int	handle_nomap(t_cub *t)
 {
@@ -61,6 +60,16 @@ int	check_arg(int argc, char **argv, t_cub *t)
 	return (0);
 }
 
+/* void	printmap(t_cub *t)
+{
+	for(int y = 0; y < t->lib->ylen; y++)
+	{
+		for(int x = 0 ; x < t->lib->xlen; x++)
+			ft_printf("%i", t->wmap[y][x]);
+		ft_printf("\n");
+	}
+} */
+
 int	main(int argc, char **argv)
 {
 	t_cub	*t;
@@ -74,16 +83,9 @@ int	main(int argc, char **argv)
 	if (t->lib->map == NULL)
 		return (free_struct(t));
 	t->map = origin_map(t->lib->map);
- 	for(int y = 0; y < t->lib->ylen; y++)
-	{
-		for(int x = 0 ; x < t->lib->xlen; x++)
-			ft_printf("%i", t->wmap[y][x]);
-		ft_printf("\n");
-	}
 	t->lib->mlx = mlx_init();
 	init_windows(t->lib);
 	get_texture(t->lib);
-	mlx_mouse_hook(t->lib->c_win, mouse_scroll, t->lib);
 	mlx_hook(t->lib->c_win, 2, 1L << 0, keyhandle, t);
 	mlx_hook(t->lib->c_win, 9, 0, render, t);
 	mlx_hook(t->lib->c_win, 17, 0, closewin, t->lib);

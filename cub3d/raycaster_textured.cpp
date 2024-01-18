@@ -245,43 +245,43 @@ int main(int /*argc*/, char */*argv*/[])
     redraw();
 
     //speed modifiers
-    double moveSpeed = frameTime * 5.0; //the constant value is in squares/second
-    double rotSpeed = frameTime * 3.0; //the constant value is in radians/second
+    double mspeed = frameTime * 5.0; //the constant value is in squares/second
+    double rspeed = frameTime * 3.0; //the constant value is in radians/second
 
     readKeys();
     //move forward if no wall in front of you
     if(keyDown(SDLK_UP))
     {
-      if(worldMap[int(posX + dirX * moveSpeed)][int(posY)] == false) posX += dirX * moveSpeed;
-      if(worldMap[int(posX)][int(posY + dirY * moveSpeed)] == false) posY += dirY * moveSpeed;
+      if(worldMap[int(posX + dirX * mspeed)][int(posY)] == false) posX += dirX * mspeed;
+      if(worldMap[int(posX)][int(posY + dirY * mspeed)] == false) posY += dirY * mspeed;
     }
     //move backwards if no wall behind you
     if(keyDown(SDLK_DOWN))
     {
-      if(worldMap[int(posX - dirX * moveSpeed)][int(posY)] == false) posX -= dirX * moveSpeed;
-      if(worldMap[int(posX)][int(posY - dirY * moveSpeed)] == false) posY -= dirY * moveSpeed;
+      if(worldMap[int(posX - dirX * mspeed)][int(posY)] == false) posX -= dirX * mspeed;
+      if(worldMap[int(posX)][int(posY - dirY * mspeed)] == false) posY -= dirY * mspeed;
     }
     //rotate to the right
     if(keyDown(SDLK_RIGHT))
     {
       //both camera direction and camera plane must be rotated
       double oldDirX = dirX;
-      dirX = dirX * cos(-rotSpeed) - dirY * sin(-rotSpeed);
-      dirY = oldDirX * sin(-rotSpeed) + dirY * cos(-rotSpeed);
+      dirX = dirX * cos(-rspeed) - dirY * sin(-rspeed);
+      dirY = oldDirX * sin(-rspeed) + dirY * cos(-rspeed);
       double oldPlaneX = planeX;
-      planeX = planeX * cos(-rotSpeed) - planeY * sin(-rotSpeed);
-      planeY = oldPlaneX * sin(-rotSpeed) + planeY * cos(-rotSpeed);
+      planeX = planeX * cos(-rspeed) - planeY * sin(-rspeed);
+      planeY = oldPlaneX * sin(-rspeed) + planeY * cos(-rspeed);
     }
     //rotate to the left
     if(keyDown(SDLK_LEFT))
     {
       //both camera direction and camera plane must be rotated
       double oldDirX = dirX;
-      dirX = dirX * cos(rotSpeed) - dirY * sin(rotSpeed);
-      dirY = oldDirX * sin(rotSpeed) + dirY * cos(rotSpeed);
+      dirX = dirX * cos(rspeed) - dirY * sin(rspeed);
+      dirY = oldDirX * sin(rspeed) + dirY * cos(rspeed);
       double oldPlaneX = planeX;
-      planeX = planeX * cos(rotSpeed) - planeY * sin(rotSpeed);
-      planeY = oldPlaneX * sin(rotSpeed) + planeY * cos(rotSpeed);
+      planeX = planeX * cos(rspeed) - planeY * sin(rspeed);
+      planeY = oldPlaneX * sin(rspeed) + planeY * cos(rspeed);
     }
     if(keyDown(SDLK_ESCAPE))
     {

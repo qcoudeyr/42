@@ -6,141 +6,55 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 21:48:20 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/17 15:57:31 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 12:28:02 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
 
 int	trgb(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-void	ply_mov(t_ply *p, int keycode)
+void	ply_rt_rgt(t_ply *p)
 {
-	double movespeed = 0.12;
-	double rotspeed = 0.12;
+	p->olddirx = p->dirx;
+	p->dirx = p->dirx * cos(-p->rspeed) - p->diry * sin(-p->rspeed);
+	p->diry = p->olddirx * sin(-p->rspeed) + p->diry * cos(-p->rspeed);
+	p->oldplanex = p->planex;
+	p->planex = p->planex * cos(-p->rspeed) - p->planey * sin(-p->rspeed);
+	p->planey = p->oldplanex * sin(-p->rspeed) + p->planey * cos(-p->rspeed);
+}
 
-	if(keycode == 65362 || keycode == 119)
-	{
-		if(p->wmap[(int)(p->posx + p->dirx * movespeed)][(int)(p->posy)] == 0)
-			p->posx += p->dirx * movespeed;
-		if(p->wmap[(int)(p->posx)][(int)(p->posy + p->diry * movespeed)] == 0)
-			p->posy += p->diry * movespeed;
-	}
-	if(keycode == 97)
-	{
-		if(p->wmap[(int)(p->posx - (p->diry * movespeed))][(int)(p->posy)] == 0)
-			p->posx -= p->diry * movespeed;
-		if(p->wmap[(int)(p->posx)][(int)(p->posy + (p->dirx * movespeed))] == 0)
-			p->posy += p->dirx * movespeed;
-
-	}
-	if(keycode == 100)
-	{
-		if(p->wmap[(int)(p->posx)][(int)(p->posy + (p->diry * movespeed))] == 0)
-			p->posx += p->diry * movespeed;
-		if(p->wmap[(int)(p->posx)][(int)(p->posy - (p->dirx * movespeed))] == 0)
-			p->posy -= p->dirx * movespeed;
-	}
-	if(keycode == 65364 || keycode == 115)
-	{
-		if(p->wmap[(int)(p->posx - p->dirx * movespeed)][(int)(p->posy)] == 0)
-			p->posx -= p->dirx * movespeed;
-		if(p->wmap[(int)(p->posx)][(int)(p->posy - p->diry * movespeed)] == 0)
-			p->posy -= p->diry * movespeed;
-	}
-	//rotate to the right
-	if(keycode == 65363)
-	{
-		//both camera direction and camera plane must be rotated
-		p->olddirx = p->dirx;
-		p->dirx = p->dirx * cos(-rotspeed) - p->diry * sin(-rotspeed);
-		p->diry = p->olddirx * sin(-rotspeed) + p->diry * cos(-rotspeed);
-		p->oldplanex = p->planex;
-		p->planex = p->planex * cos(-rotspeed) - p->planey * sin(-rotspeed);
-		p->planey = p->oldplanex * sin(-rotspeed) + p->planey * cos(-rotspeed);
-	}
-	if(keycode == 65361)
-	{
-		p->olddirx = p->dirx;
-		p->dirx = p->dirx * cos(rotspeed) - p->diry * sin(rotspeed);
-		p->diry = p->olddirx * sin(rotspeed) + p->diry * cos(rotspeed);
-		p->oldplanex = p->planex;
-		p->planex = p->planex * cos(rotspeed) - p->planey * sin(rotspeed);
-		p->planey = p->oldplanex * sin(rotspeed) + p->planey * cos(rotspeed);
-	}
+void	ply_rt_lft(t_ply *p)
+{
+	p->olddirx = p->dirx;
+	p->dirx = p->dirx * cos(p->rspeed) - p->diry * sin(p->rspeed);
+	p->diry = p->olddirx * sin(p->rspeed) + p->diry * cos(p->rspeed);
+	p->oldplanex = p->planex;
+	p->planex = p->planex * cos(p->rspeed) - p->planey * sin(p->rspeed);
+	p->planey = p->oldplanex * sin(p->rspeed) + p->planey * cos(p->rspeed);
 }
 
 int	keyhandle(int keycode, t_cub *t)
 {
 	if (keycode == 65307)
 		return (closewin(t->lib));
-	else
-	{
-		if(keycode == 65451)
-			t->test += 1;
-		if(keycode == 65453)
-			t->test -= 1;
-		if ((keycode <= 65364 && keycode >= 65361) || (keycode < 120 && keycode > 80))
-			ply_mov(t->ply, keycode);
-		render(t);
-	}
+	if (keycode == 65362 || keycode == 119)
+		ply_mv_lft(t->ply);
+	if (keycode == 97)
+		ply_mv_fwd(t->ply);
+	if (keycode == 100)
+		ply_mv_bwd(t->ply);
+	if (keycode == 65364 || keycode == 115)
+		ply_mv_rgt(t->ply);
+	if (keycode == 65363)
+		ply_rt_rgt(t->ply);
+	if (keycode == 65361)
+		ply_rt_lft(t->ply);
+	render(t);
 	return (0);
-}
-
-int	mouse_scroll(int button, int x, int y, t_mlx *lib)
-{
-	(void)x;
-	(void)y;
-	if (button == 4)
-	{
-		if (lib->scale[0] > 2 && lib->scale[1] > 2)
-		{
-			lib->scale[0] = 0.90 * (double)lib->scale[0];
-			lib->scale[1] = 0.90 * (double)lib->scale[1];
-		}
-	}
-	else if (button == 5)
-	{
-		if (lib->scale[0] < 10 && lib->scale[1] < 10)
-		{
-			lib->scale[0] += 1;
-			lib->scale[1] += 1;
-		}
-		else
-		{
-			lib->scale[0] = 1.2 * (double)lib->scale[0];
-			lib->scale[1] = 1.2 * (double)lib->scale[1];
-		}
-	}
-	return (0);
-}
-
-void	utils_init(t_utils *u)
-{
-	u->i = 0;
-	u->x = 0;
-	u->y = 0;
-	u->z = 0;
-	u->c = 0;
-	u->v[0] = 10;
-	u->v[1] = 10;
-	u->color = 0;
-	u->offset[0] = 0;
-	u->offset[1] = 0;
-	u->tmp1 = NULL;
-	u->tmp2 = NULL;
-	u->str1 = NULL;
-	u->str2 = NULL;
-	u->lst = NULL;
-	u->tab = NULL;
-	u->ptr = NULL;
-	u->ptr1 = NULL;
-	u->ptr2 = NULL;
-	u->lstptr = NULL;
 }
 
 t_utils	*utils_free(t_utils *u)

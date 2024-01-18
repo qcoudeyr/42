@@ -6,11 +6,34 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:05:37 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/17 17:06:01 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 12:08:38 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+int	get_texture(t_mlx *lib)
+{
+	lib->no.ptr = mlx_xpm_file_to_image(lib->mlx, lib->no.fname, \
+	&lib->no.w, &lib->no.h);
+	lib->so.ptr = mlx_xpm_file_to_image(lib->mlx, lib->so.fname, \
+	&lib->so.w, &lib->so.h);
+	lib->ea.ptr = mlx_xpm_file_to_image(lib->mlx, lib->ea.fname, \
+	&lib->ea.w, &lib->ea.h);
+	lib->we.ptr = mlx_xpm_file_to_image(lib->mlx, lib->we.fname, \
+	&lib->we.w, &lib->we.h);
+	if (!lib->no.ptr || !lib->so.ptr || !lib->ea.ptr || !lib->we.ptr)
+		return (printerr("Error !\nMap textures are not valid !\n"));
+	lib->no.ptr->addr = mlx_get_data_addr(&lib->no.ptr->img, \
+&lib->no.ptr->bits_per_pixel, &lib->no.ptr->line_length, &lib->no.ptr->endian);
+	lib->so.ptr->addr = mlx_get_data_addr(&lib->so.ptr->img, \
+&lib->so.ptr->bits_per_pixel, &lib->so.ptr->line_length, &lib->so.ptr->endian);
+	lib->ea.ptr->addr = mlx_get_data_addr(&lib->ea.ptr->img, \
+&lib->ea.ptr->bits_per_pixel, &lib->ea.ptr->line_length, &lib->ea.ptr->endian);
+	lib->we.ptr->addr = mlx_get_data_addr(&lib->we.ptr->img, \
+&lib->we.ptr->bits_per_pixel, &lib->we.ptr->line_length, &lib->we.ptr->endian);
+	return (0);
+}
 
 int	map_value(char c)
 {
@@ -32,6 +55,5 @@ int	map_value(char c)
 		v = 0;
 	else
 		v = -9;
-
 	return (v);
 }

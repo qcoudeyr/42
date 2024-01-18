@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:03:48 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/17 17:11:06 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 12:26:06 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ unsigned long	getticks(t_cub *t)
 	}
 	return (((tv.tv_sec * 1000UL) + (tv.tv_usec / 1000UL)) - t->init_t);
 }
-
 
 int	tcolor(int red, int green, int blue)
 {

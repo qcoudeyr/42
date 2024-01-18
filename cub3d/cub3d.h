@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/17 17:24:29 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 12:26:03 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,8 @@ typedef struct s_ply
 	double	planey;
 	double	olddirx;
 	double	oldplanex;
+	double	mspeed;
+	double	rspeed;
 }				t_ply;
 
 typedef struct s_cub
@@ -238,6 +240,13 @@ void			get_new_image(t_mlx *lib);
 int				trgb(int t, int r, int g, int b);
 double			ft_abs(double i);
 unsigned long	getticks(t_cub *t);
+/*
+
+//PLayer Movement File Function */
+void			ply_mv_lft(t_ply *p);
+void			ply_mv_fwd(t_ply *p);
+void			ply_mv_bwd(t_ply *p);
+void			ply_mv_rgt(t_ply *p);
 /*
 
 //Error File Function */
