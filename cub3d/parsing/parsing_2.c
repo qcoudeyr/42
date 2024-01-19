@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:11:14 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 17:34:17 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 18:56:42 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,18 @@ int	get_color(t_cub *t, char *str, int s)
 	return (0);
 }
 
-void	set_player_empty(t_cub *t, t_utils *u)
+int	set_player_empty(t_cub *t, t_utils *u)
 {
 	if (t->wmap[u->y][u->x] >= 2 && t->wmap[u->y][u->x] <= 5)
 	{
+		if (t->ply->posy != 0 && t->ply->posx != 0)
+			return (-1);
 		t->ply->posy = u->x;
 		t->ply->posx = u->y;
+		set_player_direction(t, u);
 		t->wmap[u->y][u->x] = 0;
 	}
+	return (0);
 }
 
 void	set_player_direction(t_cub *t, t_utils *u)
@@ -89,10 +93,9 @@ void	set_player_direction(t_cub *t, t_utils *u)
 		t->ply->diry = -1.00;
 		t->ply->planex = -0.66;
 	}
-	set_player_empty(t, u);
 }
 
-void	get_ply_pos(t_cub *t)
+int	get_ply_pos(t_cub *t)
 {
 	t_utils	*u;
 
@@ -103,10 +106,12 @@ void	get_ply_pos(t_cub *t)
 		u->x = 0;
 		while (u->x < t->lib->xlen)
 		{
-			set_player_direction(t, u);
+			if (set_player_empty(t, u) == -1)
+				return (printerrf(\
+"Error !\nPlayer set multiples times !\n", u));
 			u->x++;
 		}
 		u->y++;
 	}
-	u = pfree(u);
+	return (pfree(u), 0);
 }

@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:17:23 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 16:40:16 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 18:01:31 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	grep_map(t_mlx *lib, char **map)
 	lib->map_origin = origin_map(lib->map->first);
 }
 
-void	get_map(t_cub *t, char *str)
+int	get_map(t_cub *t, char *str)
 {
 	char	**tmp;
 	void	*ptr;
@@ -105,6 +105,10 @@ void	get_map(t_cub *t, char *str)
 			str = ptr;
 		ptr = ft_strnstr(ptr, "\n\n", ft_strlen(ptr));
 	}
+	if (ft_strchr(str, '0') == NULL || (ft_strchr(str, 'N') == NULL
+			&& ft_strchr(str, 'S') == NULL && ft_strchr(str, 'E') == NULL
+			&& ft_strchr(str, 'W') == NULL ))
+		return (printerr("Error !\nPlayer or Map missing !\n"));
 	tmp = ft_split(str, '\n');
 	while (is_map(tmp[i++]) == 0)
 	{
@@ -112,5 +116,5 @@ void	get_map(t_cub *t, char *str)
 	if (tmp[i] != NULL)
 		grep_map(t->lib, tmp + (i - 1));
 	format_map(t, t->lib);
-	tmp = tabfree((void **) tmp);
+	return (tabfree((void **) tmp), 0);
 }

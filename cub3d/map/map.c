@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:33:30 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 17:01:27 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 17:46:45 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ int	check_error_map(t_cub *t)
 	u = ft_calloc(1, sizeof(t_utils));
 	utils_init(u);
 	if (t->wmap == NULL)
-		return (printerr("Error !\nMap don't exist !\n"));
+		return (utils_free(u), printerr("Error !\nMap don't exist !\n"));
 	while (u->y < t->lib->ylen)
 	{
 		u->x = 0;
 		while (u->x < t->lib->xlen)
 		{
 			if (check_value(t, t->wmap, u->y, u->x) == -1)
-				return (-1);
+				return (utils_free(u), -1);
 			u->x++;
 		}
 		u->y++;

@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 17:16:23 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 18:12:11 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,21 +192,21 @@ int				parse(char *str, t_mlx *lib, int x, t_map *p_x);
 int				read_map(t_cub *t, t_mlx *lib);
 int				get_texture(t_mlx *lib);
 int				get_color(t_cub *t, char *str, int s);
+int				set_player_empty(t_cub *t, t_utils *u);
+int				get_ply_pos(t_cub *t);
 char			*get_texture_path(char *str);
-void			set_player_empty(t_cub *t, t_utils *u);
 void			set_player_direction(t_cub *t, t_utils *u);
-void			get_ply_pos(t_cub *t);
 /*
 
 //Map File Function */
 int				check_error_map(t_cub *t);
+int				get_map(t_cub *t, char *str);
+int				map_value(char c);
 void			addmap(t_mlx *lib, t_data *data);
-t_map			*origin_map(t_map *map);
-t_map			*create_map_ptn(int x, int y, int value);
 void			map_addelement(t_map **first, t_map **p_x, \
 t_map **p_e, t_map *map);
-int				map_value(char c);
-void			get_map(t_cub *t, char *str);
+t_map			*origin_map(t_map *map);
+t_map			*create_map_ptn(int x, int y, int value);
 /*
 
 //Windows File Function  */

@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 08:53:29 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 12:13:40 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/18 18:40:30 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ void	lib_init(t_mlx *lib)
 
 void	init_player(t_ply *p)
 {
-	p->posx = 5;
-	p->posy = 5;
-	p->dirx = 0;
-	p->diry = 0;
-	p->planex = 0;
-	p->planey = 0;
+	p->posx = 0;
+	p->posy = 0;
+	p->dirx = 0.0000000001;
+	p->diry = 0.0000000001;
+	p->planex = 0.000000001;
+	p->planey = 0.000000001;
 	p->mspeed = 0.12;
 	p->rspeed = 0.12;
 }
