@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:34:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 18:24:09 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/19 12:01:33 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	draw_arrow(t_data *data, t_cub *t)
 	int				y;
 	struct s_arrow	arr;
 
-	arr.x = (int)(t->ply->posy + 1) * 10;
-	arr.y = (int)(t->ply->posx + 1) * 10;
+	arr.x = (t->ply->posy + 1) * 10;
+	arr.y = (t->ply->posx + 1) * 10;
 	arr.size = 10;
 	arr.color = trgb(0, 255, 0, 0);
 	x = arr.x - arr.size / 2;

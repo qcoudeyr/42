@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:05:37 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 12:08:38 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/19 11:59:35 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,22 @@ int	map_value(char c)
 	else
 		v = -9;
 	return (v);
+}
+
+void	map_addelement(t_map **first, t_map **p_y, t_map **p_e, t_map *map)
+{
+	if (p_y && *p_y != NULL)
+	{
+		(*p_y)->ny = map;
+		map->py = *p_y;
+		*p_y = (*p_y)->nx;
+	}
+	if (first && *first == NULL)
+		*first = map;
+	if (p_e && *p_e != NULL)
+		(*p_e)->nx = map;
+	map->px = *p_e;
+	map->first = *first;
+	*p_e = map;
+	map = map->nx;
 }

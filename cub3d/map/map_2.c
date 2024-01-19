@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:17:23 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 18:01:31 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/19 12:05:50 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,5 @@ int	get_map(t_cub *t, char *str)
 	}
 	if (tmp[i] != NULL)
 		grep_map(t->lib, tmp + (i - 1));
-	format_map(t, t->lib);
-	return (tabfree((void **) tmp), 0);
+	return (format_map(t, t->lib), tabfree((void **) tmp), 0);
 }

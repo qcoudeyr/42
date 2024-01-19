@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:59:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 17:29:30 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/19 12:18:13 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ int	handle_nomap(t_cub *t)
 		t->fd_map = open("./map/default.cub", O_RDONLY);
 	temp = pfree(temp);
 	if (t->fd_map < 0)
-	{
-		perror("open");
-		return (-1);
-	}
+		return (printerr("Error !\nMap can't be open: "), perror("open"), -1);
 	else
 		return (0);
 }
@@ -53,24 +50,12 @@ printerr("Error, Too many args !\nUsage: ./cub3D ./map/default.cub\n"));
 		{
 			t->fd_map = open(argv[1], O_RDONLY);
 			if (t->fd_map < 0)
-			{
-				perror("open");
-				return (-1);
-			}
+				return (printerr("Error !\nMap can't be open: "), \
+				perror("open"), -1);
 		}
 	}
 	return (0);
 }
-
-/* void	printmap(t_cub *t)
-{
-	for(int y = 0; y < t->lib->ylen; y++)
-	{
-		for(int x = 0 ; x < t->lib->xlen; x++)
-			ft_printf("%i", t->wmap[y][x]);
-		ft_printf("\n");
-	}
-} */
 
 int	main(int argc, char **argv)
 {

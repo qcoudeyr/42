@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:00:15 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 18:12:11 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/19 12:02:01 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,10 +134,10 @@ typedef struct s_rend
 
 typedef struct s_arrow
 {
-	int		x;
-	int		y;
-	int		size;
-	int		color;
+	double		x;
+	double		y;
+	int			size;
+	int			color;
 }				t_arrow;
 
 typedef struct s_ply

@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:19:45 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 18:18:37 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/19 12:10:41 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	get_map_info(t_cub *t)
 	if (search_fnc(&temp, buf, s, t) == -1)
 		return (-1);
 	if (get_map(t, buf) == -1)
-		return (-1);
+		return (pfree(buf), -1);
 	buf = pfree(buf);
 	if (get_ply_pos(t) == -1)
 		return (-1);

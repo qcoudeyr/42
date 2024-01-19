@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:30:16 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 17:00:04 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/19 12:00:59 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	dspl_map(t_cub *t, t_mlx *lib)
 			u->offset[0] = (u->x + 1) * 10;
 			if (t->wmap[u->y][u->x] == 0)
 				u->color = trgb(0, 255, 255, (255 - u->y));
-			else if (t->wmap[u->y][u->x] == 1)
+			else
 				u->color = trgb(0, 153, 73, 0);
 			sqr_print(lib->data, u->v, u->offset, u->color);
 			u->x++;

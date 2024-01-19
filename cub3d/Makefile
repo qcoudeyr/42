@@ -77,6 +77,6 @@ dg:
 	@clear
 	@$(CC) $(CFLAGS) -g $(OBJS) -L$(LIB_DIR) $(LIBS) -o debug
 	valgrind -s --track-origins=yes --tool=memcheck --show-leak-kinds=all --leak-check=full --error-exitcode=1 \
-	./debug
+	./debug ./map/default.cub
 
 .PHONY: all clean fclean re debug libft norme dg
