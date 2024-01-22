@@ -1,17 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/20 10:58:36 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/22 12:40:40 by  qcoudeyr        ###   ########.fr       */
+/*   Created: 2024/01/22 12:37:19 by  qcoudeyr         #+#    #+#             */
+/*   Updated: 2024/01/22 12:40:28 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "Contact.hpp"
 
-class PhoneBook {
 
-};
+
+Contact::Contact(){
+}
+
+Contact::~Contact(){
+}
+
