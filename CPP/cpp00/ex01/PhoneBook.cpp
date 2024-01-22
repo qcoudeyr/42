@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 10:58:34 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/18 11:51:12 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/22 14:00:13 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,42 +31,4 @@ void AddContact(PhoneBook pb)
 {
 	(void) pb;
 	MenuHeader("So you want to add a contact ?\nCan you tell me more about it ?!");
-}
-
-int	main(int argc, char **argv)
-{
-	(void) argv;
-	PhoneBook pb;
-	std::string input;
-
-	if (argc > 1)
-	{
-		std::cout<<"Error ! Usage : $>./PhoneBook"<<std::endl;
-		return (0);
-	}
-
-	MenuHeader("What do you want to do ?");
-
-	while (1)
-	{
-		std::cout<<"$> ";
-		std::cin>>input;
-		if (input == "EXIT")
-			break;
-		else if (input == "ADD")
-		{
-			/* AddContact(); */
-		}
-		else if (input == "SEARCH")
-		{
-			//Do search thing
-		}
-		else
-		{
-			MenuHeader("\033[1m\033[31m/!\\ Nothing can be done with '" + input +\
-			"'\n\033[0mMay you want to ADD or SEARCH an contact ?");
-		}
-
-	}
-	return (0);
 }

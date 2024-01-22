@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:37:23 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/22 12:39:56 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/22 13:58:18 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,20 @@ private:
 	std::string	_nickname;
 	std::string	_phoneNumber;
 	std::string	_darkestSecret;
-	int			_index;
-
-	std::string _printLen(std::string str) const;
-	std::string _getInput(std::string str) const;
 
 public:
 	Contact();
 	~Contact();
-	void	init(void);
-	void	view(int index) const;
-	void	display(int index) const;
-	void	setIndex(int i);
+	std::string	get_firstName() const;
+	std::string	get_lastName() const;
+	std::string	get_nickname() const;
+	std::string	get_phoneNumber() const;
+	std::string	get_darkestSecret() const;
+	void	set_firstName(std::string input);
+	void	set_lastName(std::string input);
+	void	set_nickname(std::string input);
+	void	set_phoneNumber(std::string input);
+	void	set_darkestSecret(std::string input);
 };
 
 #endif
