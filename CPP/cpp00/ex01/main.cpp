@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:00:20 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/22 23:45:23 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/23 12:58:52 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,9 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	pb.set_NbContact(0);
-	pb.MenuHeader("What do you want to do ?");
-
 	while (1)
 	{
+		pb.MenuHeader("What do you want to do ?");
 		std::cout<<"$> ";
 		std::cin>>input;
 		if (input == "EXIT")

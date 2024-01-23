@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 10:58:36 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/22 23:45:10 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/23 12:47:42 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ public:
 	int		get_NbContact() const;
 	void	SearchContact();
 	void	set_NbContact(int value);
+	void	PrintContact(int i);
 };
 
 void	FormatPrint(std::string input);
