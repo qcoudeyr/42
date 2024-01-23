@@ -6,12 +6,12 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:00:20 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/22 14:03:51 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/22 23:45:23 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-
+#include "Contact.hpp"
 
 int	main(int argc, char **argv)
 {
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 		std::cout<<"Error ! Usage : $>./PhoneBook"<<std::endl;
 		return (0);
 	}
-
+	pb.set_NbContact(0);
 	pb.MenuHeader("What do you want to do ?");
 
 	while (1)
@@ -34,13 +34,9 @@ int	main(int argc, char **argv)
 		if (input == "EXIT")
 			break;
 		else if (input == "ADD")
-		{
-			/* AddContact(); */
-		}
+			pb.AddContact();
 		else if (input == "SEARCH")
-		{
-			//Do search thing
-		}
+			pb.SearchContact();
 		else
 		{
 			pb.MenuHeader("\033[1m\033[31m/!\\ Nothing can be done with '" + input +\

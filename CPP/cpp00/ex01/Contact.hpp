@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:37:23 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/22 13:58:18 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/22 23:33:53 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,25 @@
 class Contact
 {
 private:
-	std::string	_firstName;
-	std::string	_lastName;
-	std::string	_nickname;
-	std::string	_phoneNumber;
-	std::string	_darkestSecret;
+	std::string	_FirstName;
+	std::string	_LastName;
+	std::string	_NickName;
+	std::string	_PhoneNumber;
+	std::string	_DarkestSecret;
 
 public:
 	Contact();
 	~Contact();
-	std::string	get_firstName() const;
-	std::string	get_lastName() const;
-	std::string	get_nickname() const;
-	std::string	get_phoneNumber() const;
-	std::string	get_darkestSecret() const;
-	void	set_firstName(std::string input);
-	void	set_lastName(std::string input);
-	void	set_nickname(std::string input);
-	void	set_phoneNumber(std::string input);
-	void	set_darkestSecret(std::string input);
+	std::string	get_FirstName() const;
+	std::string	get_LastName() const;
+	std::string	get_NickName() const;
+	std::string	get_PhoneNumber() const;
+	std::string	get_DarkestSecret() const;
+	void	set_FirstName(std::string input);
+	void	set_LastName(std::string input);
+	void	set_NickName(std::string input);
+	void	set_PhoneNumber(std::string input);
+	void	set_DarkestSecret(std::string input);
 };
 
 #endif

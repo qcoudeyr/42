@@ -6,13 +6,11 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:37:19 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/22 13:58:54 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/22 23:39:21 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
-
-
 
 Contact::Contact(){
 }
@@ -20,44 +18,44 @@ Contact::Contact(){
 Contact::~Contact(){
 }
 
-std::string	Contact::get_firstName() const
+std::string	Contact::get_FirstName() const
 {
-	return (this->_firstName);
+	return (this->_FirstName);
 }
-std::string	Contact::get_lastName() const
+std::string	Contact::get_LastName() const
 {
-	return (this->_lastName);
+	return (this->_LastName);
 }
-std::string	Contact::get_nickname() const
+std::string	Contact::get_NickName() const
 {
-	return (this->_nickname);
+	return (this->_NickName);
 }
-std::string	Contact::get_phoneNumber() const
+std::string	Contact::get_PhoneNumber() const
 {
-	return (this->_phoneNumber);
+	return (this->_PhoneNumber);
 }
-std::string	Contact::get_darkestSecret() const
+std::string	Contact::get_DarkestSecret() const
 {
-	return (this->_darkestSecret);
+	return (this->_DarkestSecret);
 }
 
-void	Contact::set_firstName(std::string input)
+void	Contact::set_FirstName(std::string input)
 {
-	this->_firstName = input;
+	this->_FirstName = input;
 }
-void	Contact::set_lastName(std::string input)
+void	Contact::set_LastName(std::string input)
 {
-	this->_lastName = input;
+	this->_LastName = input;
 }
-void	Contact::set_nickname(std::string input)
+void	Contact::set_NickName(std::string input)
 {
-	this->_nickname = input;
+	this->_NickName = input;
 }
-void	Contact::set_phoneNumber(std::string input)
+void	Contact::set_PhoneNumber(std::string input)
 {
-	this->_phoneNumber = input;
+	this->_PhoneNumber = input;
 }
-void	Contact::set_darkestSecret(std::string input)
+void	Contact::set_DarkestSecret(std::string input)
 {
-	this->_darkestSecret = input;
+	this->_DarkestSecret = input;
 }

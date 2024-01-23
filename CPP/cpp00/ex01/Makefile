@@ -1,8 +1,8 @@
 CXX = c++
-CFLAGS = -Wall -Werror -Wextra -std=c++98 -g
-
-HEADERS = PhoneBook.hpp
-SRCS = PhoneBook.cpp
+CFLAGS =  -std=c++98 -g
+##-Wall -Werror -Wextra
+HEADERS = PhoneBook.hpp Contact.hpp
+SRCS = PhoneBook.cpp Contact.cpp main.cpp
 OBJDIR = ./object/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.cpp=.o))
 
