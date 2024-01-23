@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 10:58:34 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/23 12:14:31 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/23 12:17:38 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void PhoneBook::MenuHeader(std::string str)
 void FormatPrint(const std::string input)
 {
 	if (input.length() < 10)
-		std::cout << std::left << std::setw(10) << input;
+		std::cout << std::right << std::setw(10) << input;
 	else
 		std::cout << input.substr(0, 9) << '.';
 	std::cout << '|';
@@ -93,7 +93,9 @@ void PhoneBook::SearchContact()
 	MenuHeader("List of Contact:");
 	for(int i = 0; i < get_NbContact(); i++)
 	{
-		FormatPrint(std::to_string(i));
+		std::stringstream ss;
+		ss << i;
+		FormatPrint(ss.str());
 		FormatPrint(this->_contacts[i].get_FirstName());
 		FormatPrint(this->_contacts[i].get_LastName());
 		FormatPrint(this->_contacts[i].get_NickName());
