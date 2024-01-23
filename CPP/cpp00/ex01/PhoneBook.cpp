@@ -6,13 +6,14 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 10:58:34 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/23 12:10:38 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/23 12:14:31 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <iomanip>
-#include <string.h>
+#include <string>
+#include <sstream>
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
@@ -88,13 +89,11 @@ void PhoneBook::AddContact()
 void PhoneBook::SearchContact()
 {
 	std::string	input;
-	std::string s;
 
 	MenuHeader("List of Contact:");
 	for(int i = 0; i < get_NbContact(); i++)
 	{
-		s << i;
-		FormatPrint(s.str());
+		FormatPrint(std::to_string(i));
 		FormatPrint(this->_contacts[i].get_FirstName());
 		FormatPrint(this->_contacts[i].get_LastName());
 		FormatPrint(this->_contacts[i].get_NickName());
