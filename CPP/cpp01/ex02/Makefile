@@ -1,12 +1,12 @@
 CXX = c++
-CFLAGS =  -std=c++98 -g
-##-Wall -Werror -Wextra
-HEADERS = Account.hpp
-SRCS = Account.cpp tests.cpp
+CFLAGS = -Wall -Werror -Wextra -std=c++98 -g
+
+HEADERS =
+SRCS = main.cpp
 OBJDIR = ./object/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.cpp=.o))
 
-NAME = Test
+NAME = brain
 
 all: $(OBJDIR) $(NAME)
 	@echo "\033[32m\tCompilation done !\033[0m"
@@ -14,7 +14,7 @@ all: $(OBJDIR) $(NAME)
 $(OBJDIR)%.o: %.cpp $(HEADERS)
 	@$(CXX) $(CFLAGS) -I$(<D) -c $< -o $@
 
-$(NAME): $(OBJDIR) $(OBJS)  # Define 'megaphone' target
+$(NAME): $(OBJDIR) $(OBJS)
 	@$(CXX) $(CFLAGS) $(OBJS) -o $(NAME)
 
 $(OBJDIR):

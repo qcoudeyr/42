@@ -5,7 +5,7 @@
       "name": "(gdb) Lancer",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/ex02/Test",
+      "program": "${workspaceFolder}/ex00/Zombie",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",

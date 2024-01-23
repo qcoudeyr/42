@@ -1,12 +1,12 @@
 CXX = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
-HEADERS = Zombie.hpp
-SRCS = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+HEADERS = HumanA.hpp HumanB.hpp Weapon.hpp
+SRCS = HumanA.cpp HumanB.cpp Weapon.cpp main.cpp
 OBJDIR = ./object/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.cpp=.o))
 
-NAME = Zombie
+NAME = ex03
 
 all: $(OBJDIR) $(NAME)
 	@echo "\033[32m\tCompilation done !\033[0m"

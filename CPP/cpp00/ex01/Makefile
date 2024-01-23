@@ -14,7 +14,7 @@ all: $(OBJDIR) $(NAME)
 $(OBJDIR)%.o: %.cpp $(HEADERS)
 	@$(CXX) $(CFLAGS) -I$(<D) -c $< -o $@
 
-$(NAME): $(OBJDIR) $(OBJS)  # Define 'megaphone' target
+$(NAME): $(OBJDIR) $(OBJS)
 	@$(CXX) $(CFLAGS) $(OBJS) -o $(NAME)
 
 $(OBJDIR):
