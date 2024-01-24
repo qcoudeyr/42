@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 18:56:04 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/24 13:32:56 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/24 14:19:06 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int main()
 			std::cout << "Substring found at position " << found << std::endl;
 			for (int i = 0; s1[i]; i++)
 			{
-				
+				while (line[found] == s1[i])
+
 			}
 		}
 		else
