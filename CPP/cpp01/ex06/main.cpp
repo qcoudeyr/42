@@ -6,21 +6,17 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 18:56:04 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/24 16:52:25 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/24 17:51:00 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-int main()
+int main(int argc, char **argv)
 {
 	std::string	input;
 	Harl		harl;
 
-	std::cout << "Exemple of levels : DEBUG, INFO, WARNING, ERROR"<<std::endl;
-	std::cout << "Enter a level: ";
-	std::cin >> input;
-	harl.complain(input);
-
+	harl.complain(argv[argc - 1]);
 	return (0);
 }
