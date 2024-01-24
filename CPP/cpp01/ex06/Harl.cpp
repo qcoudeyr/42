@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:08:07 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/24 16:56:57 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/24 17:00:52 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,25 @@
 void	Harl::debug()
 {
 	std::cout<< "[ DEBUG ]" << std::endl;
-	std::cout<< "love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!" << std::endl;
+	std::cout<< "love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!\n" << std::endl;
 }
 
 void	Harl::info()
 {
 	std::cout<< "[ INFO ]" << std::endl;
-	std::cout<< "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!" << std::endl;
+	std::cout<< "I cannot believe adding extra bacon costs more money.\nYou didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!\n" << std::endl;
 }
 
 void	Harl::warning()
 {
 	std::cout<< "[ WARNING ]" << std::endl;
-	std::cout<< "I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month." << std::endl;
+	std::cout<< "I think I deserve to have some extra bacon for free.\nI’ve been coming for years whereas you started working here since last month.\n" << std::endl;
 }
 
 void	Harl::error()
 {
 	std::cout<< "[ ERROR ]" << std::endl;
-	std::cout<< "This is unacceptable! I want to speak to the manager now." << std::endl;
+	std::cout<< "This is unacceptable! I want to speak to the manager now.\n" << std::endl;
 }
 
 Harl::Harl()
@@ -51,6 +51,19 @@ void	Harl::complain(std:: string level)
 	int i = 0;
 	while (i < 4 && levels[i].compare(level))
 		i++ ;
-	if (i < 4)
-		(this->*func[i])();
+	switch (i) {
+		case 1:
+			while (i < 4)
+				(this->*func[i++])();
+		case 2:
+			while (i < 4)
+				(this->*func[i++])();
+		case 3:
+			while (i < 4)
+				(this->*func[i++])();
+		case 4:
+			while (i < 4)
+				(this->*func[i++])();
+	}
+
 }
