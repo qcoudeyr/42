@@ -6,13 +6,26 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 18:56:04 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/24 14:19:06 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/24 14:21:29 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 #include <fstream>
+
+std::string replaceWord(const std::string &original, const std::string &target, const std::string &replacement) {
+	std::string result = original;
+	size_t startPos = result.find(target);
+
+	while (startPos != std::string::npos) {
+		result = result.substr(0, startPos) + replacement + result.substr(startPos + target.length());
+
+		startPos = result.find(target, startPos + replacement.length());
+	}
+
+	return result;
+}
 
 int main()
 {
