@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:08:07 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/24 17:00:52 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/24 17:06:04 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,16 @@ void	Harl::complain(std:: string level)
 		i++ ;
 	switch (i) {
 		case 1:
-			while (i < 4)
-				(this->*func[i++])();
+			(this->*func[i++])();
 		case 2:
-			while (i < 4)
-				(this->*func[i++])();
+			(this->*func[i++])();
 		case 3:
-			while (i < 4)
-				(this->*func[i++])();
+			(this->*func[i++])();
 		case 4:
-			while (i < 4)
-				(this->*func[i++])();
+			(this->*func[i++])();
+		default :
+			std::cout<< "[ Probably complaining about insignificant problems ]\n" << std::endl;
+
 	}
 
 }
