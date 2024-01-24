@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 18:56:04 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/24 11:34:29 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/24 11:42:20 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@ int main()
 	if (!inputFile.is_open())
 		return (std::cerr << "Error opening the file: " << filePath << std::endl, 1);
 
-	std::ofstream outputFile(filePath + ".replace");
+	std::string outputPath = (std::string)filePath + ".replace";
+	std::ofstream outputFile(outputPath.c_str());
 	if (!outputFile.is_open())
 		return (std::cerr << "Error creating the file: " << filePath << std::endl, 1);
 	while (std::getline(inputFile, line))
 	{
-		size_t found = s1.find(s2);
+		size_t found = line.find(s1);
 		if (found != std::string::npos)
 		{
 			std::cout << "Substring found at position " << found << std::endl;
