@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:08:09 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/24 15:12:10 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/24 16:39:21 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ class Harl
 		void	complain( std::string level );
 };
 
+typedef void (Harl::*t_func) ( void );
 
 #endif
