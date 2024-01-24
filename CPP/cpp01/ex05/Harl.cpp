@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:08:07 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/24 16:37:40 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/24 16:47:44 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,13 @@ Harl::~Harl()
 {
 }
 
-void	Harl::complain( std::string level )
+void	Harl::complain(std:: string level)
 {
-	int	i = std::atoi(level.c_str());
-	while (i <= 4)
-	{
-		i++;
-	}
+	t_func	funcs[] = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error };
+	std::string levels[] = { "DEBUG", "INFO", "WARNING", "ERROR"};
+	int i = 0;
+	while (i < 4 && levels[i].compare(level))
+		i++ ;
+	if (i < 4)
+		(this->*funcs[i])();
 }
