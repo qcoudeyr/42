@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 18:56:04 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/24 11:42:20 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/24 13:32:56 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ int main()
 		if (found != std::string::npos)
 		{
 			std::cout << "Substring found at position " << found << std::endl;
+			for (int i = 0; s1[i]; i++)
+			{
+				
+			}
 		}
 		else
 			outputFile << line;
