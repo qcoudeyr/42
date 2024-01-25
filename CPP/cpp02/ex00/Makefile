@@ -1,12 +1,12 @@
 CXX = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
-HEADERS = Harl.hpp
-SRCS = main.cpp Harl.cpp
+HEADERS = Fixed.hpp
+SRCS = main.cpp Fixed.cpp
 OBJDIR = ./object/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.cpp=.o))
 
-NAME = harlFilter
+NAME = ex00
 
 all: $(OBJDIR) $(NAME)
 	@echo "\033[32m\tCompilation done !\033[0m"
