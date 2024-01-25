@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 22:18:40 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/24 22:42:11 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/25 09:33:10 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,7 @@ void Fixed::setRawBits(int const raw)
 
 std::ostream & operator<<(std::ostream & o, Fixed const & rhs)
 {
-	o << rhs.toFloat();
-	return (o);
+	return (o << rhs.toFloat());
 }
 
 float Fixed::toFloat(void) const

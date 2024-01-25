@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 22:18:40 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/24 22:42:11 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/25 09:40:37 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,6 @@ void Fixed::setRawBits(int const raw)
 	this->_Integer = raw;
 }
 
-std::ostream & operator<<(std::ostream & o, Fixed const & rhs)
-{
-	o << rhs.toFloat();
-	return (o);
-}
-
 float Fixed::toFloat(void) const
 {
 	return ((float)this->_Integer / (1 << this->_IntegerBits));
@@ -76,3 +70,79 @@ int Fixed::toInt(void) const
 	return (this->_Integer >> this->_IntegerBits);
 }
 
+//From here, it will only be overloaded operator
+
+std::ostream & operator<<(std::ostream & o, Fixed const & rhs)
+{
+	return (o << rhs.toFloat());
+}
+
+std::ostream & operator>(std::ostream & o, Fixed const & rhs)
+{
+	return (o << rhs.toFloat());
+}
+
+std::ostream & operator<(std::ostream & o, Fixed const & rhs)
+{
+	return (o << rhs.toFloat());
+}
+
+std::ostream & operator>=(std::ostream & o, Fixed const & rhs)
+{
+	return (o << rhs.toFloat());
+}
+
+std::ostream & operator<=(std::ostream & o, Fixed const & rhs)
+{
+	return (o << rhs.toFloat());
+}
+
+
+std::ostream & operator==(std::ostream & o, Fixed const & rhs)
+{
+	return (o << rhs.toFloat());
+}
+
+std::ostream & operator!=(std::ostream & o, Fixed const & rhs)
+{
+	return (o << rhs.toFloat());
+}
+
+std::ostream & operator+(std::ostream & o, Fixed const & rhs)
+{
+	return (o << rhs.toFloat());
+}
+
+std::ostream & operator-(std::ostream & o, Fixed const & rhs)
+{
+	return (o << rhs.toFloat());
+}
+
+std::ostream & operator*(std::ostream & o, Fixed const & rhs)
+{
+	return (o << rhs.toFloat());
+}
+
+std::ostream & operator/(std::ostream & o, Fixed const & rhs)
+{
+	return (o << rhs.toFloat());
+}
+
+std::ostream & operator(std::ostream & o, Fixed const & rhs)
+{
+	return (o << rhs.toFloat());
+}
+
+std::ostream & operator/(std::ostream & o, Fixed const & rhs)
+{
+	return (o << rhs.toFloat());
+}
+std::ostream & operator*(std::ostream & o, Fixed const & rhs)
+{
+	return (o << rhs.toFloat());
+}
+
+std::ostream & operator/(std::ostream & o, Fixed const & rhs)
+{
+	return (o << rhs.toFloat());
+}
