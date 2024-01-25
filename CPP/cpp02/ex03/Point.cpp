@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:31:53 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/25 14:08:13 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/25 14:36:02 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,20 @@ Point::Point (const Point & src): _x(src.getX()), _y(src.getY())
 {
 }
 
-Point& Point::operator=(const Point& other) {
+Point& Point::operator=(const Point& other)
+{
 	if (this != &other)
 	{
 		this->_x = other.getX();
 		this->_y = other.getY();
 	}
 	return *this;
-	}
-
-Fixed Point::getX(){
-	return this->_x;
 }
 
-Fixed Point::getY(){
-	return this->_y;
+Fixed Point::getX() const{
+	return _x;
+}
+
+Fixed Point::getY() const{
+	return _y;
 }
