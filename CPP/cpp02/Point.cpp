@@ -6,13 +6,13 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:31:53 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/25 13:21:14 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/25 14:08:13 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 
-Point::Point(): _x(0), _y(0)
+Point::Point(Fixed x, Fixed y): _x(x), _y(y)
 {
 }
 
