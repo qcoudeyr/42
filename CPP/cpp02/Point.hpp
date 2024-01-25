@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:31:52 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/25 11:44:35 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/25 11:51:42 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ public:
 	Point();
 	~Point();
 	Point (const Point&);
-	Point &operator=(const Point& other);
+	Point &operator=(const Point & other);
+	float getX();
+	float getY();
 };
 
 #endif
