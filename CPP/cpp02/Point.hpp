@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:31:52 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/25 11:51:42 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/25 12:12:37 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,22 @@
 #ifndef POINT_HPP
 #define POINT_HPP
 
+#include "Fixed.hpp"
 #include <iostream>
 #include <cmath>
 
 class Point
 {
-private:
-	float _x;
-	float _y;
-public:
-	Point();
-	~Point();
-	Point (const Point&);
-	Point &operator=(const Point & other);
-	float getX();
-	float getY();
+	private:
+		Fixed const _x;
+		Fixed const _y;
+	public:
+		Point();
+		~Point();
+		Point (const Point & src);
+		Point &operator=(const Point & other);
+		float getX();
+		float getY();
 };
 
 #endif
