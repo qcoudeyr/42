@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 22:18:41 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/24 22:42:58 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/25 11:22:36 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,38 @@ class Fixed
 		int toInt(void) const;
 		int getRawBits(void) const;
 		void setRawBits(int const raw);
+
+		Fixed& operator++();
+		Fixed operator++(int);
+		Fixed& operator--();
+		Fixed operator--(int);
+		bool operator>(const Fixed& rhs) const;
+		bool operator<(const Fixed& rhs) const;
+		bool operator>=(const Fixed& rhs) const;
+		bool operator<=(const Fixed& rhs) const;
+		bool operator==(const Fixed& rhs) const;
+		bool operator!=(const Fixed& rhs) const;
+		Fixed operator+(const Fixed& rhs) const;
+		Fixed operator-(const Fixed& rhs) const;
+		Fixed operator*(const Fixed& rhs) const;
+		Fixed operator/(const Fixed& rhs) const;
+		static Fixed &max(Fixed &a, Fixed &b);
+		static Fixed const & max(Fixed const &a, Fixed const &b);
+		static Fixed &min(Fixed &a, Fixed &b);
+		static Fixed const & min(Fixed const &a, Fixed const &b);
 };
 
-std::ostream & operator<<(std::ostream & o, Fixed const & rhs);
+	std::ostream & operator<<(std::ostream & o, Fixed const & rhs);
+	std::ostream & operator>(std::ostream & o, Fixed const & rhs);
+	std::ostream & operator<(std::ostream & o, Fixed const & rhs);
+	std::ostream & operator>=(std::ostream & o, Fixed const & rhs);
+	std::ostream & operator<=(std::ostream & o, Fixed const & rhs);
+	std::ostream & operator==(std::ostream & o, Fixed const & rhs);
+	std::ostream & operator!=(std::ostream & o, Fixed const & rhs);
+	std::ostream & operator+(std::ostream & o, Fixed const & rhs);
+	std::ostream & operator-(std::ostream & o, Fixed const & rhs);
+	std::ostream & operator*(std::ostream & o, Fixed const & rhs);
+	std::ostream & operator/(std::ostream & o, Fixed const & rhs);
 
 #endif
+
