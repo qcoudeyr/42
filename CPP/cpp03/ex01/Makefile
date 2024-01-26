@@ -1,12 +1,12 @@
 CXX = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
-HEADERS = Fixed.hpp
-SRCS = main.cpp Fixed.cpp
+HEADERS = ClapTrap.hpp ScavTrap.hpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
 OBJDIR = ./object/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.cpp=.o))
 
-NAME = ex01
+NAME = ex00
 
 all: $(OBJDIR) $(NAME)
 	@echo "\033[32m\tCompilation done !\033[0m"

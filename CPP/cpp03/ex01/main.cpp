@@ -6,11 +6,12 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 15:41:02 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/26 22:12:08 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/26 22:14:29 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main()
 {
