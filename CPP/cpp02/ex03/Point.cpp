@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:31:53 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/26 12:44:15 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/26 13:24:19 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ Point::~Point()
 
 Point::Point (const Point & src): _x(src.getX()), _y(src.getY())
 {
+}
+
+Point& Point::operator=(const Point& other)
+{
+	if (this == &other)
+		return *this;
+	return *this;
 }
 
 Fixed Point::getX() const{
