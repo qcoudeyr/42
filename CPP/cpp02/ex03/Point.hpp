@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:31:52 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/26 15:10:56 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/26 15:29:15 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ class Point
 	public:
 		Point();
 		Point(Fixed x, Fixed y);
-		~Point();
-		Point (const Point & src);
+		Point(const Point& other);
 		Point& operator=(const Point& other);
+		~Point();
 		Fixed getX() const;
 		Fixed getY() const;
 		Point SetPointValue(Fixed newX, Fixed newY) const;
