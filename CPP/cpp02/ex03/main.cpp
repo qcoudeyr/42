@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 22:18:42 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/26 14:19:39 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/26 14:35:42 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@ int main()
 
 	bool isInside = bsp(a, b, c, testPoint);
 
+	if (isInside)
+		std::cout << "The point is inside the triangle." << std::endl;
+	else
+		std::cout << "The point is not inside the triangle." << std::endl;
+
+	Point testPoint2(26.0f, 25.0f);
+
+	isInside = bsp(a, b, c, testPoint2);
 	if (isInside)
 		std::cout << "The point is inside the triangle." << std::endl;
 	else

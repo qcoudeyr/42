@@ -6,20 +6,28 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:31:51 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/26 14:22:02 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/26 14:33:10 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 
-Fixed sign(Point p1, Point p2, Point p3)
+float sign(Point p1, Point p2, Point p3)
 {
-	return (p1.getX.toFloat() - p3.getX()) * (p2.getY() - p3.getY()) - (p2.getX() - p3.getX()) * (p1.getY() - p3.getY());
+	Fixed x, y;
+	float x1, y1, x2, y2, x3, y3;
+	x1 = p1.getX().toFloat();
+	y1 = p1.getY().toFloat();
+	x2 = p2.getX().toFloat();
+	y2 = p2.getY().toFloat();
+	x3 = p3.getX().toFloat();
+	y3 = p3.getY().toFloat();
+	return ((x1 - x3) * (y2 - y3) - (x2 - x3) * (y1 - y3));
 }
 
 bool	bsp( Point const a, Point const b, Point const c, Point const point)
 {
-	Fixed d1, d2, d3;
+	float d1, d2, d3;
 	bool has_neg, has_pos;
 
 	d1 = sign(point, a, b);

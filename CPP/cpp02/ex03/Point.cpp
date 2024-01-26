@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:31:53 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/26 13:24:19 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/26 14:28:36 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,12 @@ Point& Point::operator=(const Point& other)
 	return *this;
 }
 
-Fixed Point::getX() const{
+Fixed Point::getX() const
+{
 	return _x;
 }
 
-Fixed Point::getY() const{
+Fixed Point::getY() const
+{
 	return _y;
 }
