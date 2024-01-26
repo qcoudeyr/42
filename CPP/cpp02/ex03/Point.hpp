@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:31:52 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/26 13:19:22 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/26 13:28:33 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ class Point
 		Fixed getX() const;
 		Fixed getY() const;
 };
+
+bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 #endif
 
