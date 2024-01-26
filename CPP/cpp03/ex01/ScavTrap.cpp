@@ -6,35 +6,35 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 22:14:35 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/26 22:15:45 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/26 22:32:12 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(std::string Name): _Name(Name), _Hit(10), _Energy(10), _Attack(0)
+ScavTrap::ScavTrap(std::string Name): ClapTrap(Name)
 {
-	std::cout<< Name + " have been created !"<< std::endl;
+	this->_Attack = 20;
+	this->_Energy = 50;
+	this->_Hit = 100;
+	std::cout<< "ScavTrap " + Name + " have been created !"<< std::endl;
 }
 
 ScavTrap::~ScavTrap(){
-	std::cout<< this->_Name + " have been Destroyed !"<< std::endl;
+	std::cout<< "ScavTrack " + this->_Name + " have been Destroyed !"<< std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &other)
+void ScavTrap::attack( std::string const& target )
 {
-	*this = other;
-	std::cout << "Copy constructor called" << std::endl;
-	return;
+	if ( this->_Energy <= 0 ) {
+		std::cout << "< ScavTrap > - " << this->_Name << " is out of energy." << std::endl;
+		return;
+	}
+	std::cout << "< ScavTrap > - " << this->_Name << " attacks " << target << " at range, causing " << this->_Attack << " points of damage !" << std::endl;
+	this->_Energy -= 1;
 }
 
-ScavTrap& ScavTrap::operator=(const ScavTrap& other)
+void ScavTrap::guardGate()
 {
-	if (this == &other)
-		return *this;
-	this->_Attack = other._Attack;
-	this->_Energy = other._Energy;
-	this->_Hit = other._Hit;
-	this->_Name = other._Name;
-	return *this;
+	std::cout << "< ScavTrap > - " << this->_Name << " is now in Gate keeper mode." << std::endl;
 }

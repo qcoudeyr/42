@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 15:41:03 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/26 22:10:43 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/26 22:30:27 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ void ClapTrap::beRepaired(unsigned int amount)
 		return;
 	}
 	std::cout<<this->_Name + " just repaired " << amount << " health points !"<<std::endl;
+	this->_Hit += amount;
 	this->_Energy -= 1;
 }
