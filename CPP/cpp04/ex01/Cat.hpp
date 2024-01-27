@@ -6,7 +6,7 @@
 class Cat: public Animal, public Brain
 {
 	private:
-
+		Brain *brain;
 	public:
 		Cat();
 		Cat(Cat const & base);

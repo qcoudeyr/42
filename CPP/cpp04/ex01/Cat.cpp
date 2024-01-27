@@ -1,6 +1,7 @@
 #include "Cat.hpp"
 
 Cat::Cat() {
+	this->brain = new Brain();
 	std::cout << "Cat default constructor called" << std::endl;
 	this->_type = "Cat";
 }
@@ -12,6 +13,7 @@ Cat::Cat(Cat const & base) : Animal(base)
 }
 
 Cat::~Cat() {
+	delete this->brain;
 	std::cout << "Cat destructor called" << std::endl;
 }
 
@@ -21,6 +23,7 @@ Cat& Cat::operator=(Cat const & base) {
 	return *this;
 }
 
-void Cat::makeSound() const {
+void Cat::makeSound() const
+{
 	std::cout << "Meow Meow" << std::endl;
 }
