@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:45:23 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/27 17:02:38 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/27 17:15:51 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,16 @@ int main() {
 	copy = cat;
 
 	for (int i = 0; i < 100; i++)
-		std::cout << cat.getBrain()->getIdea(i);
+		std::cout << copy.getBrain()->getIdea(i);
+
+	std::cout<<std::endl<< "Check that Copy constructor work as exepted in the subject"<<std::endl;
+	Cat test(cat);
+
+	for (int i = 0; i < 100; i++)
+		std::cout << copy.getBrain()->getIdea(i);
 
 	copy.setIdeas("WeoM Weom");
 
-	for (int i = 0; i < 100; i++)
-		std::cout << cat.getBrain()->getIdea(i);
-	std::cout<<std::endl<< "Check that Copy constructor work as exepted in the subject"<<std::endl;
 	for (int i = 0; i < 100; i++)
 		std::cout << copy.getBrain()->getIdea(i);
 	std::cout<<std::endl;
