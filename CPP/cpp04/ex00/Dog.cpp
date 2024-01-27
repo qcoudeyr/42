@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/27 10:19:01 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/27 11:00:35 by  qcoudeyr        ###   ########.fr       */
+/*   Created: 2024/01/27 10:41:22 by  qcoudeyr         #+#    #+#             */
+/*   Updated: 2024/01/27 10:58:13 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
 #include "Dog.hpp"
-#include "Animal.hpp"
 
-int main()
+Dog::Dog()
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound();
-	j->makeSound();
-	meta->makeSound();
+	Animal::type = "Dog";
+	std::cout<<"Dog constructor called !"<<std::endl;
+}
+Dog::~Dog()
+{
+	std::cout<<"Dog destructor called !"<<std::endl;
+}
 
-	delete i, j, meta;
-	return 0;
+void makeSound()
+{
+	std::cout<<"Dog : *Woauf*"<<std::endl;
 }

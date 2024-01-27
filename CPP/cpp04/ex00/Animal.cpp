@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/27 10:19:01 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/27 11:00:35 by  qcoudeyr        ###   ########.fr       */
+/*   Created: 2024/01/27 10:41:17 by  qcoudeyr         #+#    #+#             */
+/*   Updated: 2024/01/27 10:56:15 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
-#include "Dog.hpp"
 #include "Animal.hpp"
 
-int main()
+Animal::Animal()
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound();
-	j->makeSound();
-	meta->makeSound();
-
-	delete i, j, meta;
-	return 0;
+	std::cout<<"Animal constructor called !"<<std::endl;
+}
+Animal::~Animal()
+{
+	std::cout<<"Animal destructor called !"<<std::endl;
 }

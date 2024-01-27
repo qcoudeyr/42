@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/27 10:19:01 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/27 11:00:35 by  qcoudeyr        ###   ########.fr       */
+/*   Created: 2024/01/27 10:41:19 by  qcoudeyr         #+#    #+#             */
+/*   Updated: 2024/01/27 10:54:47 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
-#include "Dog.hpp"
+#ifndef CAT_HPP
+#define CAT_HPP
+
 #include "Animal.hpp"
+#include <iostream>
+#include <iomanip>
+#include <string>
 
-int main()
+class Cat : virtual Animal
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound();
-	j->makeSound();
-	meta->makeSound();
+	private:
 
-	delete i, j, meta;
-	return 0;
-}
+	public:
+		Cat();
+		~Cat();
+		Cat(const Cat& other);
+		Cat& operator=(const Cat& other);
+
+};
+
+#endif

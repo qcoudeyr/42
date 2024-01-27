@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/27 10:19:01 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/27 11:00:35 by  qcoudeyr        ###   ########.fr       */
+/*   Created: 2024/01/27 10:41:18 by  qcoudeyr         #+#    #+#             */
+/*   Updated: 2024/01/27 10:57:48 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
-#include "Dog.hpp"
-#include "Animal.hpp"
 
-int main()
+Cat::Cat()
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound();
-	j->makeSound();
-	meta->makeSound();
+	Animal::type = "Cat";
+	std::cout<<"Cat constructor called !"<<std::endl;
+}
+Cat::~Cat()
+{
+	std::cout<<"Cat destructor called !"<<std::endl;
+}
 
-	delete i, j, meta;
-	return 0;
+void makeSound()
+{
+	std::cout<<"Cat : *Meow~Meow~*"<<std::endl;
 }

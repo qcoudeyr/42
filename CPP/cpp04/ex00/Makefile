@@ -1,8 +1,8 @@
 CXX = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
-HEADERS
-SRCS = main.cpp
+HEADERS = Cat.hpp Dog.hpp Animal.hpp
+SRCS = main.cpp  Cat.cpp Dog.cpp Animal.cpp
 OBJDIR = ./object/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.cpp=.o))
 
