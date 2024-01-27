@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 10:41:17 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/27 12:52:06 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/27 13:10:35 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,21 @@ Animal::Animal() : type("Default Animal")
 Animal::~Animal()
 {
 	std::cout<<"Animal destructor called !"<<std::endl;
+}
+
+Animal::Animal(const Animal& other) {
+	 type = other.type;
+}
+
+Animal& Animal::operator=(const Animal& other)
+{
+	if (this != &other) {
+		type = other.type;
+	}
+	return *this;
+}
+
+std::string Animal::getType() const
+{
+	return (this->type);
 }
