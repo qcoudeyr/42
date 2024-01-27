@@ -1,11 +1,10 @@
 #ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#define ANIMAL_HPP
 
-# include <iostream>
-# include <string>
-# include <ctype.h>
-# include <string.h>
-# include <iomanip>
+#include <iostream>
+#include <string>
+#include "Brain.hpp"
+
 
 class Animal
 {
