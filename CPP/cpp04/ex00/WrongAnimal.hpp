@@ -1,11 +1,11 @@
 #ifndef WRONGANIMAL_HPP
-# define WRONGANIMAL_HPP
+#define WRONGANIMAL_HPP
 
-# include <iostream>
-# include <string>
-# include <ctype.h>
-# include <string.h>
-# include <iomanip>
+#include <iostream>
+#include <string>
+#include <ctype.h>
+#include <string.h>
+#include <iomanip>
 
 class WrongAnimal
 {
@@ -17,7 +17,7 @@ class WrongAnimal
 		virtual ~WrongAnimal();
 
 		WrongAnimal& operator=(WrongAnimal const & base);
-		
+
 		std::string getType() const;
 		void makeSound() const;
 };

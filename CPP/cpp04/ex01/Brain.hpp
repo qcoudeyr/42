@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 15:38:26 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/27 15:45:53 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/27 16:52:17 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ public:
 	Brain(const Brain& other);
 	Brain& operator=(const Brain& other);
 
+	Brain *getBrain() const;
 	void setIdeas(int i, std::string value);
+	std::string getIdea(int i) const;
 
 };
 
