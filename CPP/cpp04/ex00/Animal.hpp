@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 10:41:18 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/27 10:58:26 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/27 12:50:54 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ class Animal
 {
 	protected:
 		std::string type;
-		Animal();
 	public:
 		Animal();
 		~Animal();
