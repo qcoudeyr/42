@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 15:41:02 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/26 23:10:09 by  qcoudeyr        ###   ########.fr       */
+/*   Created: 2024/01/26 23:25:31 by  qcoudeyr         #+#    #+#             */
+/*   Updated: 2024/01/26 23:40:44 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef DIAMONDTRAP_HPP
+#define DIAMONDTRAP_HPP
+
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FlagTrap.hpp"
 
-int main()
-{
-	ScavTrap sp1("James"), sp2("Darko");
+#include <iostream>
+#include <string>
 
-	sp1.attack(sp2.getName());
-	sp2.takeDamage(sp1.getAttack());
-	sp2.beRepaired(5);
-	sp2.attack(sp1.getName());
-	sp1.takeDamage(sp2.getAttack());
-	sp1.beRepaired(10);
 
-	return (0);
-}
+class DiamondTrap : public FragTrap, public ScavTrap {
+private:
+	std::string _Name;
+
+public:
+	DiamondTrap(const std::string& _Name);
+	void whoAmI();
+	using ScavTrap::attack;
+};
+
+
+#endif

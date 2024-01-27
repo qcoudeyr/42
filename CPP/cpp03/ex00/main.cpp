@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 15:41:02 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/26 22:12:08 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/26 23:47:21 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main()
 {
-	ClapTrap cp1("ScavTrap"), cp2("ScavTrack");
+	ClapTrap cp1("ScavTrap"), cp2("ScavTrap");
 
 	cp1.attack(cp2.getName());
 	cp2.takeDamage(0);

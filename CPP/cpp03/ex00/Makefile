@@ -6,7 +6,7 @@ SRCS = main.cpp ClapTrap.cpp
 OBJDIR = ./object/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.cpp=.o))
 
-NAME = ex00
+NAME = ClapTrap
 
 all: $(OBJDIR) $(NAME)
 	@echo "\033[32m\tCompilation done !\033[0m"

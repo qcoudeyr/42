@@ -1,12 +1,12 @@
 CXX = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
-HEADERS = ClapTrap.hpp ScavTrap.hpp FlagTrap.hpp
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FlagTrap.cpp
+HEADERS
+SRCS = main.cpp
 OBJDIR = ./object/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.cpp=.o))
 
-NAME = FlagTrap
+NAME = Polymorphisme
 
 all: $(OBJDIR) $(NAME)
 	@echo "\033[32m\tCompilation done !\033[0m"

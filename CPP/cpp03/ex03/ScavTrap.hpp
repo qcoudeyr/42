@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 15:41:02 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/26 23:10:09 by  qcoudeyr        ###   ########.fr       */
+/*   Created: 2024/01/26 22:14:34 by  qcoudeyr         #+#    #+#             */
+/*   Updated: 2024/01/26 23:43:48 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
+
+#include <iostream>
+#include <string>
 #include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
 
-int main()
+class ScavTrap: virtual public ClapTrap
 {
-	ScavTrap sp1("James"), sp2("Darko");
+private:
+	ScavTrap();
+public:
+	ScavTrap( std::string name );
+	~ScavTrap();
 
-	sp1.attack(sp2.getName());
-	sp2.takeDamage(sp1.getAttack());
-	sp2.beRepaired(5);
-	sp2.attack(sp1.getName());
-	sp1.takeDamage(sp2.getAttack());
-	sp1.beRepaired(10);
+	void guardGate(void);
+	void attack(const std::string& target);
+};
 
-	return (0);
-}
+#endif
+

@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FlagTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 15:41:02 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/26 23:10:09 by  qcoudeyr        ###   ########.fr       */
+/*   Created: 2024/01/26 23:12:22 by  qcoudeyr         #+#    #+#             */
+/*   Updated: 2024/01/26 23:43:14 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#ifndef FLAGTRAP_HPP
+#define FLAGTRAP_HPP
+
 #include "ScavTrap.hpp"
 
-int main()
+class FragTrap : virtual public ClapTrap
 {
-	ScavTrap sp1("James"), sp2("Darko");
+private:
+	FragTrap();
 
-	sp1.attack(sp2.getName());
-	sp2.takeDamage(sp1.getAttack());
-	sp2.beRepaired(5);
-	sp2.attack(sp1.getName());
-	sp1.takeDamage(sp2.getAttack());
-	sp1.beRepaired(10);
+public:
+	FragTrap(std::string name);
+	~FragTrap();
 
-	return (0);
-}
+	void highFivesGuys( void );
+};
+
+#endif

@@ -1,12 +1,12 @@
 CXX = c++
-CFLAGS = -Wall -Werror -Wextra -std=c++98 -g
+CFLAGS = -Wall -Werror -Wextra -std=c++98 -g -Wshadow -Wno-shadow
 
-HEADERS = Fixed.hpp Point.hpp
-SRCS = main.cpp Fixed.cpp Point.cpp bsp.cpp
+HEADERS = ClapTrap.hpp ScavTrap.hpp FlagTrap.hpp DiamondTrap.hpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FlagTrap.cpp DiamondTrap.cpp
 OBJDIR = ./object/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.cpp=.o))
 
-NAME = Bsp
+NAME = DiamondTrap
 
 all: $(OBJDIR) $(NAME)
 	@echo "\033[32m\tCompilation done !\033[0m"
