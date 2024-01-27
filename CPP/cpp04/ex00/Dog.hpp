@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 10:41:23 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/27 10:55:19 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/27 13:20:35 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ class Dog : virtual Animal
 		~Dog();
 		Dog(const Dog& other);
 		Dog& operator=(const Dog& other);
+
+		void makeSound() const;
 };
 
 #endif

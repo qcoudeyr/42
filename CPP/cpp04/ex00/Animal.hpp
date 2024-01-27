@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 10:41:18 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/27 13:10:37 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/27 13:13:18 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ class Animal
 		virtual ~Animal();
 		Animal(const Animal& other);
 		Animal& operator=(const Animal& other);
+
 		std::string getType() const;
-		virtual void makeSound() = 0;
+		virtual void makeSound() const;
 };
 
 #endif
