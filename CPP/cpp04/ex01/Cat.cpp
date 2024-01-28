@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:48:35 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/27 17:25:30 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/27 17:45:41 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ Cat::Cat(Cat const & base) : Animal(), Brain()
 	if (this != &base)
 	{
 		this->_type = base.getType();
-		for (int i = 0; i < 100; i++)
-			this->brain->setIdeas(i, base.getBrain()->getIdea(i));
 	}
 }
 
@@ -39,7 +37,9 @@ Cat& Cat::operator=(Cat const & base) {
 	if (this != &base)
 	{
 		this->_type = base.getType();
-		this->brain = base.brain;
+		if (this->brain)
+			delete this->brain;
+		this->brain = new Brain(*base.getBrain());
 	}
 	return *this;
 }

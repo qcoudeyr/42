@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:45:23 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/27 17:15:51 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/27 17:35:11 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ int main() {
 	Cat test(cat);
 
 	for (int i = 0; i < 100; i++)
-		std::cout << copy.getBrain()->getIdea(i);
+		std::cout << test.getBrain()->getIdea(i);
 
-	copy.setIdeas("WeoM Weom");
+	test.setIdeas("WeoM Weom");
 
 	for (int i = 0; i < 100; i++)
-		std::cout << copy.getBrain()->getIdea(i);
+		std::cout << test.getBrain()->getIdea(i);
 	std::cout<<std::endl;
 
 	return (0);

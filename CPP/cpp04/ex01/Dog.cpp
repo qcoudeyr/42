@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:48:19 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/27 17:26:41 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/27 17:33:59 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,13 @@ Dog::Dog() {
 	this->_type = "Dog";
 }
 
-Dog::Dog(Dog const & base) : Animal(base)
+Dog::Dog(Dog const & base) : Animal(), Brain()
 {
 	std::cout << "Dog copy constructor called" << std::endl;
 	if (this != &base)
 	{
 		this->_type = base.getType();
-		for (int i = 0; i < 100; i++)
-			this->brain->setIdeas(i, base.getBrain()->getIdea(i));
+		this->brain = base.getBrain();
 	}
 }
 

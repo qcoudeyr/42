@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:48:20 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/27 17:24:57 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/27 17:34:31 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "Brain.hpp"
 #include "Animal.hpp"
 
-class Dog: public Animal
+class Dog: public Animal, public Brain
 {
 private:
 	Brain* brain;
