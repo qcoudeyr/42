@@ -1,13 +1,13 @@
 CXX = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -g -Wshadow -Wno-shadow
 
-HEADERS = AMateria.hpp ICharacter.hpp ConcreteMateria.hpp
-SRCS = main.cpp AMateria.cpp ICharacter.cpp ConcreteMateria.cpp
+HEADERS = AMateria.hpp  Character.hpp  Cure.hpp  Ice.hpp  ICharacter.hpp  IMateriaSource.hpp  Makefile  MateriaSource.hpp
+SRCS = AMateria.cpp  Character.cpp  Cure.cpp  Ice.cpp IMateriaSource.cpp  main.cpp  MateriaSource.cpp
 
 OBJDIR = ./object/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.cpp=.o))
 
-NAME = Aanimal
+NAME = AMateria
 
 all: $(OBJDIR) $(NAME)
 	@echo "\033[32m\tCompilation done !\033[0m"

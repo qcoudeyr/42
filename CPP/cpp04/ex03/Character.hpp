@@ -6,25 +6,35 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 14:28:19 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/28 14:29:53 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/28 14:45:57 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 
-#include "ICharacter.hpp"
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 
-class Character : public ICharacter {
-	std::string _name;
-public:
-	Character(std::string name) : _name(name) {}
-	virtual ~Character();
-	virtual void equip(AMateria* m);
-	virtual void unequip(int idx);
-	virtual void use(int idx, ICharacter& target);
-	virtual std::string getName() const;
+class Character: public ICharacter
+{
+	protected:
+		std::string _name;
+		AMateria *_inv[4];
+
+	public:
+		Character();
+		Character(std::string name);
+		Character(Character const & base);
+		virtual ~Character();
+
+		Character & operator=(Character const & base);
+
+		std::string const & getName() const;
+		AMateria* const & getInv(int i) const;
+		void equip(AMateria* m);
+		void unequip(int idx);
+		void use(int idx, ICharacter& target);
 };
 
 #endif

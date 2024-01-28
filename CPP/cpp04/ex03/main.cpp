@@ -6,31 +6,45 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 14:02:29 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/28 14:27:30 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/28 14:49:04 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
-
-#include "AMateria.hpp"
-#include "ICharacter.hpp"
-#include "ConcreteMateria.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
+#include "MateriaSource.hpp"
 #include "Character.hpp"
 
-int main() {
-	// Create a character
-	Character hero("Hero");
+int main()
+{
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	ICharacter* me = new Character("me");
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	ICharacter* bob = new Character("bob");
+	me->use(0, *bob);
+	me->use(1, *bob);
 
-	// Create a materia and clone it
-	ConcreteMateria materia;
-	AMateria* clonedMateria = materia.clone();
+	me->unequip(0);
 
-	// Use the cloned materia on the hero
-	clonedMateria->use(hero);
+	me->use(0, *bob);
 
-	// Clean up
-	delete clonedMateria;
+	delete bob;
+	delete me;
+	delete src;
 
 	return 0;
 }

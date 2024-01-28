@@ -1,18 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ICharacter.cpp                                     :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/28 14:15:24 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/28 14:20:42 by  qcoudeyr        ###   ########.fr       */
+/*   Created: 2024/01/28 14:42:38 by  qcoudeyr         #+#    #+#             */
+/*   Updated: 2024/01/28 14:42:40 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ICharacter.hpp"
+#ifndef CURE_HPP
+#define CURE_HPP
 
-ICharacter::~ICharacter()
-{}
+#include "AMateria.hpp"
+
+class Cure: public AMateria
+{
+	private:
+
+	public:
+		Cure();
+		Cure(Cure const & base);
+		~Cure();
+
+		Cure & operator=(Cure const & base);
+
+		AMateria* clone() const;
+		void use(ICharacter& target);
+};
 
 
+#endif

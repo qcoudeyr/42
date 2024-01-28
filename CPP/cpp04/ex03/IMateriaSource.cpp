@@ -1,30 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ConcreteMateria.cpp                                :+:      :+:    :+:   */
+/*   IMateriaSource.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/28 14:20:41 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/28 14:24:24 by  qcoudeyr        ###   ########.fr       */
+/*   Created: 2024/01/28 14:47:52 by  qcoudeyr         #+#    #+#             */
+/*   Updated: 2024/01/28 14:48:21 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ConcreteMateria.hpp"
+#include "IMateriaSource.hpp"
 
-ConcreteMateria::ConcreteMateria() : AMateria("concrete")
-{
+IMateriaSource::~IMateriaSource() {
 
-}
-
-ConcreteMateria::~ConcreteMateria(){
-}
-
-ConcreteMateria::AMateria* clone() const 
-{
-	return new ConcreteMateria(*this);
-}
-
-void ConcreteMateria::use(ICharacter& target)
-{
 }

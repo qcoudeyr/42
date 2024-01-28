@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 14:03:12 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/28 14:26:46 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/28 14:59:22 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,28 @@
 
 #include <iostream>
 #include <string>
+#include <ctype.h>
+#include <string.h>
+#include <iomanip>
 #include "ICharacter.hpp"
 
-class AMateria {
-protected:
-	std::string _type;
-public:
-	AMateria(std::string const & type) : _type(type) {}
-	virtual ~AMateria() {}
-	std::string const & getType() const { return _type; }
-	virtual AMateria* clone() const = 0;
-	virtual void use(ICharacter& target);
+class AMateria
+{
+	protected:
+		std::string _type;
+
+	public:
+		AMateria();
+		AMateria(std::string const & _type);
+		AMateria(AMateria const & base);
+		virtual ~AMateria();
+
+		AMateria & operator=(AMateria const & base);
+
+		std::string const & getType() const;
+		virtual AMateria* clone() const = 0;
+		virtual void use(ICharacter& target);
 };
 
-void AMateria::use(ICharacter& target) {
-	std::cout << "Using " << _type << " on " << target.getName() << std::endl;
-}
-
-
 #endif
+
