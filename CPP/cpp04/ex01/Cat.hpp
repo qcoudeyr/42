@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:48:18 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/27 16:53:53 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/28 13:38:23 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,17 @@
 #include "Brain.hpp"
 #include "Animal.hpp"
 
-class Cat: public Animal, public Brain
+class Cat: public Animal
 {
 private:
 	Brain *brain;
 public:
 	Cat();
 	~Cat();
-	Cat(Cat const & base);
-	Cat& operator=(Cat const & base);
+	Cat(const Cat & base); // Note the use of 'const Cat&'
+	Cat& operator=(const Cat & base);
 	void setIdeas(std::string str);
 	Brain *getBrain() const;
-	Brain *setIdeas() const;
 	void makeSound() const;
 };
 

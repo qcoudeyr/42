@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 15:38:24 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/27 16:48:30 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/28 13:36:37 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ Brain::Brain() {
 	std::cout << "Brain default constructor called" << std::endl;
 }
 
-Brain::Brain(Brain const & base)
-{
+Brain::Brain(const Brain& other) {
 	std::cout << "Brain copy constructor called" << std::endl;
-	*this = base;
+	for (int i = 0; i < 100; i++) {
+		_Ideas[i] = other._Ideas[i];
+	}
 }
+
 
 Brain::~Brain() {
 	std::cout << "Brain destructor called" << std::endl;
