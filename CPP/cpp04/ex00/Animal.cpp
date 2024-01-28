@@ -1,10 +1,12 @@
 #include "Animal.hpp"
 
-Animal::Animal() {
+Animal::Animal() : _type("Animal")
+{
 	std::cout << "Animal default constructor called" << std::endl;
 }
 
-Animal::Animal(Animal const & base) {
+Animal::Animal(Animal const & base) : _type(base._type)
+{
 	std::cout << "Animal copy constructor called" << std::endl;
 	*this = base;
 }

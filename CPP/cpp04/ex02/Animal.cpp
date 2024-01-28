@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:48:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/28 13:58:59 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/28 13:58:48 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ Animal::Animal() : _type("Animal")
 Animal::Animal(Animal const & base) : _type(base._type)
 {
 	std::cout << "Animal copy constructor called" << std::endl;
-	*this = base;
 }
 
 Animal::~Animal() {
