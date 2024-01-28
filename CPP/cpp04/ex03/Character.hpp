@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/28 14:02:29 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/28 14:27:30 by  qcoudeyr        ###   ########.fr       */
+/*   Created: 2024/01/28 14:28:19 by  qcoudeyr         #+#    #+#             */
+/*   Updated: 2024/01/28 14:29:53 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
+#ifndef CHARACTER_HPP
+#define CHARACTER_HPP
 
-#include "AMateria.hpp"
 #include "ICharacter.hpp"
-#include "ConcreteMateria.hpp"
-#include "Character.hpp"
+#include "AMateria.hpp"
 
-int main() {
-	// Create a character
-	Character hero("Hero");
+class Character : public ICharacter {
+	std::string _name;
+public:
+	Character(std::string name) : _name(name) {}
+	virtual ~Character();
+	virtual void equip(AMateria* m);
+	virtual void unequip(int idx);
+	virtual void use(int idx, ICharacter& target);
+	virtual std::string getName() const;
+};
 
-	// Create a materia and clone it
-	ConcreteMateria materia;
-	AMateria* clonedMateria = materia.clone();
-
-	// Use the cloned materia on the hero
-	clonedMateria->use(hero);
-
-	// Clean up
-	delete clonedMateria;
-
-	return 0;
-}
+#endif

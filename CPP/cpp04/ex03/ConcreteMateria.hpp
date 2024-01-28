@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ConcreteMateria.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/28 14:02:29 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/28 14:27:30 by  qcoudeyr        ###   ########.fr       */
+/*   Created: 2024/01/28 14:20:44 by  qcoudeyr         #+#    #+#             */
+/*   Updated: 2024/01/28 14:25:43 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
+#ifndef CONCRETEMATERIA_HPP
+#define CONCRETEMATERIA_HPP
 
-#include "AMateria.hpp"
 #include "ICharacter.hpp"
-#include "ConcreteMateria.hpp"
-#include "Character.hpp"
+#include "AMateria.hpp"
 
-int main() {
-	// Create a character
-	Character hero("Hero");
 
-	// Create a materia and clone it
-	ConcreteMateria materia;
-	AMateria* clonedMateria = materia.clone();
-
-	// Use the cloned materia on the hero
-	clonedMateria->use(hero);
-
-	// Clean up
-	delete clonedMateria;
-
-	return 0;
-}
+class ConcreteMateria : public AMateria {
+public:
+	ConcreteMateria() : AMateria("concrete") {}
+	virtual ~ConcreteMateria() {}
+	virtual AMateria* clone() const {
+		return new ConcreteMateria(*this);
+	}
+	virtual void use(ICharacter& target) {
+		AMateria::use(target); // Call base class implementation for demonstration
+	}
+};
+#endif

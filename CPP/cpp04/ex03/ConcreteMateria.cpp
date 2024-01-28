@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ConcreteMateria.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/28 14:02:29 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/28 14:27:30 by  qcoudeyr        ###   ########.fr       */
+/*   Created: 2024/01/28 14:20:41 by  qcoudeyr         #+#    #+#             */
+/*   Updated: 2024/01/28 14:24:24 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
-
-#include "AMateria.hpp"
-#include "ICharacter.hpp"
 #include "ConcreteMateria.hpp"
-#include "Character.hpp"
 
-int main() {
-	// Create a character
-	Character hero("Hero");
+ConcreteMateria::ConcreteMateria() : AMateria("concrete")
+{
 
-	// Create a materia and clone it
-	ConcreteMateria materia;
-	AMateria* clonedMateria = materia.clone();
+}
 
-	// Use the cloned materia on the hero
-	clonedMateria->use(hero);
+ConcreteMateria::~ConcreteMateria(){
+}
 
-	// Clean up
-	delete clonedMateria;
+ConcreteMateria::AMateria* clone() const 
+{
+	return new ConcreteMateria(*this);
+}
 
-	return 0;
+void ConcreteMateria::use(ICharacter& target)
+{
 }

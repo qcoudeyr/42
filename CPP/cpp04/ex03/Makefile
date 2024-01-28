@@ -1,8 +1,8 @@
 CXX = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -g -Wshadow -Wno-shadow
 
-HEADERS = AMateria.hpp
-SRCS = main.cpp AMateria.cpp
+HEADERS = AMateria.hpp ICharacter.hpp ConcreteMateria.hpp
+SRCS = main.cpp AMateria.cpp ICharacter.cpp ConcreteMateria.cpp
 
 OBJDIR = ./object/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.cpp=.o))
