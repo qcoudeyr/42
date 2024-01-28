@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:45:23 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/27 17:35:11 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/28 13:46:57 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main() {
 	delete j;
 	delete i;
 
-	std::cout<< "\nDestructor test ended now let's test Brain on Copy\n"<< std::endl;
+	std::cout<< "\nDestructor test ended now let's test Brain on = operator\n"<< std::endl;
 
 	Cat copy;
 	Cat cat;
@@ -40,8 +40,9 @@ int main() {
 
 	for (int i = 0; i < 100; i++)
 		std::cout << test.getBrain()->getIdea(i);
+	std::cout<<std::endl;
 
-	test.setIdeas("WeoM Weom");
+	test.setIdeas("A A");
 
 	for (int i = 0; i < 100; i++)
 		std::cout << test.getBrain()->getIdea(i);

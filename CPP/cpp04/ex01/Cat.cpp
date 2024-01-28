@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:48:35 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/28 13:39:16 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/28 13:42:03 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,5 @@ void Cat::setIdeas(std::string str)
 }
 
 Brain* Cat::getBrain() const {
-	return brain;
+	return this->brain;
 }
