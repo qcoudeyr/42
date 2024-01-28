@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:48:35 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/27 17:45:41 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/28 12:51:48 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Cat::Cat(Cat const & base) : Animal(), Brain()
 	std::cout << "Cat copy constructor called" << std::endl;
 	if (this != &base)
 	{
-		this->_type = base.getType();
+		this->_type = base.getType(); 
 	}
 }
 
