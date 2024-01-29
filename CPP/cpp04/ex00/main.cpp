@@ -9,7 +9,7 @@ int main() {
 	const WrongAnimal* k = new WrongAnimal();
 	const WrongAnimal* l = new WrongCat();
 
-	std::cout << j->getType() << std::endl;
+	std::cout << j->getType() << " " << std::endl;
 	std::cout << i->getType() << " " << std::endl;
 	i->makeSound();
 	j->makeSound();
