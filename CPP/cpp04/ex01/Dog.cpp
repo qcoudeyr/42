@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:48:19 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/27 17:33:59 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/29 10:41:54 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,5 @@ Brain *Dog::getBrain() const {
 }
 
 void Dog::makeSound() const {
-	std::cout << "Woof. Graou~" << std::endl;
+	std::cout << "Woof Woof" << std::endl;
 }

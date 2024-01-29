@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:48:18 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/28 13:38:23 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/29 10:41:41 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ private:
 public:
 	Cat();
 	~Cat();
-	Cat(const Cat & base); // Note the use of 'const Cat&'
+	Cat(const Cat & base);
 	Cat& operator=(const Cat & base);
 	void setIdeas(std::string str);
 	Brain *getBrain() const;
