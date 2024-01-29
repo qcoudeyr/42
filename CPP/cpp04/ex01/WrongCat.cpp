@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:48:24 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/27 16:48:25 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/29 10:46:31 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ WrongCat& WrongCat::operator=(WrongCat const & base) {
 }
 
 void WrongCat::makeSound() const {
-	std::cout << "Meow. Nyan~" << std::endl;
+	std::cout << "Miaou Miaou" << std::endl;
 }

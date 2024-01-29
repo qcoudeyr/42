@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:48:28 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/28 13:58:59 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/29 10:44:56 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ std::string Animal::getType() const {
 }
 
 void Animal::makeSound() const {
-	std::cout << "*silence*" << std::endl;
+	std::cout << "*Just some weird animals noise*" << std::endl;
 }
