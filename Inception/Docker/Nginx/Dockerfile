@@ -1,6 +1,7 @@
 FROM alpine:3.19.1
 
-RUN  apk add openssl curl ca-certificates
+RUN apk add --no-cache openssl curl ca-certificates
+
 
 RUN printf "%s%s%s%s\n" \
     "@nginx " \
@@ -15,9 +16,7 @@ RUN openssl rsa -pubin -in /tmp/nginx_signing.rsa.pub -text -noout
 
 RUN  mv /tmp/nginx_signing.rsa.pub /etc/apk/keys/
 
-RUN  apk add nginx@nginx
-
-RUN  apk add nginx-module-image-filter@nginx nginx-module-njs@nginx
+RUN apk add --no-cache nginx@nginx nginx-module-image-filter@nginx nginx-module-njs@nginx
 
 RUN mkdir -p /run/nginx
 
@@ -27,10 +26,11 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
     -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=qcoudeyr.io"
 
 
-RUN echo 'http {\
+RUN echo 'events {}' > /etc/nginx/nginx.conf && \
+    echo 'http {\
     server {\
         listen              443 ssl;\
-        server_name         localhost;\
+        server_name         qcoudeyr.io;\
         ssl_certificate     /etc/ssl/certs/nginx-selfsigned.crt;\
         ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;\
         ssl_protocols       TLSv1.2 TLSv1.3;\
@@ -41,7 +41,7 @@ RUN echo 'http {\
         }\
     }\
     include /etc/nginx/conf.d/*.conf;\
-}' > /etc/nginx/nginx.conf
+}' >> /etc/nginx/nginx.conf
 
 # Expose port 443 for the HTTPS server
 EXPOSE 443
