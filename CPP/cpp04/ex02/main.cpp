@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:45:23 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/28 13:46:57 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/29 10:46:31 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int main() {
 	Cat copy;
 	Cat cat;
 
-	cat.setIdeas("Meow Meow");
+	cat.setIdeas("Miaou Miaou");
 	copy.setIdeas("Test Test");
 	copy = cat;
 

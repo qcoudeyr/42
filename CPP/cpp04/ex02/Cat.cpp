@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:48:35 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/28 13:42:03 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/29 10:46:31 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ Cat& Cat::operator=(Cat const & base)
 
 void Cat::makeSound() const
 {
-	std::cout << "Meow Meow" << std::endl;
+	std::cout << "Miaou Miaou" << std::endl;
 }
 
 void Cat::setIdeas(std::string str)

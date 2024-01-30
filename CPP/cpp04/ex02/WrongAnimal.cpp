@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:48:21 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/01/27 16:48:22 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/01/29 10:45:58 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ std::string WrongAnimal::getType() const {
 }
 
 void WrongAnimal::makeSound() const {
-	std::cout << "Bonjour, je suis Fred de Carglass." << std::endl;
+	std::cout << "J'suis dans l'game en claquette !" << std::endl;
 }
