@@ -127,6 +127,12 @@ RUN sed -i -e 's/;decorate_workers_output = no/decorate_workers_output = no/g' /
 # avoid nginx logging when fpm logged something (e.g. "FastCGI sent in stderr")
 RUN echo "php_admin_flag[fastcgi.logging] = off" >> /etc/${PHP_PACKAGE_BASENAME}/php-fpm.d/www.conf
 
+
+
+
+
+
+
 CMD ["php", "-a"]
 
 ENV PHP_DATE_TIMEZONE="UTC" \
