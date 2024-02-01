@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # https://github.com/WordPress/WordPress/blob/master/wp-config-sample.php
-if [ -f "/var/www/wordpress/wp-config.php" ]; then
-	cat << EOF > /var/www/wordpress/wp-config.php
+if [ -f "/var/www/html/wp-config.php" ]; then
+	cat << EOF > /var/www/html/wp-config.php
 <?php
 /**
  * The base configuration for WordPress
@@ -100,7 +100,7 @@ EOF
     # https://developer.wordpress.org/cli/commands/core/
     # https://developer.wordpress.org/cli/commands/user/
     echo "MariaDB server is ready, proceeding with WordPress installation..."
-    cd /var/www/wordpress/
+    cd /var/www/html
     wp core install --url=$DOMAIN_NAME --title=$WP_TITLE --admin_user=$WP_ADMIN --admin_password=$WP_ADMIN_PASSWORD --admin_email=$WP_ADMIN_EMAIL --skip-email --allow-root
     wp user create $WP_USER $WP_USER_EMAIL --user_pass=$WP_USER_PASSWORD --role=$WP_USER_ROLE --allow-root
     wp post delete 2 --force --allow-root

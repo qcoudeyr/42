@@ -30,10 +30,6 @@ RUN apk add --no-cache \
 # ensure www-data user exists
 RUN set -eux; \
 	adduser -u 82 -D -S -G www-data www-data
-# 82 is the standard uid/gid for "www-data" in Alpine
-# https://git.alpinelinux.org/aports/tree/main/apache2/apache2.pre-install?h=3.14-stable
-# https://git.alpinelinux.org/aports/tree/main/lighttpd/lighttpd.pre-install?h=3.14-stable
-# https://git.alpinelinux.org/aports/tree/main/nginx/nginx.pre-install?h=3.14-stable
 
 ENV PHP_INI_DIR /usr/local/etc/php
 RUN set -eux; \
@@ -86,7 +82,9 @@ RUN set -eux; \
 	\
 	apk del --no-network .fetch-deps
 
-COPY docker-php-source /usr/local/bin/
+COPY ./tools/docker-php-source /usr/local/bin/
+
+RUN chmod 777 /usr/local/bin/docker-php-source
 
 RUN set -eux; \
 	apk add --no-cache --virtual .build-deps \
@@ -179,7 +177,7 @@ RUN set -eux; \
 	; \
 	make clean; \
 	\
-# https://github.com/docker-library/php/issues/692 (copy default example "php.ini" files somewhere easily discoverable)
+# https://github.com/docker-library/php/issues/692 (COPY ./tools/default example "php.ini" files somewhere easily discoverable)
 	cp -v php.ini-* "$PHP_INI_DIR/"; \
 	\
 	cd /; \
@@ -202,7 +200,7 @@ RUN set -eux; \
 # smoke test
 	php --version
 
-COPY docker-php-ext-* docker-php-entrypoint /usr/local/bin/
+COPY ./tools/docker-php-ext-* ./tools/docker-php-entrypoint /usr/local/bin/
 
 # sodium was built as a shared module (so that it can be replaced later if so desired), so let's enable it too (https://github.com/docker-library/php/issues/598)
 RUN docker-php-ext-enable sodium
@@ -256,7 +254,22 @@ RUN set -eux; \
 
 # Override stop signal to stop process gracefully
 # https://github.com/php/php-src/blob/17baa87faddc2550def3ae7314236826bc1b1398/sapi/fpm/php-fpm.8.in#L163
+
+RUN curl -o /tmp/wordpress.tar.gz -L https://fr.wordpress.org/wordpress-6.4.3-fr_FR.tar.gz && \
+		tar -xzf /tmp/wordpress.tar.gz -C /var/www/html --strip-components=1 && \
+		chown www-data:www-data /var/www/html &&\
+		rm /tmp/wordpress.tar.gz
+
+
+RUN curl -o /usr/local/bin/wp -L https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
+		chmod +x /usr/local/bin/wp
+
+COPY ./tools/wordpress.sh /wordpress.sh
+
+RUN sh /wordpress.sh
+
 STOPSIGNAL SIGQUIT
 
 EXPOSE 9000
+
 CMD ["php-fpm"]
