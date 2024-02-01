@@ -113,5 +113,3 @@ else
 
 fi
 
-# Start PHP-FPM in foreground
-exec /usr/sbin/php-fpm83 -F
