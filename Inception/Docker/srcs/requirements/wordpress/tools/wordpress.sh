@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # https://github.com/WordPress/WordPress/blob/master/wp-config-sample.php
-if [ -f "/var/www/html/wp-config.php" ]; then
+if [ ! -f "/var/www/html/wp-config.php" ]; then
 	cat << EOF > /var/www/html/wp-config.php
 <?php
 /**

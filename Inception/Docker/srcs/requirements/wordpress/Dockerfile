@@ -86,7 +86,7 @@ COPY ./tools/docker-php-source /usr/local/bin/
 
 RUN chmod 775 /usr/local/bin/docker-php-source
 
-RUN set -eux; \	
+RUN set -eux; \
 	apk add --no-cache --virtual .build-deps \
 		$PHPIZE_DEPS \
 		argon2-dev \
@@ -268,7 +268,7 @@ RUN curl -o /usr/local/bin/wp -L https://raw.githubusercontent.com/wp-cli/builds
 
 COPY ./tools/wordpress.sh /wordpress.sh
 
-RUN sh /wordpress.sh
+RUN chmod 777 /wordpress.sh && sh /wordpress.sh
 
 STOPSIGNAL SIGQUIT
 
