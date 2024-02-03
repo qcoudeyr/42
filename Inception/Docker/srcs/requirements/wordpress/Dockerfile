@@ -25,6 +25,7 @@ RUN apk add --no-cache \
 		curl \
 		openssl \
 		tar \
+		mysql \
 		xz
 
 # ensure www-data user exists

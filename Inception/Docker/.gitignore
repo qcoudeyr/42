@@ -1,7 +1,7 @@
-/home/qcoudeyr/Desktop/42/Inception/Docker/srcs/requirements/bonus/sftp/conf
-/home/qcoudeyr/Desktop/42/Inception/Docker/srcs/requirements/bonus/sftp/tools
-/home/qcoudeyr/Desktop/42/Inception/Docker/srcs/requirements/nginx/conf
-/home/qcoudeyr/Desktop/42/Inception/Docker/srcs/requirements/nginx/tools
-/home/qcoudeyr/Desktop/42/Inception/Docker/srcs/requirements/wordpress/conf
-/home/qcoudeyr/Desktop/42/Inception/Docker/srcs/requirements/wordpress/tools
-/home/qcoudeyr/Desktop/42/Inception/Docker/srcs/.env
+srcs/requirements/bonus/sftp/conf
+srcs/requirements/bonus/sftp/tools
+srcs/requirements/nginx/conf
+srcs/requirements/nginx/tools
+srcs/requirements/wordpress/conf
+srcs/requirements/wordpress/tools
+srcs/.env
