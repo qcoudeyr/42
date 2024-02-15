@@ -1,0 +1,49 @@
+# Use the Alpine Linux image with PHP-FPM
+FROM alpine:3.19.1
+
+# Install WordPress dependencies and php83-FPM
+RUN apk add --no-cache \
+    php83-fpm \
+    php83-mysqli \
+    php83-json \
+    php83-openssl \
+    php83-curl \
+    php83-zlib \
+    php83-xml \
+    php83-phar \
+    php83-intl \
+    php83-dom \
+    php83-xmlreader \
+    php83-ctype \
+    php83-session \
+    php83-mbstring \
+    php83-gd \
+    curl
+
+# Create a directory for WordPress
+WORKDIR /var/www/wordpress
+
+COPY ./conf/php-fpm.conf /etc/php83/php-fpm.conf
+
+RUN chown -R nobody:nobody /etc/php83/php-fpm.conf
+
+# Download WordPress
+RUN curl -o wordpress.tar.gz -SL https://wordpress.org/latest.tar.gz \
+    && tar -xzf wordpress.tar.gz --strip-components=1 \
+    && rm wordpress.tar.gz \
+    && chown -R nobody:nobody /var/www/wordpress \
+	&& chmod -R 777 /var/www/*
+
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN chmod +x wp-cli.phar
+RUN mv wp-cli.phar /usr/local/bin/wp
+
+# Configure PHP-FPM to listen on TCP instead of socket
+RUN sed -i 's/;listen = :9000/listen = 9000/' /etc/php83/php-fpm.d/www.conf \
+    && sed -i 's/listen = \/run\/php\/php83-fpm.sock/;listen = \/run\/php\/php83-fpm.sock/' /etc/php83/php-fpm.d/www.conf
+
+# Expose port 9000 for PHP-FPM
+EXPOSE 9000
+
+# Start PHP-FPM
+CMD ["php-fpm83", "-F"]

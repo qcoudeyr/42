@@ -1,0 +1,87 @@
+version: '3.7'
+
+services:
+  nginx:
+    build:
+      context: ./requirements/nginx
+    image: inception_nginx:v1.0
+    container_name: nginx_container
+    restart: always
+    volumes:
+      - wordpress_volume:/var/www/wordpress:ro
+    env_file:
+      - .env
+    ports:
+      - "443:443"
+    networks:
+      inception:
+        ipv4_address: 10.0.20.10
+
+  wordpress:
+    build:
+      context: ./requirements/wordpress
+    image: inception_wordpress:v1.0
+    container_name: wordpress_container
+    volumes:
+      - wordpress_volume:/var/www/wordpress
+    restart: always
+    env_file:
+      - .env
+    expose:
+      - 9000
+    networks:
+      inception:
+        ipv4_address: 10.0.20.11
+  mariadb:
+    build:
+      context: ./requirements/mariadb
+    image: inception_mariadb:v1.0
+    container_name: mariadb_container
+    restart: always
+    env_file:
+      - .env
+    volumes:
+     - mariadb_volume:/var/lib/wordpress_db
+    expose:
+      - 3306
+    networks:
+      inception:
+        ipv4_address: 10.0.20.12
+  sftp:
+    build:
+      context: ./requirements/bonus/sftp
+    image: inception_sftp:v1.0
+    container_name: sftp_container
+    restart: always
+    command: $SFTP_USER:$SFTP_PASS:1001
+    env_file:
+      - .env
+    volumes:
+      - /home/qcoudeyr/.ssh/id_rsa.pub:/home/$SFTP_USER/.ssh/keys/id_rsa.pub
+    networks:
+      inception:
+        ipv4_address: 10.0.20.22
+    ports:
+      - "2222:22"
+
+volumes:
+  wordpress_volume:
+    driver: local
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "/home/qcoudeyr/data/inception_wordpress"
+  mariadb_volume:
+    driver: local
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "/home/qcoudeyr/data/inception_mariadb"
+
+networks:
+  inception:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.20.0/24
