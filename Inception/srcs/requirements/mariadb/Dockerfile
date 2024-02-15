@@ -13,6 +13,9 @@ RUN chmod 777 /usr/local/bin/entrypoint.sh
 # Set the entrypoint
 RUN mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/wordpress_db
 
+# Copy the custom MariaDB config
+COPY ./conf/wordpress_db.cnf /etc/mysql/my.cnf
+
 #ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 # Define the data directory as a volume
@@ -21,8 +24,6 @@ VOLUME /var/lib/wordpress_db
 # Expose the port MariaDB listens on
 EXPOSE 3306
 
-# Copy the custom MariaDB config
-COPY ./conf/wordpress_db.cnf /etc/mysql/my.cnf
 
 # Start the MariaDB server
 CMD ["mysqld_safe"]
