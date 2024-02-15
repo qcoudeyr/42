@@ -1,4 +1,6 @@
 [mysqld]
-bind-address = *
+datadir = /var/lib/wordpress_db
+socket  = /run/mysqld/mysqld.sock
+bind_address=*
 port = 3306
-skip-networking = 0
+user = mysql

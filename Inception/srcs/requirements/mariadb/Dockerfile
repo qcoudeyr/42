@@ -11,6 +11,9 @@ COPY ./tools/entrypoint.sh /usr/local/bin/
 RUN chmod 777 /usr/local/bin/entrypoint.sh
 
 # Set the entrypoint
+RUN mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/wordpress_db
+
+#ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 # Define the data directory as a volume
 VOLUME /var/lib/wordpress_db
