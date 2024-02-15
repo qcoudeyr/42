@@ -25,4 +25,4 @@ EXPOSE 3306
 COPY ./conf/wordpress_db.cnf /etc/mysql/my.cnf
 
 # Start the MariaDB server
-CMD ["mysqld"]
+CMD ["mysqld_safe"]
