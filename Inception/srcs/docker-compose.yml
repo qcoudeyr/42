@@ -22,6 +22,8 @@ services:
       context: ./requirements/wordpress
     image: inception_wordpress:v1.0
     container_name: wordpress_container
+    depends_on:
+      - mariadb
     volumes:
       - wordpress_volume:/var/www/wordpress
     restart: always

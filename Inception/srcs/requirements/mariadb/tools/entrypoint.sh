@@ -2,10 +2,8 @@
 set -e
 # MariaDB configuration script for WordPress
 
-mysql_install_db --user=$SQL_USER --ldata=$SQL_DATABASE
-
 # Wait for MariaDB to start
-until mysqladmin ping -h localhost --silent; do
+until mysqladmin ping -h "$SQL_HOST" --silent; do
     echo 'Waiting for MariaDB to start...'
     sleep 1
 done

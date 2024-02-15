@@ -18,6 +18,7 @@ RUN apk add --no-cache \
     php83-session \
     php83-mbstring \
     php83-gd \
+    mysql-client \
     curl
 
 # Create a directory for WordPress
