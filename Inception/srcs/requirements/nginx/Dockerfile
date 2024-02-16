@@ -26,7 +26,7 @@ RUN mkdir -p /tmp/nginx \
 
 
 
-RUN mkdir -p /run/nginx
+RUN mkdir -p /run/nginx /srv/temp/nginx/client_body_temp /srv/temp/nginx/proxy_temp /srv/temp/nginx/uwsgi_temp /srv/temp/nginx/fastcgi_temp
 
 # Generate a self-signed SSL certificate and key
 RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
