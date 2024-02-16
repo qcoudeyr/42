@@ -10,6 +10,8 @@ COPY ./tools/entrypoint.sh /usr/local/bin/
 # Make the entrypoint executable
 RUN chmod 777 /usr/local/bin/entrypoint.sh
 
+RUN mysql_secure_installation
+
 # Copy the custom MariaDB config
 COPY ./conf/wordpress_db.cnf /etc/mysql/my.cnf
 
