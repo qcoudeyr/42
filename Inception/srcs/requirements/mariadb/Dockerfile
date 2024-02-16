@@ -14,7 +14,7 @@ RUN chmod 777 /usr/local/bin/entrypoint.sh
 COPY ./conf/wordpress_db.cnf /etc/mysql/my.cnf
 
 # Define the data directory as a volume
-VOLUME /var/lib/wordpress_db
+
 
 # Expose the port MariaDB listens on
 EXPOSE 3306

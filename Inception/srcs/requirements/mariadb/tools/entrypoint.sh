@@ -2,7 +2,7 @@
 set -e
 
 # Start the MariaDB server in the background
-mysqld_safe --skip-grant-tables &
+mysqld_safe &
 pid="$!"
 
 # Wait for MariaDB to start
@@ -13,19 +13,12 @@ done
 echo 'MariaDB is available'
 
 echo 'Set SQL_PASSWORD for mysql server ROOT user'
-mysql <<-EOSQL
-SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$SQL_ROOT_PASSWORD');
+mysql -u root -p$SQL_PASSWORD <<-EOSQL
+ALTER USER 'root'@'localhost' IDENTIFIED BY '$SQL_ROOT_PASSWORD';
 FLUSH PRIVILEGES;
 EOSQL
 
-echo 'Shutdown mysql server'
-
-mysqladmin -u root shutdown
-
-echo 'Starting of mysql server without'
-
-mysqld_safe &
-pid="$!"
+echo 'Set SQL_PASSWORD for mysql server ROOT user'
 
 echo 'Adding admin user and normal user'
 
