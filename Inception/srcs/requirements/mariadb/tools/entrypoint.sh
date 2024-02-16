@@ -2,7 +2,7 @@
 set -e
 
 # Start the MariaDB server in the background
-mysqld_safe &
+mysqld_safe --skip-grant-tables &
 pid="$!"
 
 # Wait for MariaDB to start
@@ -12,9 +12,24 @@ until mysqladmin ping --silent; do
 done
 echo 'MariaDB is available'
 
+echo 'Set SQL_PASSWORD for mysql server ROOT user'
+mysql <<-EOSQL
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$SQL_ROOT_PASSWORD');
+FLUSH PRIVILEGES;
+EOSQL
+
+echo 'Shutdown mysql server'
+
+mysqladmin -u root shutdown
+
+echo 'Starting of mysql server without'
+
+mysqld_safe &
+pid="$!"
+
 echo 'Adding admin user and normal user'
 
-mysql --user=root   <<-EOSQL
+mysql   <<-EOSQL
 CREATE USER IF NOT EXISTS '$SQL_USER'@'%' IDENTIFIED BY '$SQL_PASSWORD';
 GRANT ALL PRIVILEGES ON *.* TO '$SQL_USER'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
@@ -22,7 +37,7 @@ EOSQL
 
 
 echo 'Create the user and database'
-mysql --user=root   <<-EOSQL
+mysql --user=$SQL_USER --password=$SQL_PASSWORD   <<-EOSQL
 CREATE DATABASE IF NOT EXISTS \`$SQL_DATABASE\`;
 CREATE USER IF NOT EXISTS '$SQL_USER'@'%' IDENTIFIED BY '$SQL_PASSWORD';
 GRANT ALL PRIVILEGES ON \`$SQL_DATABASE\`.* TO '$SQL_USER'@'%';
@@ -30,14 +45,14 @@ FLUSH PRIVILEGES;
 EOSQL
 
 echo 'Create the additional user with specific privileges'
-mysql --user=root   <<-EOSQL
+mysql --user=$SQL_USER --password=$SQL_PASSWORD  <<-EOSQL
 CREATE USER IF NOT EXISTS '$SQL_ADDITIONAL_USER'@'%' IDENTIFIED BY '$SQL_ADDITIONAL_PASSWORD';
 -- Here you should replace '$SQL_DATABASE' with the actual database name
 GRANT SELECT, INSERT, UPDATE, DELETE ON \`$SQL_DATABASE\`.* TO '$SQL_ADDITIONAL_USER'@'%';
 FLUSH PRIVILEGES;
 EOSQL
 
-mysql --user=root <<-EOF
+mysql  --user=$SQL_USER --password=$SQL_PASSWORD <<-EOF
 -- Set the root password
 ALTER USER 'root'@'localhost' IDENTIFIED BY '$SQL_ROOT_PASSWORD';
 -- Remove anonymous users
