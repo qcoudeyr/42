@@ -10,8 +10,6 @@ COPY ./tools/entrypoint.sh /usr/local/bin/
 # Make the entrypoint executable
 RUN chmod 777 /usr/local/bin/entrypoint.sh
 
-RUN mysql_secure_installation
-
 # Copy the custom MariaDB config
 COPY ./conf/wordpress_db.cnf /etc/mysql/my.cnf
 
@@ -21,6 +19,6 @@ VOLUME /var/lib/wordpress_db
 # Expose the port MariaDB listens on
 EXPOSE 3306
 
-
+ENTRYPOINT ["entrypoint.sh"]
 # Start the MariaDB server
 CMD ["mysqld_safe"]
