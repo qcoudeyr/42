@@ -22,5 +22,6 @@ VOLUME /var/lib/wordpress_db
 EXPOSE 3306
 
 ENTRYPOINT ["entrypoint.sh"]
+
 # Start the MariaDB server
 CMD ["mysqld_safe"]

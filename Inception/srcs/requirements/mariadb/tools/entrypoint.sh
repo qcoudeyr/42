@@ -6,13 +6,37 @@ mysqld_safe &
 pid="$!"
 
 # Wait for MariaDB to start
-until mysqladmin ping &>/dev/null; do
+until mysqladmin ping --silent; do
     echo 'Waiting for MariaDB to become available...'
     sleep 1
 done
 echo 'MariaDB is available'
 
-# Perform the security steps similar to mysql_secure_installation
+echo 'Adding admin user and normal user'
+
+mysql --user=root   <<-EOSQL
+CREATE USER IF NOT EXISTS '$SQL_USER'@'%' IDENTIFIED BY '$SQL_PASSWORD';
+GRANT ALL PRIVILEGES ON *.* TO '$SQL_USER'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+EOSQL
+
+
+echo 'Create the user and database'
+mysql --user=root   <<-EOSQL
+CREATE DATABASE IF NOT EXISTS \`$SQL_DATABASE\`;
+CREATE USER IF NOT EXISTS '$SQL_USER'@'%' IDENTIFIED BY '$SQL_PASSWORD';
+GRANT ALL PRIVILEGES ON \`$SQL_DATABASE\`.* TO '$SQL_USER'@'%';
+FLUSH PRIVILEGES;
+EOSQL
+
+echo 'Create the additional user with specific privileges'
+mysql --user=root   <<-EOSQL
+CREATE USER IF NOT EXISTS '$SQL_ADDITIONAL_USER'@'%' IDENTIFIED BY '$SQL_ADDITIONAL_PASSWORD';
+-- Here you should replace '$SQL_DATABASE' with the actual database name
+GRANT SELECT, INSERT, UPDATE, DELETE ON \`$SQL_DATABASE\`.* TO '$SQL_ADDITIONAL_USER'@'%';
+FLUSH PRIVILEGES;
+EOSQL
+
 mysql --user=root <<-EOF
 -- Set the root password
 ALTER USER 'root'@'localhost' IDENTIFIED BY '$SQL_ROOT_PASSWORD';
@@ -27,18 +51,12 @@ DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';
 FLUSH PRIVILEGES;
 EOF
 
-# Create the user and database
-mysql --user=root --password="$SQL_ROOT_PASSWORD" <<-EOSQL
-CREATE DATABASE IF NOT EXISTS \`$SQL_DATABASE\`;
-CREATE USER IF NOT EXISTS '$SQL_USER'@'%' IDENTIFIED BY '$SQL_PASSWORD';
-GRANT ALL PRIVILEGES ON \`$SQL_DATABASE\`.* TO '$SQL_USER'@'%';
-FLUSH PRIVILEGES;
-EOSQL
-
 echo 'MySQL setup completed'
 
-# Stop the service before exiting
-service mysql stop
+wait "$pid"
+
+kill -SIGTERM $(pgrep mysqld_safe)
+
 
 # Hand over control to the main CMD
 exec "$@"
