@@ -21,6 +21,9 @@ RUN apk add --no-cache \
     mysql-client \
     curl
 
+# Create a symlink between php83 and php like this wp command can work
+RUN ln -s /usr/bin/php83 /usr/bin/php
+
 # Create a directory for WordPress
 WORKDIR /var/www/wordpress
 
