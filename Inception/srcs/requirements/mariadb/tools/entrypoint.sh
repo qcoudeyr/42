@@ -13,16 +13,14 @@ done
 echo 'MariaDB is available'
 
 echo 'Set SQL_PASSWORD for mysql server ROOT user'
-mysql -u root -p$SQL_PASSWORD <<-EOSQL
-ALTER USER 'root'@'localhost' IDENTIFIED BY '$SQL_ROOT_PASSWORD';
+mysql <<-EOSQL
+SET PASSWORD = PASSWORD('$SQL_ROOT_PASSWORD');
 FLUSH PRIVILEGES;
 EOSQL
 
-echo 'Set SQL_PASSWORD for mysql server ROOT user'
-
 echo 'Adding admin user and normal user'
 
-mysql   <<-EOSQL
+mysql <<-EOSQL
 CREATE USER IF NOT EXISTS '$SQL_USER'@'%' IDENTIFIED BY '$SQL_PASSWORD';
 GRANT ALL PRIVILEGES ON *.* TO '$SQL_USER'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
@@ -30,7 +28,7 @@ EOSQL
 
 
 echo 'Create the user and database'
-mysql --user=$SQL_USER --password=$SQL_PASSWORD   <<-EOSQL
+mysql  <<-EOSQL
 CREATE DATABASE IF NOT EXISTS \`$SQL_DATABASE\`;
 CREATE USER IF NOT EXISTS '$SQL_USER'@'%' IDENTIFIED BY '$SQL_PASSWORD';
 GRANT ALL PRIVILEGES ON \`$SQL_DATABASE\`.* TO '$SQL_USER'@'%';
@@ -38,14 +36,14 @@ FLUSH PRIVILEGES;
 EOSQL
 
 echo 'Create the additional user with specific privileges'
-mysql --user=$SQL_USER --password=$SQL_PASSWORD  <<-EOSQL
+mysql <<-EOSQL
 CREATE USER IF NOT EXISTS '$SQL_ADDITIONAL_USER'@'%' IDENTIFIED BY '$SQL_ADDITIONAL_PASSWORD';
 -- Here you should replace '$SQL_DATABASE' with the actual database name
 GRANT SELECT, INSERT, UPDATE, DELETE ON \`$SQL_DATABASE\`.* TO '$SQL_ADDITIONAL_USER'@'%';
 FLUSH PRIVILEGES;
 EOSQL
 
-mysql  --user=$SQL_USER --password=$SQL_PASSWORD <<-EOF
+mysql <<-EOF
 -- Set the root password
 ALTER USER 'root'@'localhost' IDENTIFIED BY '$SQL_ROOT_PASSWORD';
 -- Remove anonymous users

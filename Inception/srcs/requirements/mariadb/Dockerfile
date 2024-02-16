@@ -7,14 +7,13 @@ RUN apk add --no-cache mariadb mariadb-client
 # Copy the entrypoint script into the container
 COPY ./tools/entrypoint.sh /usr/local/bin/
 
+RUN mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+
 # Make the entrypoint executable
 RUN chmod 777 /usr/local/bin/entrypoint.sh
 
 # Copy the custom MariaDB config
 COPY ./conf/wordpress_db.cnf /etc/mysql/my.cnf
-
-# Define the data directory as a volume
-
 
 # Expose the port MariaDB listens on
 EXPOSE 3306
