@@ -39,6 +39,11 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 
+COPY ./tools/init_db.sh /
+RUN chmod +x /init_db.sh
+
+ENTRYPOINT [ "/init_db.sh" ]
+
 # Configure PHP-FPM to listen on TCP instead of socket
 RUN sed -i 's/;listen = :9000/listen = 9000/' /etc/php83/php-fpm.d/www.conf \
     && sed -i 's/listen = \/run\/php\/php83-fpm.sock/;listen = \/run\/php\/php83-fpm.sock/' /etc/php83/php-fpm.d/www.conf
