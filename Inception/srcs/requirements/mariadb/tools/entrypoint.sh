@@ -55,7 +55,7 @@ echo 'MySQL setup completed'
 
 wait "$pid"
 
-kill -SIGTERM $(pgrep mysqld_safe)
+mysqladmin -u root -p$SQL_ROOT_PASSWORD shutdown
 
 
 # Hand over control to the main CMD
