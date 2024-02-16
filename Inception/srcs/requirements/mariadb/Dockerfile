@@ -10,9 +10,6 @@ COPY ./tools/entrypoint.sh /usr/local/bin/
 # Make the entrypoint executable
 RUN chmod 777 /usr/local/bin/entrypoint.sh
 
-# Set the entrypoint
-RUN mysql_install_db --user=wp_database --basedir=/usr --datadir=/var/lib/wordpress_db
-
 # Copy the custom MariaDB config
 COPY ./conf/wordpress_db.cnf /etc/mysql/my.cnf
 
