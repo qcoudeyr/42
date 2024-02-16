@@ -1,45 +1,44 @@
 #!/bin/sh
 set -e
-# MariaDB configuration script for WordPress
+
+# Start the MariaDB server in the background
+mysqld_safe &
+pid="$!"
 
 # Wait for MariaDB to start
-until mysqladmin ping; do
-    echo 'Waiting for MariaDB to start...'
+until mysqladmin ping &>/dev/null; do
+    echo 'Waiting for MariaDB to become available...'
     sleep 1
 done
-echo 'MariaDB started'
+echo 'MariaDB is available'
 
-# Secure the MariaDB installation (similar to 'mysql_secure_installation')
-mysql -u root -p"$SQL_ROOT_PASSWORD"  <<-EOSQL
-    SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$SQL_ROOT_PASSWORD');
-    DELETE FROM mysql.user WHERE User='';
-    DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
-    DROP DATABASE IF EXISTS test;
-    DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';
-    FLUSH PRIVILEGES;
+# Perform the security steps similar to mysql_secure_installation
+mysql --user=root <<-EOF
+-- Set the root password
+ALTER USER 'root'@'localhost' IDENTIFIED BY '$SQL_ROOT_PASSWORD';
+-- Remove anonymous users
+DELETE FROM mysql.user WHERE User='';
+-- Disallow root login remotely
+DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
+-- Remove test database and access to it
+DROP DATABASE IF EXISTS test;
+DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';
+-- Reload privilege tables
+FLUSH PRIVILEGES;
+EOF
+
+# Create the user and database
+mysql --user=root --password="$SQL_ROOT_PASSWORD" <<-EOSQL
+CREATE DATABASE IF NOT EXISTS \`$SQL_DATABASE\`;
+CREATE USER IF NOT EXISTS '$SQL_USER'@'%' IDENTIFIED BY '$SQL_PASSWORD';
+GRANT ALL PRIVILEGES ON \`$SQL_DATABASE\`.* TO '$SQL_USER'@'%';
+FLUSH PRIVILEGES;
 EOSQL
 
-# Create WordPress database
-mysql -u root -p"$SQL_ROOT_PASSWORD"  <<-EOSQL
-    CREATE DATABASE IF NOT EXISTS \`$SQL_DATABASE\` CHARACTER SET $SQL_CHARSET COLLATE $SQL_COLLATION;
-EOSQL
+echo 'MySQL setup completed'
 
-# Create WordPress user
-mysql -u root -p"$SQL_ROOT_PASSWORD"  <<-EOSQL
-    CREATE USER '$SQL_USER'@'%' IDENTIFIED BY '$SQL_PASSWORD';
-    GRANT ALL PRIVILEGES ON \`$SQL_DATABASE\`.* TO '$SQL_USER'@'%';
-    FLUSH PRIVILEGES;
-EOSQL
+# Stop the service before exiting
+service mysql stop
 
-# Create an additional user with a username not containing 'admin' or 'administrator'
-# Replace 'nonadminuser' and 'nonadminpassword' with the desired username and password
-mysql -u root -p"$SQL_ROOT_PASSWORD"  <<-EOSQL
-    CREATE USER '$SQL_ADDITIONAL_USER'@'%' IDENTIFIED BY '$SQL_ADDITIONAL_PASSWORD';
-    GRANT ALL PRIVILEGES ON \`$SQL_DATABASE\`.* TO '$SQL_ADDITIONAL_USER'@'%';
-    FLUSH PRIVILEGES;
-EOSQL
-
-echo 'MariaDB configuration completed'
-
-# Hand off to the original entrypoint (to ensure that the original behavior of the image is preserved)
+# Hand over control to the main CMD
 exec "$@"
