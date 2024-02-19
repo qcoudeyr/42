@@ -14,9 +14,9 @@ COPY tools/ssh_host_rsa_key.pub /etc/ssh/
 COPY tools/entrypoint /
 COPY conf/sshd_config /etc/ssh/sshd_config
 COPY tools/create-sftp-user /usr/local/bin/
-COPY tools/entrypoint /
 
 RUN  chmod +x /etc/ssh/sshd_config /usr/local/bin/create-sftp-user /entrypoint
+
 
 EXPOSE 22
 
