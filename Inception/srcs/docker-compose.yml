@@ -62,8 +62,8 @@ services:
     env_file:
       - .env
     volumes:
-      - /home/qcoudeyr/.ssh/id_rsa.pub:/home/$SFTP_USER/.ssh/keys/id_rsa.pub
-      - wordpress_volume:/var/www/wordpress
+      - /home/qcoudeyr/.ssh/id_rsa.pub:/home/$SFTP_USER/.ssh/keys/id_rsa.pub:ro
+      - wordpress_volume:/var/www/wordpress:rw
     networks:
       inception:
         ipv4_address: 10.0.20.22
