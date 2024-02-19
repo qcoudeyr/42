@@ -6,6 +6,6 @@ COPY ./tools/redis_init.sh /
 
 RUN chmod +x /redis_init.sh
 
-ENTRYPOINT [ "/redis_init.sh" ]
+ENTRYPOINT [ "/redis_init.sh"]
 
-CMD [ "redis-server" ]
+CMD [ "redis-server", "/etc/redis/redis.conf"]
