@@ -18,6 +18,7 @@ RUN apk add --no-cache \
     php83-session \
     php83-mbstring \
     php83-gd \
+    php83-tokenizer \
     mysql-client \
     curl
 
