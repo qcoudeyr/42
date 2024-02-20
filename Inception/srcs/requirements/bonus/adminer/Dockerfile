@@ -15,4 +15,4 @@ RUN wget https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1
 EXPOSE 8080
 
 # Start Adminer with PHP built-in server
-CMD [ "php83", "-S" , "0.0.0.0:8080", "/var/www/adminer/adminer.php"]
+CMD [ "php83", "-S" , "0.0.0.0:8080", "/var/www/adminer/adminer-4.8.1.php"]
