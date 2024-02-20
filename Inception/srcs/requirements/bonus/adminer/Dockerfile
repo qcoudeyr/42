@@ -2,7 +2,7 @@
 FROM alpine:3.19.1
 
 # Install Adminer and PHP
-RUN apk add --no-cache adminer php83 php83-pdo_mysql
+RUN apk add --no-cache
 
 # Expose port 8080 for Adminer
 EXPOSE 8080
