@@ -36,7 +36,8 @@ RUN chown -R nobody:nobody /etc/php83/php-fpm.conf
 RUN curl -o wordpress.tar.gz -SL https://wordpress.org/latest.tar.gz \
     && tar -xzf wordpress.tar.gz --strip-components=1 \
     && rm wordpress.tar.gz \
-	&& chmod -R 777 /var/www/
+    && chown -R nobody:nobody /var/www/wordpress \
+	&& chmod -R 777 /var/www/*
 
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN chmod +x wp-cli.phar
@@ -54,6 +55,5 @@ RUN sed -i 's/;listen = :9000/listen = 9000/' /etc/php83/php-fpm.d/www.conf \
 EXPOSE 9000
 
 ENTRYPOINT [ "/init_db.sh" ]
-
 # Start PHP-FPM
 CMD ["php-fpm83", "-F"]
