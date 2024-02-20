@@ -112,6 +112,18 @@ services:
         ipv4_address: 10.0.20.16
     expose:
       - 8080
+
+  certbot:
+    build:
+      context: ./requirements/bonus/certbot
+    image: inception_certbot:v1.0
+    container_name: certbot_container
+    restart: always
+    env_file:
+      - .env
+    networks:
+      inception:
+        ipv4_address: 10.0.20.18
 volumes:
   wordpress_volume:
     driver: local

@@ -1,10 +1,8 @@
 # Use Alpine Linux as the base image
 FROM alpine:3.19.1
 
-# Install Adminer and PHP
-RUN apk add --no-cache snapd
+RUN apk add --no-cache certbot
 
-RUN snap install --classic certbot
+RUN certbot certonly --nginx
 
-# Start Adminer with PHP built-in server
-CMD [ ]
+CMD ["sleep", "infinity"]
