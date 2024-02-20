@@ -32,7 +32,7 @@ RUN mkdir -p /run/nginx  /var/www/qcoudeyr.42.fr/cache /srv/temp/nginx/client_bo
 RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
     -keyout /etc/ssl/private/nginx-selfsigned.key \
     -out /etc/ssl/certs/nginx-selfsigned.crt \
-    -subj "/C=FR/ST=Occitanie/L=Perpignana/O=Dis/CN=*.qcoudeyr.42.fr"
+    -subj "/C=FR/ST=Occitanie/L=Perpignana/O=Dis/CN=*pro.qcoudeyr.42.fr"
 
 # Configure Nginx to use the generated SSL certificate and key
 # and to use TLS v1.3
