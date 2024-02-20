@@ -1,16 +1,5 @@
 FROM alpine:3.19.1
 
-RUN apk add --update --no-cache alpine-sdk \
-	nano \
-	curl \
-	sudo \
-	openssl \
-	pcre \
-	pcre-dev \
-	zlib-dev \
-	openssl-dev \
-	gd-dev
-
 RUN mkdir -p /tmp/nginx \
 	&& cd /tmp/nginx \
 	&& curl -o nginx.tar.gz -SL https://nginx.org/download/nginx-1.20.1.tar.gz \
