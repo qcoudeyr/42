@@ -46,7 +46,6 @@ RUN mv wp-cli.phar /usr/local/bin/wp
 COPY ./tools/init_db.sh /
 RUN chmod +x /init_db.sh
 
-ENTRYPOINT [ "/init_db.sh" ]
 
 # Configure PHP-FPM to listen on TCP instead of socket
 RUN sed -i 's/;listen = :9000/listen = 9000/' /etc/php83/php-fpm.d/www.conf \
@@ -54,6 +53,8 @@ RUN sed -i 's/;listen = :9000/listen = 9000/' /etc/php83/php-fpm.d/www.conf \
 
 # Expose port 9000 for PHP-FPM
 EXPOSE 9000
+
+ENTRYPOINT [ "/init_db.sh" ]
 
 # Start PHP-FPM
 CMD ["php-fpm83", "-F"]
