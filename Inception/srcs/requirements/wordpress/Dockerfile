@@ -50,7 +50,7 @@ RUN chmod +x /init_db.sh
 RUN sed -i 's/;listen = :9000/listen = 9000/' /etc/php83/php-fpm.d/www.conf \
     && sed -i 's/listen = \/run\/php\/php83-fpm.sock/;listen = \/run\/php\/php83-fpm.sock/' /etc/php83/php-fpm.d/www.conf
 
-RUN chmod -R 777 /var/www/*
+RUN chmod -R 777 /var/www/
 
 # Expose port 9000 for PHP-FPM
 EXPOSE 9000
