@@ -36,8 +36,7 @@ RUN chown -R nobody:nobody /etc/php83/php-fpm.conf
 RUN curl -o wordpress.tar.gz -SL https://wordpress.org/latest.tar.gz \
     && tar -xzf wordpress.tar.gz --strip-components=1 \
     && rm wordpress.tar.gz \
-    && chown -R nobody:nobody /var/www/wordpress \
-	&& chmod -R 777 /var/www/*
+    && chown -R nobody:nobody /var/www/wordpress
 
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN chmod +x wp-cli.phar
@@ -50,6 +49,8 @@ RUN chmod +x /init_db.sh
 # Configure PHP-FPM to listen on TCP instead of socket
 RUN sed -i 's/;listen = :9000/listen = 9000/' /etc/php83/php-fpm.d/www.conf \
     && sed -i 's/listen = \/run\/php\/php83-fpm.sock/;listen = \/run\/php\/php83-fpm.sock/' /etc/php83/php-fpm.d/www.conf
+
+RUN chmod -R 777 /var/www/*
 
 # Expose port 9000 for PHP-FPM
 EXPOSE 9000
