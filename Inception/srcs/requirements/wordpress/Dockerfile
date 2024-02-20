@@ -37,7 +37,7 @@ RUN curl -o wordpress.tar.gz -SL https://wordpress.org/latest.tar.gz \
     && tar -xzf wordpress.tar.gz --strip-components=1 \
     && rm wordpress.tar.gz \
     && chown -R nobody:nobody /var/www/wordpress \
-	&& chmod -R 777 /var/www/*
+	&& chmod -R 775 /var/www/*
 
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN chmod +x wp-cli.phar
