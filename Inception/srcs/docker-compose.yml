@@ -12,6 +12,7 @@ services:
       - wordpress
     volumes:
       - wordpress_volume:/var/www/wordpress:ro
+      - nodejs_volume:/var/www/nodejs:ro
     env_file:
       - .env
     ports:
@@ -101,6 +102,8 @@ services:
       context: ./requirements/bonus/nodejs
     image: inception_nodejs:v1.0
     container_name: nodejs_container
+    volumes:
+      - nodejs_volume:/home/node/app/
     restart: always
     env_file:
       - .env
@@ -122,6 +125,8 @@ volumes:
       type: "none"
       o: "bind"
       device: "/home/qcoudeyr/data/inception_mariadb"
+  nodejs_volume:
+
 
 networks:
   inception:
