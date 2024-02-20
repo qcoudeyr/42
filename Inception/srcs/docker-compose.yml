@@ -83,19 +83,6 @@ services:
         ipv4_address: 10.0.20.14
     expose:
       - 6379
-  redis:
-    build:
-      context: ./requirements/bonus/adminer
-    image: inception_adminer:v1.0
-    container_name: adminer_container
-    restart: always
-    env_file:
-      - .env
-    networks:
-      inception:
-        ipv4_address: 10.0.20.15
-    expose:
-      - 8080
 
 volumes:
   wordpress_volume:
