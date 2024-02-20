@@ -2,7 +2,7 @@
 FROM alpine:3.19.1
 
 # Install Adminer and PHP
-RUN apk add --no-cache php83 php83-mysqli wget
+RUN apk add --no-cache php83 php83-mysqli php83-session wget
 
 RUN mkdir -p /var/www/
 RUN mkdir /var/www/adminer/
