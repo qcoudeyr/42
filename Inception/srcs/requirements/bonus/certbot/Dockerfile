@@ -18,5 +18,9 @@ COPY ./tools/request_certificate.sh /app/request_certificate.sh
 # Make it executable
 RUN chmod +x /app/request_certificate.sh
 
+# Note: Mount a volume at /etc/letsencrypt when running this container
+# so that certificates can be persisted and shared with Nginx.
+# Example: -v /path/on/host:/etc/letsencrypt
+
 # Run the certificate request script
 CMD ["/app/request_certificate.sh"]
