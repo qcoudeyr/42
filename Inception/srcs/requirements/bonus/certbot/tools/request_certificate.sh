@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # Set your domain names and email
-DOMAIN_NAME="your-domain-name.com"
-WWW_DOMAIN_NAME="www.your-domain-name.com"
-EMAIL="your-email@example.com"
+DOMAIN_NAME="qcoudeyr.42.fr"
+WWW_DOMAIN_NAME="www.qcoudeyr.42.fr"
+EMAIL="qcoudeyr@student.42perpignan.fr"
 
 # Request the initial certificate
 certbot certonly --webroot -w /var/www/letsencrypt -d $DOMAIN_NAME -d $WWW_DOMAIN_NAME \
