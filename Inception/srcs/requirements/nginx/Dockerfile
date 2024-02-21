@@ -9,7 +9,8 @@ RUN apk add --update --no-cache alpine-sdk \
 	pcre-dev \
 	zlib-dev \
 	openssl-dev \
-	gd-dev
+	gd-dev \
+	nss-tools
 
 RUN mkdir -p /tmp/nginx \
 	&& cd /tmp/nginx \
@@ -27,10 +28,12 @@ RUN mkdir -p /tmp/nginx \
 RUN mkdir -p /run/nginx  /var/www/qcoudeyr.42.fr/cache /srv/temp/nginx/client_body_temp /srv/temp/nginx/proxy_temp /srv/temp/nginx/uwsgi_temp /srv/temp/nginx/fastcgi_temp
 
 # Generate a self-signed SSL certificate and key
-RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-    -keyout /etc/ssl/private/nginx-selfsigned.key \
-    -out /etc/ssl/certs/nginx-selfsigned.crt \
-    -subj "/C=FR/ST=Occitanie/L=Perpignana/O=Dis/CN=*pro.qcoudeyr.42.fr"
+
+RUN curl -JLO "https://dl.filippo.io/mkcert/latest?for=linux/amd64" && \
+	chmod +x mkcert-v*-linux-amd64 && \
+	cp mkcert-v*-linux-amd64 /usr/local/bin/mkcert
+
+RUN mkcert -key-file /etc/ssl/private/nginx-selfsigned.key -cert-file /etc/ssl/certs/nginx-selfsigned.crt qcoudeyr.42.fr "*.qcoudeyr.42.fr" localhost 127.0.0.1 ::1
 
 # Configure Nginx to use the generated SSL certificate and key
 # and to use TLS v1.3

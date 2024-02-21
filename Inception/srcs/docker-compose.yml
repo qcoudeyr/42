@@ -13,8 +13,6 @@ services:
     volumes:
       - wordpress_volume:/var/www/wordpress:ro
       - nodejs_volume:/var/www/nodejs:ro
-      - certificates:/etc/letsencrypt
-      - webroot:/var/www/letsencrypt
     env_file:
       - .env
     ports:
@@ -115,21 +113,6 @@ services:
     expose:
       - 8080
 
-  certbot:
-    build:
-      context: ./requirements/bonus/certbot
-    image: inception_certbot:v1.0
-    container_name: certbot_container
-    restart: always
-    env_file:
-      - .env
-    networks:
-      inception:
-        ipv4_address: 10.0.20.18
-    volumes:
-      - certificates:/etc/letsencrypt
-      - webroot:/var/www/letsencrypt
-
 volumes:
   wordpress_volume:
     driver: local
@@ -144,8 +127,6 @@ volumes:
       o: "bind"
       device: "/home/qcoudeyr/data/inception_mariadb"
   nodejs_volume:
-  certificates:
-  webroot:
 
 
 networks:
