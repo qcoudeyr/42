@@ -12,7 +12,7 @@ services:
       - wordpress
     volumes:
       - wordpress_volume:/var/www/wordpress:ro
-      - nodejs_volume:/var/www/nodejs:ro
+      - nodejs_volume:/var/www/inception:ro
     env_file:
       - .env
     ports:
@@ -103,7 +103,7 @@ services:
     image: inception_nodejs:v1.0
     container_name: nodejs_container
     volumes:
-      - nodejs_volume:/home/node/app/
+      - nodejs_volume:/home/node/app/views
     restart: always
     env_file:
       - .env
