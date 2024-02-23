@@ -103,7 +103,7 @@ services:
     image: inception_nodejs:v1.0
     container_name: nodejs_container
     volumes:
-      - nodejs_volume:/home/node/app/views
+      - nodejs_volume:/home/node/app/views/
     restart: always
     env_file:
       - .env

@@ -4,20 +4,22 @@ RUN addgroup -S node && adduser -S -g node node
 
 RUN apk add npm --no-cache
 
-RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+RUN mkdir  /home/node/app/  /home/node/app/views
+
+RUN chown -R node:node /home/node/app
 
 WORKDIR /home/node/app
 
-COPY ./tools/node_website/ .
+COPY ./tools/node_website/app.js /home/node/app
+COPY ./tools/node_website/package.json /home/node/app
 
 RUN chmod 777 -R *
 
 USER node
 
+COPY --chown=node:node ./tools/node_website/views/ /home/node/app/views/
+
 RUN npm install
-
-
-COPY --chown=node:node ./tools/node_website/ .
 
 EXPOSE 8080
 
