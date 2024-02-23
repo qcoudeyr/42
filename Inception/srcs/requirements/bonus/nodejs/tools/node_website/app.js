@@ -9,16 +9,27 @@ const server = http.createServer((req, res) => {
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  // Redirect all requests to views/index.html
-  fs.readFile(__dirname + "/views/index.html", (err, data) => {
-    if (err) {
-      res.writeHead(500);
-      return res.end("Error loading index.html");
-    }
+  if (req.url("/inception")) {
+    fs.readFile(__dirname + "/views/index.html", (err, data) => {
+      if (err) {
+        res.writeHead(500);
+        return res.end("Error loading index.html");
+      }
 
-    res.writeHead(200, { "Content-Type": "text/html" });
-    res.end(data);
-  });
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.end(data);
+    });
+  } else {
+    fs.readFile(__dirname + "/views/index.html", (err, data) => {
+      if (err) {
+        res.writeHead(500);
+        return res.end("Error loading index.html");
+      }
+
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.end(data);
+    });
+  }
 });
 
 // Constants

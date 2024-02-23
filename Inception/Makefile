@@ -8,7 +8,7 @@ install_ssl_certificate:
 	@which mkcert || (echo "mkcert not found. Installing..." && sudo apt-get install mkcert)
 	@which certutil || (echo "libnss3-tools not found. Installing..." && sudo apt-get install libnss3-tools)
 	@mkcert -cert-file ./srcs/requirements/nginx/tools/qcoudeyr.42.fr.crt -key-file ./srcs/requirements/nginx/tools/qcoudeyr.42.fr.key qcoudeyr.42.fr "*.qcoudeyr.42.fr"
-	@mkcert -install
+	@mkcert -install -cert-file ./srcs/requirements/nginx/tools/qcoudeyr.42.fr.crt -key-file ./srcs/requirements/nginx/tools/qcoudeyr.42.fr.key
 
 check-and-add-host:
 	@if ! grep -Fq $(HOST_ENTRY) /etc/hosts; then \
