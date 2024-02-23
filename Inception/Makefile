@@ -1,8 +1,13 @@
 SHELL := /bin/bash
 
-all: install-docker check-directories generate-ssh-keys build-and-up generate-ssh-keys check-and-add-host
+all: install-docker check-directories generate-ssh-keys check_dependencies build-and-up generate-ssh-keys check-and-add-host
 
 HOST_ENTRY="10.0.20.10 qcoudeyr.42.fr wordpress.qcoudeyr.42.fr"
+
+check_dependencies:
+    @which mkcert || (echo "mkcert not found. Installing..." && sudo apt-get install mkcert)
+    @which certutil || (echo "libnss3-tools not found. Installing..." && sudo apt-get install libnss3-tools)
+
 
 check-and-add-host:
 	@if ! grep -Fq $(HOST_ENTRY) /etc/hosts; then \
