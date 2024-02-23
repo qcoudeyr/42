@@ -9,22 +9,16 @@ const server = http.createServer((req, res) => {
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  if (req.url === "/*") {
-    // Serve index.html
-    fs.readFile(__dirname + "/views/index.html", (err, data) => {
-      if (err) {
-        res.writeHead(500);
-        return res.end("Error loading index.html");
-      }
+  // Redirect all requests to views/index.html
+  fs.readFile(__dirname + "/views/index.html", (err, data) => {
+    if (err) {
+      res.writeHead(500);
+      return res.end("Error loading index.html");
+    }
 
-      res.writeHead(200, { "Content-Type": "text/html" });
-      res.end(data);
-    });
-  } else {
-    // Handle other routes or static files as needed
-    res.writeHead(404);
-    res.end("Not Found");
-  }
+    res.writeHead(200, { "Content-Type": "text/html" });
+    res.end(data);
+  });
 });
 
 // Constants
