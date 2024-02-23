@@ -39,7 +39,7 @@
                 <div class="d-flex justify-content-center">
                     <div class="text-center">
                         <h1 class="mx-auto my-0 text-uppercase">Inception</h1>
-                        <h2 class="text-white-50 mx-auto mt-2 mb-5">Introduction to Docker</h2>
+                        <h2 class="text-white-70 mx-auto mt-2 mb-5">Introduction to Docker</h2>
                         <a class="btn btn-primary" href="#about">Get Started</a>
                     </div>
                 </div>
@@ -50,39 +50,63 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8">
-                        <h2 class="text-white mb-4">Built with Docker</h2>
-                        <p class="text-white-50">
+                        <h2 class="text-white mb-4">
+                            <a href="https://www.docker.com/" class="text-white" target="_blank">Built with Docker</a>
+                        </h2>
+                        <p class="text-white-70">
                             Inception is a project where you need to create a fullstack website using Docker and only from hand using Dockerfile.
                             For this project, i entirely use Alpine Linux on it version 3.19.1 for all my Dockerfile.
                             You can find just under this scope all the container that i've created for this exercice.
                         </p>
                     </div>
                 </div>
-                <img class="img-fluid" src="https://logos-world.net/wp-content/uploads/2021/02/Docker-Emblem.png" alt="..." />
+                <a href="https://www.docker.com/" target="_blank">
+                    <img class="img-fluid" src="https://logos-world.net/wp-content/uploads/2021/02/Docker-Emblem.png" alt="Docker" />
+                </a>
             </div>
         </section>
         <!-- Projects-->
         <section class="projects-section bg-light" id="projects">
             <div class="container px-4 px-lg-5">
                 <!-- Featured Project Row-->
-                <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="https://1000logos.net/wp-content/uploads/2020/08/Nginx-Logo.png" alt="..." /></div>
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="featured-text text-center text-lg-left">
-                            <h4>Nginx 1.20.1 + Redis (Bonus)</h4>
-                            <p class="text-black-50 mb-0">Nginx 1.20.1 was installed from source and added to the compilation the module redis to handle multi-site caching.The worst part of this projec tis the nginx configuration that is the worst nightmare i think i will never have in my dev life !</p>
+                <div class="row gx-0 justify-content-center">
+                    <div class="col-lg-6">
+                        <a href="https://nginx.org/" target="_blank">
+                            <img class="img-fluid mb-3 mb-lg-0" src="https://1000logos.net/wp-content/uploads/2020/08/Nginx-Logo.png" alt="Nginx" />
+                        </a>
+                    </div>
+                    <div class="col-lg-6 order-lg-first">
+                        <div class="bg-black text-center h-100 project">
+                            <div class="d-flex h-100">
+                                <div class="project-text w-100 my-auto text-center text-lg-right">
+                                    <h4 class="text-white">
+                                        <a href="https://nginx.org/" class="text-white" target="_blank">Nginx + </a>
+                                        <a href="https://mkcert.dev" class="text-white" target="_blank">Mkcert</a>
+                                    </h4>
+                                    <p class="mb-0 text-white-70">Nginx 1.20.1 was installed from source and added to the compilation the module redis to handle multi-site caching.
+                                        The worst part of this project is the nginx config file that is the worst nightmare i had in a long time !!!
+                                        For mkcert, pretty simple, it's just a package that automate the creation and the installation on a SSL/TLS certificate to secure test and dev environnement.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- Project One Row-->
                 <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
-                    <div class="col-lg-6"><img class="img-fluid" href="https://qcoudeyr.42.fr/adminer" src="https://mariadb.com/wp-content/uploads/2019/11/mariadb-logo-vert_blue-transparent.png" alt="..." /></div>
+                    <div class="col-lg-6">
+                        <a href="https://mariadb.org/" target="_blank">
+                            <img class="img-fluid" src="https://mariadb.com/wp-content/uploads/2019/11/mariadb-logo-vert_blue-transparent.png" alt="MariaDB" />
+                        </a>
+                    </div>
                     <div class="col-lg-6">
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-left">
-                                    <h4 href="https://qcoudeyr.42.fr/adminer" class="text-white">Mariadb + Adminer (Bonus)</h4>
-                                    <p href="https://qcoudeyr.42.fr/adminer" class="mb-0 text-white-50">Mariadb installed form the dpkgs manager of Alpine Linux. Pretty easy part, a lot of documentation and AI model pretty well trained to help you for the configuration.</p>
+                                    <h4 class="text-white">
+                                        <a href="https://mariadb.org/" class="text-white" target="_blank">Mariadb</a>
+                                    </h4>
+                                    <p class="mb-0 text-white-70">Mariadb installed form the dpkgs manager of Alpine Linux. Pretty easy part, a lot of documentation and AI model pretty well trained to help you for the configuration.</p>
                                 </div>
                             </div>
                         </div>
@@ -90,68 +114,105 @@
                 </div>
                 <!-- Project Two Row-->
                 <div class="row gx-0 justify-content-center">
-                    <div class="col-lg-6"><img class="img-fluid" href="https://qcoudeyr.42.fr/" src="https://pngimg.com/uploads/wordpress/wordpress_PNG75.png" alt="..." /></div>
+                    <div class="col-lg-6">
+                        <a href="https://wordpress.qcoudeyr.42.fr/" target="_blank">
+                            <img class="img-fluid" src="https://pngimg.com/uploads/wordpress/wordpress_PNG75.png" alt="WordPress" />
+                        </a>
+                    </div>
                     <div class="col-lg-6 order-lg-first">
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-right">
-                                    <h4 class="text-white">Wordpress + Php83-fpm + Wp-cli + Redis (Bonus)</h4>
-                                    <p class="mb-0 text-white-50">The half part of my nightmare ! But the best thing in the world when everything show up and you only need to configure it using wp-cli.</p>
+                                    <h4 class="text-white">
+                                        <a href="https://wordpress.org/" class="text-white" target="_blank">WordPress </a>+
+                                        <a href="https://www.php.net/" class="text-white" target="_blank"> Php83-fpm </a>+
+                                        <a href="https://wp-cli.org/fr/" class="text-white" target="_blank"> Wp-cli</a>
+                                    </h4>
+                                    <p class="mb-0 text-white-70">The 30% of my nightmare ! But the best thing in the world when everything show up and you only need to configure it using wp-cli.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-                <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="https://1000logos.net/wp-content/uploads/2020/08/Nginx-Logo.png" alt="..." /></div>
-                <div class="col-xl-4 col-lg-5">
-                    <div class="featured-text text-center text-lg-left">
-                        <h4>Sftp (Bonus)</h4>
-                        <p class="text-black-50 mb-0">As asked in the bonus part, i added a docker with sftp installed on it with ssh key generated when you build the project.
-                            The SFTP point to the Wordpress volumes with the good right to you can edit, add or remove any file that you want !</p>
+                <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
+                    <div class="col-lg-6">
+                        <img class="img-fluid" src="https://images.ctfassets.net/s68ib1kj8k5n/4xcpmocHGJyM8qFVSsmFhP/da4f20bca7d2a811abbebb07299f5f72/Group_20.png" alt="..." />
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="bg-black text-center h-100 project">
+                            <div class="d-flex h-100">
+                                <div class="project-text w-100 my-auto text-center text-lg-left">
+                                    <h4 class="text-white">
+                                        <a href="https://fr.wikipedia.org/wiki/SSH_File_Transfer_Protocol" class="text-white" target="_blank">Sftp (Bonus)</a>
+                                    </h4>
+                                    <p class="mb-0 text-white-70">As asked in the bonus part, i added a docker with sftp installed on it with ssh key generated when you build the project.
+                                        The SFTP point to the Wordpress volumes with the good right to you can edit, add or remove any file that you want !</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <!-- Project Two Row-->
+                <div class="row gx-0 justify-content-center">
+                    <div class="col-lg-6">
+                        <a href="https://qcoudeyr.42.fr/adminer" target="_blank">
+                            <img class="img-fluid" src="https://www.myqnap.org/wp-content/uploads/menu_image.png" alt="Adminer" />
+                        </a>
+                    </div>
+                    <div class="col-lg-6 order-lg-first">
+                        <div class="bg-black text-center h-100 project">
+                            <div class="d-flex h-100">
+                                <div class="project-text w-100 my-auto text-center text-lg-right">
+                                    <h4 class="text-white">
+                                        <a href="https://www.adminer.org/" class="text-white" target="_blank">Adminer (Bonus)</a>
+                                    </h4>
+                                    <p class="mb-0 text-white-70">I think it's the easiest bonus, i've only created a docker, installed php83 and wget to download the php file. That's it !
+                                        Just to add a location inside the nginx config and you are good to go !
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
+                    <div class="col-lg-6">
+                        <img class="img-fluid" src="https://mariadb.com/wp-content/uploads/2019/11/mariadb-logo-vert_blue-transparent.png" alt="..." />
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="bg-black text-center h-100 project">
+                            <div class="d-flex h-100">
+                                <div class="project-text w-100 my-auto text-center text-lg-left">
+                                    <h4 class="text-white"><a href="" class="text-white" target="_blank"></a>Sftp (Bonus)</h4>
+                                    <p class="mb-0 text-white-70">As asked in the bonus part, i added a docker with sftp installed on it with ssh key generated when you build the project.
+                                        The SFTP point to the Wordpress volumes with the good right to you can edit, add or remove any file that you want !</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+        </div>
         </section>
-        <!-- Signup-->
         <section class="signup-section" id="signup">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5">
                     <div class="col-md-10 col-lg-8 mx-auto text-center">
                         <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
                         <h2 class="text-white mb-5">Contact me here to get any help for your project !</h2>
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- * * SB Forms Contact Form * *-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- This form is pre-integrated with SB Forms.-->
-                        <!-- To make this form functional, sign up at-->
-                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                        <!-- to get an API token!-->
                         <form class="form-signup" id="contactForm" data-sb-form-api-token="API_TOKEN">
-                            <!-- Email address input-->
                             <div class="row input-group-newsletter">
                                 <div class="col"><input class="form-control" id="emailAddress" type="email" placeholder="Enter email address..." aria-label="Enter email address..." data-sb-validations="required,email" /></div>
                                 <div class="col-auto"><button class="btn btn-primary disabled" id="submitButton" type="submit">Notify Me!</button></div>
                             </div>
                             <div class="invalid-feedback mt-2" data-sb-feedback="emailAddress:required">An email is required.</div>
                             <div class="invalid-feedback mt-2" data-sb-feedback="emailAddress:email">Email is not valid.</div>
-                            <!-- Submit success message-->
-                            <!---->
-                            <!-- This is what your users will see when the form-->
-                            <!-- has successfully submitted-->
+
                             <div class="d-none" id="submitSuccessMessage">
                                 <div class="text-center mb-3 mt-2 text-white">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                    To activate this form, sign up at
-                                    <br />
-                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                    <div class="fw-bolder">Form submission successful but it's useless because it's not setup !</div>
                                 </div>
                             </div>
-                            <!-- Submit error message-->
-                            <!---->
-                            <!-- This is what your users will see when there is-->
-                            <!-- an error submitting the form-->
                             <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3 mt-2">Error sending message!</div></div>
                         </form>
                     </div>
@@ -199,7 +260,7 @@
             </div>
         </section>
         <!-- Footer-->
-        <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Qcoudeyr&copy; Inception project by Qcoudeyr - 2024 -</div></footer>
+        <footer class="footer bg-black small text-center text-white-70"><div class="container px-4 px-lg-5">Qcoudeyr&copy; Inception project by Qcoudeyr - 2024 -</div></footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
