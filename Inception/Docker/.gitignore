@@ -1,7 +1,0 @@
-srcs/requirements/bonus/sftp/conf
-srcs/requirements/bonus/sftp/tools
-srcs/requirements/nginx/conf
-srcs/requirements/nginx/tools
-srcs/requirements/wordpress/conf
-srcs/requirements/wordpress/tools
-srcs/.env

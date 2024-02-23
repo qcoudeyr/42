@@ -27,21 +27,12 @@ RUN mkdir -p /tmp/nginx \
 
 RUN mkdir -p /run/nginx  /var/www/qcoudeyr.42.fr/cache /srv/temp/nginx/client_body_temp /srv/temp/nginx/proxy_temp /srv/temp/nginx/uwsgi_temp /srv/temp/nginx/fastcgi_temp
 
-# Generate a self-signed SSL certificate and key
+COPY ./tools/qcoudeyr.42.fr.crt /etc/ssl/certs/qcoudeyr.42.fr.crt
+COPY ./tools/qcoudeyr.42.fr.key /etc/ssl/private/qcoudeyr.42.fr.key
 
-RUN curl -JLO "https://dl.filippo.io/mkcert/latest?for=linux/amd64" && \
-	chmod +x mkcert-v*-linux-amd64 && \
-	cp mkcert-v*-linux-amd64 /usr/local/bin/mkcert
-
-RUN mkcert -key-file /etc/ssl/private/nginx-selfsigned.key -cert-file /etc/ssl/certs/nginx-selfsigned.crt qcoudeyr.42.fr "*.qcoudeyr.42.fr" localhost 127.0.0.1 ::1
-
-# Configure Nginx to use the generated SSL certificate and key
-# and to use TLS v1.3
+RUN chmod 755 /etc/ssl/certs/qcoudeyr.42.fr.crt /etc/ssl/private/qcoudeyr.42.fr.key
 
 COPY ./conf/nginx.conf /etc/nginx/nginx.conf
-
-#Here is where i configure the access to the lets encrypt certificats
-RUN mkdir -p /var/www/letsencrypt
 
 EXPOSE 443
 

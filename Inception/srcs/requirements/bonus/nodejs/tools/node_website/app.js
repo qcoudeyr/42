@@ -1,11 +1,16 @@
 var express = require("express");
+var cors = require("cors");
+
 var app = express();
 var router = express.Router();
 
 var path = __dirname + '/views/';
 
+// Use the CORS middleware
+app.use(cors());
+
 // Constants
-const PORT = 8080;
+const PORT = 3000; // Change this to the desired port
 const HOST = '0.0.0.0';
 
 router.use(function (req,res,next) {
@@ -20,6 +25,6 @@ router.get("/",function(req,res){
 app.use(express.static(path));
 app.use("/", router);
 
-app.listen(8080, function () {
-  console.log('Example app listening on port 8080!')
-})
+app.listen(PORT, function () {
+  console.log('Node.js app listening on port ' + PORT);
+});
