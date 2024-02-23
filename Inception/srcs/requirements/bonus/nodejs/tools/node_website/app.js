@@ -1,30 +1,36 @@
-var express = require("express");
-var cors = require("cors");
+const http = require("http");
+const fs = require("fs");
 
-var app = express();
-var router = express.Router();
+const server = http.createServer((req, res) => {
+  console.log(`${req.method} ${req.url}`);
 
-var path = __dirname + '/views/';
+  // Handle CORS headers
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-// Use the CORS middleware
-app.use(cors());
+  if (req.url === "/*") {
+    // Serve index.html
+    fs.readFile(__dirname + "/views/index.html", (err, data) => {
+      if (err) {
+        res.writeHead(500);
+        return res.end("Error loading index.html");
+      }
+
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.end(data);
+    });
+  } else {
+    // Handle other routes or static files as needed
+    res.writeHead(404);
+    res.end("Not Found");
+  }
+});
 
 // Constants
-const PORT = 3000; // Change this to the desired port
-const HOST = '0.0.0.0';
+const PORT = 8080; // Change this to the desired port
+const HOST = "0.0.0.0";
 
-router.use(function (req,res,next) {
-  console.log("/" + req.method);
-  next();
-});
-
-router.get("/",function(req,res){
-  res.sendFile(path + "index.html");
-});
-
-app.use(express.static(path));
-app.use("/", router);
-
-app.listen(PORT, function () {
-  console.log('Node.js app listening on port ' + PORT);
+server.listen(PORT, HOST, () => {
+  console.log(`Node.js app listening on http://${HOST}:${PORT}`);
 });
