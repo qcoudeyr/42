@@ -12,12 +12,11 @@ WORKDIR /home/node/app
 
 COPY ./tools/node_website/app.js /home/node/app
 COPY ./tools/node_website/package.json /home/node/app
+COPY ./tools/node_website/views/ /home/node/app/views/
 
 RUN chmod 777 -R *
 
 USER node
-
-COPY --chown=node:node ./tools/node_website/views/ /home/node/app/views/
 
 RUN npm install
 
