@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 all: install-docker check-directories generate-ssh-keys install_ssl_certificate build-and-up generate-ssh-keys check-and-add-host
 
-HOST_ENTRY="10.0.20.10 qcoudeyr.42.fr wordpress.qcoudeyr.42.fr"
+HOST_ENTRY="10.0.20.10 qcoudeyr.42.fr start.qcoudeyr.42.fr"
 
 install_ssl_certificate:
 	@which mkcert || (echo "mkcert not found. Installing..." && sudo apt-get install mkcert)
