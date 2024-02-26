@@ -29,6 +29,14 @@ install-docker:
 		echo "Docker is already installed."; \
 	fi
 
+check-env:
+	@if [ ! -d ./scrs/.env" ]; then \
+		echo " No .env file find at ./scrs/.env !!!"; \
+		echo "Build when "; \
+	else \
+		echo "$(HOME)/data/inception_mariadb directory already exists."; \
+	fi
+
 check-directories:
 	@if [ ! -d "$(HOME)/data/inception_mariadb" ]; then \
 		echo "Creating $(HOME)/data/inception_mariadb directory..."; \
