@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:18:59 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/03/04 16:29:05 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/03/04 16:54:53 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,19 @@ class Bureaucrat
 private:
 	const	std::string name;
 	int		grade;
+
 public:
 	class GradeTooHighException : public std::exception {
+	public:
 		virtual const char* what() const throw() {
-			return "Grade is too high!";
+			return "Grade too high";
 		}
 	};
 
 	class GradeTooLowException : public std::exception {
+	public:
 		virtual const char* what() const throw() {
-			return "Grade is too low!";
+			return "Grade too low";
 		}
 	};
 	Bureaucrat(const std::string& name, int grade);
@@ -42,7 +45,10 @@ public:
 	int getGrade() const;
 	void incrementGrade();
 	void decrementGrade();
-	friend std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
+	friend ostream& operator<<(ostream& os, const Bureaucrat& bureaucrat) {
+		os << bureaucrat._name << ", bureaucrat grade " << bureaucrat._grade << ".";
+			return os;
+		}
 };
 
 #endif

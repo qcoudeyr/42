@@ -6,13 +6,13 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:19:01 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/03/04 16:30:05 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/03/04 16:54:37 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-const std::string& getName() const {
+const std::string& Bureaucrat::getName() const {
 	return name;
 }
 
@@ -46,6 +46,3 @@ Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name) {
 	}
 }
 
-friend std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat) {
-	return os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
-}
