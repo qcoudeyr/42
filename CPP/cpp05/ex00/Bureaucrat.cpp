@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:19:01 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/03/04 16:54:37 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/03/05 15:06:15 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,3 +46,6 @@ Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name) {
 	}
 }
 
+std::string Bureaucrat::operator<<(const Bureaucrat& bureaucrat) {
+		std::cout << bureaucrat.name << ", bureaucrat grade " << bureaucrat.grade << "."<< std::endl;
+		}

@@ -6,19 +6,18 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:18:59 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/03/05 14:59:23 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/03/05 15:10:30 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
-#include <stdexcept>
-#include <iostream>
 #include <string>
 #include <ctype.h>
 #include <string.h>
 #include <iomanip>
+#include <exception>
 
 class Bureaucrat
 {
@@ -45,10 +44,7 @@ public:
 	int getGrade() const;
 	void incrementGrade();
 	void decrementGrade();
-	friend ostream& operator<<(ostream& os, const Bureaucrat& bureaucrat) {
-		os << bureaucrat._name << ", bureaucrat grade " << bureaucrat._grade << ".";
-			return os;
-		}
+	std::string operator<<(const Bureaucrat& bureaucrat);
 };
 
 #endif
