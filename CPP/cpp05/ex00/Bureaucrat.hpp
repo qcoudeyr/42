@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:18:59 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/03/05 14:54:18 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/03/05 14:59:23 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ public:
 	int getGrade() const;
 	void incrementGrade();
 	void decrementGrade();
+	friend ostream& operator<<(ostream& os, const Bureaucrat& bureaucrat) {
+		os << bureaucrat._name << ", bureaucrat grade " << bureaucrat._grade << ".";
+			return os;
+		}
 };
 
 #endif
