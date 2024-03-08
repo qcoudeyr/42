@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:24:26 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/03/05 15:10:33 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/03/08 15:26:42 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int main()
 {
 	try {
-		Bureaucrat goodBureaucrat(50);
+		Bureaucrat goodBureaucrat(50);<
 		Bureaucrat highGradeBureaucrat(0);
 	} catch (Bureaucrat::GradeTooHighException& e) {
 		std::cout << "Exception caught: " << e.what() << std::endl;
