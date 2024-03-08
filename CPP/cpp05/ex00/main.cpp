@@ -6,22 +6,28 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:24:26 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/03/08 15:26:42 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/03/08 16:17:38 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "iostream"
 
 int main()
 {
 	try {
-		Bureaucrat goodBureaucrat(50);<
-		Bureaucrat highGradeBureaucrat(0);
-	} catch (Bureaucrat::GradeTooHighException& e) {
-		std::cout << "Exception caught: " << e.what() << std::endl;
-	} catch (Bureaucrat::GradeTooLowException& e) {
-		std::cout << "Exception caught: " << e.what() << std::endl;
+		Bureaucrat bureaucrat("high", 1);
+		std::cout << bureaucrat << std::endl;
+		bureaucrat.incrementGrade();
+	} catch (Bureaucrat::GradeTooHighException &e) {
+		std::cout << e.what() << std::endl;
+	}
+
+	try {
+		Bureaucrat lowcrat("low", 150);
+		std::cout << lowcrat << std::endl;
+		lowcrat.decrementGrade();
+	} catch (Bureaucrat::GradeTooHighException &e) {
+		std::cout << e.what() << std::endl;
 	}
 
 	return 0;
