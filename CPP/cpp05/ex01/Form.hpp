@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 16:28:53 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/03/08 16:28:54 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/03/15 09:51:58 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ class Form
 		Form &		operator=( Form const & rhs );
 
 	private:
+
+		const std::string _Name;
+		bool _Signed;
+		const int _Grade;
+
 
 };
 
