@@ -62,7 +62,7 @@ services:
     env_file:
       - .env
     volumes:
-      - /home/qcoudeyr/.ssh/id_rsa.pub:/home/$SFTP_USER/.ssh/keys/id_rsa.pub:ro
+      - ${HOME}/.ssh/id_rsa.pub:/home/$SFTP_USER/.ssh/keys/id_rsa.pub:ro
       - wordpress_volume:/var/www/wordpress:rw
     networks:
       inception:
@@ -116,13 +116,13 @@ volumes:
     driver_opts:
       type: "none"
       o: "bind"
-      device: "/home/qcoudeyr/data/inception_wordpress"
+      device: "${HOME}/data/inception_wordpress"
   mariadb_volume:
     driver: local
     driver_opts:
       type: "none"
       o: "bind"
-      device: "/home/qcoudeyr/data/inception_mariadb"
+      device: "${HOME}/data/inception_mariadb"
 
 
 networks:

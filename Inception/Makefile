@@ -21,7 +21,7 @@ check-and-add-host:
 install-docker:
 	@if ! command -v docker &> /dev/null; then \
 		echo "Docker is not installed. Installing Docker..."; \
-		sudo apt-get update && sudo apt-get install -y docker.io; \
+		sudo apt-get update && sudo apt-get install -y docker.io docker-compose; \
 		sudo usermod -aG docker $(USER); \
 		newgrp docker; \
 		echo "Docker installed successfully."; \
@@ -70,7 +70,7 @@ generate-ssh-keys:
 	@echo "SSH keys generated and permissions set. Keys placed in ./srcs/requirements/bonus/sftp/tools/"
 
 build-and-up:
-	@cd ./srcs && sudo docker-compose up --build -d
+	@cd ./srcs && docker-compose up --build -d
 
 fclean:
 	@cd ./srcs && sudo docker-compose down && cd ../
