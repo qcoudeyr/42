@@ -70,7 +70,7 @@ generate-ssh-keys:
 	@echo "SSH keys generated and permissions set. Keys placed in ./srcs/requirements/bonus/sftp/tools/"
 
 build-and-up:
-	@cd ./srcs && docker-compose up --build -d
+	@cd ./srcs && sudo -u ${USER} docker-compose up --build -d
 
 fclean:
 	@cd ./srcs && sudo docker-compose down && cd ../
