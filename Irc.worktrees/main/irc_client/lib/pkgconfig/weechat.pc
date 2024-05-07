@@ -1,0 +1,9 @@
+prefix=/home/qcoudeyr/Desktop/42/Irc/irc_client
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: weechat
+Description: WeeChat plugins headers
+Version: 4.2.2
+Cflags: -I${includedir}/weechat

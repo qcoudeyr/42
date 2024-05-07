@@ -1,0 +1,5 @@
+.vscode/
+irc_client_build/
+objs/
+Irc.code-workspace
+ircserv
