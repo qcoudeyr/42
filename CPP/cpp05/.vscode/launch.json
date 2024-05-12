@@ -5,7 +5,7 @@
       "name": "(gdb) Lancer",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/ex00/Bureaucrat",
+      "program": "${workspaceFolder}/ex03/Intern",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",

@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:24:26 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/05/12 18:09:59 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/05/12 18:40:25 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ int main( void )
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
+
 	return EXIT_SUCCESS;
 }
