@@ -1,60 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   Aform.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 16:28:55 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/05/12 17:31:01 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/05/12 17:58:09 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "Aform.hpp"
 
-Form::Form( const std::string& name, int gradeToSign ) : _Name( name ), _RequiredGradeToSign( gradeToSign ), _RequiredGradeToExecute( 0 ) {
+Aform::Aform( const std::string& name, int gradeToSign, int gradeToExecute) : _Name( name ), _RequiredGradeToSign( gradeToSign ), _RequiredGradeToExecute( gradeToExecute ) {
 	if ( gradeToSign < 1 )
-		throw Form::GradeTooHighException();
+		throw Aform::GradeTooHighException();
 	if ( gradeToSign > 150 )
-		throw Form::GradeTooLowException();
+		throw Aform::GradeTooLowException();
 }
 
-Form::Form( const Form& src ) : _Name( src.getName() ), _RequiredGradeToSign( src.getGradeToSign() ), _RequiredGradeToExecute( src.getGradeToExecute() ) {}
+Aform::Aform( const Aform& src ) : _Name( src.getName() ), _RequiredGradeToSign( src.getGradeToSign() ), _RequiredGradeToExecute( src.getGradeToExecute() ) {}
 
-Form::~Form() {}
+Aform::~Aform() {}
 
-Form&	Form::operator=( const Form& rhs ) {
+Aform&	Aform::operator=( const Aform& rhs ) {
 	if ( this != &rhs )
 		_Signed = rhs.getSigned();
 	return *this;
 }
 
-std::string Form::getName() const {
+std::string Aform::getName() const {
 	return _Name;
 }
 
-bool	Form::getSigned() const {
+bool	Aform::getSigned() const {
 	return _Signed;
 }
 
-int	Form::getGradeToSign() const {
+int	Aform::getGradeToSign() const {
 	return _RequiredGradeToSign;
 }
 
-int	Form::getGradeToExecute() const {
+int	Aform::getGradeToExecute() const {
 	return _RequiredGradeToExecute;
 }
 
-void	 Form::beSigned(const Bureaucrat& bureaucrat) {
+void	 Aform::beSigned(const Bureaucrat& bureaucrat) {
 	if ( bureaucrat.getGrade() > _RequiredGradeToSign )
-		throw Form::GradeTooLowException();
+		throw Aform::GradeTooLowException();
 	_Signed = true;
 }
 
-std::ostream&	operator<<( std::ostream& o, const Form& rhs ) {
-	o << "Form name: " << rhs.getName() << std::endl
+std::ostream&	operator<<( std::ostream& o, const Aform& rhs ) {
+	o << "Aform name: " << rhs.getName() << std::endl
 	  << "Is Signed : " << (rhs.getSigned() ? "Yes" : "No")  << std::endl
 	  << "Grade to sign: " << rhs.getGradeToSign() << std::endl
 	  << "Grade to execute: " << rhs.getGradeToExecute();
 	return o;
 }
+

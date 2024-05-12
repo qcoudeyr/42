@@ -104,6 +104,7 @@
 	"sstream": "cpp",
 	"streambuf": "cpp",
 	"typeinfo": "cpp",
-	"cinttypes": "cpp"
+	"cinttypes": "cpp",
+	"fstream": "cpp"
 }
 }
