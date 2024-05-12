@@ -5,8 +5,8 @@ all: install-docker check-directories generate-ssh-keys install_ssl_certificate 
 HOST_ENTRY="10.0.20.10 qcoudeyr.42.fr wordpress.qcoudeyr.42.fr"
 
 install_ssl_certificate:
-	@which mkcert || (echo "mkcert not found. Installing..." && sudo apt-get install mkcert)
-	@which certutil || (echo "libnss3-tools not found. Installing..." && sudo apt-get install libnss3-tools)
+	@which mkcert || (echo "mkcert not found. Installing..." && sudo apt-get install mkcert -y)
+	@which certutil || (echo "libnss3-tools not found. Installing..." && sudo apt-get install libnss3-tools -y)
 	@mkcert -cert-file ./srcs/requirements/nginx/tools/qcoudeyr.42.fr.crt -key-file ./srcs/requirements/nginx/tools/qcoudeyr.42.fr.key qcoudeyr.42.fr "*.qcoudeyr.42.fr"
 	@mkcert -install -cert-file ./srcs/requirements/nginx/tools/qcoudeyr.42.fr.crt -key-file ./srcs/requirements/nginx/tools/qcoudeyr.42.fr.key
 
