@@ -21,5 +21,3 @@ RUN  chmod +x /etc/ssh/sshd_config /usr/local/bin/create-sftp-user /entrypoint
 EXPOSE 22
 
 ENTRYPOINT ["/entrypoint"]
-
-CMD ["/usr/sbin/sshd", "-D -e"]
