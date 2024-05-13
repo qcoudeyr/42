@@ -1,18 +1,19 @@
 #!/bin/sh
 set -e
 
+# Start the MariaDB server in the background
+mysqld_safe &
+pid="$!"
+
+# Wait for MariaDB to start
+until mysqladmin ping --silent; do
+	echo 'Waiting for MariaDB to become available...'
+	sleep 1
+done
+echo 'MariaDB is available'
+
 # Check if MariaDB has already been configured
 if [ ! -f /var/lib/mysql/configured ]; then
-	# Start the MariaDB server in the background
-	mysqld_safe &
-	pid="$!"
-
-	# Wait for MariaDB to start
-	until mysqladmin ping --silent; do
-		echo 'Waiting for MariaDB to become available...'
-		sleep 1
-	done
-	echo 'MariaDB is available'
 
 	echo '$SQL_ROOT_PASSWORD'
 	echo 'Set SQL_PASSWORD for mysql server ROOT user'
