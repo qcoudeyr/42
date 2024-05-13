@@ -12,11 +12,13 @@ until mysqladmin ping --silent; do
 done
 echo 'MariaDB is available'
 
+echo '$SQL_ROOT_PASSWORD'
 echo 'Set SQL_PASSWORD for mysql server ROOT user'
 mysql <<-EOSQL
-SET PASSWORD = PASSWORD('$SQL_ROOT_PASSWORD');
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$SQL_ROOT_PASSWORD');
 FLUSH PRIVILEGES;
 EOSQL
+
 
 echo 'Adding admin user and normal user'
 
