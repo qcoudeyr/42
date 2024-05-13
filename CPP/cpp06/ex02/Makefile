@@ -1,8 +1,8 @@
 CXX = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -g -Wshadow -Wno-shadow
 
-HEADERS =
-SRCS =
+HEADERS = Base.hpp
+SRCS = Base.cpp  main.cpp
 
 OBJDIR = ./object/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.cpp=.o))

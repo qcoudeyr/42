@@ -2,7 +2,7 @@ CXX = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -g -Wshadow -Wno-shadow
 
 HEADERS = ScalarConverter.hpp
-SRCS = ScalarConverter.cpp
+SRCS = main.cpp ScalarConverter.cpp
 
 OBJDIR = ./object/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.cpp=.o))

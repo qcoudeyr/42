@@ -1,8 +1,8 @@
 CXX = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -g -Wshadow -Wno-shadow
 
-HEADERS =
-SRCS =
+HEADERS = Serializer.hpp
+SRCS = main.cpp Serializer.cpp
 
 OBJDIR = ./object/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.cpp=.o))

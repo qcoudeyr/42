@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:18:57 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/05/12 19:18:58 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/05/12 20:34:34 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,24 @@
 
 # include <iostream>
 # include <string>
+#include <limits>
+#include <cmath>
+#include <climits>
+#include <cstdlib>
+#include <cstring>
+#include <cctype>
 
 class ScalarConverter
 {
 
 	public:
+	static void		convert(const std::string input);
 
+	private:
 		ScalarConverter();
 		ScalarConverter( ScalarConverter const & src );
 		~ScalarConverter();
-
 		ScalarConverter &		operator=( ScalarConverter const & rhs );
-
-	private:
 
 };
 
