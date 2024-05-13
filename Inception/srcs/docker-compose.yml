@@ -43,6 +43,8 @@ services:
       context: ./requirements/mariadb
     image: inception_mariadb:v1.0
     container_name: mariadb_container
+    volumes:
+      - mariadb_volume:/var/lib/mysql
     restart: always
     env_file:
       - .env
