@@ -94,8 +94,8 @@ chmod 755 /var/www/wordpress
 
 
 if $startSshd; then
-    log "Executing sshd"
-    exec /usr/sbin/sshd -D -e
+    log "Executing $*"
+    exec "$@"
 else
     log "Executing $*"
     exec "$@"
