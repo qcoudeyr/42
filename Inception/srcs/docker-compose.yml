@@ -61,6 +61,8 @@ services:
     container_name: sftp_container
     restart: always
     command: $SFTP_USER:$SFTP_PASS:1001
+    depends_on:
+      - wordpress
     env_file:
       - .env
     volumes:
