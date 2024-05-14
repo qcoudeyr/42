@@ -6,29 +6,31 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:18:17 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/05/14 14:58:26 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/05/14 15:38:45 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Iter.hpp"
+#include "Span.hpp"
 #include <iostream>
 
-int main(void)
-{
-	// Test with an array of integers
-	int intArray[] = {1, 2, 3, 4, 5};
-	iter(intArray, 5, print<int>);
-	std::cout << std::endl;
+int main() {
+	Span sp = Span(10000);
+	sp.addNumber(6);
+	sp.addNumber(3);
+	sp.addNumber(17);
+	sp.addNumber(9);
+	sp.addNumber(11);
+	std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
+	std::cout << "Longest span: " << sp.longestSpan() << std::endl;
 
-	// Test with an array of doubles
-	double doubleArray[] = {1.1, 2.2, 3.3, 4.4, 5.5};
-	iter(doubleArray, 5, print<double>);
-	std::cout << std::endl;
-
-	// Test with an array of strings
-	std::string stringArray[] = {"apple", "banana", "cherry"};
-	iter(stringArray, 3, print<std::string>);
-	std::cout << std::endl;
+	// Test with a range of numbers
+	sp = Span(100000);
+	std::vector<int> range;
+	range.push_back(1);
+	range.push_back(10);
+	sp.addRange(range.begin(), range.end());
+	std::cout << "Shortest span after adding range: " << sp.shortestSpan() << std::endl;
+	std::cout << "Longest span after adding range: " << sp.longestSpan() << std::endl;
 
 	return 0;
 }
