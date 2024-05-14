@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <stdexcept>
 #include <cstdlib>
+#include <ctime>
 
 // Function to add a range of numbers using iterators
 
@@ -26,8 +27,9 @@ class Span
 
 		template <typename InputIterator>
 		void addRange(InputIterator first, InputIterator last) {
+			srand(static_cast<unsigned int>(time(NULL)));
 			while (first != last) {
-				addNumber(rand_r(reinterpret_cast<unsigned int*>(&first)));
+				addNumber(rand());
 				++first;
 			}
 		}

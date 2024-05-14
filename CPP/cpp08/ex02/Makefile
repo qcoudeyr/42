@@ -1,7 +1,7 @@
 CXX = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -g -Wshadow -Wno-shadow
 
-HEADERS = Array.hpp
+HEADERS = MutantStack.hpp
 SRCS = main.cpp
 
 OBJDIR = ./object/

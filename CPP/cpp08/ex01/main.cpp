@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:18:17 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/05/14 15:38:45 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/05/14 15:44:09 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main() {
 	sp = Span(100000);
 	std::vector<int> range;
 	range.push_back(1);
-	range.push_back(10);
+	range.push_back(100000);
 	sp.addRange(range.begin(), range.end());
 	std::cout << "Shortest span after adding range: " << sp.shortestSpan() << std::endl;
 	std::cout << "Longest span after adding range: " << sp.longestSpan() << std::endl;

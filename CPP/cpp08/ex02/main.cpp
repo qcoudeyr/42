@@ -6,39 +6,43 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:18:17 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/05/14 15:05:33 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/05/14 15:46:48 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Array.hpp"
-#include <iostream>
+#include "MutantStack.hpp"
 
 int main (void)
 {
-	// Test default constructor
-	Array<int> arr1;
-	std::cout << "arr1 size: " << arr1.size() << std::endl;
+	MutantStack<int> mstack;
 
-	// Test constructor with size parameter
-	Array<int> arr2(5);
-	std::cout << "Value in array 2: ";
-	for (unsigned int i = 0; i < arr2.size(); ++i) {
-		std::cout << arr2[i] << " ";
+	mstack.push(5);
+	mstack.push(17);
+
+	std::cout << mstack.top() << std::endl;
+
+	mstack.pop();
+
+	std::cout << mstack.size() << std::endl;
+
+	mstack.push(3);
+	mstack.push(5);
+	mstack.push(737);
+	//[...]
+	mstack.push(0);
+
+	MutantStack<int>::iterator it = mstack.begin();
+	MutantStack<int>::iterator ite = mstack.end();
+
+	++it;
+	--it;
+	while (it != ite)
+	{
+	std::cout << *it << std::endl;
+	++it;
 	}
-	std::cout << std::endl;
 
-	// Test copy constructor and assignment operator
-	Array<int> arr3 = arr2;
-	arr3[0] = 10;
-	std::cout << "arr2[0]: " << arr2[0] << std::endl; // Should still be the default value
-	std::cout << "arr3[0]: " << arr3[0] << std::endl;
-
-	// Test subscript operator with out-of-range index
-	try {
-		std::cout << arr2[10] << std::endl;
-	} catch (const std::exception& e) {
-		std::cerr << "Exception: " << e.what() << std::endl;
-	}
+	std::stack<int> s(mstack);
 
 	return 0;
 }
