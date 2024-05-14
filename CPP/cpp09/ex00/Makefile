@@ -1,13 +1,13 @@
 CXX = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -g -Wshadow -Wno-shadow
 
-HEADERS = MutantStack.hpp
-SRCS = main.cpp
+HEADERS = BitcoinExchange.hpp
+SRCS = main.cpp BitcoinExchange.cpp
 
 OBJDIR = ./object/
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.cpp=.o))
 
-NAME = MutantStack
+NAME = btc
 
 all: $(OBJDIR) $(NAME)
 	@echo "\033[32m\tCompilation done !\033[0m"

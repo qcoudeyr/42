@@ -1,24 +1,28 @@
 #ifndef MUTANTSTACK_HPP
 # define MUTANTSTACK_HPP
 
-# include <iostream>
-# include <string>
+#include <iostream>
+#include <stack>
+#include <list>
+#include <iterator>
 
-class MutantStack
+
+template <typename T>
+class MutantStack : public std::stack<T>
 {
 
 	public:
+		typedef typename std::stack<T>::container_type::iterator iterator;
+		typedef typename std::stack<T>::container_type::const_iterator const_iterator;
 
-		MutantStack();
-		MutantStack( MutantStack const & src );
-		~MutantStack();
-
-		MutantStack &		operator=( MutantStack const & rhs );
-
+		// Iterators
+		iterator begin() { return this->c.begin(); }
+		iterator end() { return this->c.end(); }
+		const_iterator begin() const { return this->c.begin(); }
+		const_iterator end() const { return this->c.end(); }
 	private:
 
 };
 
-std::ostream &			operator<<( std::ostream & o, MutantStack const & i );
 
 #endif /* ***************************************************** MUTANTSTACK_H */
