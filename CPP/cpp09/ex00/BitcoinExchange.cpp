@@ -4,14 +4,27 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-BitcoinExchange::BitcoinExchange()
-{
-}
+BitcoinExchange::BitcoinExchange(const std::string& filename) {
+	std::ifstream infile(filename.c_str());
+	if (!infile) {
+		valid = false;
+		std::cerr << "Error: could not open file." << std::endl;
+		return;
+	}
 
-BitcoinExchange::BitcoinExchange( const BitcoinExchange & src )
-{
+	std::string line;
+	while (std::getline(infile, line)) {
+		std::istringstream iss(line);
+		std::string dateStr;
+		double rate;
+		char delimiter;
+		if (iss >> dateStr >> delimiter >> rate && delimiter == '|' && rate >= 0 && rate <= 1000) {
+			exchangeRates[dateStr] = rate;
+		} else {
+			std::cerr << "Error: bad input => " << line << std::endl;
+		}
+	}
 }
-
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
@@ -21,35 +34,26 @@ BitcoinExchange::~BitcoinExchange()
 {
 }
 
-
-/*
-** --------------------------------- OVERLOAD ---------------------------------
-*/
-
-BitcoinExchange &				BitcoinExchange::operator=( BitcoinExchange const & rhs )
-{
-	//if ( this != &rhs )
-	//{
-		//this->_value = rhs.getValue();
-	//}
-	return *this;
-}
-
-std::ostream &			operator<<( std::ostream & o, BitcoinExchange const & i )
-{
-	//o << "Value = " << i.getValue();
-	return o;
-}
-
-
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 
 
+double BitcoinExchange::getExchangeRate(const std::string& date) const {
+	// Find the closest date in the database
+	std::map<std::string, double>::const_iterator it = exchangeRates.lower_bound(date);
+	if (it != exchangeRates.begin()) {
+		--it; // Get the lower date
+	}
+	return (it != exchangeRates.end()) ? it->second : 0.0;
+}
+
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
+bool BitcoinExchange::isValid(void){
+	return valid;
+}
 
 /* ************************************************************************** */

@@ -1,24 +1,28 @@
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
-# include <iostream>
-# include <string>
+#include <iostream>
+#include <fstream>
+#include <map>
+#include <string>
+#include <sstream>
+#include <iomanip>
+
 
 class BitcoinExchange
 {
 
 	public:
-
-		BitcoinExchange();
-		BitcoinExchange( BitcoinExchange const & src );
+		BitcoinExchange(const std::string& filename);
 		~BitcoinExchange();
 
-		BitcoinExchange &		operator=( BitcoinExchange const & rhs );
+		double		getExchangeRate(const std::string& date) const;
+		bool		isValid(void);
 
 	private:
+		bool		valid;
+		std::map<std::string,	double> exchangeRates;
 
 };
-
-std::ostream &			operator<<( std::ostream & o, BitcoinExchange const & i );
 
 #endif /* ************************************************* BITCOINEXCHANGE_H */
