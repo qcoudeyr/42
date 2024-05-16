@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 16:52:50 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/05/14 17:14:45 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/05/15 18:30:18 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int main(int argc, char* argv[]) {
 		return 1;
 	}
 
-	BitcoinExchange bitcoin(argv[1]);
+	BitcoinExchange bitcoin("input.csv");
 	if (bitcoin.isValid() == false) {
 		return 1;
 	}
 
-	std::ifstream inputfile("input.txt");
+	std::ifstream inputfile(argv[1]);
 	if (!inputfile) {
 		std::cerr << "Error: could not open input file." << std::endl;
 		return 1;
@@ -44,7 +44,11 @@ int main(int argc, char* argv[]) {
 			} else {
 				std::cerr << "Error: no exchange rate found for date " << date << std::endl;
 			}
-		} else {
+		} else if (value < 0){
+			std::cerr << "Error: not a positive number. => " << line << std::endl;
+		} else if (value > 1000){
+			std::cerr << "Error: number too large. => " << line << std::endl;
+		} else if (line.find("date | value")) {
 			std::cerr << "Error: bad input => " << line << std::endl;
 		}
 	}

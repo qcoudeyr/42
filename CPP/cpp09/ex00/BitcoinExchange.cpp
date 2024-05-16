@@ -18,10 +18,9 @@ BitcoinExchange::BitcoinExchange(const std::string& filename) {
 		std::string dateStr;
 		double rate;
 		char delimiter;
+
 		if (iss >> dateStr >> delimiter >> rate && delimiter == '|' && rate >= 0 && rate <= 1000) {
 			exchangeRates[dateStr] = rate;
-		} else {
-			std::cerr << "Error: bad input => " << line << std::endl;
 		}
 	}
 }
