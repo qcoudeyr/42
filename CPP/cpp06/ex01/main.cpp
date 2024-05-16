@@ -6,26 +6,27 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:18:17 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/05/12 21:21:31 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/05/16 09:32:41 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
 
 int main() {
-	// Create a Data object
+
+
 	Data data;
 	data.id = 1;
 	data.name = "Test";
 	data.value = 3.14;
 
-	// Serialize the address of the Data object
+	std::cout << "Serialize the address of the Data object" << std::endl;
 	uintptr_t serializedPtr = Serializer::serialize(&data);
 
-	// Deserialize the serialized pointer
+	std::cout << "Deserialize the serialized pointer" << std::endl;
 	Data* deserializedPtr = Serializer::deserialize(serializedPtr);
 
-	// Check if the deserialized pointer is equal to the original pointer
+	std::cout << "Check if the deserialized pointer is equal to the original pointer:" << std::endl;
 	if (deserializedPtr == &data) {
 		std::cout << "Deserialization successful. Pointers match." << std::endl;
 	} else {

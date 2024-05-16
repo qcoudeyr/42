@@ -6,14 +6,14 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:18:17 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/05/12 21:38:24 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/05/16 09:30:45 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
 #include <iostream>
-#include <cstdlib> // for rand() and srand()
-#include <ctime>   // for time()
+#include <cstdlib>
+#include <ctime>
 #include <stdexcept>
 
 void	identify(Base* p)
