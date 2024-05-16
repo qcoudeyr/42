@@ -1,5 +1,5 @@
 CXX = c++
-CFLAGS = -Wall -Werror -Wextra -std=c++98 -g -Wshadow -Wno-shadow
+CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 HEADERS = PmergeMe.hpp
 SRCS = main.cpp PmergeMe.cpp
