@@ -17,14 +17,12 @@ BitcoinExchange::BitcoinExchange(const std::string& filename) {
 		std::istringstream iss(line);
 		std::string dateStr;
 		double rate;
-		char delimiter;
 
-		if (iss >> dateStr >> delimiter >> rate && delimiter == ',' && rate >= 0 && rate <= 1000) {
+		if (std::getline(iss, dateStr, ',') && iss >> rate && rate >= 0 && rate <= 1000) {
 			exchangeRates[dateStr] = rate;
 		}
 	}
 }
-
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */

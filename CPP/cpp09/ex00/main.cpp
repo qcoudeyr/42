@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 16:52:50 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/05/20 10:14:37 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/05/20 15:34:25 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
 	while (std::getline(inputfile, line)) {
 		std::istringstream iss(line);
 		std::string date;
-		double value;
+		double value = 0;
 		char delimiter;
 		if (iss >> date >> delimiter >> value && delimiter == '|' && value >= 0 && value <= 1000) {
 			double exchangeRate = bitcoin.getExchangeRate(date);
