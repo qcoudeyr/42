@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 16:52:50 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/05/16 12:47:54 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/05/20 10:14:37 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
 		return 1;
 	}
 
-	BitcoinExchange bitcoin("input.csv");
+	BitcoinExchange bitcoin("data.csv");
 	if (bitcoin.isValid() == false) {
 		return 1;
 	}
