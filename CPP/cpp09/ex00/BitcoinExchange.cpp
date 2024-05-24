@@ -19,6 +19,8 @@ BitcoinExchange::BitcoinExchange(const std::string& filename) {
 		double rate;
 
 		if (std::getline(iss, dateStr, ',') && iss >> rate && rate >= 0 && rate <= 1000) {
+			if (rate == 0)
+				rate = 0.0;
 			exchangeRates[dateStr] = rate;
 		}
 	}

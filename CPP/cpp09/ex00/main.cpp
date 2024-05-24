@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 16:52:50 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/05/20 15:34:25 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/05/24 15:11:35 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int main(int argc, char* argv[]) {
 		char delimiter;
 		if (iss >> date >> delimiter >> value && delimiter == '|' && value >= 0 && value <= 1000) {
 			double exchangeRate = bitcoin.getExchangeRate(date);
-			if (exchangeRate != 0.0) {
+			if (exchangeRate >= 0.0) {
 				std::cout << date << " => " << value << " = ";
 				std::cout << std::fixed << std::setprecision(2) << (value * exchangeRate) << std::endl;
 			} else {
