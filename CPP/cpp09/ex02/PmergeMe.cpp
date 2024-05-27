@@ -49,90 +49,60 @@ std::ostream &			operator<<( std::ostream & o, PmergeMe const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void PmergeMe::dequeSort(std::deque<int>& sequence) {
-	dequeMergeInsertSort(sequence, 0, sequence.size() - 1);
-}
+template <typename Container>
+void fordJohnsonSort(Container& sequence) {
+	int n = sequence.size();
 
-void PmergeMe::dequeMergeInsertSort(std::deque<int>& sequence, int left, int right) {
-	if (left < right) {
-		int mid = left + (right - left) / 2;
-		dequeMergeInsertSort(sequence, left, mid);
-		dequeMergeInsertSort(sequence, mid + 1, right);
-		dequeMerge(sequence, left, mid, right);
-	}
-}
-
-void PmergeMe::dequeMerge(std::deque<int>& sequence, int left, int mid, int right) {
-	int n1 = mid - left + 1;
-	int n2 = right - mid;
-	std::deque<int> leftSeq(n1);
-	std::deque<int> rightSeq(n2);
-
-	for (int i = 0; i < n1; ++i) {
-		leftSeq[i] = sequence[left + i];
-	}
-	for (int i = 0; i < n2; ++i) {
-		rightSeq[i] = sequence[mid + 1 + i];
+	if (n < 2) {
+		return;
 	}
 
-	int i = 0, j = 0, k = left;
-	while (i < n1 && j < n2) {
-		if (leftSeq[i] <= rightSeq[j]) {
-			sequence[k++] = leftSeq[i++];
+	// Step 1: Pair up elements and sort each pair
+	Container maxElements;
+	Container minElements;
+
+	for (int i = 0; i < n - 1; i += 2) {
+		if (sequence[i] > sequence[i + 1]) {
+			maxElements.push_back(sequence[i]);
+			minElements.push_back(sequence[i + 1]);
 		} else {
-			sequence[k++] = rightSeq[j++];
+			maxElements.push_back(sequence[i + 1]);
+			minElements.push_back(sequence[i]);
 		}
 	}
 
-	while (i < n1) {
-		sequence[k++] = leftSeq[i++];
+	// If there's an odd number of elements, add the last one to maxElements
+	if (n % 2 != 0) {
+		maxElements.push_back(sequence[n - 1]);
 	}
-	while (j < n2) {
-		sequence[k++] = rightSeq[j++];
+
+	// Step 2: Sort the maxElements array
+	std::sort(maxElements.begin(), maxElements.end());
+
+	// Step 3: Insert minElements into the sorted maxElements array
+	for (const auto& minElement : minElements) {
+		binaryInsert(maxElements, 0, maxElements.size() - 1, minElement);
 	}
+
+	// Copy the sorted sequence back to the original array
+	sequence = maxElements;
 }
 
-void PmergeMe::vectorSort(std::vector<int>& sequence) {
-	vectorMergeInsertSort(sequence, 0, sequence.size() - 1);
-}
-
-void PmergeMe::vectorMergeInsertSort(std::vector<int>& sequence, int left, int right) {
-	if (left < right) {
+template <typename Container>
+void binaryInsert(Container& sequence, int left, int right, typename Container::value_type value) {
+	while (left <= right) {
 		int mid = left + (right - left) / 2;
-		vectorMergeInsertSort(sequence, left, mid);
-		vectorMergeInsertSort(sequence, mid + 1, right);
-		vectorMerge(sequence, left, mid, right);
-	}
-}
 
-void PmergeMe::vectorMerge(std::vector<int>& sequence, int left, int mid, int right) {
-	int n1 = mid - left + 1;
-	int n2 = right - mid;
-	std::vector<int> leftSeq(n1);
-	std::vector<int> rightSeq(n2);
-
-	for (int i = 0; i < n1; ++i) {
-		leftSeq[i] = sequence[left + i];
-	}
-	for (int i = 0; i < n2; ++i) {
-		rightSeq[i] = sequence[mid + 1 + i];
-	}
-
-	int i = 0, j = 0, k = left;
-	while (i < n1 && j < n2) {
-		if (leftSeq[i] <= rightSeq[j]) {
-			sequence[k++] = leftSeq[i++];
+		if (sequence[mid] == value) {
+			sequence.insert(sequence.begin() + mid, value);
+			return;
+		} else if (sequence[mid] < value) {
+			left = mid + 1;
 		} else {
-			sequence[k++] = rightSeq[j++];
+			right = mid - 1;
 		}
 	}
-
-	while (i < n1) {
-		sequence[k++] = leftSeq[i++];
-	}
-	while (j < n2) {
-		sequence[k++] = rightSeq[j++];
-	}
+	sequence.insert(sequence.begin() + left, value);
 }
 
 /*

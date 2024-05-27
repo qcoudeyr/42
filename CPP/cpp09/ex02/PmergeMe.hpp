@@ -5,10 +5,10 @@
 # include <string>
 #include <vector>
 #include <deque>
+#include <algorithm>
 
 class PmergeMe
 {
-
 	public:
 
 		PmergeMe();
@@ -17,16 +17,17 @@ class PmergeMe
 
 		PmergeMe &		operator=( PmergeMe const & rhs );
 
-		void dequeSort(std::deque<int>& sequence);
+		template <typename Container>
+		void fordJohnsonSort(Container& sequence);
 
-		void vectorSort(std::vector<int>& sequence);
+		template <typename Container>
+		void merge(Container& sequence, int left, int mid, int right);
+
+		template <typename Container>
+		void binaryInsert(Container& sequence, int left, int right, typename Container::value_type value);
 
 	private:
-		void vectorMergeInsertSort(std::vector<int>& sequence, int left, int right);
-		void vectorMerge(std::vector<int>& sequence, int left, int mid, int right);
 
-		void dequeMergeInsertSort(std::deque<int>& sequence, int left, int right);
-		void dequeMerge(std::deque<int>& sequence, int left, int mid, int right);
 };
 
 

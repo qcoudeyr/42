@@ -6,7 +6,7 @@
 /*   By:  qcoudeyr <@student.42perpignan.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 16:52:50 by  qcoudeyr         #+#    #+#             */
-/*   Updated: 2024/05/24 16:03:35 by  qcoudeyr        ###   ########.fr       */
+/*   Updated: 2024/05/27 14:04:21 by  qcoudeyr        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int main(int argc, char* argv[]) {
 
 	PmergeMe sortVector;
 	clock_t startVector = clock();
-	sortVector.vectorSort(vectorSequence);
+	sortVector.fordJohnsonSort(vectorSequence);
 	clock_t endVector = clock();
 
 	printSequence(vectorSequence, "After: ");
@@ -69,7 +69,7 @@ int main(int argc, char* argv[]) {
 
 	PmergeMe sortDeque;
 	clock_t startDeque = clock();
-	sortDeque.dequeSort(dequeSequence);
+	sortDeque.fordJohnsonSort(dequeSequence);
 	clock_t endDeque = clock();
 
 	double timeDeque = static_cast<double>(endDeque - startDeque) / CLOCKS_PER_SEC;
